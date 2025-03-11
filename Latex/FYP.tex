@@ -33,6 +33,7 @@ Each of these modelling approaches will incur a certain amount of error. We quan
 
 
 \subsection*{Methods Used Before}
+hello buddy
 
 \subsubsection*{Standard Method}
 We build a distribution based off of each of the 3 models. We then combine these distributions with equal weight to form a new total distribution from which we make our predictions from.
@@ -310,64 +311,76 @@ Done by log-likelihood and L2 norm cross validation
 \end{itemize}
 
 
-\section{Begining of Results}
+\section{Kernels}
+
+\section{Different Models}
+\begin{itemize}
+    \item White Kernel without Error Knowledge
+    \item White Kenrel With Error Knowledge
+    \item Using $\alpha = err^2$
+    \item Using Monte Carlo Sampling, Sampling from the Error
+    \item Using MCMCing to build a posterior on hyper-parameter distribution
+    \item Picking values from this posterior distribution to use
+\end{itemize}
+
+\section{Choosing the Best Performing Model take performance and Efficiency into account}
 
 \subsection{Kernel Selection}
 
-\begin{figure}[H]  % 'H' forces the figure to appear exactly here
-    \centering
-    \includegraphics[width=0.6\textwidth]{GoodPlots/KernelL2norms.png}  % Change to your image filename
-    \caption{Plotting the L2norm of the posterior predictions for different Kernels}
-    \label{fig:my_graph}
-\end{figure}
+% \begin{figure}[H]  % 'H' forces the figure to appear exactly here
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{GoodPlots/KernelL2norms.png}  % Change to your image filename
+%     \caption{Plotting the L2norm of the posterior predictions for different Kernels}
+%     \label{fig:my_graph}
+% \end{figure}
 
-\begin{figure}[H]  % 'H' forces the figure to appear exactly here
-    \centering
-    \includegraphics[width=0.6\textwidth]{GoodPlots/LogLikeKernels.png}  % Change to your image filename
-    \caption{Plotting the Log likelihood for different Kernels}
-    \label{fig:my_graph}
-\end{figure}
-
-
-\subsection{Different Posterior Building Techniques}
-
-\begin{figure}[H]  % 'H' forces the figure to appear exactly here
-    \centering
-    \includegraphics[width=0.8\textwidth]{GoodPlots/No Error.png}  % Change to your image filename
-    \caption{GPR taking into account no error bars}
-    \label{fig:my_graph}
-\end{figure}
-
-\begin{figure}[H]  % 'H' forces the figure to appear exactly here
-    \centering
-    \includegraphics[width=0.8\textwidth]{GoodPlots/Alpha = Err^2.png}  % Change to your image filename
-    \caption{GPR taking error into account on the diagonal of the covariance matrix. Inputing using alpha=$err^2$}
-    \label{fig:my_graph}
-\end{figure}
+% \begin{figure}[H]  % 'H' forces the figure to appear exactly here
+%     \centering
+%     \includegraphics[width=0.6\textwidth]{GoodPlots/LogLikeKernels.png}  % Change to your image filename
+%     \caption{Plotting the Log likelihood for different Kernels}
+%     \label{fig:my_graph}
+% \end{figure}
 
 
-\begin{figure}[H]  % 'H' forces the figure to appear exactly here
-    \centering
-    \includegraphics[width=0.8\textwidth]{GoodPlots/Posteriorwithparameterdistribution.png}  % Change to your image filename
-    \caption{Using Alpha=Err^2 and combining this with the posterior distribution of the hyperparameters}
-    \label{fig:my_graph}
-\end{figure}
+% \subsection{Different Posterior Building Techniques}
+
+% \begin{figure}[H]  % 'H' forces the figure to appear exactly here
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{GoodPlots/No Error.png}  % Change to your image filename
+%     \caption{GPR taking into account no error bars}
+%     \label{fig:my_graph}
+% \end{figure}
+
+% \begin{figure}[H]  % 'H' forces the figure to appear exactly here
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{GoodPlots/Alpha = Err^2.png}  % Change to your image filename
+%     \caption{GPR taking error into account on the diagonal of the covariance matrix. Inputing using alpha=$err^2$}
+%     \label{fig:my_graph}
+% \end{figure}
 
 
-\begin{figure}[H]  % 'H' forces the figure to appear exactly here
-    \centering
-    \includegraphics[width=0.8\textwidth]{GoodPlots/Monte Carlo Sampling.png}  % Change to your image filename
-    \caption{Using Monta Carlo sample to sample from true data with error and building mean and credible interval from here}
-    \label{fig:my_graph}
-\end{figure}
+% \begin{figure}[H]  % 'H' forces the figure to appear exactly here
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{GoodPlots/Posteriorwithparameterdistribution.png}  % Change to your image filename
+%     \caption{Using Alpha=Err^2 and combining this with the posterior distribution of the hyperparameters}
+%     \label{fig:my_graph}
+% \end{figure}
 
-\subsection{Posterior on Hyper-parameter}
-\begin{figure}[H]  % 'H' forces the figure to appear exactly here
-    \centering
-    \includegraphics[width=0.8\textwidth]{GoodPlots/Parameter Distribution.png}  % Change to your image filename
-    \caption{Hyper-Parameter Distributions}
-    \label{fig:my_graph}
-\end{figure}
+
+% \begin{figure}[H]  % 'H' forces the figure to appear exactly here
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{GoodPlots/Monte Carlo Sampling.png}  % Change to your image filename
+%     \caption{Using Monta Carlo sample to sample from true data with error and building mean and credible interval from here}
+%     \label{fig:my_graph}
+% \end{figure}
+
+% \subsection{Posterior on Hyper-parameter}
+% \begin{figure}[H]  % 'H' forces the figure to appear exactly here
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{GoodPlots/Parameter Distribution.png}  % Change to your image filename
+%     \caption{Hyper-Parameter Distributions}
+%     \label{fig:my_graph}
+% \end{figure}
 
 
 \newpage
