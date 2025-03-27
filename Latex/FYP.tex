@@ -1,5 +1,6 @@
 \documentclass{article}
-\usepackage[backend=biber,style=numeric]{biblatex} % Use biblatex with numeric citations
+%\usepackage[backend=biber,style=numeric]{biblatex} % Use biblatex with numeric citations
+\usepackage{cite}
 \usepackage{hyperref}  
 \usepackage{tikz}
 \usetikzlibrary{positioning}
@@ -16,7 +17,11 @@
 \usepackage{adjustbox}
 \usepackage{makecell}
 
-\addbibresource{references.bib}                    % Corrected the .bib file extension
+\bibliographystyle{acm}
+
+%\addbibresource{references.bib}                    % Corrected the .bib file extension
+%\bibliography{references}
+
 
 \title{FYP }
 \author{Sean White}
@@ -349,7 +354,7 @@ To further illustrate the effects of different kernel functions, Table~\ref{tab:
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_RBF_SE.png}} & 
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Rational_Quadratic.png}} & 
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Periodic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Matern_nu0.5.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Matern_nu05.png}} & 
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Laplace_Exponential.png}} & 
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Linear_Dot_Product.png}} \\ 
         \hline
@@ -357,7 +362,7 @@ To further illustrate the effects of different kernel functions, Table~\ref{tab:
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_RBF_SE.png}} & 
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Rational_Quadratic.png}} & 
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Periodic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Matern_nu0.5.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Matern_nu05.png}} & 
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Laplace_Exponential.png}} & 
         \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png}} \\ 
         \hline
@@ -648,7 +653,7 @@ Using MCMC, we generate samples \( \{\theta^{(s)}\}_{s=1}^S \sim p(\theta \mid \
 \subsubsection{Implementing MCMC}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/MCMC Flow.png}
+    \includegraphics[width=0.8\textwidth]{LatexPlots/MCMC_Flow.png}
     \caption{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference.
      This pipeline samples from the posterior \( p(\theta \mid \mathbf{y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}
     \label{fig:MCMC flowchart}
@@ -853,6 +858,9 @@ I split my training and validation data into 10 folds and trained my model on ea
 \end{itemize}
 
 
-\printbibliography
+%\printbibliography
+\bibliography{references}
+
 \end{document}
+
 
