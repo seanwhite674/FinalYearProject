@@ -1,0 +1,169 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{duvenaud2014kernel}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=834f50f5d5a332c21effd10f07daf79e}{%
+           family={Duvenaud},
+           familyi={D\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{834f50f5d5a332c21effd10f07daf79e}
+      \strng{fullhash}{834f50f5d5a332c21effd10f07daf79e}
+      \strng{fullhashraw}{834f50f5d5a332c21effd10f07daf79e}
+      \strng{bibnamehash}{834f50f5d5a332c21effd10f07daf79e}
+      \strng{authorbibnamehash}{834f50f5d5a332c21effd10f07daf79e}
+      \strng{authornamehash}{834f50f5d5a332c21effd10f07daf79e}
+      \strng{authorfullhash}{834f50f5d5a332c21effd10f07daf79e}
+      \strng{authorfullhashraw}{834f50f5d5a332c21effd10f07daf79e}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.cs.toronto.edu/~duvenaud/cookbook/}}
+      \field{note}{Accessed: 2024-03-14}
+      \field{title}{The Kernel Cookbook: Advice on Covariance Functions}
+      \field{year}{2014}
+    \endentry
+    \entry{hoy2024multi}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=1d3d3f7bcb9073d9618cbeed9e9c6210}{%
+           family={Hoy},
+           familyi={H\bibinitperiod},
+           given={Charlie},
+           giveni={C\bibinitperiod}}}%
+        {{hash=1f0c687bd9498d333c2034ae80e156d0}{%
+           family={Akçay},
+           familyi={A\bibinitperiod},
+           given={Sarp},
+           giveni={S\bibinitperiod}}}%
+        {{hash=383b42e1b8ee86cb9b9bb19785571dcb}{%
+           family={Uilliam},
+           familyi={U\bibinitperiod},
+           given={Jake\bibnamedelima Mac},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=a2b7c0aa87b23274d5a667d0214df5e5}{%
+           family={Thompson},
+           familyi={T\bibinitperiod},
+           given={Jonathan\bibnamedelima E.},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+      }
+      \strng{namehash}{04fb485c510a238721c172bfbbe1dd71}
+      \strng{fullhash}{9af2ea04f7b826a37ce74554cc37cfa4}
+      \strng{fullhashraw}{9af2ea04f7b826a37ce74554cc37cfa4}
+      \strng{bibnamehash}{04fb485c510a238721c172bfbbe1dd71}
+      \strng{authorbibnamehash}{04fb485c510a238721c172bfbbe1dd71}
+      \strng{authornamehash}{04fb485c510a238721c172bfbbe1dd71}
+      \strng{authorfullhash}{9af2ea04f7b826a37ce74554cc37cfa4}
+      \strng{authorfullhashraw}{9af2ea04f7b826a37ce74554cc37cfa4}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Inferring the properties of colliding black holes from gravitational-wave observations is subject to systematic errors arising from modeling uncertainties. In this work, we present a novel method to incorporate the accuracy of multiple models into gravitational-wave Bayesian analyses, reducing computational costs and improving parameter recovery.}
+      \field{journaltitle}{In preparation}
+      \field{note}{To be published}
+      \field{title}{Incorporating multi-model uncertainty into gravitational-wave Bayesian inference}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://dcc.ligo.org/LIGO-T2000012/public
+      \endverb
+      \verb{url}
+      \verb https://dcc.ligo.org/LIGO-T2000012/public
+      \endverb
+    \endentry
+    \entry{owen1995template}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=2e4464ec8043f216f344adafb6e9ba4c}{%
+           family={Owen},
+           familyi={O\bibinitperiod},
+           given={Benjamin\bibnamedelima J.},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{2e4464ec8043f216f344adafb6e9ba4c}
+      \strng{fullhash}{2e4464ec8043f216f344adafb6e9ba4c}
+      \strng{fullhashraw}{2e4464ec8043f216f344adafb6e9ba4c}
+      \strng{bibnamehash}{2e4464ec8043f216f344adafb6e9ba4c}
+      \strng{authorbibnamehash}{2e4464ec8043f216f344adafb6e9ba4c}
+      \strng{authornamehash}{2e4464ec8043f216f344adafb6e9ba4c}
+      \strng{authorfullhash}{2e4464ec8043f216f344adafb6e9ba4c}
+      \strng{authorfullhashraw}{2e4464ec8043f216f344adafb6e9ba4c}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint gr-qc/9511032}
+      \field{note}{Submitted to Physical Review D: November 7, 1995}
+      \field{title}{Search templates for gravitational waves from inspiraling binaries: Choice of template spacing}
+      \field{year}{1995}
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/gr-qc/9511032
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/gr-qc/9511032
+      \endverb
+    \endentry
+    \entry{rasmussen2006gaussian}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=58d90ed7b7348c7a5a9b4a2a8f46df7b}{%
+           family={Rasmussen},
+           familyi={R\bibinitperiod},
+           given={Carl\bibnamedelima Edward},
+           giveni={C\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=d34fdfcbfcb5412397b946351370db22}{%
+           family={Williams},
+           familyi={W\bibinitperiod},
+           given={Christopher\bibnamedelimb K.\bibnamedelimi I.},
+           giveni={C\bibinitperiod\bibinitdelim K\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge, MA, USA}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{f0ccf4a09a3a6a91719405724e3ae5da}
+      \strng{fullhash}{f0ccf4a09a3a6a91719405724e3ae5da}
+      \strng{fullhashraw}{f0ccf4a09a3a6a91719405724e3ae5da}
+      \strng{bibnamehash}{f0ccf4a09a3a6a91719405724e3ae5da}
+      \strng{authorbibnamehash}{f0ccf4a09a3a6a91719405724e3ae5da}
+      \strng{authornamehash}{f0ccf4a09a3a6a91719405724e3ae5da}
+      \strng{authorfullhash}{f0ccf4a09a3a6a91719405724e3ae5da}
+      \strng{authorfullhashraw}{f0ccf4a09a3a6a91719405724e3ae5da}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-262-18253-9}
+      \field{title}{Gaussian Processes for Machine Learning}
+      \field{year}{2006}
+      \verb{urlraw}
+      \verb http://www.gaussianprocess.org/gpml/
+      \endverb
+      \verb{url}
+      \verb http://www.gaussianprocess.org/gpml/
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
