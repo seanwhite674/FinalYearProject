@@ -1,17 +1,17 @@
 # Fdb version 4
-["biber FYP"] 1743022379.85711 "FYP.bcf" "FYP.bbl" "FYP" 1743024863.95396 0
-  "FYP.bcf" 1743024863 108929 a740e0b6b83d938824cef9101e9fc14c "pdflatex"
+["biber FYP"] 1743022379.85711 "FYP.bcf" "FYP.bbl" "FYP" 1743079414.26463 0
+  "FYP.bcf" 1743079413 108929 a740e0b6b83d938824cef9101e9fc14c "pdflatex"
   "references.bib" 1742143614 2948 be6a776a88dbf78acaca45b26ced2250 ""
   (generated)
   "FYP.bbl"
   "FYP.blg"
   (rewritten before read)
-["pdflatex"] 1743024847.00039 "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" "FYP.pdf" "FYP" 1743024863.95639 0
-  "FYP.aux" 1743024863 11828 69b327c549f6d52bde78f8832f24e258 "pdflatex"
+["pdflatex"] 1743079400.61675 "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" "FYP.pdf" "FYP" 1743079414.2666 0
+  "FYP.aux" 1743079413 11828 69b327c549f6d52bde78f8832f24e258 "pdflatex"
   "FYP.bbl" 1743022386 7283 d4a6d066b43006de4b11f081f6829d25 "biber FYP"
-  "FYP.out" 1743024863 3813 7d89bcf5ceb10d4cc3e400e15e14f8e4 "pdflatex"
-  "FYP.run.xml" 1743024863 2298 363da509e9646395cc3bbac51c65c46f "pdflatex"
-  "FYP.tex" 1743024844 42262 305ec304bff55097b72b051bd2f587f4 ""
+  "FYP.out" 1743079413 3813 7d89bcf5ceb10d4cc3e400e15e14f8e4 "pdflatex"
+  "FYP.run.xml" 1743079413 2298 363da509e9646395cc3bbac51c65c46f "pdflatex"
+  "FYP.tex" 1743079382 42262 305ec304bff55097b72b051bd2f587f4 ""
   "LatexPlots/1dplots/GPRerror2.png" 1742992522 189796 bd3505cc057e4216f8ecad0028d69d4c ""
   "LatexPlots/1dplots/GPRwhitekernel.png" 1742074671 163758 3e6f8b2217b381067aa118aeb6414cbc ""
   "LatexPlots/1dplots/KernelSample_Laplace_Exponential.png" 1742064171 98635 5c7ac613625f803d15eb52b6da0207e5 ""
@@ -49,7 +49,7 @@
   "LatexPlots/1dplots/r2.png" 1742311605 145377 27dd889f7b4a9c9f710c6494db21cc55 ""
   "LatexPlots/Flowchart.png" 1743007939 74698 b75ed351525b40e6209053b56d38127b ""
   "LatexPlots/MCMC Flow.png" 1743020299 69755 e142ece6b82afe79f9d3c91d7e15da56 ""
-  "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" 1743024844 42262 305ec304bff55097b72b051bd2f587f4 ""
+  "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" 1743079382 42262 305ec304bff55097b72b051bd2f587f4 ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1739280170 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1739281794 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1739281101 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
