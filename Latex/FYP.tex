@@ -167,7 +167,7 @@ generalizes, or extrapolates to new data.There are many possible choices of cova
 
 One of the key strengths of Gaussian Processes is that, given observations at training inputs \(X\),
 we can make predictive inferences about the function value at any new test location \(x_*\).
-By applying the standard conditional Gaussian formulas (see Appendix \ref{appendix:A} for the full derivation),
+By applying the standard conditional Gaussian formulas (see appendix \ref{appendix:A} for the full derivation),
 the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and given by:
 \[
 p\bigl(f(x_*) \mid f(X), X, \mu(\cdot), k(\cdot,\cdot)\bigr)
@@ -242,65 +242,39 @@ we examine the different kernel choices available and the assumptions that each 
 \subsection{Kernel Functions}
 \label{sec: Kernels}
 
-In Section~\ref{sec: priortoposterior}, we derived the mean and variance for the posterior distribution (Equations~\ref{eq: predictive_mean} and~\ref{eq: perdictive variance}). 
-These quantities depend explicitly on the choice of kernel function, which encodes prior assumptions about the smoothness and structure of the functions we expect.
-In this section, we explore different types of kernels and discuss how they affect samples from the posterior distribution.
+In Section \ref{sec: priortoposterior}, we derived the posterior mean and variance 
+(Equations \ref{eq: predictive_mean} and \ref{eq: perdictive_variance}), both of which 
+depend massively with choice of kernel function. The kernel represents our assumptions 
+about how function values depend on different inputs across different inputs.
+
+\vspace{1em}
+\noindent
+\textit{``From a slightly different viewpoint it is clear that in supervised learning the notion of 
+similarity between data points is crucial; it is a basic similarity assumption that points with inputs 
+\(x\) which are close are likely to have similar target values \(y\), and thus training points that are 
+near to a test point should be informative about the prediction at that point. Under the Gaussian process 
+view it is the covariance function that defines nearness or similarity.''} 
+\cite[p.~79]{rasmussen2006gaussian}
+
+\vspace{1em}
+\noindent
+In other words, the kernel function enforces how strongly different input values effect each of their outputs
+.\cite{rasmussen2006gaussian} divide kernels into two major sub-groups, stationary kernels and non-stationary kernels. 
+Stationary kernels depend only on the relative (often radial) distance between inputs \(\|x - x'\|\) and are invariant to translations 
+in the input domain. By contrast, non-stationary kernels depend explicitly on 
+the absolute values of \(x\) and \(x'\), allowing the function’s properties—such as smoothness 
+or amplitude—to vary across the domain. For more detailed discussion on building, combining, and customizing these kernels, 
+see \cite{duvenaud2014kernel} and \cite[Ch.~4]{rasmussen2006gaussian}.
+
+\bigskip
 
 \noindent
-As described in~\cite{rasmussen2006gaussian}, kernel functions can be broadly divided into two main categories: \textbf{stationary} and \textbf{non-stationary} kernels. Additional examples and insights into the construction and use of these kernels are provided in~\cite{duvenaud2014kernel}, which we also reference throughout this section.
-
-\paragraph{Stationary Kernels:}  
-A stationary kernel depends only on the relative distance between inputs, i.e., \( k(x, x') = k(|x - x'|) \). This means the statistical properties of the functions (such as smoothness, variance, and lengthscale) remain the same throughout the input space. They encode the assumption that the function behaves similarly everywhere.
-
-\subsubsection*{Examples of Stationary Kernels}
-\begin{itemize}
-    \item \textbf{Radial Basis Function (RBF) Kernel:}
-    \[
-    k(x, x') = \sigma_f^2 \exp\left( -\frac{(x - x')^2}{2\ell^2} \right)
-    \]
-    This kernel assumes smooth and infinitely differentiable functions, modeling local variations.
-
-    \item \textbf{Rational Quadratic Kernel:}
-    \[
-    k(x, x') = \sigma_f^2 \left( 1 + \frac{(x - x')^2}{2 \alpha \ell^2} \right)^{-\alpha}
-    \]
-    This kernel can be seen as a scale mixture of RBF kernels, allowing for multi-scale behavior.
-
-    \item \textbf{Periodic Kernel:}
-    \[
-    k(x, x') = \sigma_f^2 \exp\left( -\frac{2}{\ell^2} \sin^2\left( \frac{\pi (x - x')}{p} \right) \right)
-    \]
-    This kernel models repeating structures with period \( p \).
-
-    \item \textbf{Matern Kernel (general form):}
-    \[
-    k(x, x') = \sigma_f^2 \frac{2^{1-\nu}}{\Gamma(\nu)} \left( \frac{\sqrt{2\nu} |x - x'|}{\ell} \right)^\nu K_\nu\left( \frac{\sqrt{2\nu} |x - x'|}{\ell} \right)
-    \]
-    The Matern kernel allows for controlling the smoothness of functions via the parameter \( \nu \).
-
-    \item \textbf{Laplace (Exponential) Kernel:}
-    \[
-    k(x, x') = \sigma_f^2 \exp\left( -\gamma |x - x'| \right)
-    \]
-    Equivalent to the Matern kernel with \( \nu = \frac{1}{2} \), this kernel models rougher functions.
-\end{itemize}
-
-\paragraph{Non-Stationary Kernels:}  
-In contrast, non-stationary kernels depend on the absolute location of the inputs, i.e., \( k(x, x') \) cannot be written purely as a function of \( |x - x'| \). This allows the modeled function's properties (e.g., smoothness or variance) to vary across the input space.
-
-\subsubsection*{Example of a Non-Stationary Kernel}
-\begin{itemize}
-    \item \textbf{Linear (Dot Product) Kernel:}
-    \[
-    k(x, x') = \sigma_b^2 + x^\top x'
-    \]
-    This kernel grows with the similarity (inner product) between inputs, and it allows the function to vary globally. Since it depends directly on the values of \( x \) and \( x' \), not just their difference, it is non-stationary. It is particularly useful for modeling linear trends.
-\end{itemize}
-
-
-\subsubsection*{Visual Comparison of Kernels}
-
-To further illustrate the effects of different kernel functions, Table~\ref{tab:kernel-examples} provides visual comparisons of each kernel's structure, as well as samples drawn from their corresponding Gaussian process priors. These examples highlight how the choice of kernel influences the shape, smoothness, and general behavior of functions drawn from a GP. Each kernel is plotted with standard hyperparameter settings to allow for consistent comparison across types.
+In Table~\ref{tab:kernel-examples}, we provide an overview of several common kernel types, 
+showing both their functional form and samples drawn from the corresponding GP priors. 
+Although each kernel imparts a distinct structure on the functions (e.g., local variation, 
+multi-scale behavior, periodicity, or linearity), \emph{all} have hyperparameters that 
+significantly shape the resulting GP. In the following subsections, we examine these kernels 
+and their hyperparameters in more detail.
 
 
 \begin{table}[H]
@@ -346,6 +320,51 @@ To further illustrate the effects of different kernel functions, Table~\ref{tab:
         }
     \label{tab:kernel-examples}
 \end{table}
+
+\textcolor{red}{In this section going to do a deep dive on each kernel and how hyper-parameters effect each one. Just pick main ones.
+depending on graphs might group some together. Exhausitive work here is needed I think otherwise too many questions later about parameters 
+etc. I do this later at the minute in Hyper-param optimisatinbut this flow is more logical I think}
+
+\subsubsection*{Radial Basis Function (RBF) Kernel}
+\[
+k(x, x') = \sigma_f^2 \exp\left( -\frac{(x - x')^2}{2\ell^2} \right)
+\]
+This kernel assumes smooth and infinitely differentiable functions, modeling local variations.
+
+
+\subsubsection*{Rational Quadratic Kernel}
+\[
+k(x, x') = \sigma_f^2 \left( 1 + \frac{(x - x')^2}{2 \alpha \ell^2} \right)^{-\alpha}
+\]
+This kernel can be seen as a scale mixture of RBF kernels, allowing for multi-scale behavior.
+
+
+\subsubsection*{Periodic Kernel}
+\[
+k(x, x') = \sigma_f^2 \exp\left( -\frac{2}{\ell^2} \sin^2\left( \frac{\pi (x - x')}{p} \right) \right)
+\]
+This kernel models repeating structures with period \( p \).
+
+\subsubsection*{Matern Kernel}
+\[
+k(x, x') = \sigma_f^2 \frac{2^{1-\nu}}{\Gamma(\nu)} \left( \frac{\sqrt{2\nu} |x - x'|}{\ell} \right)^\nu K_\nu\left( \frac{\sqrt{2\nu} |x - x'|}{\ell} \right)
+\]
+The Matern kernel allows for controlling the smoothness of functions via the parameter \( \nu \).
+
+
+\subsubsection*{Laplace (Exponential) Kernel}
+\[
+k(x, x') = \sigma_f^2 \exp\left( -\gamma |x - x'| \right)
+\]
+Equivalent to the Matern kernel with \( \nu = \frac{1}{2} \), this kernel models rougher functions.
+
+
+\subsubsection*{Linear (Dot-Product) Kernel}
+\[
+k(x, x') = \sigma_b^2 + x^\top x'
+\]
+This kernel grows with the similarity (inner product) between inputs, and it allows the function to vary globally. Since it depends directly on the values of \( x \) and \( x' \), not just their difference, it is non-stationary. It is particularly useful for modeling linear trends.
+
 
 
 \subsection{Handling Noise in our Data}
