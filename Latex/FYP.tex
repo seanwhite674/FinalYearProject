@@ -78,61 +78,73 @@ the black contours here represent a ratio of the mismatch between two different 
 \end{comment}
 
 
-
-
 \section{Gaussian Process Regression \textbf{GPR} Background}
+\subsection{Introduction and Roadmap}
 
-\subsection*{Definition of a Gaussian Process}
+In the following subsections, I discuss the foundational concepts of Gaussian Process Regression \textbf{(GPR)} in four main steps:
+\begin{enumerate}
+    \item \textbf{Gaussian Processes:} Section~\ref{sec: GP_backgroound} introduces Gaussian Processes and explains how their priors and posteriors are constructed from finite sets of points.
+    \item \textbf{Kernel Functions:} In Section~\ref{sec: Kernels}, I explore how kernels encode assumptions about smoothness, periodicity, and structural properties of the underlying function.
+    \item \textbf{Noise Modeling:} Section~\ref{sec: Handlingnoise} covers several approaches for incorporating observational noise into the GP framework.
+    \item \textbf{Hyperparameter Optimization:} Finally, in Section~\ref{sec: Hyper_parameters}, I discuss how kernel and noise hyperparameters influence the posterior and how they can be optimized to improve model performance.
+\end{enumerate}
 
-A Gaussian Process \textbf{(GP)} defines a probabilistic model over all possible functions rather than assuming a single function to be true:
+\subsection{Gaussian Proces Regression Background}
+\label{sec: GP_backgroound}
+
+\subsubsection*{Definition of a Gaussian Process}
+\label{sec: Definition_of_GP}
+
+A Gaussian Process \textbf{(GP)} defines a probabilistic model over all possible functions rather than assuming a single function to be true
 \[
-f(X) \sim \mathcal{GP} (m(X), k(X, X'))
+f(X) \sim \mathcal{GP} (\mu(X), k(X, X')).
+\label{eq: Initial_GP_distribution}
 \]
-where \( m(X) \) is the mean function, specifying the expected function value at each \( X \):
+where \( \mu(X) \) is the mean function, specifying the expected function value at each \( X \):
 \[
-    m(X) = {E}[f(X)]
+    \mu(X) = {E}[f(X)],
+    \label{eq: meandef}
 \]
  \( k(X, X') \) is the covariance function (kernel), encoding the relationships between function values at different points:
 \[
-    k(X, X') = \text{Cov}(f(X), f(X'))
+    k(X, X') = \text{Cov}(f(X), f(X')).
+    \label{eq: kerneldef}
 \]
 
 \noindent
-Since a function is defined over a continuous input space, a GP is formally a distribution over infinitely many function values. We approximate the function by evaluating it at a finite set of points. These function values are then assumed to follow a multivariate normal Gaussian distribution.
+Since the input space is continuous, the GP represents an infinite-dimensional distribution. 
+In practice, we approximate the process by evaluating the GP at a finite set of inputs.
+These function values are then assumed to follow a multivariate normal Gaussian distribution.
 
 \noindent
-Mathematically, for a finite set of input points  \[ X = \{X_1, X_2, \dots, X_n\} \] the corresponding function values
+Mathematically, for a finite set of input points
+\[ X = \{X_1, X_2, \dots, X_n\} \],
+ the corresponding function values
 \[
 f = \{f(X_1),f(X_2),...,f(X_n)\}
 \]
-follow a multivariate normal distribution:
+follow a multivariate normal distribution
 \[
-f \sim \mathcal{N}(m(X), K(X, X))
+f \sim \mathcal{N}(\mu(X), K(X, X)).
+\label{eq: Multivariate_distribution}
 \]
-Each sample from this multivariate distribution represents a function evaluated at \( n \) different points. Every function sample will have a different shape but will respect the prior assumptions encoded in \( m(X) \) and \( k(X, X') \).
+Each sample from this multivariate distribution represents a function evaluated at \( n \) different points.
 
-\subsection{The Prior Distribution}
+\subsubsection*{The Prior Distribution}
+\label{sec: prior_dist}
 
-Initially, we build the prior distribution of our GP without knowing any of the true data. We make assumptions about our model. We assume that the training points are distributed as:
-\[
-f(X) \sim \mathcal{N}(m(X), K(X, X))
-\]
-\noindent
-and that the test points are distributed as:
-\[
-f(X_*) \sim \mathcal{N}(m(X_*), K(X_*, X_*))
-\]
-\noindent
-The joint distribution of this prior is then:
+Before observing any data, we assume a joint Gaussian distribution over both training and test points. Let \( X \) denote training inputs and \( X_* \) test inputs. 
+The joint prior over their function values is
 \[
 \begin{bmatrix}
 f(X) \\
 f(X_*)
 \end{bmatrix}
-\sim \mathcal{N} \left(
+\sim \mathcal{N}
+\left(
 \begin{bmatrix}
-m(X) \\
-m(X_*)
+\mu(X) \\
+\mu(X_*)
 \end{bmatrix},
 \underbrace{
 \begin{bmatrix}
@@ -140,114 +152,61 @@ K(X, X) & K(X, X_*) \\
 K(X_*, X) & K(X_*, X_*)
 \end{bmatrix}
 }_{\mathcal{C} = \text{Covariance Matrix}}
-\right)
+\right).
+\label{eq: Multivariate prior}
 \]
+
 \noindent
-\begin{comment}
-note: we take mean $\left(\mu(X) = 0\right)$ and therefore normalise our data (enforce zero mean).
-\end{comment}
-\noindent
-Note: From now on we deal with normalized data and so take $m(X) = m(X_*) = 0$.
-\textcolor{red}{Here could mention how the choice of Kernel has an effect}
+After accounting for the mean, the kind of structure that can be captured by a
+GP model is entirely determined by its kernel. The kernel determines how the model
+generalizes, or extrapolates to new data.There are many possible choices of covariance function, all encoding different shapes.
 
 
-
-\subsection{Adding Data: Prior to Posterior}
+\subsubsection*{Adding Data: Prior to Posterior}
 \label{sec: priortoposterior}
-By conditioning our prior distribution on our training data (true data points), we build our posterior distribution from which we can make predictions. 
 
-\noindent
-The function values at test points are conditioned on the function values at training points:
+One of the key strengths of Gaussian Processes is that, given observations at training inputs \(X\),
+we can make predictive inferences about the function value at any new test location \(x_*\).
+By applying the standard conditional Gaussian formulas (see Appendix \ref{appendix:A} for the full derivation),
+the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and given by:
 \[
-P(f_* | f, X, X_*).
+p\bigl(f(x_*) \mid f(X), X, \mu(\cdot), k(\cdot,\cdot)\bigr)
+\;=\;
+\mathcal{N}\!\Bigl(
+m(x_*),\;\sigma^2(x_*)
+\Bigr),
+\label{eq: predictive_dist}
 \]
-\noindent
-Functionally, since the covariance structure already incorporates $X$ and $X_*$ through the kernel function, this reduces to computing:
-\[
-P(f(X_*) | f(X)).
-\]
-\noindent
-Since we are dealing with continuous distributions, we have that the conditional probability is represented by the probability density function
-$
-p(f_* | f).
-$
-Using Bayes' Theorem applied to continuous probabilities, we have:
-\[
-p(f_* | f) = \frac{p(f_*, f)}{p(f)}.
-\]
-we have:
-$$p(f_*,f) = \frac{1}{2\pi\sqrt{\mathbf{|C|}}}\exp \left(-\frac{1}{2} 
-\begin{bmatrix} f \\ f_*  \end{bmatrix}^T\mathbf{C^{-1}}\begin{bmatrix} f  \\ f_* \end{bmatrix}\right)$$
-and 
-\[
-p(f) = \frac{1}{\sqrt{2\pi} |K|^{1/2}}
-\exp \left(-\frac{1}{2} f^T K^{-1} f \right).
-\]
+where
+\[m(x_*) \;=\; \mu(x_*) \;+\;k(x_*, X)\,k(X, X)^{-1}\bigl[f(X) - \mu(X)\bigr],
+\label{eq: predictive_mean}\]
+\[\sigma^2(x_*) \;=\;k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
+\label{eq: perdictive variance}\]
 
-\noindent
-\textbf{Legend}
+In these expressions:
 \begin{itemize}
-    \item \textbf{Covariance matrices:}
-    \begin{itemize}
-        \item \( K = K(X, X) \): Covariance matrix of the training inputs.
-        \item \( K_{**} = K(X_*, X_*) \): Covariance matrix of the test inputs.
-        \item \( K_* = K(X, X_*) = K(X_*, X)^\top \): Cross-covariance between training and test inputs.
-    \end{itemize}
-    
-    \item \textbf{Joint covariance matrix:}
-    \[
-    C = \begin{bmatrix}
-    K & K_* \\
-    K_*^\top & K_{**}
-    \end{bmatrix}
-    \]
-    
-    \item \textbf{Determinant of \( \mathbf{C} \):}
-    \[
-    |\mathbf{C}| = K K_{**} - K_* K_*^\top
-    \]
-    
-    \item \textbf{Inverse of \( \mathbf{C} \):}
-    \[
-    \mathbf{C}^{-1} = \frac{1}{|\mathbf{C}|}
-    \begin{bmatrix}
-    K_{**} & -K_* \\
-    -K_*^\top & K
-    \end{bmatrix}
-    \]
-    
-    \item \textbf{Mean functions:}
-    \[
-    m(X) = m(X_*) = 0
-    \]
+    \item \( \mu(\cdot) \) is the mean function ( I take this to be zero since we centre the data prior to prediction),
+    \item \( k(X, X) \) is the covariance matrix among the observed training points,
+    \item \( k(x_*, X) \) is the vector of cross-covariances between the test point \(x_*\) and the training inputs,
+    \item \( k(x_*, x_*) \) is the prior variance at the test point itself.
 \end{itemize}
 
-
+\noindent
+We now have an analytic function that can be evaluated to find the mean function value and variance at any input point.
+This is a very useful property that Gaussian Processes possess. Figure~\ref{fig: priortoposterior} shows how we update our
+distributions based on the training points. We initially plot samples taken from the prior distribution (Equation~\ref{eq: Multivariate prior}). 
+After conditioning this distribution on one training point and obtaining the new predictive posterior distribution (Equation~\ref{eq: predictive_dist}), 
+we see that the predictive mean passes exactly through the training point, has small variance around it, and then fans out farther away. 
+Conditioning on two training points at opposite ends of our input domain creates an ellipse-shaped credible interval whose largest radius 
+appears midway between the two training points. With more training points, the predictions align progressively closer to the true function 
+and the variance becomes smaller.
 
 \noindent
-We obtain the posterior predictive distribution:
-\begin{equation}\label{eq: 1}
-p(f_* | f) = \frac{1}{(2\pi)^{n/2} |K_{**} - K_*^T K^{-1} K_*|^{1/2}} 
-\exp \left( 
--\frac{1}{2} 
-(f_* - K_*^T K^{-1} f)^T 
-(K_{**} - K_*^T K^{-1} K_*)^{-1} 
-(f_* - K_*^T K^{-1} f) 
-\right).
-\end{equation}
+Note that this example uses a one-dimensional, noise-free function and a basic RBF kernel with fixed hyperparameters (\(\ell = 1\), \(\sigma^2 = 0.5\)). 
+In practice the choice of Kernel function plays a pivotal role in the assumptions we make about the shape and general behaviour of our model. In the next section
+we examine the different kernel choices available and the assumptions that each kernel encodes about our function structure, such as smoothness and periodicity.
 
-\noindent
-Since this is the density of a multivariate normal distribution, we summarize:
-\[
-p(f_* | f) \sim \mathcal{N}(m(f_*), \text{Var}(f_*)),
-\]
-where:
-\begin{equation} \label{eq: 2}
-m(f_*) = K_*^T K^{-1} f,
-\end{equation}
-\begin{equation} \label{eq: 3}
-\text{Var}(f_*) = K_{**} - K_*^T K^{-1} K_*.
-\end{equation}
+
 
 \begin{figure}[H]
     \centering
@@ -276,12 +235,16 @@ m(f_*) = K_*^T K^{-1} f,
     \end{subfigure}
 
     \caption{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma^2 = 0.5$.}
+    \label{fig: priortoposterior}
 \end{figure}
 
 
 \subsection{Kernel Functions}
 \label{sec: Kernels}
-In Section~\ref{sec: priortoposterior}, we derived the mean and variance for the posterior distribution (Equations~\ref{eq: 2} and~\ref{eq: 3}). These quantities depend explicitly on the choice of kernel function, which encodes prior assumptions about the smoothness and structure of the functions we expect. In this section, we explore different types of kernels and discuss how they affect samples from the posterior distribution.
+
+In Section~\ref{sec: priortoposterior}, we derived the mean and variance for the posterior distribution (Equations~\ref{eq: predictive_mean} and~\ref{eq: perdictive variance}). 
+These quantities depend explicitly on the choice of kernel function, which encodes prior assumptions about the smoothness and structure of the functions we expect.
+In this section, we explore different types of kernels and discuss how they affect samples from the posterior distribution.
 
 \noindent
 As described in~\cite{rasmussen2006gaussian}, kernel functions can be broadly divided into two main categories: \textbf{stationary} and \textbf{non-stationary} kernels. Additional examples and insights into the construction and use of these kernels are provided in~\cite{duvenaud2014kernel}, which we also reference throughout this section.
@@ -489,6 +452,7 @@ There are three common approaches to handling noise in GPR:
 
 
 \subsection{Hyper-parameters}
+\label{sec: Hyper_parameters}
 
 \bigskip
 
@@ -550,8 +514,8 @@ while the mean function remains largely unchanged. As $\sigma_n^2$ increases, th
 and uncertainty in the predictions increases accordingly. This relationship appears approximately linear in the visualizations.
 
 
-\subsubsection{Learning Hyperparameters by Maximising the Log Marginal Likelihood}
-\label{sec: hyperparam optimisation}
+\subsubsection*{Learning Hyperparameters by Maximising the Log Marginal Likelihood}
+\label{sec: hyperparam_optimisation}
 
 Now that we have seen how the choice of hyperparameters affects the posterior distribution, we aim to find the optimal hyperparameters that allow the model to best explain the observed data. This is done by maximising the \textit{log marginal likelihood}, as described in \cite{rasmussen2006gaussian}.
 
@@ -615,10 +579,12 @@ Our goal is to maximise this log marginal likelihood with respect to the hyperpa
 \subsubsection{Cross Validation}
 
 
+\section{Quantifying Uncertainty and Evaluating Model Accuracy}
+\label{sec:uncertainty_and_evaluation}
 \subsection{Monte Carlo Markov Chain (MCMC): A Posterior over Hyperparameters}
 \label{sec: MCMC}
 
-\subsubsection{Why MCMC and the Mathematics Behind It}
+\subsubsection*{Why MCMC and the Mathematics Behind It}
 
 We have discussed the role of kernels and how their hyperparameters affect the posterior distribution. From Figures~\ref{figure: Effect of Hyper-parameters} and~\ref{figure: Optimising Hyper-params}, we observed that when optimising hyperparameters, there is not necessarily a single "best" solution, but rather a region of valid values that explain the data well.
 
@@ -650,7 +616,7 @@ p(\theta \mid \mathbf{y}, X) \propto p(\mathbf{y} \mid X, \theta) \, p(\theta)
 Using MCMC, we generate samples \( \{\theta^{(s)}\}_{s=1}^S \sim p(\theta \mid \mathbf{y}, X) \) from this posterior.
 
 
-\subsubsection{Implementing MCMC}
+\subsubsection*{Implementing MCMC}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{LatexPlots/MCMC_Flow.png}
@@ -660,7 +626,7 @@ Using MCMC, we generate samples \( \{\theta^{(s)}\}_{s=1}^S \sim p(\theta \mid \
 \end{figure}
 
 \noindent
-Before starting MCMC, we must decide which model we want to build the hyperparameter posterior for. This involves selecting one of the six kernels outlined in Section~\ref{sec: Kernels}, along with one of the three noise-modelling approaches described in Section~\ref{sec: Handlingnoise}. Once this model structure is fixed, we obtain initial point estimates for the hyperparameters by maximising the log marginal likelihood, as discussed in Section~\ref{sec: hyperparam optimisation}.
+Before starting MCMC, we must decide which model we want to build the hyperparameter posterior for. This involves selecting one of the six kernels outlined in Section~\ref{sec: Kernels}, along with one of the three noise-modelling approaches described in Section~\ref{sec: Handlingnoise}. Once this model structure is fixed, we obtain initial point estimates for the hyperparameters by maximising the log marginal likelihood, as discussed in Section~\ref{sec: hyperparam_optimisation}.
 
 \noindent
 We then construct a multivariate normal distribution centred at this point estimate and sample from it to initialise each walker. From there, the walkers explore the hyperparameter space using a Gaussian proposal distribution with a specified covariance. At each step, we compute the sum of the log likelihood and log prior. The proposed sample is then accepted or rejected using the Metropolis-Hastings criterion \textcolor{red}{Could give more detail here}. This process is repeated for a fixed number of steps to generate a large set of samples.
@@ -746,8 +712,8 @@ This procedure yields a predictive distribution that fully reflects both the unc
 
 
 
-\subsection{Metrics for testing model}
-
+\subsection{Model Evaluation Metrics}
+\label{sec:metrics}
 
 In figure \ref{tab:metrics-comparison}, we made a graphical representation of four out of six metrics used to evaluate our model’s accuracy. \cite{rasmussen2006gaussian} discusses how these metrics provide a balanced assessment of model performance.
 The Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE) measure the average deviation of predictions from the true values, with RMSE penalizing larger errors more heavily.
@@ -856,6 +822,76 @@ I split my training and validation data into 10 folds and trained my model on ea
     \item Using MCMCing to build a posterior on hyper-parameter distribution
     \item Picking values from this posterior distribution to use
 \end{itemize}
+
+
+\appendix
+
+\section{Appendix A: Derivation of Predictive Distribution}
+\label{appendix:A}
+Using Bayes' Theorem applied to continuous probabilities, we have:
+\[
+p(f_* | f) = \frac{p(f_*, f)}{p(f)}.
+\]
+we have:
+$$p(f_*,f) = \frac{1}{2\pi\sqrt{\mathbf{|C|}}}\exp \left(-\frac{1}{2} 
+\begin{bmatrix} f \\ f_*  \end{bmatrix}^T\mathbf{C^{-1}}\begin{bmatrix} f  \\ f_* \end{bmatrix}\right)$$
+and 
+\[
+p(f) = \frac{1}{\sqrt{2\pi} |K|^{1/2}}
+\exp \left(-\frac{1}{2} f^T K^{-1} f \right).
+\]
+
+\noindent
+\textbf{Legend}
+\begin{itemize}
+    \item \textbf{Covariance matrices:}
+    \begin{itemize}
+        \item \( K = K(X, X) \): Covariance matrix of the training inputs.
+        \item \( K_{**} = K(X_*, X_*) \): Covariance matrix of the test inputs.
+        \item \( K_* = K(X, X_*) = K(X_*, X)^\top \): Cross-covariance between training and test inputs.
+    \end{itemize}
+    
+    \item \textbf{Joint covariance matrix:}
+    \[
+    C = \begin{bmatrix}
+    K & K_* \\
+    K_*^\top & K_{**}
+    \end{bmatrix}
+    \]
+    
+    \item \textbf{Determinant of \( \mathbf{C} \):}
+    \[
+    |\mathbf{C}| = K K_{**} - K_* K_*^\top
+    \]
+    
+    \item \textbf{Inverse of \( \mathbf{C} \):}
+    \[
+    \mathbf{C}^{-1} = \frac{1}{|\mathbf{C}|}
+    \begin{bmatrix}
+    K_{**} & -K_* \\
+    -K_*^\top & K
+    \end{bmatrix}
+    \]
+    
+    \item \textbf{Mean functions:}
+    \[
+    m(X) = m(X_*) = 0
+    \]
+\end{itemize}
+
+
+\noindent
+We obtain the posterior predictive distribution:
+\begin{equation}\label{eq: 1}
+p(f_* | f) = \frac{1}{(2\pi)^{n/2} |K_{**} - K_*^T K^{-1} K_*|^{1/2}} 
+\exp \left( 
+-\frac{1}{2} 
+(f_* - K_*^T K^{-1} f)^T 
+(K_{**} - K_*^T K^{-1} K_*)^{-1} 
+(f_* - K_*^T K^{-1} f) 
+\right).
+\end{equation}
+
 
 
 %\printbibliography
