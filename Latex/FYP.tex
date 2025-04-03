@@ -16,6 +16,8 @@
 \usepackage[margin=0.8in]{geometry}
 \usepackage{adjustbox}
 \usepackage{makecell}
+\usepackage{amssymb}
+
 
 \bibliographystyle{acm}
 
@@ -31,13 +33,171 @@
 
 \maketitle
 
-\section{Background}
+\section{GR intro}
 
+
+Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. As described in \textit{Gravitational Waves, Vol. 1} by Maggiore~\cite[p.~29]{GRbook},
+\begin{quote}
+“In this setting, the definition of GWs is relatively clear: the background spacetime is flat, and the small fluctuations around it have been called ‘gravitational waves’. The term ‘waves’ is justified by the fact that, in a suitable gauge, \(h_{\mu\nu}\) indeed satisfies a wave equation.”
+\end{quote}
+This is formully appproached by expanding the Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
+\begin{equation}
+g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
+\qquad
+\epsilon \ll 1,
+\qquad
+\eta_{ab} = \mathrm{diag}(-1, 1, 1, 1),
+\end{equation}
+where \(h_{ab}\) represents the perturbation. In the linearized regime of general relativity, the Einstein field equations simplify to
+\begin{equation}
+    \Box \bar{h}_{ab} = \frac{-16\pi G}{c^4} T_{\mu \nu}.
+\end{equation}
+However we are interested in this equation outside of the source (i.e $T_{\mu \nu} =0$) therefore we are left with 
+\begin{equation}
+    \Box \bar{h}_{ab} = 0, 
+\end{equation}
+with \(\Box\) the d’Alembertian operator in flat spacetime.
+
+\noindent
+Although \(h_{ab}\) initially has 10 independent components (as a symmetric 4×4 tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorentz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
+
+\noindent
+This wave equation admits plane-wave solutions. For a wave propagating in the \(z\)-direction, the TT-gauge form of the perturbation is:
+\begin{equation}
+h_{ab}^{(\mathrm{TT})} \;\propto\;
+\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & h_+ & h_\times & 0 \\
+0 & h_\times & -h_+ & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+e^{i(kz-\omega t)}.
+\end{equation}
+
+% One can visualize \(h_+\) and \(h_\times\) by studying how freely-falling test particles in
+% the \(x\)--\(y\) plane move under each polarization: \(h_+\) distorts along \(x\) and \(y\)
+% axes, whereas \(h_\times\) acts on diagonals at \(\pm45^\circ\). In realistic astrophysical
+% sources, both polarizations are generally present.
+
+\subsection*{Leading-Order Power Emission by Gravitational Waves}
+\label{subsec:GW_power}
+
+In general, the power emitted by a radiative field can be expressed schematically as
+\begin{equation}
+    \dot{E} = \sum_{\ell = 0}^{\infty} \left\langle \left| \left( \frac{\partial}{\partial t} \right)^{\ell+1} P_\ell(t) \right| \right\rangle.
+\end{equation}
+Here, \(P_{\ell}(t)\) represents the multipole moments of the radiating source. The \(\ell = 0\) term corresponds to the monopole moment, which in the gravitational case is the total mass of the system. Assuming mass is conserved, this term vanishes.
+
+\noindent
+The \(\ell = 1\) term represents the dipole moment, which is also zero in the gravitational case due to conservation of linear momentum. Therefore, the leading-order contribution to gravitational-wave emission arises from the \(\ell = 2\) term, known as the quadrupole.
+
+\noindent
+This gives the leading-order expression for the power emitted in gravitational waves:
+\begin{equation}
+\dot{E} = \frac{G}{5\,c^5}
+\left\langle \dddot{Q}_{ij}\,\dddot{Q}^{\,ij} \right\rangle,
+\end{equation}
+where \(Q_{ij}\) is the mass quadrupole moment of the source. It is related to the mass moment \(M_{ij}\) by
+\begin{equation}
+Q_{ij} := M_{ij} - \frac{1}{3} \delta_{ij} M^k_{\ k},
+\end{equation}
+where \(M_{ij} = \int d^3x\, T^{00}(x^i x^j)\).
+
+
+
+\subsection*{A Simple Two-Mass Inspiral Model}
+\label{subsec:two_mass_example}
+
+
+\textcolor{red}{I took this example and summarised it from Sarp's notes, leads nicely to mismatch}
+
+\noindent
+We will now consider a generic problem as illistrated in \cite{intoGRSarp} where two point masses, \(m_1 \ge m_2\), are in a quasi-circular orbit of separation \(R\),
+each at distances \(r_1\) and \(r_2\) from their common center of mass (CoM), with
+\(R = r_1 + r_2\). We place the orbit in the \(x\)--\(y\) plane so that mass~1 moves on
+\(\mathbf{x}_1(t) = r_1(\cos\Omega t,\,\sin\Omega t)\) and mass~2 on
+\(\mathbf{x}_2(t) = r_2(\cos(\Omega t+\pi),\,\sin(\Omega t+\pi))\). The system’s orbital
+frequency is \(\Omega\). A short calculation yields
+
+\begin{equation}
+    Q^{ij} = 4 \Omega^3 \left(m_1 r_1^2 + m_2 r_2^2\right)
+    \begin{pmatrix}
+    \sin(2\Omega t) & -\cos(2\Omega t) \\
+    -\cos(2\Omega t) & -\sin(2\Omega t)
+    \end{pmatrix}.
+\end{equation}
+
+\noindent
+Introducing the reduced mass \(\mu = m_1 m_2/(m_1 + m_2)\), we get that the \(\ell=2\) power emission is
+
+\begin{equation}\label{eq:E_dot_2}
+\dot{E}_{\ell=2}
+\;=\;
+\frac{32}{5}\;\frac{G}{c^5}\;\Omega^6\,\mu^2\,R^4.
+\end{equation}
+Both \(\Omega\) and \(R\) are functions of time, but they evolve on a time scale much longer than the orbital time
+scale and so when averaging over orbits we approximate them as constant. Applying Kepler’s law, \(\Omega^2 = GM/R^3\), and defining
+\(\omega = 2\Omega\) as the GW frequency, we find
+\begin{equation}
+\dot{E}_{\ell=2}
+\;=\;
+\frac{32}{5}\;\frac{c^5}{G}
+\left(\frac{G\,\mathcal{M}\;\omega}{2c^3}\right)^{10/3},
+\quad
+\text{where}
+\quad
+\mathcal{M} \;=\;\mu^{3/5}\,M^{2/5}
+\end{equation}
+
+\noindent
+is known as the chirp mass where $M = m_1+m_2$ is the total mass.
+
+\noindent
+\textcolor{red}{Could maybe mention radiation time scale being much smaller than orbit timescale but I don't see what this will add}
+
+\noindent
+$ \dot{E} $ represents the rate at which the system loses energy due to gravitational-wave emission.
+This energy loss causes the binary orbit to shrink and the GW frequency to increase, 
+with the chirp mass \(\mathcal{M}\) and frequency \(\omega\) capturing the key features of this inspiral.
+
+
+
+\subsection*{Introducing the Waveform Mismatch}
+\label{subsec:mismatch_intro}
+
+This simplified two-mass, circular-orbit model captures the main physical components of the model such as the "chirp behaviour" (frequency of GW increasing as the orbit shrinks).
+However we want to quantify how neglecting for example eccentricity of the orbit and the spin vectors of the masses
+effects the waveform. We compare the simplified model to more complete waveforms using the waveform mismatch discussed in \cite{mismatch} and \cite{Ogpaper}. The mismatch between two signals is defined by
+\begin{equation}
+\label{eq:mismatch_def}
+\mathcal{M} 
+\;=\; 
+1 \;-\;
+\max_{\mathbf{\lambda_m}}
+\frac{\langle h_{\text{simple}},\,h_{\text{accurate}}\rangle}
+{\sqrt{\langle h_{\text{simple}},h_{\text{simple}}\rangle \,
+\langle h_{\text{accurate}},h_{\text{accurate}}\rangle}},
+\end{equation}
+where \(\langle\cdot,\cdot\rangle\) is the inner product of both GW, and we maximise over a set of (intrinsic or extrinsic) model parameters \(\mathbf{\lambda_m}\).
+A mismatch \(\mathcal{M}\ll 1\) indicates that our simple waveform
+faithfully represents the physical signal, whereas larger mismatches highlight missing
+physics (e.g. not circular orbit).
+
+
+
+
+\section{Background}
+\noindent
+\textcolor{red}{This section was written ages ago and needs to be updated but I think could still be worth time
+just going over how bayesian methods are currently used in GW and how making a mismatch predictor model may help
+moving forward}
+
+\noindent
 The gold standard gravitational waveforms are obtained by numerical relativity simulations which involve directly solving Einstein's equations of general relativity which is massively computationally expensive. For this reason, only several thousand simulations are currently available. As a result, GW models rely on analytical or semi-analytical prescriptions that are calibrated to the numerical relativity simulations.
 
 \par
 \noindent
-Each of these modelling approaches will incur a certain amount of error. We quantify this error as the mismatch between the "true" relativity simulation of a gravitational waveform and the analytic model for the waveform.The mismatch \cite{owen1995template} varies between 0, signifying that the model and the true waveform are identical (up to an overall amplitude rescaling), and 1, meaning that the two are completely orthogonal. To begin we will delve into the methods used before to "combine" these models and then discuss the new proposed method. This will lead us onto my project.
+Each of these modelling approaches will incur a certain amount of error. We quantify this error as the mismatch between the "true" relativity simulation of a gravitational waveform and the analytic model for the waveform.The mismatch \cite{mismatch} varies between 0, signifying that the model and the true waveform are identical (up to an overall amplitude rescaling), and 1, meaning that the two are completely orthogonal. To begin we will delve into the methods used before to "combine" these models and then discuss the new proposed method. This will lead us onto my project.
 
 
 
@@ -49,7 +209,7 @@ We build a distribution based off of each of the 3 models. We then combine these
 \subsubsection*{Evidence-Informed Method}
 This method again builds a distribution based off of each of the 3 models. The distributions are then combined with weights which are determined by how well the model explains the observed data. From this new distribution predictions are made.
 
-\subsection*{New Proposed Method: Numerical Relativity Informed Method \cite{hoy2024multi}}
+\subsection*{New Proposed Method: Numerical Relativity Informed Method }%\cite{hoy2024multi}}
 
 \subsubsection*{Numerical Relativity Informed Method}
 This method builds a distribution based off of each of the 3 models. Then the mismatch (difference between NR simulations and model) is calculated. We then find the ratios of the mismatch between each model, for example:
@@ -118,10 +278,10 @@ These function values are then assumed to follow a multivariate normal Gaussian 
 
 \noindent
 Mathematically, for a finite set of input points
-\[ X = \{X_1, X_2, \dots, X_n\} \],
+\[ X = \{X_1, X_2, \dots, X_n\} ,\]
  the corresponding function values
 \[
-f = \{f(X_1),f(X_2),...,f(X_n)\}
+f = \{f(X_1),f(X_2),...,f(X_n), \}
 \]
 follow a multivariate normal distribution
 \[
@@ -181,7 +341,7 @@ where
 \[m(x_*) \;=\; \mu(x_*) \;+\;k(x_*, X)\,k(X, X)^{-1}\bigl[f(X) - \mu(X)\bigr],
 \label{eq: predictive_mean}\]
 \[\sigma^2(x_*) \;=\;k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
-\label{eq: perdictive variance}\]
+\label{eq: predictive_variance}\]
 
 In these expressions:
 \begin{itemize}
@@ -243,7 +403,7 @@ we examine the different kernel choices available and the assumptions that each 
 \label{sec: Kernels}
 
 In Section \ref{sec: priortoposterior}, we derived the posterior mean and variance 
-(Equations \ref{eq: predictive_mean} and \ref{eq: perdictive_variance}), both of which 
+(Equations \ref{eq: predictive_mean} and \ref{eq: predictive_variance}), both of which 
 depend massively with choice of kernel function. The kernel represents our assumptions 
 about how function values depend on different inputs across different inputs.
 
@@ -254,17 +414,17 @@ similarity between data points is crucial; it is a basic similarity assumption t
 \(x\) which are close are likely to have similar target values \(y\), and thus training points that are 
 near to a test point should be informative about the prediction at that point. Under the Gaussian process 
 view it is the covariance function that defines nearness or similarity.''} 
-\cite[p.~79]{rasmussen2006gaussian}
+\cite[p.~79]{bible}
 
 \vspace{1em}
 \noindent
 In other words, the kernel function enforces how strongly different input values effect each of their outputs
-.\cite{rasmussen2006gaussian} divide kernels into two major sub-groups, stationary kernels and non-stationary kernels. 
+.\cite{bible} divide kernels into two major sub-groups, stationary kernels and non-stationary kernels. 
 Stationary kernels depend only on the relative (often radial) distance between inputs \(\|x - x'\|\) and are invariant to translations 
 in the input domain. By contrast, non-stationary kernels depend explicitly on 
 the absolute values of \(x\) and \(x'\), allowing the function’s properties—such as smoothness 
 or amplitude—to vary across the domain. For more detailed discussion on building, combining, and customizing these kernels, 
-see \cite{duvenaud2014kernel} and \cite[Ch.~4]{rasmussen2006gaussian}.
+see \cite{kernelcookbook} and \cite[Ch.~4]{bible}.
 
 \bigskip
 
@@ -325,11 +485,33 @@ and their hyperparameters in more detail.
 depending on graphs might group some together. Exhausitive work here is needed I think otherwise too many questions later about parameters 
 etc. I do this later at the minute in Hyper-param optimisatinbut this flow is more logical I think}
 
+Note: When implementing we multiply every kernel by a constant hyper-parameter that represents the variance.
+In this section we keep this variance constant at 1 
+since without noise in the data the variance only effects the predicted variance which increases directly proportionally to this hyper-parameter.
+
 \subsubsection*{Radial Basis Function (RBF) Kernel}
 \[
 k(x, x') = \sigma_f^2 \exp\left( -\frac{(x - x')^2}{2\ell^2} \right)
 \]
 This kernel assumes smooth and infinitely differentiable functions, modeling local variations.
+
+\textbf{Credible Interval Behavior:} In Gaussian Process regression, the predictive variance at a new input $x^*$ is given by
+\[
+k(x^*, x^*) - k(x^*, X)(K_{XX}^{-1})k(X, x^*).
+\]
+
+With an RBF kernel, $k(x^*, X)$ will be near-zero if $x^*$ is farther than a few $\ell$'s away from all training inputs $X$. 
+For small $\ell$, this situation happens frequently – any point outside a tiny neighborhood of training data effectively has $k(x^*, X) 
+\approx 0$, so its predictive variance is roughly
+\[
+k(x^*, x^*) = \sigma_f^2
+\]
+(the prior variance). Thus, the 95\% credible interval reverts to roughly $\pm 2\sigma_f$ in large gaps or outside the data range.
+For large $\ell$, on the other hand, $k(x^*, X)$ remains sizable over a much broader range, reducing the variance term. The uncertainty
+only approaches the prior level far outside the data (several $\ell$'s away). In effect, a large $\ell$ flattens the covariance function
+so that the GP “remembers” the training set far out, maintaining narrower error bars over a wider domain.
+
+
 
 
 \subsubsection*{Rational Quadratic Kernel}
@@ -536,7 +718,7 @@ and uncertainty in the predictions increases accordingly. This relationship appe
 \subsubsection*{Learning Hyperparameters by Maximising the Log Marginal Likelihood}
 \label{sec: hyperparam_optimisation}
 
-Now that we have seen how the choice of hyperparameters affects the posterior distribution, we aim to find the optimal hyperparameters that allow the model to best explain the observed data. This is done by maximising the \textit{log marginal likelihood}, as described in \cite{rasmussen2006gaussian}.
+Now that we have seen how the choice of hyperparameters affects the posterior distribution, we aim to find the optimal hyperparameters that allow the model to best explain the observed data. This is done by maximising the \textit{log marginal likelihood}, as described in \cite{bible}.
 
 \bigskip
 \noindent
@@ -734,7 +916,7 @@ This procedure yields a predictive distribution that fully reflects both the unc
 \subsection{Model Evaluation Metrics}
 \label{sec:metrics}
 
-In figure \ref{tab:metrics-comparison}, we made a graphical representation of four out of six metrics used to evaluate our model’s accuracy. \cite{rasmussen2006gaussian} discusses how these metrics provide a balanced assessment of model performance.
+In figure \ref{tab:metrics-comparison}, we made a graphical representation of four out of six metrics used to evaluate our model’s accuracy. \cite{bible} discusses how these metrics provide a balanced assessment of model performance.
 The Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE) measure the average deviation of predictions from the true values, with RMSE penalizing larger errors more heavily.
 The coefficient of determination \( R^2 \) quantifies how well the model predicts relative to the mean of the test set. It is computed as \( 1 \) minus the ratio of the squared residuals to the total variance. A value closer to \( 1 \) indicates better predictive performance.
 The adjusted \( R^2 \) (\(\bar{R}^2\)) accounts for model complexity by penalizing excessive predictor variables, preventing overfitting.

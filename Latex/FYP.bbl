@@ -1,0 +1,36 @@
+\begin{thebibliography}{1}
+
+\bibitem{intoGRSarp}
+{\sc Akcay, S.}
+\newblock Forecasting gamma-ray bursts using gravitational waves.
+\newblock {\em arXiv preprint arXiv:1808.10057\/} (2018).
+
+\bibitem{kernelcookbook}
+{\sc Duvenaud, D.}
+\newblock The kernel cookbook: Advice on covariance functions.
+\newblock \url{https://www.cs.toronto.edu/~duvenaud/cookbook/}, 2014.
+\newblock Accessed: 2024-03-14.
+
+\bibitem{Ogpaper}
+{\sc Hoy, C., Akçay, S., Uilliam, J.~M., and Thompson, J.~E.}
+\newblock Incorporating multi-model uncertainty into gravitational-wave bayesian inference.
+\newblock {\em In preparation\/} (2024).
+\newblock To be published.
+
+\bibitem{GRbook}
+{\sc Maggiore, M.}
+\newblock {\em Gravitational Waves. Volume 1: Theory and Experiments}.
+\newblock Oxford University Press, Oxford, 2008.
+
+\bibitem{mismatch}
+{\sc Owen, B.~J.}
+\newblock Search templates for gravitational waves from inspiraling binaries: Choice of template spacing.
+\newblock {\em arXiv preprint gr-qc/9511032\/} (1995).
+\newblock Submitted to Physical Review D: November 7, 1995.
+
+\bibitem{bible}
+{\sc Rasmussen, C.~E., and Williams, C. K.~I.}
+\newblock {\em Gaussian Processes for Machine Learning}.
+\newblock MIT Press, Cambridge, MA, USA, 2006.
+
+\end{thebibliography}
