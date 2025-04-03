@@ -19,10 +19,9 @@
 \usepackage{amssymb}
 
 
-\bibliographystyle{acm}
-
-%\addbibresource{references.bib}                    % Corrected the .bib file extension
-%\bibliography{references}
+\usepackage{cite} % For citation handling
+\bibliographystyle{acm}  
+ % without .bib extension
 
 
 \title{FYP }
@@ -59,7 +58,7 @@ However we are interested in this equation outside of the source (i.e $T_{\mu \n
 with \(\Box\) the d’Alembertian operator in flat spacetime.
 
 \noindent
-Although \(h_{ab}\) initially has 10 independent components (as a symmetric 4×4 tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorentz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
+Although \(h_{ab}\) initially has 10 independent components (as a symmetric $4 \times 4$ tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorentz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
 
 \noindent
 This wave equation admits plane-wave solutions. For a wave propagating in the \(z\)-direction, the TT-gauge form of the perturbation is:
@@ -1095,8 +1094,10 @@ p(f_* | f) = \frac{1}{(2\pi)^{n/2} |K_{**} - K_*^T K^{-1} K_*|^{1/2}}
 
 
 
-%\printbibliography
-\bibliography{references}
+% %\printbibliography
+% \bibliographystyle{acm}
+% \bibliography{references}
+\bibliography{references} 
 
 \end{document}
 
