@@ -369,31 +369,11 @@ we examine the different kernel choices available and the assumptions that each 
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Prior_Distribution.png}
+        \includegraphics[width=\textwidth]{LatexPlots/1dplots/priortoposterior.png}
         \caption{Prior Distribution}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Posterior_1_Data_Point.png}
-        \caption{Posterior: 1 Data Point}
-    \end{subfigure}
-    
-    \vspace{0.5cm}
-    
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Posterior_2_Data_Points.png}
-        \caption{Posterior: 2 Data Points}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Posterior_3_Data_Points.png}
-        \caption{Posterior: 3 Data Points}
-    \end{subfigure}
-
-    \caption{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma^2 = 0.5$.}
+    \caption{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. 
+    The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterio distribution. 
+    The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior. }
     \label{fig: priortoposterior}
 \end{figure}
 
