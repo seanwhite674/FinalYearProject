@@ -11,15 +11,14 @@
 \usepackage{float} 
 \setlength{\parskip}{0.5em}
 % Enable clickable references
-\usepackage{graphicx, xcolor}        
+\usepackage{graphicx}        
 \usepackage{array}
 \usepackage[margin=0.8in]{geometry}
 \usepackage{adjustbox}
 \usepackage{makecell}
 \usepackage{amssymb}
-
 \newcommand{\Sarp}[1]{{\textcolor{blue}{{SA: #1}} }}
-
+\newcommand{\Sean}[1]{{\textcolor{red}{{Sean: #1}} }}
 
 
 \usepackage{cite} % For citation handling
@@ -39,11 +38,10 @@
 
 
 Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. As described in \textit{Gravitational Waves, Vol. 1} by Maggiore~\cite[p.~29]{GRbook},
-\Sarp{better to re-write this in your own words}
 \begin{quote}
 “In this setting, the definition of GWs is relatively clear: the background spacetime is flat, and the small fluctuations around it have been called ‘gravitational waves’. The term ‘waves’ is justified by the fact that, in a suitable gauge, \(h_{\mu\nu}\) indeed satisfies a wave equation.”
 \end{quote}
-This is formally appproached by expanding the Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
+This is formully appproached by expanding the Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
 \begin{equation}
 g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
 \qquad
@@ -51,18 +49,18 @@ g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
 \qquad
 \eta_{ab} = \mathrm{diag}(-1, 1, 1, 1),
 \end{equation}
-where \(h_{ab}\) represents the perturbation. Using linear perturbation theory in Lorenz gauge, the Einstein field equations simplify to
+where \(h_{ab}\) represents the perturbation. In the linearized regime of general relativity, the Einstein field equations simplify to
 \begin{equation}
     \Box \bar{h}_{ab} = \frac{-16\pi G}{c^4} T_{\mu \nu}.
 \end{equation}
-However, we are interested in this equation outside of the source (i.e, stress-energy tensor $T_{\mu \nu} =0$) therefore we are left with 
+However we are interested in this equation outside of the source (i.e $T_{\mu \nu} =0$) therefore we are left with 
 \begin{equation}
     \Box \bar{h}_{ab} = 0, 
 \end{equation}
-with \(\Box\) denoting the flat spacetime d’Alembertian operator.
+with \(\Box\) the d’Alembertian operator in flat spacetime.
 
 \noindent
-Although \(h_{ab}\) initially has 10 independent components (as a symmetric $4 \times 4$ tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorenz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
+Although \(h_{ab}\) initially has 10 independent components (as a symmetric $4 \times 4$ tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorentz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
 
 \noindent
 This wave equation admits plane-wave solutions. For a wave propagating in the \(z\)-direction, the TT-gauge form of the perturbation is:
@@ -104,7 +102,7 @@ where \(Q_{ij}\) is the mass quadrupole moment of the source. It is related to t
 \begin{equation}
 Q_{ij} := M_{ij} - \frac{1}{3} \delta_{ij} M^k_{\ k},
 \end{equation}
-where \(M_{ij} = \int d^3x\, T^{00}\, x_i x_j\).
+where \(M_{ij} = \int d^3x\, T^{00}(x^i x^j)\).
 
 
 
@@ -115,7 +113,7 @@ where \(M_{ij} = \int d^3x\, T^{00}\, x_i x_j\).
 \textcolor{red}{I took this example and summarised it from Sarp's notes, leads nicely to mismatch}
 
 \noindent
-We will now consider a generic problem as illustrated in Ref.~\cite{intoGRSarp} where two point masses, \(m_1 \ge m_2\), are in a quasi-circular orbit of separation \(R\),
+We will now consider a generic problem as illistrated in \cite{intoGRSarp} where two point masses, \(m_1 \ge m_2\), are in a quasi-circular orbit of separation \(R\),
 each at distances \(r_1\) and \(r_2\) from their common center of mass (CoM), with
 \(R = r_1 + r_2\). We place the orbit in the \(x\)--\(y\) plane so that mass~1 moves on
 \(\mathbf{x}_1(t) = r_1(\cos\Omega t,\,\sin\Omega t)\) and mass~2 on
@@ -154,11 +152,11 @@ scale and so when averaging over orbits we approximate them as constant. Applyin
 
 \noindent
 is known as the chirp mass where $M = m_1+m_2$ is the total mass.
+\Sarp{You already kind of mention this below Eq.~\eqref{eq:E_dot_2}, so maybe provide slightly
+more detail there.}
 
 \noindent
 \textcolor{red}{Could maybe mention radiation time scale being much smaller than orbit timescale but I don't see what this will add}
-\Sarp{You already kind of mention this below Eq.~\eqref{eq:E_dot_2}, so maybe provide slightly
-more detail there.}
 
 \noindent
 $ \dot{E} $ represents the rate at which the system loses energy due to gravitational-wave emission.
@@ -166,7 +164,6 @@ This energy loss causes the binary orbit to shrink and the GW frequency to incre
 with the chirp mass \(\mathcal{M}\) and frequency \(\omega\) capturing the key features of this inspiral.
 
 \Sarp{From here you should go on to derive the form of a simple waveform in first time domain then frequency domain. Then you can go into the Mismatch}
-
 
 \subsection*{Introducing the Waveform Mismatch}
 \label{subsec:mismatch_intro}
@@ -262,20 +259,24 @@ In the following subsections, I discuss the foundational concepts of Gaussian Pr
 \label{sec: Definition_of_GP}
 
 A Gaussian Process \textbf{(GP)} defines a probabilistic model over all possible functions rather than assuming a single function to be true
-\[
+\begin{equation}
 f(X) \sim \mathcal{GP} (\mu(X), k(X, X')).
 \label{eq: Initial_GP_distribution}
-\]
+\end{equation}
+
+\noindent
 where \( \mu(X) \) is the mean function, specifying the expected function value at each \( X \):
-\[
+\begin{equation}
     \mu(X) = {E}[f(X)],
     \label{eq: meandef}
-\]
+\end{equation}
+
+\noindent
  \( k(X, X') \) is the covariance function (kernel), encoding the relationships between function values at different points:
-\[
+\begin{equation}
     k(X, X') = \text{Cov}(f(X), f(X')).
     \label{eq: kerneldef}
-\]
+\end{equation}
 
 \noindent
 Since the input space is continuous, the GP represents an infinite-dimensional distribution. 
@@ -284,16 +285,21 @@ These function values are then assumed to follow a multivariate normal Gaussian 
 
 \noindent
 Mathematically, for a finite set of input points
-\[ X = \{X_1, X_2, \dots, X_n\} ,\]
+
+\begin{equation}
+X = \{X_1, X_2, \dots, X_n\},
+\end{equation}
  the corresponding function values
-\[
+\begin{equation}
 f = \{f(X_1),f(X_2),...,f(X_n), \}
-\]
+\end{equation}
 follow a multivariate normal distribution
-\[
+\begin{equation}
 f \sim \mathcal{N}(\mu(X), K(X, X)).
 \label{eq: Multivariate_distribution}
-\]
+\end{equation}
+
+\noindent
 Each sample from this multivariate distribution represents a function evaluated at \( n \) different points.
 
 \subsubsection*{The Prior Distribution}
@@ -301,7 +307,7 @@ Each sample from this multivariate distribution represents a function evaluated 
 
 Before observing any data, we assume a joint Gaussian distribution over both training and test points. Let \( X \) denote training inputs and \( X_* \) test inputs. 
 The joint prior over their function values is
-\[
+\begin{equation}
 \begin{bmatrix}
 f(X) \\
 f(X_*)
@@ -320,38 +326,196 @@ K(X_*, X) & K(X_*, X_*)
 }_{\mathcal{C} = \text{Covariance Matrix}}
 \right).
 \label{eq: Multivariate prior}
-\]
+\end{equation}
 
 \noindent
-After accounting for the mean, the kind of structure that can be captured by a
-GP model is entirely determined by its kernel. The kernel determines how the model
-generalizes, or extrapolates to new data.There are many possible choices of covariance function, all encoding different shapes.
+The corresponding joint probability density function (pdf) is given by:
+
+\begin{equation}
+    p(f, f_*) = \frac{1}{(2\pi)^{n/2} \sqrt{|\mathbf{C}|}} \exp\left( 
+    - \frac{1}{2}\left(\begin{bmatrix}f \\f_*\end{bmatrix}-
+    \begin{bmatrix}\mu(X) \\\mu(X_*)\end{bmatrix}\right)^T
+    \mathbf{C}^{-1}\left(
+    \begin{bmatrix}f \\f_*\end{bmatrix}-
+    \begin{bmatrix}\mu(X) \\\mu(X_*)\end{bmatrix}\right)\right)
+\end{equation}
+    
+
+\noindent
+After accounting for the mean, the resulting distribution is entirely determined by its kernel function.
+The kernel governs how the model generalizes to unseen data. There are many kernel choices, each encoding different structural assumptions about the function, such as smoothness, periodicity, or linearity.
+In the next section we examine the different kernel choices available and the assumptions that each kernel encodes about our function structure, such as smoothness and periodicity.
+
+
+
+\subsection{Kernel Functions}
+\label{sec: Kernels}
+The kernel function encodes our assumptions about the relationship between input points in a Gaussian Process (GP).
+It defines the covariance between any two function values and thereby determines the smoothness, periodicity, or other properties of the functions drawn from the GP prior.
+Fundamentally, kernels reflect the idea of *similarity*: input points \( x \) and \( x' \) that are close together are assumed to have highly correlated outputs \( f(x) \) and \( f(x') \),
+while distant inputs are assumed to produce less correlated values. This notion of similarity, as emphasized in \cite[p.~79]{bible}, is central to how Gaussian processes learn from and generalize beyond training data.
+
+\vspace{1em}
+\noindent
+In Figure~\ref{fig: samples_from_GP_prior}, we illustrate the effect of the kernel on the GP prior.
+We draw three functions from the multivariate Gaussian prior defined in Equation~\ref{eq: Multivariate prior}, using a zero mean and an RBF kernel.
+The first subplot shows these samples, while the second subplot visualizes the corresponding covariance matrix as a heatmap.
+The matrix reveals that correlations are strongest when input points are close together (near the diagonal) and decay as the distance between inputs increases.
+This is evident also from the samples as we can see nearby points often move in similar directions, while distant points diverge more significantly.
+
+\vspace{1em}
+\noindent
+The final three subplots highlight how this distance-based correlation manifests in the joint distribution of pairs of function values.
+For closely spaced inputs, such as \( (x, x') = (0, 0.1) \), the joint distribution of \( (f(0), f(0.1)) \) forms a narrow elliptical contour,
+indicating strong correlation (approximately 0.9). As the distance increases, such as in the pairs \( (0, 0.5) \) and \( (0, 1) \), the ellipses widen, reflecting weaker correlation. This visualization reinforces the intuition that kernel functions govern how input proximity translates to output similarity.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_background.png}
+        \caption{Sampling from the GP prior with zero mean and an RBF kernel ($\ell = 0.5$, $\sigma_f^2 = 1$). 
+        The first plot shows three sample functions drawn from the prior distribution. 
+        The second plot visualizes the covariance matrix as a heatmap, revealing the strength of correlations between inputs.
+        The final three subplots display joint distributions between selected input pairs, illustrating how output correlation diminishes with increasing input distance.}
+    \label{fig: samples_from_GP_prior}
+\end{figure}
+
+
+\noindent
+We have discussed how the kernel function encodes the covariance structure of the GP prior. This structure depends on the choice of kernel. According to [\cite{bible}]
+kernels can be divided into two major sub-groups, stationary kernels and non-stationary kernels. 
+Stationary kernels depend only on the relative (often radial) distance between inputs \(\|x - x'\|\) and are invariant to translations 
+in the input domain. By contrast, non-stationary kernels depend explicitly on 
+the absolute values of \(x\) and \(x'\), allowing the function’s properties—such as smoothness 
+or amplitude—to vary across the domain. For more detailed discussion on building, combining, and customizing these kernels, 
+see \cite{kernelcookbook} and \cite[Ch.~4]{bible}.
+
+\bigskip
+
+\noindent
+In Table~\ref{tab:kernel-examples}, we provide an overview of several common kernel types, 
+showing both their functional form and samples drawn from the corresponding GP priors. 
+While each kernel imposes a distinct structural pattern on the functions—such as smoothness, periodicity, or linearity—they are all similarly influenced by shared hyperparameters like the lengthscale. 
+In addition, many kernels include unique internal parameters that further shape the behaviour of the modeled functions. 
+In the following subsections, we explore each of these kernels in detail and discuss the role of their associated hyperparameters.
+
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{4} % Slightly tighter rows
+    \setlength{\tabcolsep}{2pt} % Tighter columns
+    \small % Smaller text to fit content
+
+    \begin{tabular}{|>{\centering\arraybackslash}m{2cm}|*{6}{>{\centering\arraybackslash}m{2.3cm}|}} 
+        \hline
+        \textbf{Kernel name:} & \textbf{RBF (SE)} & \textbf{Rational Quadratic} & \textbf{Periodic} & \textbf{Matern} & \textbf{Laplace} & \textbf{Linear (Dot Product)} \\ 
+        \hline
+        \textbf{Plot of $k(x, x')$:} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_RBF_SE.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Rational_Quadratic.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Periodic.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Matern_nu05.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Laplace_Exponential.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Linear_Dot_Product.png}} \\ 
+        \hline
+        \textbf{GP Prior Samples:} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_RBF_SE.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Rational_Quadratic.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Periodic.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Matern_nu05.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Laplace_Exponential.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png}} \\ 
+        \hline
+        \textbf{Key Hyperparameters} &
+        $\ell$ (Lengthscale) &
+        \shortstack{$\ell$ \\ $\alpha$ (Scale-mix)}&
+        \shortstack{$\ell$ \\ $p$ (Period)} &
+        \shortstack{$\ell$ \\ $\nu$ (Smoothness)} &
+        $\gamma$ (Decay rate) &
+        None or variance \\ 
+        \hline
+        \textbf{Structure type:} & 
+        Local variation & 
+        Multi-scale local variation & 
+        Repeating structure & 
+        Rough to smooth & 
+        Rougher variation & 
+        Linear functions \\ 
+        \hline
+    \end{tabular}
+    \caption{
+        Visual comparison of common kernel functions and their effect on Gaussian process priors. 
+        Each column shows the kernel shape $k(x, x')$, samples from the corresponding GP prior, and a summary of the structure it imposes. 
+        All kernels were evaluated using a lengthscale parameter $\ell = 1$ (except where noted). 
+        For the Matern kernel, $\nu = 0.5$; Laplace kernel, $\gamma = 6$; Rational Quadratic kernel, $\alpha = 0.25$; and Periodic kernel, period $p = 2$.
+        Detailed formula and graphs for each kernel are provided in the appendix \ref{appendix:B}.
+        }
+    \label{tab:kernel-examples}
+\end{table}
+
+\noindent
+Note: In practice, we scale each kernel by a signal variance hyperparameter \(\sigma_f^2\), which governs the overall vertical variation in the function.
+This scaling is applied consistently across all kernel types and is discussed further in the \ref{sec: Handlingnoise}.
+
+\noindent
+From Table~\ref{tab:kernel-examples}, we observe that the RBF, Rational Quadratic, Matern, Laplace, and Periodic kernels are all examples of stationary kernels (i.e depend on $|x-x'|$). 
+Many of these—such as the RBF, Matern,Rational Quadratic and Laplace—exhibit "bell-shaped" structures: inputs \(x\) and \(x'\) that are close together yield high covariance,
+which then decays as the distance \(\|x - x'\|\) increases.The Periodic kernel, while also stationary, has a unique structure. Instead of decaying monotonically with distance, 
+it assigns high covariance to inputs that are separated by integer multiples of a fixed period \(p\). This leads to a repeating pattern of similarity,
+making the kernel ideal for modeling functions which are periodic.
+
+\noindent
+We have examined multiple kernel types and their properties.We will now briefly visualise and examine the effect of the lengthscale hyperparameter and 
+the signal variance hyperparameter on the GP prior. We will use the RBF kernel as an example, but the same principles apply to other kernels.
+
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_hyperparams.png}
+        \caption{Sampling from the GP prior with mean 0 and covariance given by the RBF kernel.
+        The first plot shows the effect of the lengthscale hyperparameter \(\ell\) on the GP prior.We fix the signal variance to 1.
+        The second plot shows the effect of the signal variance hyperparameter \(\sigma_f^2\) on the GP prior.We fix the lengthscale to 0.5.}
+    \label{fig: GPprior_hyperparams}
+\end{figure}
+
 
 
 \subsubsection*{Adding Data: Prior to Posterior}
 \label{sec: priortoposterior}
 
-One of the key strengths of Gaussian Processes is that, given observations at training inputs \(X\),
+We have discussed how our prior distribution is dependent on the choice of kernel and the hyper-parameters of said kernel. In this section
+we will discuss how we can update our prior distribution \ref{eq: Multivariate prior} to achieve our new prediction distribution distribution from which we can make
+inferences. One of the key strengths of Gaussian Processes is that, given observations at training inputs \(X\),
 we can make predictive inferences about the function value at any new test location \(x_*\).
-By applying the standard conditional Gaussian formulas (see appendix \ref{appendix:A} for the full derivation),
+By applying the standard conditional Gaussian formulas (see appendix \textcolor{red}{Must clean up this derivation in appendix} \ref{appendix:A} for the full derivation),
 the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and given by:
-\[
+
+
+\begin{equation}
 p\bigl(f(x_*) \mid f(X), X, \mu(\cdot), k(\cdot,\cdot)\bigr)
 \;=\;
 \mathcal{N}\!\Bigl(
 m(x_*),\;\sigma^2(x_*)
 \Bigr),
 \label{eq: predictive_dist}
-\]
+\end{equation}
+
+\noindent
 where
-\[m(x_*) \;=\; \mu(x_*) \;+\;k(x_*, X)\,k(X, X)^{-1}\bigl[f(X) - \mu(X)\bigr],
-\label{eq: predictive_mean}\]
-\[\sigma^2(x_*) \;=\;k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
-\label{eq: predictive_variance}\]
+
+\begin{equation}
+m(x_*) \;=\; \mu(x_*) \;+\;k(x_*, X)\,k(X, X)^{-1}\bigl[f(X) - \mu(X)\bigr],
+\label{eq: predictive_mean}
+\end{equation}
+
+\begin{equation}
+\sigma^2(x_*) \;=\;k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
+\label{eq: predictive_variance}
+\end{equation}
 
 In these expressions:
 \begin{itemize}
-    \item \( \mu(\cdot) \) is the mean function ( I take this to be zero since we centre the data prior to prediction),
+    \item \( \mu(\cdot) \) is the mean function ( We take this to be zero since we centre the data prior to prediction),
     \item \( k(X, X) \) is the covariance matrix among the observed training points,
     \item \( k(x_*, X) \) is the vector of cross-covariances between the test point \(x_*\) and the training inputs,
     \item \( k(x_*, x_*) \) is the prior variance at the test point itself.
@@ -383,259 +547,137 @@ we examine the different kernel choices available and the assumptions that each 
     The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior. }
     \label{fig: priortoposterior}
 \end{figure}
+\Sean{can add a potential link to animation here illustrating the nice distribution formed at each point}
 
-
-\subsection{Kernel Functions}
-\label{sec: Kernels}
-
-In Section \ref{sec: priortoposterior}, we derived the posterior mean and variance 
-(Equations \ref{eq: predictive_mean} and \ref{eq: predictive_variance}), both of which 
-depend massively with choice of kernel function. The kernel represents our assumptions 
-about how function values depend on different inputs across different inputs.
-
-\vspace{1em}
-\noindent
-\textit{``From a slightly different viewpoint it is clear that in supervised learning the notion of 
-similarity between data points is crucial; it is a basic similarity assumption that points with inputs 
-\(x\) which are close are likely to have similar target values \(y\), and thus training points that are 
-near to a test point should be informative about the prediction at that point. Under the Gaussian process 
-view it is the covariance function that defines nearness or similarity.''} 
-\cite[p.~79]{bible}
-
-\vspace{1em}
-\noindent
-In other words, the kernel function enforces how strongly different input values effect each of their outputs
-.\cite{bible} divide kernels into two major sub-groups, stationary kernels and non-stationary kernels. 
-Stationary kernels depend only on the relative (often radial) distance between inputs \(\|x - x'\|\) and are invariant to translations 
-in the input domain. By contrast, non-stationary kernels depend explicitly on 
-the absolute values of \(x\) and \(x'\), allowing the function’s properties—such as smoothness 
-or amplitude—to vary across the domain. For more detailed discussion on building, combining, and customizing these kernels, 
-see \cite{kernelcookbook} and \cite[Ch.~4]{bible}.
-
-\bigskip
-
-\noindent
-In Table~\ref{tab:kernel-examples}, we provide an overview of several common kernel types, 
-showing both their functional form and samples drawn from the corresponding GP priors. 
-Although each kernel imparts a distinct structure on the functions (e.g., local variation, 
-multi-scale behavior, periodicity, or linearity), \emph{all} have hyperparameters that 
-significantly shape the resulting GP. In the following subsections, we examine these kernels 
-and their hyperparameters in more detail.
-
-
-\begin{table}[H]
-    \centering
-    \renewcommand{\arraystretch}{4} % Slightly tighter rows
-    \setlength{\tabcolsep}{2pt} % Tighter columns
-    \small % Smaller text to fit content
-
-    \begin{tabular}{|>{\centering\arraybackslash}m{2cm}|*{6}{>{\centering\arraybackslash}m{2.3cm}|}} 
-        \hline
-        \textbf{Kernel name:} & \textbf{RBF (SE)} & \textbf{Rational Quadratic} & \textbf{Periodic} & \textbf{Matern} & \textbf{Laplace} & \textbf{Linear (Dot Product)} \\ 
-        \hline
-        \textbf{Plot of $k(x, x')$:} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_RBF_SE.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Rational_Quadratic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Periodic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Matern_nu05.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Laplace_Exponential.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Linear_Dot_Product.png}} \\ 
-        \hline
-        \textbf{GP Prior Samples:} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_RBF_SE.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Rational_Quadratic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Periodic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Matern_nu05.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Laplace_Exponential.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png}} \\ 
-        \hline
-        \textbf{Structure type:} & 
-        Local variation & 
-        Multi-scale local variation & 
-        Repeating structure & 
-        Rough to smooth & 
-        Rougher variation & 
-        Linear functions \\ 
-        \hline
-    \end{tabular}
-    \caption{
-        Visual comparison of common kernel functions and their effect on Gaussian process priors. 
-        Each column shows the kernel shape $k(x, x')$, samples from the corresponding GP prior, and a summary of the structure it imposes. 
-        All kernels were evaluated using a lengthscale parameter $\ell = 1$ (except where noted). 
-        For the Matern kernel, $\nu = 0.5$; Laplace kernel, $\gamma = 6$; Rational Quadratic kernel, $\alpha = 0.25$; and Periodic kernel, period $p = 2$.
-        }
-    \label{tab:kernel-examples}
-\end{table}
-
-\textcolor{red}{In this section going to do a deep dive on each kernel and how hyper-parameters effect each one. Just pick main ones.
-depending on graphs might group some together. Exhausitive work here is needed I think otherwise too many questions later about parameters 
-etc. I do this later at the minute in Hyper-param optimisatinbut this flow is more logical I think}
-
-Note: When implementing we multiply every kernel by a constant hyper-parameter that represents the variance.
-In this section we keep this variance constant at 1 
-since without noise in the data the variance only effects the predicted variance which increases directly proportionally to this hyper-parameter.
-
-\subsubsection*{Radial Basis Function (RBF) Kernel}
-\[
-k(x, x') = \sigma_f^2 \exp\left( -\frac{(x - x')^2}{2\ell^2} \right)
-\]
-This kernel assumes smooth and infinitely differentiable functions, modeling local variations.
-
-\textbf{Credible Interval Behavior:} In Gaussian Process regression, the predictive variance at a new input $x^*$ is given by
-\[
-k(x^*, x^*) - k(x^*, X)(K_{XX}^{-1})k(X, x^*).
-\]
-
-With an RBF kernel, $k(x^*, X)$ will be near-zero if $x^*$ is farther than a few $\ell$'s away from all training inputs $X$. 
-For small $\ell$, this situation happens frequently – any point outside a tiny neighborhood of training data effectively has $k(x^*, X) 
-\approx 0$, so its predictive variance is roughly
-\[
-k(x^*, x^*) = \sigma_f^2
-\]
-(the prior variance). Thus, the 95\% credible interval reverts to roughly $\pm 2\sigma_f$ in large gaps or outside the data range.
-For large $\ell$, on the other hand, $k(x^*, X)$ remains sizable over a much broader range, reducing the variance term. The uncertainty
-only approaches the prior level far outside the data (several $\ell$'s away). In effect, a large $\ell$ flattens the covariance function
-so that the GP “remembers” the training set far out, maintaining narrower error bars over a wider domain.
-
-
-
-
-\subsubsection*{Rational Quadratic Kernel}
-\[
-k(x, x') = \sigma_f^2 \left( 1 + \frac{(x - x')^2}{2 \alpha \ell^2} \right)^{-\alpha}
-\]
-This kernel can be seen as a scale mixture of RBF kernels, allowing for multi-scale behavior.
-
-
-\subsubsection*{Periodic Kernel}
-\[
-k(x, x') = \sigma_f^2 \exp\left( -\frac{2}{\ell^2} \sin^2\left( \frac{\pi (x - x')}{p} \right) \right)
-\]
-This kernel models repeating structures with period \( p \).
-
-\subsubsection*{Matern Kernel}
-\[
-k(x, x') = \sigma_f^2 \frac{2^{1-\nu}}{\Gamma(\nu)} \left( \frac{\sqrt{2\nu} |x - x'|}{\ell} \right)^\nu K_\nu\left( \frac{\sqrt{2\nu} |x - x'|}{\ell} \right)
-\]
-The Matern kernel allows for controlling the smoothness of functions via the parameter \( \nu \).
-
-
-\subsubsection*{Laplace (Exponential) Kernel}
-\[
-k(x, x') = \sigma_f^2 \exp\left( -\gamma |x - x'| \right)
-\]
-Equivalent to the Matern kernel with \( \nu = \frac{1}{2} \), this kernel models rougher functions.
-
-
-\subsubsection*{Linear (Dot-Product) Kernel}
-\[
-k(x, x') = \sigma_b^2 + x^\top x'
-\]
-This kernel grows with the similarity (inner product) between inputs, and it allows the function to vary globally. Since it depends directly on the values of \( x \) and \( x' \), not just their difference, it is non-stationary. It is particularly useful for modeling linear trends.
 
 
 
 \subsection{Handling Noise in our Data}
 \label{sec: Handlingnoise}
 
-So far, our discussion has assumed noise-free observations. However, real-world data is rarely clean—measurements often include some form of uncertainty. To make our Gaussian Process models more realistic and applicable, we now explore how to incorporate noise into the GP framework.
+So far, our discussion has assumed noise-free observations. However, real-world data is rarely clean, measurements often include some form of uncertainty. To make our Gaussian Process models more applicable to this real-world data,
+we now explore how to incorporate noise into the GP framework.
 
 \bigskip
 
 \noindent
-We model noise by assuming that the observations $y$ are related to the latent function values $f$ through additive Gaussian noise:
-\[
+We model noise in our data by assuming that our observations/data includes the true function values with additional Gaussian noise: 
+\begin{equation}
 y = f + \epsilon, \quad \epsilon \sim \mathcal{N}(0, \sigma_n^2 I),
-\]
+\end{equation}
 where $\sigma_n^2$ is the noise variance. We now have:
-\[
+\begin{equation}
 f \sim \mathcal{N}(0, K)
-\]
+\end{equation}
 and 
-\begin{equation}\label{eq: 4}
+\begin{equation}
 y \sim \mathcal{N}(0, K+\sigma_n^2 I)
+\label{eq: distribution_noisey_data}
 \end{equation}
 
 \bigskip
-
-which leads to a revised posterior:
-\[
+\noindent
+This now updates our previous posterior mean and variance (eq: \ref{eq: predictive_mean} and \ref{eq: predictive_variance}) to a revised posterior:
+\begin{equation}
 m(f_*) = K_*^T (K + \sigma_n^2 I)^{-1} y,
-\]
-\[
+\label{eq: predictive_mean_noise}
+\end{equation}
+\begin{equation}
 \text{Var}(f_*) = K_{**} - K_*^T (K + \sigma_n^2 I)^{-1} K_*.
-\]
+\label{eq: predictive_variance_noise}
+\end{equation}
+
 
 \bigskip
-
 \noindent
 There are three common approaches to handling noise in GPR:
-
-\begin{itemize}
-    \item \textbf{Noise as a Hyper-parameter (Homoscedastic Noise)}:  
-    Here, we assume that all observations have the same level of noise, i.e., the noise is constant throughout the dataset:
-    \[
-    \sigma_i^2 = \sigma_n^2 \quad \forall i.
-    \]
-    This leads to a covariance matrix modified by adding a constant term to the diagonal:
-    \[
-    K(X, X) + \sigma_n^2 I = 
-    \begin{bmatrix}
-    k(x_1, x_1) + \sigma_n^2 & \cdots & k(x_1, x_n) \\
-    \vdots & \ddots & \vdots \\
-    k(x_n, x_1) & \cdots & k(x_n, x_n) + \sigma_n^2
-    \end{bmatrix}.
-    \]
-    The noise variance $\sigma_n^2$ is treated as a learnable hyper-parameter during model training.
-
-    \item \textbf{Known Noise (Heteroscedastic Noise)}:  
-    In this case, the noise variance changes across the input space—some observations are noisier than others. If we know the individual noise variances $\sigma_i^2$ for each training input $x_i$, we incorporate them by adding a diagonal noise matrix to the kernel:
-    \[
-    K(X, X) + \Sigma = 
-    \begin{bmatrix}
-    k(x_1, x_1) + \sigma_1^2 & \cdots & k(x_1, x_n) \\
-    \vdots & \ddots & \vdots \\
-    k(x_n, x_1) & \cdots & k(x_n, x_n) + \sigma_n^2
-    \end{bmatrix},
-    \]
-    where $\Sigma = \text{diag}(\sigma_1^2, \sigma_2^2, \dots, \sigma_n^2)$.
-
-    \item \textbf{Monte Carlo Sampling of Noise}:  
-    This technique can be used with either homoscedastic or heteroscedastic noise. Instead of modifying the kernel matrix directly, we explicitly simulate noise. We assume:
-    \[
-    \epsilon_i \sim \mathcal{N}(0, \sigma_i^2),
-    \]
-    and create new noisy training sets by adding a sampled noise value to each function value:
-    \[
-    y_i^{(s)} = f_i + \epsilon_i^{(s)}.
-    \]
-    Repeating this sampling multiple times allows us to generate multiple noisy versions of the dataset. We then average predictions over these Monte Carlo samples to better capture the uncertainty introduced by noise.
-\end{itemize}
+\subsubsection*{Noise as a Hyper-parameter (Homoscedastic Noise)}  
+Here, we assume that all observations have the same level of noise, i.e., the noise is constant throughout the dataset:
+\[
+\sigma_i^2 = \sigma_n^2 \quad \forall i.
+\]
+This leads to a covariance matrix modified by adding a constant term to the diagonal:
+\[
+K(X, X) + \sigma_n^2 I = 
+\begin{bmatrix}
+k(x_1, x_1) + \sigma_n^2 & \cdots & k(x_1, x_n) \\
+\vdots & \ddots & \vdots \\
+k(x_n, x_1) & \cdots & k(x_n, x_n) + \sigma_n^2
+\end{bmatrix}.
+\]
+Our prior distribution now becomes:
+\begin{equation}
+y \sim \mathcal{N}(0, K+\sigma_n^2 I)
+\end{equation}
+where $\sigma_n^2$ is a new parameter which effects the shape of the distribution. In figure \ref{fig: GPprior_hyperparams} we 
+explored how the internal kernel hyper-parameters effect the shape of the sampes from our prior distribution. We now examin how the noise (i.e $\sigma_n^2$) effects samples from our prior distribution from \ref{eq: distribution_noisey_data}
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/GPRwhitekernel.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/GPRerror2.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/averagemontecarlosample.png}
-    \end{subfigure}
-    \caption{
-    Left: A white kernel is used to add the noise as a hyper-parameter which is optimised (homoscedastic noise). 
-    Middle: We update our covariance function with the true variance at the training points (heteroscedastic noise). 
-    Right: Result of Monte Carlo sampling of normally distributed noise at each training point (heteroscedastic noise).
-    }
+        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_noise.png}
+        \caption{Sampling from the GP prior with mean 0 and covariance given by the RBF kernel.
+        The plot shows the effect of the noise hyperparameter \(\sigma_n^2\) on the GP prior.We fix the signal variance to 1 and length scale to 0.5.}
+    \label{fig: kernel_noise}
 \end{figure}
 
-\textcolor{red}{Add a justification as to the shapes. Why the larger and different confidence intervals}
+
+\subsubsection*{Known Noise (Heteroscedastic Noise)}  
+In this case, the noise variance changes across the input space—some observations are noisier than others. If we know the individual noise variances \( \sigma_i^2 \) for each training input \( x_i \), we incorporate them by adding a diagonal noise matrix to the kernel:
+\[
+K(X, X) + \Sigma = 
+\begin{bmatrix}
+k(x_1, x_1) + \sigma_1^2 & \cdots & k(x_1, x_n) \\
+\vdots & \ddots & \vdots \\
+k(x_n, x_1) & \cdots & k(x_n, x_n) + \sigma_n^2
+\end{bmatrix},
+\]
+where \( \Sigma = \text{diag}(\sigma_1^2, \sigma_2^2, \dots, \sigma_n^2) \).
+In this case the noise is not found as a hyper-parameter but instead just added to the diagonal of the covariance matrix. 
+
+\subsubsection*{Monte Carlo Sampling of Noise}  
+This technique can be used with either homoscedastic or heteroscedastic noise. Instead of modifying the kernel matrix directly, we explicitly simulate noise. We assume:
+\[
+\epsilon_i \sim \mathcal{N}(0, \sigma_i^2),
+\]
+and create new noisy training sets by adding a sampled noise value to each function value:
+\[
+y_i^{(s)} = f_i + \epsilon_i^{(s)}.
+\]
+Repeating this sampling multiple times allows us to generate multiple noisy versions of the dataset. We then average predictions over these Monte Carlo samples to better capture the uncertainty introduced by noise.
+
+
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{LatexPlots/1dplots/GPRwhitekernel.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{LatexPlots/1dplots/GPRerror2.png}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.3\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{LatexPlots/1dplots/averagemontecarlosample.png}
+%     \end{subfigure}
+%     \caption{
+%     Left: A white kernel is used to add the noise as a hyper-parameter which is optimised (homoscedastic noise). 
+%     Middle: We update our covariance function with the true variance at the training points (heteroscedastic noise). 
+%     Right: Result of Monte Carlo sampling of normally distributed noise at each training point (heteroscedastic noise).
+%     }
+% \end{figure}
+
+\Sean{Here I should add a subplot of 3 plots. It will indicate my prior of each of the different cases. Set $\sigma_n = c$ then
+generate random noise pointwise and add in and finally sample from the noise and generate new samples.}
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[width=\textwidth]{LatexPlots/1dplots/GPR_noise_comparison.png}
+        \caption{Sampling from the GP prior with mean 0 and covariance given by the kernel function and the relevant noise method}
+    \label{fig: noise_comparison}
+\end{figure}
 
 
 \subsection{Hyper-parameters}
@@ -699,6 +741,25 @@ but the overall mean function shape remains relatively stable. This suggests tha
 Lastly, varying the noise level $\sigma_n^2$ primarily affects the width of the credible interval, 
 while the mean function remains largely unchanged. As $\sigma_n^2$ increases, the model accounts for higher observation noise, 
 and uncertainty in the predictions increases accordingly. This relationship appears approximately linear in the visualizations.
+
+
+\textcolor{red}{From previous section may be worth including}
+\textbf{Credible Interval Behavior:} In Gaussian Process regression, the predictive variance at a new input $x^*$ is given by
+\[
+k(x^*, x^*) - k(x^*, X)(K_{XX}^{-1})k(X, x^*).
+\]
+
+With an RBF kernel, $k(x^*, X)$ will be near-zero if $x^*$ is farther than a few $\ell$'s away from all training inputs $X$. 
+For small $\ell$, this situation happens frequently – any point outside a tiny neighborhood of training data effectively has $k(x^*, X) 
+\approx 0$, so its predictive variance is roughly
+\[
+k(x^*, x^*) = \sigma_f^2
+\]
+(the prior variance). Thus, the 95\% credible interval reverts to roughly $\pm 2\sigma_f$ in large gaps or outside the data range.
+For large $\ell$, on the other hand, $k(x^*, X)$ remains sizable over a much broader range, reducing the variance term. The uncertainty
+only approaches the prior level far outside the data (several $\ell$'s away). In effect, a large $\ell$ flattens the covariance function
+so that the GP “remembers” the training set far out, maintaining narrower error bars over a wider domain.
+
 
 
 \subsubsection*{Learning Hyperparameters by Maximising the Log Marginal Likelihood}
@@ -1065,6 +1126,50 @@ p(f) = \frac{1}{\sqrt{2\pi} |K|^{1/2}}
     m(X) = m(X_*) = 0
     \]
 \end{itemize}
+
+
+
+\section{Appendix B: Kernel Formulas}
+\label{appendix:B}
+\subsubsection*{Radial Basis Function (RBF) Kernel}
+\[
+k(x, x') = \sigma_f^2 \exp\left( -\frac{(x - x')^2}{2\ell^2} \right)
+\]
+This kernel assumes smooth and infinitely differentiable functions, modeling local variations.
+
+
+\subsubsection*{Rational Quadratic Kernel}
+\[
+k(x, x') = \sigma_f^2 \left( 1 + \frac{(x - x')^2}{2 \alpha \ell^2} \right)^{-\alpha}
+\]
+This kernel can be seen as a scale mixture of RBF kernels, allowing for multi-scale behavior.
+
+
+\subsubsection*{Periodic Kernel}
+\[
+k(x, x') = \sigma_f^2 \exp\left( -\frac{2}{\ell^2} \sin^2\left( \frac{\pi (x - x')}{p} \right) \right)
+\]
+This kernel models repeating structures with period \( p \).
+
+\subsubsection*{Matern Kernel}
+\[
+k(x, x') = \sigma_f^2 \frac{2^{1-\nu}}{\Gamma(\nu)} \left( \frac{\sqrt{2\nu} |x - x'|}{\ell} \right)^\nu K_\nu\left( \frac{\sqrt{2\nu} |x - x'|}{\ell} \right)
+\]
+The Matern kernel allows for controlling the smoothness of functions via the parameter \( \nu \).
+
+
+\subsubsection*{Laplace (Exponential) Kernel}
+\[
+k(x, x') = \sigma_f^2 \exp\left( -\gamma |x - x'| \right)
+\]
+Equivalent to the Matern kernel with \( \nu = \frac{1}{2} \), this kernel models rougher functions.
+
+
+\subsubsection*{Linear (Dot-Product) Kernel}
+\[
+k(x, x') = \sigma_b^2 + x^\top x'
+\]
+This kernel grows with the similarity (inner product) between inputs, and it allows the function to vary globally. Since it depends directly on the values of \( x \) and \( x' \), not just their difference, it is non-stationary. It is particularly useful for modeling linear trends.
 
 
 \noindent
