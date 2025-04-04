@@ -11,12 +11,15 @@
 \usepackage{float} 
 \setlength{\parskip}{0.5em}
 % Enable clickable references
-\usepackage{graphicx}        
+\usepackage{graphicx, xcolor}        
 \usepackage{array}
 \usepackage[margin=0.8in]{geometry}
 \usepackage{adjustbox}
 \usepackage{makecell}
 \usepackage{amssymb}
+
+\newcommand{\Sarp}[1]{{\textcolor{blue}{{SA: #1}} }}
+
 
 
 \usepackage{cite} % For citation handling
@@ -36,10 +39,11 @@
 
 
 Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. As described in \textit{Gravitational Waves, Vol. 1} by Maggiore~\cite[p.~29]{GRbook},
+\Sarp{better to re-write this in your own words}
 \begin{quote}
 “In this setting, the definition of GWs is relatively clear: the background spacetime is flat, and the small fluctuations around it have been called ‘gravitational waves’. The term ‘waves’ is justified by the fact that, in a suitable gauge, \(h_{\mu\nu}\) indeed satisfies a wave equation.”
 \end{quote}
-This is formully appproached by expanding the Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
+This is formally appproached by expanding the Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
 \begin{equation}
 g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
 \qquad
@@ -47,18 +51,18 @@ g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
 \qquad
 \eta_{ab} = \mathrm{diag}(-1, 1, 1, 1),
 \end{equation}
-where \(h_{ab}\) represents the perturbation. In the linearized regime of general relativity, the Einstein field equations simplify to
+where \(h_{ab}\) represents the perturbation. Using linear perturbation theory in Lorenz gauge, the Einstein field equations simplify to
 \begin{equation}
     \Box \bar{h}_{ab} = \frac{-16\pi G}{c^4} T_{\mu \nu}.
 \end{equation}
-However we are interested in this equation outside of the source (i.e $T_{\mu \nu} =0$) therefore we are left with 
+However, we are interested in this equation outside of the source (i.e, stress-energy tensor $T_{\mu \nu} =0$) therefore we are left with 
 \begin{equation}
     \Box \bar{h}_{ab} = 0, 
 \end{equation}
-with \(\Box\) the d’Alembertian operator in flat spacetime.
+with \(\Box\) denoting the flat spacetime d’Alembertian operator.
 
 \noindent
-Although \(h_{ab}\) initially has 10 independent components (as a symmetric $4 \times 4$ tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorentz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
+Although \(h_{ab}\) initially has 10 independent components (as a symmetric $4 \times 4$ tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorenz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
 
 \noindent
 This wave equation admits plane-wave solutions. For a wave propagating in the \(z\)-direction, the TT-gauge form of the perturbation is:
@@ -100,7 +104,7 @@ where \(Q_{ij}\) is the mass quadrupole moment of the source. It is related to t
 \begin{equation}
 Q_{ij} := M_{ij} - \frac{1}{3} \delta_{ij} M^k_{\ k},
 \end{equation}
-where \(M_{ij} = \int d^3x\, T^{00}(x^i x^j)\).
+where \(M_{ij} = \int d^3x\, T^{00}\, x_i x_j\).
 
 
 
@@ -111,7 +115,7 @@ where \(M_{ij} = \int d^3x\, T^{00}(x^i x^j)\).
 \textcolor{red}{I took this example and summarised it from Sarp's notes, leads nicely to mismatch}
 
 \noindent
-We will now consider a generic problem as illistrated in \cite{intoGRSarp} where two point masses, \(m_1 \ge m_2\), are in a quasi-circular orbit of separation \(R\),
+We will now consider a generic problem as illustrated in Ref.~\cite{intoGRSarp} where two point masses, \(m_1 \ge m_2\), are in a quasi-circular orbit of separation \(R\),
 each at distances \(r_1\) and \(r_2\) from their common center of mass (CoM), with
 \(R = r_1 + r_2\). We place the orbit in the \(x\)--\(y\) plane so that mass~1 moves on
 \(\mathbf{x}_1(t) = r_1(\cos\Omega t,\,\sin\Omega t)\) and mass~2 on
@@ -153,12 +157,15 @@ is known as the chirp mass where $M = m_1+m_2$ is the total mass.
 
 \noindent
 \textcolor{red}{Could maybe mention radiation time scale being much smaller than orbit timescale but I don't see what this will add}
+\Sarp{You already kind of mention this below Eq.~\eqref{eq:E_dot_2}, so maybe provide slightly
+more detail there.}
 
 \noindent
 $ \dot{E} $ represents the rate at which the system loses energy due to gravitational-wave emission.
 This energy loss causes the binary orbit to shrink and the GW frequency to increase, 
 with the chirp mass \(\mathcal{M}\) and frequency \(\omega\) capturing the key features of this inspiral.
 
+\Sarp{From here you should go on to derive the form of a simple waveform in first time domain then frequency domain. Then you can go into the Mismatch}
 
 
 \subsection*{Introducing the Waveform Mismatch}
