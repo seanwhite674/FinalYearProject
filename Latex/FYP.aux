@@ -41,58 +41,79 @@
 \newlabel{tab:kernel-examples}{{1}{7}{Visual comparison of common kernel functions and their effect on Gaussian process priors. Each column shows the kernel shape $k(x, x')$, samples from the corresponding GP prior, and a summary of the structure it imposes. All kernels were evaluated using a lengthscale parameter $\ell = 1$ (except where noted). For the Matern kernel, $\nu = 0.5$; Laplace kernel, $\gamma = 6$; Rational Quadratic kernel, $\alpha = 0.25$; and Periodic kernel, period $p = 2$. Detailed formula and graphs for each kernel are provided in the appendix \ref {appendix:B}}{table.caption.13}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Sampling from the GP prior with mean 0 and covariance given by the RBF kernel. The first plot shows the effect of the lengthscale hyperparameter \(\ell \) on the GP prior.We fix the signal variance to 1. The second plot shows the effect of the signal variance hyperparameter \(\sigma _f^2\) on the GP prior.We fix the lengthscale to 0.5.}}{8}{figure.caption.14}\protected@file@percent }
 \newlabel{fig: GPprior_hyperparams}{{2}{8}{Sampling from the GP prior with mean 0 and covariance given by the RBF kernel. The first plot shows the effect of the lengthscale hyperparameter \(\ell \) on the GP prior.We fix the signal variance to 1. The second plot shows the effect of the signal variance hyperparameter \(\sigma _f^2\) on the GP prior.We fix the lengthscale to 0.5}{figure.caption.14}{}}
-\newlabel{sec: priortoposterior}{{3.3}{8}{Adding Data: Prior to Posterior}{section*.15}{}}
-\newlabel{eq: predictive_dist}{{20}{8}{Adding Data: Prior to Posterior}{equation.20}{}}
-\newlabel{eq: predictive_mean}{{21}{8}{Adding Data: Prior to Posterior}{equation.21}{}}
-\newlabel{eq: predictive_variance}{{22}{8}{Adding Data: Prior to Posterior}{equation.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Prior Distribution}}{9}{figure.caption.16}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma ^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterio distribution. The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior. }}{9}{figure.caption.16}\protected@file@percent }
-\newlabel{fig: priortoposterior}{{4}{9}{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma ^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterio distribution. The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior}{figure.caption.16}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Handling Noise in our Data}{9}{subsection.3.4}\protected@file@percent }
-\newlabel{sec: Handlingnoise}{{3.4}{9}{Handling Noise in our Data}{subsection.3.4}{}}
-\newlabel{eq: distribution_noisey_data}{{25}{9}{Handling Noise in our Data}{equation.25}{}}
-\newlabel{eq: predictive_mean_noise}{{26}{9}{Handling Noise in our Data}{equation.26}{}}
-\newlabel{eq: predictive_variance_noise}{{27}{9}{Handling Noise in our Data}{equation.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Sampling from the GP prior with mean 0 and covariance given by the RBF kernel. The plot shows the effect of the noise hyperparameter \(\sigma _n^2\) on the GP prior.We fix the signal variance to 1 and length scale to 0.5.}}{10}{figure.caption.18}\protected@file@percent }
-\newlabel{fig: kernel_noise}{{5}{10}{Sampling from the GP prior with mean 0 and covariance given by the RBF kernel. The plot shows the effect of the noise hyperparameter \(\sigma _n^2\) on the GP prior.We fix the signal variance to 1 and length scale to 0.5}{figure.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Sampling from the GP prior with mean 0 and covariance given by the kernel function and the relevant noise method}}{11}{figure.caption.21}\protected@file@percent }
-\newlabel{fig: noise_comparison}{{6}{11}{Sampling from the GP prior with mean 0 and covariance given by the kernel function and the relevant noise method}{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Hyper-parameters}{11}{subsection.3.5}\protected@file@percent }
-\newlabel{sec: Hyper_parameters}{{3.5}{11}{Hyper-parameters}{subsection.3.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces This figure outlines the effect of different RBF kernel hyperparameters on Gaussian Process Regression predictions.For each graph the mean is plotted along with the 95\% credible region. Each hyper-parameter is set at $\ell =0.109$, $\sigma _f^2 =1.2$ and $\sigma _n^2 = 0.15$ unless explicitly changed}}{11}{figure.caption.22}\protected@file@percent }
-\newlabel{figure: Effect of Hyper-parameters}{{7}{11}{This figure outlines the effect of different RBF kernel hyperparameters on Gaussian Process Regression predictions.For each graph the mean is plotted along with the 95\% credible region. Each hyper-parameter is set at $\ell =0.109$, $\sigma _f^2 =1.2$ and $\sigma _n^2 = 0.15$ unless explicitly changed}{figure.caption.22}{}}
+\newlabel{sec: priortoposterior}{{3.3}{9}{Adding Data: Prior to Posterior}{section*.15}{}}
+\newlabel{eq: predictive_dist}{{20}{9}{Adding Data: Prior to Posterior}{equation.20}{}}
+\newlabel{eq: predictive_mean}{{21}{9}{Adding Data: Prior to Posterior}{equation.21}{}}
+\newlabel{eq: predictive_variance}{{22}{9}{Adding Data: Prior to Posterior}{equation.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Prior Distribution}}{10}{figure.caption.16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma ^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterio distribution. The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior. }}{10}{figure.caption.16}\protected@file@percent }
+\newlabel{fig: priortoposterior}{{4}{10}{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma ^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterio distribution. The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior}{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Handling Noise in our Data}{10}{subsection.3.4}\protected@file@percent }
+\newlabel{sec: Handlingnoise}{{3.4}{10}{Handling Noise in our Data}{subsection.3.4}{}}
+\newlabel{eq: prior_distribution_noise}{{25}{10}{Handling Noise in our Data}{equation.25}{}}
+\newlabel{eq: predictive_distribution_noise}{{26}{10}{Handling Noise in our Data}{equation.26}{}}
+\newlabel{eq: predictive_mean_noise}{{27}{10}{Handling Noise in our Data}{equation.27}{}}
+\newlabel{eq: predictive_variance_noise}{{28}{10}{Handling Noise in our Data}{equation.28}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Sampling from the GP prior with mean 0 and covariance given by the RBF kernel. The plot shows the effect of the noise hyperparameter \(\sigma _n^2\) on the GP prior.We fix the signal variance to 1 and length scale to 0.5.}}{11}{figure.caption.18}\protected@file@percent }
+\newlabel{fig: kernel_noise}{{5}{11}{Sampling from the GP prior with mean 0 and covariance given by the RBF kernel. The plot shows the effect of the noise hyperparameter \(\sigma _n^2\) on the GP prior.We fix the signal variance to 1 and length scale to 0.5}{figure.caption.18}{}}
+\newlabel{eq:additive_kernel}{{30}{11}{Heteroscedastic Noise}{equation.30}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Samples drawn from a zero-mean Gaussian Process prior with varying noise assumptions. \textbf  {Left:} Homoscedastic noise, where a constant noise variance \(\sigma _n^2 = 0.5\) is added uniformly across all inputs. \textbf  {Middle:} Heteroscedastic noise, where individual noise variances \(\sigma _i^2\) are known and drawn from \(\mathcal  {N}(0, 0.5)\), resulting in a diagonal noise covariance. \textbf  {Right:} Monte Carlo sampling of noisy observations, where multiple noisy realizations are generated from \(\mathcal  {N}(f(x), \epsilon ^2)\)}}{12}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:noise_comparison}{{6}{12}{Samples drawn from a zero-mean Gaussian Process prior with varying noise assumptions. \textbf {Left:} Homoscedastic noise, where a constant noise variance \(\sigma _n^2 = 0.5\) is added uniformly across all inputs. \textbf {Middle:} Heteroscedastic noise, where individual noise variances \(\sigma _i^2\) are known and drawn from \(\mathcal {N}(0, 0.5)\), resulting in a diagonal noise covariance. \textbf {Right:} Monte Carlo sampling of noisy observations, where multiple noisy realizations are generated from \(\mathcal {N}(f(x), \epsilon ^2)\)}{figure.caption.21}{}}
 \citation{bible}
-\newlabel{sec: hyperparam_optimisation}{{3.5}{12}{Learning Hyperparameters by Maximising the Log Marginal Likelihood}{section*.23}{}}
-\newlabel{eq: 5}{{29}{13}{Learning Hyperparameters by Maximising the Log Marginal Likelihood}{equation.29}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces For a GPR with noise we are forced to optimise a length hyper-parameter, a variance hyper-parameter and a noise hyper-parameter. Here we have kept one parameter constant on each graph and compared the log likelihood space varying the other two parameters. In graph one the noise is set at 0.1, in graph 2 the length is set at 0.5, in graph 3 the variance is set at 1.5. In the final graph we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm as the black dot.This point is located at $(\sigma ^2 = 1.16, l = 0.109$ noise$ = 0.105)$}}{13}{figure.caption.24}\protected@file@percent }
-\newlabel{figure: Optimising Hyper-params}{{8}{13}{For a GPR with noise we are forced to optimise a length hyper-parameter, a variance hyper-parameter and a noise hyper-parameter. Here we have kept one parameter constant on each graph and compared the log likelihood space varying the other two parameters. In graph one the noise is set at 0.1, in graph 2 the length is set at 0.5, in graph 3 the variance is set at 1.5. In the final graph we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm as the black dot.This point is located at $(\sigma ^2 = 1.16, l = 0.109$ noise$ = 0.105)$}{figure.caption.24}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Cross Validation}{13}{subsubsection.3.5.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Quantifying Uncertainty and Evaluating Model Accuracy}{13}{section.4}\protected@file@percent }
-\newlabel{sec:uncertainty_and_evaluation}{{4}{13}{Quantifying Uncertainty and Evaluating Model Accuracy}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Monte Carlo Markov Chain (MCMC): A Posterior over Hyperparameters}{13}{subsection.4.1}\protected@file@percent }
-\newlabel{sec: MCMC}{{4.1}{13}{Monte Carlo Markov Chain (MCMC): A Posterior over Hyperparameters}{subsection.4.1}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf  {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}}{14}{figure.caption.27}\protected@file@percent }
-\newlabel{fig:MCMC flowchart}{{9}{14}{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers}{figure.caption.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces This MCMC is run using a gpr with a RBF Kernel with White Kernel for noise.Left: A plot of the space sampled by each walker in my MCMC run (burnin=100 and thin=15). \hskip 1em\relax Right: A plot of the distribution of the hyper-parameters built using a Gaussian KDE from the MCMC samples.}}{15}{figure.caption.28}\protected@file@percent }
-\newlabel{fig:MCMCresults}{{10}{15}{This MCMC is run using a gpr with a RBF Kernel with White Kernel for noise.Left: A plot of the space sampled by each walker in my MCMC run (burnin=100 and thin=15). \quad Right: A plot of the distribution of the hyper-parameters built using a Gaussian KDE from the MCMC samples}{figure.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Hyper-parameters}{13}{subsection.3.5}\protected@file@percent }
+\newlabel{sec: Hyper_parameters}{{3.5}{13}{Hyper-parameters}{subsection.3.5}{}}
+\newlabel{eq: 5}{{35}{13}{Hyper-parameters}{equation.35}{}}
 \citation{bible}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces  Left: This is the GPR plotted with the mean hyper-parameters Middle: This is the GPR plotted with the peak hyper-parameters Right: This is the full predictive distribution over all the hyper-parameter samples }}{16}{figure.caption.29}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Model Evaluation Metrics}{16}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:metrics}{{4.2}{16}{Model Evaluation Metrics}{subsection.4.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8.}}{16}{table.caption.30}\protected@file@percent }
-\newlabel{tab:metrics-comparison}{{2}{16}{Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8}{table.caption.30}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Multi-Dimensional Gaussian Process Regression}{17}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}Method}{17}{section.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces My Process Flowchart}}{17}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:flowchart}{{12}{17}{My Process Flowchart}{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Method Over-view}{17}{subsection.6.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}My data 4D - 7D}{18}{subsection.6.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Training and Testing Protocol}{18}{subsection.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7}Different Models}{18}{section.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix A: Derivation of Predictive Distribution}{18}{appendix.A}\protected@file@percent }
-\newlabel{appendix:A}{{A}{18}{Appendix A: Derivation of Predictive Distribution}{appendix.A}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {B}Appendix B: Kernel Formulas}{19}{appendix.B}\protected@file@percent }
-\newlabel{appendix:B}{{B}{19}{Appendix B: Kernel Formulas}{appendix.B}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces For a GPR with noise we are forced to optimise a length hyper-parameter, a variance hyper-parameter and a noise hyper-parameter. Here we have kept one parameter constant on each graph and compared the log likelihood space varying the other two parameters. In graph one the noise is set at 0.1, in graph 2 the length is set at 0.5, in graph 3 the variance is set at 1.5. In the final graph we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm as the black dot.This point is located at $(\sigma ^2 = 1.16, l = 0.109$ noise$ = 0.105)$}}{14}{figure.caption.22}\protected@file@percent }
+\newlabel{figure: Optimising Hyper-params}{{7}{14}{For a GPR with noise we are forced to optimise a length hyper-parameter, a variance hyper-parameter and a noise hyper-parameter. Here we have kept one parameter constant on each graph and compared the log likelihood space varying the other two parameters. In graph one the noise is set at 0.1, in graph 2 the length is set at 0.5, in graph 3 the variance is set at 1.5. In the final graph we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm as the black dot.This point is located at $(\sigma ^2 = 1.16, l = 0.109$ noise$ = 0.105)$}{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.5.1}Cross Validation}{14}{subsubsection.3.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Quantifying Uncertainty and Evaluating Model Accuracy}{14}{section.4}\protected@file@percent }
+\newlabel{sec:uncertainty_and_evaluation}{{4}{14}{Quantifying Uncertainty and Evaluating Model Accuracy}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Monte Carlo Markov Chain (MCMC): A Posterior over Hyperparameters}{14}{subsection.4.1}\protected@file@percent }
+\newlabel{sec: MCMC}{{4.1}{14}{Monte Carlo Markov Chain (MCMC): A Posterior over Hyperparameters}{subsection.4.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf  {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}}{15}{figure.caption.25}\protected@file@percent }
+\newlabel{fig:MCMC flowchart}{{8}{15}{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers}{figure.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces This MCMC is run using a gpr with a RBF Kernel with White Kernel for noise.Left: A plot of the space sampled by each walker in my MCMC run (burnin=100 and thin=15). \hskip 1em\relax Right: A plot of the distribution of the hyper-parameters built using a Gaussian KDE from the MCMC samples.}}{16}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:MCMCresults}{{9}{16}{This MCMC is run using a gpr with a RBF Kernel with White Kernel for noise.Left: A plot of the space sampled by each walker in my MCMC run (burnin=100 and thin=15). \quad Right: A plot of the distribution of the hyper-parameters built using a Gaussian KDE from the MCMC samples}{figure.caption.26}{}}
+\citation{bible}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces  Left: This is the GPR plotted with the mean hyper-parameters Middle: This is the GPR plotted with the peak hyper-parameters Right: This is the full predictive distribution over all the hyper-parameter samples }}{17}{figure.caption.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Model Evaluation Metrics}{17}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:metrics}{{4.2}{17}{Model Evaluation Metrics}{subsection.4.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8.}}{17}{table.caption.28}\protected@file@percent }
+\newlabel{tab:metrics-comparison}{{2}{17}{Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Multi-Dimensional Gaussian Process Regression}{18}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Method}{18}{section.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces My Process Flowchart}}{18}{figure.caption.29}\protected@file@percent }
+\newlabel{fig:flowchart}{{11}{18}{My Process Flowchart}{figure.caption.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Data Description}{18}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Results}{19}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Cross-Validation Performance}{19}{subsection.7.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Comparing how simlar results the metrics give in a dendrogram}}{19}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:Dendrogram}{{12}{19}{Comparing how simlar results the metrics give in a dendrogram}{figure.caption.35}{}}
+\newlabel{fig:CVoverallmodels}{{13a}{20}{Results from cross-validation}{figure.caption.36}{}}
+\newlabel{sub@fig:CVoverallmodels}{{a}{20}{Results from cross-validation}{figure.caption.36}{}}
+\newlabel{fig:r2vsfom}{{13b}{20}{Comparing clustered model performance by $R^2$ and FoM}{figure.caption.36}{}}
+\newlabel{sub@fig:r2vsfom}{{b}{20}{Comparing clustered model performance by $R^2$ and FoM}{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Cross-validation metric trends and a performance trade-off visualization.}}{20}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:CV_sidebyside}{{13}{20}{Cross-validation metric trends and a performance trade-off visualization}{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Seeing how the best models performed over different clusters}}{20}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:boxplots}{{14}{20}{Seeing how the best models performed over different clusters}{figure.caption.37}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Training on 90\% of Data}{20}{subsection.7.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Metrics of best 8}}{21}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:best8_metrics}{{15}{21}{Metrics of best 8}{figure.caption.38}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Comparing metrics}}{21}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:comparing_metrics}{{16}{21}{Comparing metrics}{figure.caption.39}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces All 8 gps with cutting their y-axis}}{22}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:best8_ycuts}{{17}{22}{All 8 gps with cutting their y-axis}{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces All 8 gps with cutting their x-axis}}{23}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:best8_xcuts}{{18}{23}{All 8 gps with cutting their x-axis}{figure.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Examining my chosen model RBF Matern kernel}}{24}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:RBF_Matern_xcuts}{{19}{24}{Examining my chosen model RBF Matern kernel}{figure.caption.42}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Top Model Selection and Analysis}{24}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Appendix A: Derivation of Predictive Distribution}{24}{appendix.A}\protected@file@percent }
+\newlabel{appendix:A}{{A}{24}{Appendix A: Derivation of Predictive Distribution}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Appendix B: Kernel Formulas}{25}{appendix.B}\protected@file@percent }
+\newlabel{appendix:B}{{B}{25}{Appendix B: Kernel Formulas}{appendix.B}{}}
 \bibdata{references}
 \bibcite{intoGRSarp}{1}
 \bibcite{kernelcookbook}{2}
@@ -100,5 +121,5 @@
 \bibcite{GRbook}{4}
 \bibcite{mismatch}{5}
 \bibcite{bible}{6}
-\newlabel{eq: 1}{{30}{20}{Linear (Dot-Product) Kernel}{equation.30}{}}
-\gdef \@abspage@last{20}
+\newlabel{eq: 1}{{36}{26}{Linear (Dot-Product) Kernel}{equation.36}{}}
+\gdef \@abspage@last{26}
