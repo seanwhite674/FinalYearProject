@@ -1,4 +1,5 @@
-\documentclass{article}
+\documentclass[11pt]{article}
+\PassOptionsToPackage{a4paper,left=30mm,top=20mm,right=20mm,bottom=30mm}{geometry}
 %\usepackage[backend=biber,style=numeric]{biblatex} % Use biblatex with numeric citations
 \usepackage{cite}
 \usepackage{hyperref}  
@@ -18,6 +19,9 @@
 \usepackage{makecell}
 \usepackage{csvsimple}
 \usepackage{amssymb}
+\usepackage{setspace}
+
+\onehalfspacing
 \newcommand{\Sarp}[1]{{\textcolor{blue}{{SA: #1}} }}
 \newcommand{\Sean}[1]{{\textcolor{red}{{Sean: #1}} }}
 
@@ -25,7 +29,6 @@
 \usepackage{cite} % For citation handling
 \bibliographystyle{acm}  
  % without .bib extension
-
 
 \title{FYP }
 \author{Sean White}
@@ -35,9 +38,12 @@
 
 \maketitle
 
+
+\section{Abstract}
+
+
+
 \section{GR intro}
-
-
 Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. As described in \textit{Gravitational Waves, Vol. 1} by Maggiore~\cite[p.~29]{GRbook},
 \begin{quote}
 “In this setting, the definition of GWs is relatively clear: the background spacetime is flat, and the small fluctuations around it have been called ‘gravitational waves’. The term ‘waves’ is justified by the fact that, in a suitable gauge, \(h_{\mu\nu}\) indeed satisfies a wave equation.”
@@ -1056,6 +1062,7 @@ For our 4d model we reduce this 8 dimensional parameter space to 4. These 4 para
 \end{itemize}
 Here, the spin vectors are defined as $\mathbf{S} = (S_x, S_y, S_z)$
 
+\Sean{Maybe Redundant Graph}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{LatexPlots/GRdiagram.png}
@@ -1075,6 +1082,7 @@ cut our 3d surface at $z=0$ and interpolate over our values to visualise a plane
 When working directly with the true data, interpolation is necessary to estimate values between sample points. However, a major advantage of using Gaussian Process Regression (GPR) is that it gives us an analytic model that can be evaluated at any point within the domain. 
 This means that when visualising GPR predictions, we do not need to interpolate, instead we can directly evaluate the GPR while holding selected dimensions constant.
 
+\Sean{Not nice visual}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
@@ -1111,8 +1119,10 @@ By comparing the predictions to the true values using the same six metrics and v
 
 
 \section{Results}
+\subsection{4D Results}
+\Sean{Unsure about visuals here need to build them in better, don't know which models to plot, I am plotting too much atm maybe combined noerror and minmax}
 
-\subsection*{Cross-Validation Performance}
+\subsubsection*{Cross-Validation Performance}
 
 After running cross-validation for all model types discussed, we summarize the results in Figure~\ref{fig:broad_comparison}. A few notable observations emerge. Firstly, the \texttt{monte\_carlo} noise modeling method performs poorly.
 This may be partly due to computational limitations (we only ran 10 samples per fold) but also due to instability in optimization. For noisy systems, sampling extreme values for noise led to difficulty during optimization, 
@@ -1155,7 +1165,7 @@ We label each point with its ranking from Table~\ref{tab:rankingtable}, which re
 
 
 
-\subsection*{Training on 90\% of Data}
+\subsubsection*{Training on 90\% of Data}
 Now selecting our 8 models that formed that cluster of high performing models in (Figure~\ref{fig:CV_sidebyside}, right) we train all these models on the full 90\% of the data that cross validation was corried out with.
 The resulting model hyper-parameterers are available in \ref{tab:final_gpr_hyperparams}. With these trained models we predict on our test set (10\% of data completely unseen) and like in (Figure~\ref{fig:CV_sidebyside}, right)
 we plot our results as a scatter showing how models generalise over the \(R^2\),FOM and MAE metrics.
@@ -1193,11 +1203,12 @@ However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparam
 
 \begin{table}[H]
 \centering
+\caption{Optimized Hyperparameters for Final GPR Models}
 \footnotesize  % Smaller than normalsize, slightly larger than scriptsize
 \renewcommand{\arraystretch}{1.15}  % Slightly tighter row spacing
 \setlength{\tabcolsep}{4pt}  % Reduce column padding
-\caption{Optimized Hyperparameters for Final GPR Models}
 \label{tab:final_gpr_hyperparams}
+{\fontsize{7}{9.5}\selectfont
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
 \textbf{Model} & \textbf{Kernel 1} & \textbf{Scale 1} & \textbf{Length Scales 1} & \textbf{Kernel 2} & \textbf{Scale 2} & \textbf{Length Scales 2 / Noise} \\
@@ -1211,25 +1222,23 @@ However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparam
 \texttt{Laplace\_minmaxerr} & Laplacian ($\gamma = 0.284$) & $6.60$ & --- & White & --- & $\sigma_n^2 = 0.0439$ \\
 \texttt{RBF\_minmaxerr} & RBF & $0.821$ & $[0.12, 0.115, 1.19, 2.52]$ & White & --- & $\sigma_n^2 = 0.0439$ \\
 \hline
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 
-\subsection*{MCMC}
+\subsubsection*{MCMC}
 
-    
-
-    
-        
-    
-
+\subsection{7D Results}
+\Sean{Ask Sarp how to compare 4D with 7D obviously need to use transformation formulas to get equivalent}
+\Sean{Ask Sarp if it is at all possible to plots of other other functional fits of Mismatch like he had in his plot}
+\Sean{Ask Sar if possible to get true mismatch data from other data-set to test, if model generalises}
 
 
-\subsection{Top Model Selection and Analysis}
-- Your top 3 models
-- Summary of their performance
-- MCMC trace plots or hyperparameter uncertainty discussion
 
+\section{Conclusion}
+
+
+\section{Discussion}
 
 
 \appendix
@@ -1371,9 +1380,10 @@ This kernel grows with the similarity (inner product) between inputs, and it all
 
 \begin{table}[H]
     \centering
-    \scriptsize
     \caption{Final Model Rankings from CSV}
+    {\fontsize{7}{9.5}\selectfont
     \csvautotabular{LatexPlots/CV_plots/model_rankings.csv}
+    }
     \label{tab:rankingtable}
 \end{table}
     
