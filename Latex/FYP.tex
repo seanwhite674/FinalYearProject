@@ -16,6 +16,7 @@
 \usepackage[margin=0.8in]{geometry}
 \usepackage{adjustbox}
 \usepackage{makecell}
+\usepackage{csvsimple}
 \usepackage{amssymb}
 \newcommand{\Sarp}[1]{{\textcolor{blue}{{SA: #1}} }}
 \newcommand{\Sean}[1]{{\textcolor{red}{{Sean: #1}} }}
@@ -1039,112 +1040,188 @@ The Pearson correlation coefficient measures the linear relationship between pre
 \end{figure}
 
 \subsection{Data Description}
-- Dimensionality choices (4D vs 7D)
-- Summary of input features
-- How the data was generated or collected (e.g., from simulations or experiments)
+\Sean{What data am I using what is its label??}
 
-\subsubsection*{Kernel Choices}
-I built my selection of models using 5 kernels discussed in section \ref{sec: Kernels} these kernels are the 
-Radial Basis Function (RBF), the Rational Quadratic Function (RQF), the Matern Kenrel (Mat), the periodic kernel (Expsine) and the laplace kernel (lapl).
+\noindent
+\textbf{4D}
 
-\subsubsection*{Noise approach}
-I used each noise type discussed in section \ref{sec: Handlingnoise}, this includes treating noise as a hyper-parameter (homoscedastic noise), 
-using our known noise (heterscedastic), using combined kernels to model the noise (heterscedastic), using monte carlo sampling of the noise (heterscedastic). 
+\noindent
+The inrinsic parameter space of a binary black hole is 8 dimension. This accounts for two masses and two spin vectors both in 3 dimensions. 
+For our 4d model we reduce this 8 dimensional parameter space to 4. These 4 parameters are:
+\begin{itemize}
+    \item \textbf{Total Mass:} $M_1 + M_2$
+    \item \textbf{Symmetric Mass Ratio:} $\displaystyle \frac{q}{(1+q)^2}$ where $q = \frac{M_2}{M_1}$
+    \item \textbf{Parallel Spin Component:} $\displaystyle \chi_{\parallel} = \frac{|\mathbf{S}_{1,\parallel} + \mathbf{S}_{2,\parallel}|}{M^2}$, the magnitude of the component of the spin vectors parallel to the orbital angular momentum
+    \item \textbf{Perpendicular Spin Component:} $\displaystyle \chi_{\perp} = \frac{|\mathbf{S}_{1,\perp} + \mathbf{S}_{2,\perp}|}{M^2}$, the magnitude of the component perpendicular to the orbital angular momentum
+\end{itemize}
+Here, the spin vectors are defined as $\mathbf{S} = (S_x, S_y, S_z)$
 
-\subsubsection*{Hyper parameters}
-For all my models I maximised the marginal log-likelihood for parameter selection as discussed in \ref{sec: Hyper_parameters}. Then after finalising models
-I also ran Monte Carlo Markov Chain simulations to build a posterior over the hyper-parameters and understnad the uncertainty/ distribution associated with each hyper-parameter.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{LatexPlots/GRdiagram.png}
+    \caption{GR diagram}
+    \label{fig:gr_diagram}
+\end{figure}
+\noindent
+We scale our Total Mass data to lie between 0 and 1 (4 different total masses), and denote the scaled total mass by \( w \). For each total mass, we define 5 different symmetric mass ratios, which are scaled to lie between \(-1\) and \(1\); we denote these scaled values by \( z \).
+Next, we transform our \( X_{\parallel} \) and \( X_{\perp} \) data onto a square grid of size \( 10 \times 25 \), with \( X_{\parallel} \in [0.1, 1] \) and \( X_{\perp} \in [-\pi/2, \pi/2] \).
+We now have:
+\begin{equation}
+(x, y, z, w) = \text{transformed}(X_{\parallel}, X_{\perp}, \text{Symmetric Mass Ratio}, \text{Total Mass})
+\end{equation}
+\noindent
+We can visualise our data by holding parameters fixed and extracting cross-sections. In figure \ref{fig:visualising_data} we first show a 3d scatter plot of all our data for $w = 0.25$. We then 
+cut our 3d surface at $z=0$ and interpolate over our values to visualise a plane. Finally to extract a 1d-cut from the plane we cut the plane at $x=0.8$ and interpolate, helping visualise how our data changes over y. 
+When working directly with the true data, interpolation is necessary to estimate values between sample points. However, a major advantage of using Gaussian Process Regression (GPR) is that it gives us an analytic model that can be evaluated at any point within the domain. 
+This means that when visualising GPR predictions, we do not need to interpolate, instead we can directly evaluate the GPR while holding selected dimensions constant.
 
-\subsubsection*{Metrics Calculation}
-In order to compare these models effectively I evaluated each model using the metrics discussed in section \ref{sec:metrics} and then compared the metrics.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
+    \caption{Visualising our data by moving from 4d to 1d}
+    \label{fig:visualising_data}
+\end{figure}
 
-\subsubsection*{Cross Valiation}
-To ensure model's generalised well and weren't biased to a certain training set I used 10 fold cross validation and on each fold calculated the metrics for comparison.
+
+\subsection*{The Models}
+\Sean{Optimisation details, algorithm used}
+
+To construct a robust Gaussian Process Regression model, I undertook an exhaustive evaluation of possible models.
+This began by building models for every combination of kernel described in Section~\ref{sec: Kernels} and noise-handling approach outlined in Section~\ref{sec: Handlingnoise}.
+During this process, I observed that the optimisation of noise-related hyperparameters was highly sensitive to the bounds applied. To address this, I introduced three additional model variants for each kernel:one using very loose noise bounds,
+ nother using strict bounds decided by scaling the mean of the obseerved uncertainty estimates $(0.7\text{meanerror},1.3\text{meanerror})$, and a third using bounds decided by the 5\% and 95\% quantiles of the observed uncertainty estimates.
+For each model, the hyperparameters were optimised by maximising the log marginal likelihood, as discussed in Section~\ref{sec: Hyper_parameters}.
+
+
+\subsubsection*{Implementation Details}
+Include packages used 
+
+\subsection{Training, Comparing, and Testing My Models}
+
+\Sean{Average Rank across metrics, how I compared the metrics}
+To ensure my models were not overly dependent on the data used to train them, I implemented K-fold cross-validation \Sean{Find cite for this}. The full dataset was split into a 90-10 ratio: 90\% of the data was used for 10-fold cross-validation, while the remaining 10\% was held out as an untouched test set for final evaluation.
+During cross-validation, each model was trained on 9 out of the 10 folds and tested on the remaining fold. This process was repeated so that each fold served as the test set once. For every fold, I evaluated the model predictions against the true values using the six metrics outlined in Section~\ref{sec:metrics}. 
+To analyse model stability and consistency, I visualised the metric distributions across folds using box plots for each model-type. I also plotted the mean performance for each metric across all folds and model types. These visualisations enabled me to identify a subset of high-performing models to carry forward to final testing.
+
+\subsubsection*{Final Testing}
+
+In the final stage, each of the shortlisted models was retrained using the entire 90\% cross-validation training set and then evaluated on the held-out 10\% test set. 
+By comparing the predictions to the true values using the same six metrics and visualising their performance, I was able to identify the most accurate and robust model as the final winner.
+\Sean{MCMC}
 
 
 \section{Results}
 
-\subsection{Cross-Validation Performance}
-- Plots of metrics per model type
-- Ranking tables or summaries
+\subsection*{Cross-Validation Performance}
+
+After running cross-validation for all model types discussed, we summarize the results in Figure~\ref{fig:broad_comparison}. A few notable observations emerge. Firstly, the \texttt{monte\_carlo} noise modeling method performs poorly.
+This may be partly due to computational limitations (we only ran 10 samples per fold) but also due to instability in optimization. For noisy systems, sampling extreme values for noise led to difficulty during optimization, 
+and averaging across such varied samples likely caused over-generalized predictions. \Sean{Add graph to demonstrate a GP prediction after Monte Carlo sampling of the noise.}
+Incorporating the true noise (standard deviation of the data) values resulted in worse performance than learning the noise as a hyperparameter.
+This is evidenced by the relatively poor results from \texttt{fixed\_alpha} and the slightly improved but still limited performance of \texttt{hybrid}.
+We conclude that learning noise through a hyperparameter is the most effective approach in these models.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{LatexPlots/CV_plots/metrics_compared.png}
-    \caption{Comparing how simlar results the metrics give in a dendrogram}
-    \label{fig:Dendrogram}
+    \caption{}
+    \label{fig:broad_comparison}
 \end{figure}
+\noindent
+Note:In figure \ref{fig:broad_comparison} we focused on known noise and noise being modeled as a hyper-parameter we did not visualise the combined kernel approach. They are included in all subsequent evaluations.
+
+\noindent
+To rank models across multiple metrics, we compute the average rank of each model across all metrics. These rankings are shown in Table~\ref{tab:rankingtable}. To investigate which metrics produce similar or different model rankings,
+we plot a dendrogram of the ranking distances between metrics in (Figure~\ref{fig:CV_sidebyside},left). From this, we observe that the Figure of Merit (FoM), MAE, and $R^2$ yield notably different rankings.
+To visualise model performance and how the model generalises over all metrics we compare all models in a scatter plot of $R^2$ versus FoM (Figure~\ref{fig:CV_sidebyside}, right) with the color of each scatter point representing the MAE.
+We label each point with its ranking from Table~\ref{tab:rankingtable}, which reveals that the top 8 models form a clearly distinguishable set of optimal performers. These are examined more closely in the next section.
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[t]{0.48\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{LatexPlots/CV_plots/clustermetrics.png}
-        \caption{Results from cross-validation.}
-        \label{fig:CVoverallmodels}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.48\textwidth}
+    \hspace{0.03\textwidth}
+    \begin{subfigure}[t]{0.3\textwidth}
         \centering
         \includegraphics[width=\textwidth]{LatexPlots/CV_plots/r2vsfom.png}
-        \caption{Comparing clustered model performance by $R^2$ and FoM.}
-        \label{fig:r2vsfom}
     \end{subfigure}
-    \caption{Cross-validation metric trends and a performance trade-off visualization.}
+    \caption{Left: Dendrogram of difference in ranking between metrics, Right: Comparing clustered model performance by $R^2$ and FoM.}
     \label{fig:CV_sidebyside}
 \end{figure}
 
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/CV_plots/boxplots.png}
-    \caption{Seeing how the best models performed over different clusters}
-    \label{fig:boxplots}
-\end{figure}
 
 
-\subsection{Training on 90\% of Data}
-- Final model evaluations on held-out 10%
-- Error bars, confidence intervals, diagnostics
+
+\subsection*{Training on 90\% of Data}
+Now selecting our 8 models that formed that cluster of high performing models in (Figure~\ref{fig:CV_sidebyside}, right) we train all these models on the full 90\% of the data that cross validation was corried out with.
+The resulting model hyper-parameterers are available in \ref{tab:final_gpr_hyperparams}. With these trained models we predict on our test set (10\% of data completely unseen) and like in (Figure~\ref{fig:CV_sidebyside}, right)
+we plot our results as a scatter showing how models generalise over the \(R^2\),FOM and MAE metrics.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/metrics_of_finalists.png}
-    \caption{Metrics of best 8}
-    \label{fig:best8_metrics}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/metric_of_finalists_comparison.png}
+    \includegraphics[width=0.4\textwidth]{LatexPlots/final_gps_plots/metric_of_finalists_comparison.png}
     \caption{Comparing metrics}
     \label{fig:comparing_metrics}
 \end{figure}
-
+\noindent
+To understand the general shape of all our models we pick two cross-sections of our data and plot all our models for each.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/final_gps_ycuts.png}
-    \caption{All 8 gps with cutting their y-axis}
-    \label{fig:best8_ycuts}
+    \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png}
+    \caption{Comparing Cross-cuts of best models}
+    \label{fig:crosscuts_bestmodels}
 \end{figure}
 
+\noindent
+From these visualizations, we observe that while all models perform well, they differ in how they handle local noise.
+Let's examine the \texttt{RBFMat} model. It remains smooth where the data is clean but responds sharply in regions containing outliers or local irregularities.
+This behaviour is reflected in its optimized hyperparameters (Table~\ref{tab:final_gpr_hyperparams}). The RBF component has long characteristic length scales (around 1.0--1.5) and a large scale factor ($2.34$),
+which captures the global smooth structure of the data. Meanwhile, the Matern component has much shorter length scales (mostly < 0.5) and a smaller scale ($0.207$), allowing it to respond to local variability—effectively modeling input-dependent noise.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/final_gps_xcuts.png}
-    \caption{All 8 gps with cutting their x-axis}
-    \label{fig:best8_xcuts}
-\end{figure}
+\noindent
+In contrast, models using a single kernel with a \texttt{WhiteKernel} for noise (e.g., \texttt{Mat\_noerr}, \texttt{RBF\_noerr}) appear smoother overall. These models result in smaller length scales and relatively small noise variances ($\sigma_n^2 < 0.01$).
+When using tighter optimisation bounds for noise in the \texttt{min\_maxerr} models, we observe from Table~\ref{tab:final_gpr_hyperparams} that the noise hyperparameter consistently sits at or near the lower bound. 
+This suggests that the GP is compensating for noise directly through the kernel, not through the explicit noise model. This provides further credibility to the \texttt{RBFMat} combined model, where the noise appears to be effectively captured within the \texttt{Matern} kernel.
+Finally, examining Laplacian-based kernel models (\texttt{Laplace\_noerr} and \texttt{Laplace\_minmaxerr}), which only have a single hyperparameter ($\gamma$), they still perform reasonably well but tend to produce more linear predictions. This is likely due to their limited flexibility compared to other kernels.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png}
-    \caption{Examining my chosen model RBF Matern kernel}
-    \label{fig:RBF_Matern_xcuts}
-\end{figure}
+\noindent
+Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metrics} and our qualitative examination of the crosscuts in Figure~\ref{fig:crosscuts_bestmodels}, we conclude that the \texttt{RBFMat} model offers the best trade-off between flexibility, interpretability, and robustness.
+However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparameters, there is a risk we are overfitting to the data. Therefore, we retain the \texttt{Mat\_noerr} model for comparative purposes, as it offers a smooth fit with fewer hyperparameters.
+
+\begin{table}[H]
+\centering
+\footnotesize  % Smaller than normalsize, slightly larger than scriptsize
+\renewcommand{\arraystretch}{1.15}  % Slightly tighter row spacing
+\setlength{\tabcolsep}{4pt}  % Reduce column padding
+\caption{Optimized Hyperparameters for Final GPR Models}
+\label{tab:final_gpr_hyperparams}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Kernel 1} & \textbf{Scale 1} & \textbf{Length Scales 1} & \textbf{Kernel 2} & \textbf{Scale 2} & \textbf{Length Scales 2 / Noise} \\
+\hline
+\texttt{RBFMat} & RBF & $2.34$ & $[1.00, 1.51, 1.38, 1.36]$ & Matern ($\nu = 0.75$) & $0.207$ & $[0.0996, 0.0582, 0.414, 2.31]$ \\
+\texttt{RBFLap} & RBF & $0.354$ & $[0.10, 0.10, 1.18, 2.91]$ & Laplacian ($\gamma = 0.964$) & $0.292$ & --- \\
+\texttt{Mat\_noerr} & Matern ($\nu = 1.75$) & $0.926$ & $[0.227, 0.20, 1.15, 2.85]$ & White & --- & $\sigma_n^2 = 0.00637$ \\
+\texttt{Laplace\_noerr} & Laplacian ($\gamma = 0.358$) & $7.24$ & --- & White & --- & $\sigma_n^2 = 10^{-6}$ \\
+\texttt{RBF\_noerr} & RBF & $0.728$ & $[0.112, 0.112, 0.958, 1.6]$ & White & --- & $\sigma_n^2 = 0.00728$ \\
+\texttt{Mat\_minmaxerr} & Matern ($\nu = 1.75$) & $1.14$ & $[0.27, 0.22, 1.34, 4.73]$ & White & --- & $\sigma_n^2 = 0.0439$ \\
+\texttt{Laplace\_minmaxerr} & Laplacian ($\gamma = 0.284$) & $6.60$ & --- & White & --- & $\sigma_n^2 = 0.0439$ \\
+\texttt{RBF\_minmaxerr} & RBF & $0.821$ & $[0.12, 0.115, 1.19, 2.52]$ & White & --- & $\sigma_n^2 = 0.0439$ \\
+\hline
+\end{tabular}
+\end{table}
 
 
+\subsection*{MCMC}
 
+    
+
+    
+        
+    
 
 
 
@@ -1255,17 +1332,51 @@ k(x, x') = \sigma_b^2 + x^\top x'
 This kernel grows with the similarity (inner product) between inputs, and it allows the function to vary globally. Since it depends directly on the values of \( x \) and \( x' \), not just their difference, it is non-stationary. It is particularly useful for modeling linear trends.
 
 
-\noindent
-We obtain the posterior predictive distribution:
-\begin{equation}\label{eq: 1}
-p(f_* | f) = \frac{1}{(2\pi)^{n/2} |K_{**} - K_*^T K^{-1} K_*|^{1/2}} 
-\exp \left( 
--\frac{1}{2} 
-(f_* - K_*^T K^{-1} f)^T 
-(K_{**} - K_*^T K^{-1} K_*)^{-1} 
-(f_* - K_*^T K^{-1} f) 
-\right).
-\end{equation}
+\section{Appendix C: Graphs of 4d finalist GPs}
+\label{appendix:C}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/final_gps_ycuts.png}
+    \caption{All 8 gps with cutting their y-axis}
+    \label{fig:best8_ycuts}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/final_gps_xcuts.png}
+    \caption{All 8 gps with cutting their x-axis}
+    \label{fig:best8_xcuts}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png}
+    \caption{Examining my chosen model RBF Matern kernel}
+    \label{fig:RBF_Matern_xcuts}
+\end{figure}
+
+
+\section{Appendix D: Model Evaluation Table and graphs}
+\label{appendix:D}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{LatexPlots/CV_plots/boxplots.png}
+    \caption{Seeing how the best models performed over different clusters}
+    \label{fig:boxplots}
+\end{figure}
+
+\begin{table}[H]
+    \centering
+    \scriptsize
+    \caption{Final Model Rankings from CSV}
+    \csvautotabular{LatexPlots/CV_plots/model_rankings.csv}
+    \label{tab:rankingtable}
+\end{table}
+    
 
 
 

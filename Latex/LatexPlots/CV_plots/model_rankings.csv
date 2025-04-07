@@ -1,0 +1,24 @@
+Kernel,Model,R2,R,RMSE,R,MAE,R,adj R2,R,FOM,R,Pearson,R,Final R
+RBFMat,combinedkernel,0.98,1,0.05,1,0.03,1,0.97,1,0.6,9,0.99,1,1
+Matern,whitenoerror,0.97,2,0.05,2,0.03,2,0.97,2,0.61,10,0.99,2,2
+Matern,whiteminmaxerror,0.97,3,0.06,4,0.04,6,0.97,3,0.43,4,0.99,4,3
+RBF,whiteminmaxerror,0.97,4,0.06,5,0.04,7,0.97,4,0.43,5,0.99,3,4
+RBF,whitenoerror,0.97,5,0.06,3,0.03,3,0.97,5,0.63,11,0.99,5,5
+RBFLaplace,combinedkernel,0.97,6,0.06,6,0.04,5,0.97,6,0.68,12,0.99,6,6
+Laplace,whiteminmaxerror,0.94,8,0.09,8,0.06,8,0.94,8,0.58,8,0.97,8,7
+Laplace,whitenoerror,0.97,7,0.06,7,0.04,4,0.97,7,0.76,18,0.99,7,8
+RBFRad,combinedkernel,0.86,9,0.13,9,0.1,9,0.85,9,0.74,17,0.93,9,9
+ExpSineSquared,whiteminmaxerror,0.84,10,0.14,11,0.11,12,0.83,10,0.73,13,0.92,11,10
+ExpSineSquared,whitenoerror,0.84,11,0.14,12,0.11,15,0.83,11,0.74,16,0.92,12,11
+Matern,fixedalpha,0.83,14,0.14,10,0.1,10,0.83,14,1.33,19,0.92,10,12
+Matern,whitemeanerror,0.83,15,0.15,15,0.11,17,0.82,15,0.41,1,0.91,15,13
+RationalQuadratic,whitenoerror,0.84,12,0.14,13,0.11,14,0.83,12,0.74,15,0.91,13,14
+RationalQuadratic,whiteminmaxerror,0.84,13,0.14,14,0.11,13,0.83,13,0.74,14,0.91,14,15
+RBF,whitemeanerror,0.82,16,0.15,16,0.11,18,0.81,16,0.42,3,0.91,17,16
+Laplace,whitemeanerror,0.82,17,0.15,18,0.11,19,0.81,17,0.42,2,0.91,16,17
+RationalQuadratic,whitemeanerror,0.81,19,0.16,19,0.12,20,0.8,19,0.44,6,0.9,19,18
+RBF,fixedalpha,0.82,18,0.15,17,0.11,11,0.81,18,1.73,21,0.91,18,19
+ExpSineSquared,whitemeanerror,0.81,20,0.16,20,0.12,21,0.8,20,0.44,7,0.9,20,20
+Laplace,fixedalpha,0.8,21,0.16,21,0.11,16,0.79,21,1.45,20,0.9,21,21
+ExpSineSquared,fixedalpha,0.76,22,0.17,22,0.12,22,0.75,22,2.52,23,0.88,22,22
+RationalQuadratic,fixedalpha,0.76,23,0.17,23,0.12,23,0.75,23,2.46,22,0.88,23,23
