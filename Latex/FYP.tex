@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\usepackage{multirow}
 \PassOptionsToPackage{a4paper,left=30mm,top=20mm,right=20mm,bottom=30mm}{geometry}
 %\usepackage[backend=biber,style=numeric]{biblatex} % Use biblatex with numeric citations
 \usepackage{cite}
@@ -312,7 +313,7 @@ f = \{f(X_1),f(X_2),...,f(X_n), \}
 \end{equation}
 follow a multivariate normal distribution
 \begin{equation}
-f \sim \mathcal{N}(\mu(X), K(X, X)).
+f \sim \mathcal{N}\left(\mu(X), K(X, X)\right).
 \label{eq: Multivariate_distribution}
 \end{equation}
 
@@ -555,21 +556,17 @@ By applying the standard conditional Gaussian formulas (see appendix \textcolor{
 the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and given by:
 
 \begin{equation}
-p\bigl(f(x_*) \mid f(X), X, X_*,\theta \bigr)
-\;=\;
-\mathcal{N}\!\Bigl(
-m(x_*),\;\sigma^2(x_*)
-\Bigr),
+p\bigl(f(x_*) \mid f(X), X, X_*,\theta \bigr) \sim \mathcal{N}\!\left(m(x_*),\;\sigma^2(x_*)\right),
 \label{eq: predictive_dist}
 \end{equation}
 \noindent
 where
 \begin{equation}
-m(x_*) \;=\; \mu(x_*) \;+\;k(x_*, X)\,k(X, X)^{-1}\bigl[f(X) - \mu(X)\bigr],
+m(x_*) = \mu(x_*) + k(x_*, X)\,k(X, X)^{-1}\left[f(X) - \mu(X)\right],
 \label{eq: predictive_mean}
 \end{equation}
 \begin{equation}
-\sigma^2(x_*) \;=\;k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
+\sigma^2(x_*) = k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
 \label{eq: predictive_variance}
 \end{equation}
 
@@ -831,11 +828,11 @@ Our goal is to maximise this log marginal likelihood with respect to the hyperpa
         \centering
         \includegraphics[width=\textwidth]{LatexPlots/1dplots/LogLike3params.png}
     \end{subfigure}
-    \caption{For a GPR with noise we are forced to optimise a length hyper-parameter, a variance hyper-parameter and a noise hyper-parameter. 
+    \caption{For a GPR with noise where we have the noise as a hyper-parameter we are forced to optimise a length hyper-parameter, a variance hyper-parameter and a noise hyper-parameter. 
     Here we have kept one parameter constant on each graph and compared the log likelihood space varying the other two parameters. 
-    In graph one the noise is set at 0.1, in graph 2 the length is set at 0.5, in graph 3 the variance is set at 1.5. 
-    In the final graph we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm as the black dot.This point is located at
-    $(\sigma^2 = 1.16, l = 0.109$ noise$ = 0.105)$}
+    In the upper left panel the noise is set at 0.1, in the upper right panel the length is set at 0.5, in the lower left panel the variance is set at 1.5. 
+    In the final panel we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm as the black dot. This point is located at
+    $(\sigma^2 = 1.16, l = 0.109$ noise$ = 0.105)$.}
    \label{figure: Optimising Hyper-params}
 \end{figure} 
 
@@ -975,55 +972,9 @@ This procedure yields a predictive distribution that fully reflects both the unc
      }
 \end{figure}
 
-
-\Sean{Moving Evaluation Metrics to Methods}
-\subsection{Model Evaluation Metrics}
-\label{sec:metrics}
-
-In figure \ref{tab:metrics-comparison}, we made a graphical representation of four out of six metrics used to evaluate our model’s accuracy. \cite{bible} discusses how these metrics provide a balanced assessment of model performance.
-The Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE) measure the average deviation of predictions from the true values, with RMSE penalizing larger errors more heavily.
-The coefficient of determination \( R^2 \) quantifies how well the model predicts relative to the mean of the test set. It is computed as \( 1 \) minus the ratio of the squared residuals to the total variance. A value closer to \( 1 \) indicates better predictive performance.
-The adjusted \( R^2 \) (\(\bar{R}^2\)) accounts for model complexity by penalizing excessive predictor variables, preventing overfitting.
-The Figure of Merit (FOM) evaluates the ratio of a point’s prediction error to its associated standard deviation. A FOM near \( 1 \) is ideal, indicating that the model’s uncertainty estimates are well-calibrated. A FOM \( \ll 1 \) suggests an overly conservative model with large uncertainty, while a FOM \( \gg 1 \) may indicate overconfidence, failing to capture true variability.
-The Pearson correlation coefficient measures the linear relationship between predictions and true values. A correlation of \( 1 \) (\(-1\)) signifies a perfect positive (negative) linear relationship, whereas a correlation of \( 0 \) indicates no linear association.
-
-
-
-\begin{table}[H]
-    \centering
-    \renewcommand{\arraystretch}{4} % Adjust row spacing
-    \setlength{\tabcolsep}{2pt} % Adjust column spacing
-    \small % Reduce text size
-
-    \begin{tabular}{|>{\centering\arraybackslash}m{2.5cm}|*{4}{>{\centering\arraybackslash}m{3cm}|}} 
-        \hline
-        \textbf{Metric Name} & \textbf{RMSE} & \textbf{\(R^2\)} & \textbf{FOM} & \textbf{Pearson Coefficient} \\ 
-        \hline
-        \textbf{Formula} & 
-        \( \sqrt{\frac{1}{N} \sum (y_i - \hat{y}_i)^2} \)   & 
-        \( 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2} \) &    
-        \( \frac{RMSE}{\sigma} \) &  
-        \( \frac{\text{cov}(y - \hat{y})}{\sigma_y \sigma_{\hat{y}}} \) \\ 
-        \hline
-        \textbf{Visual Illustration} &  
-        \adjustbox{valign=c}{\includegraphics[width=3cm]{LatexPlots/1dplots/MAE.png}} &  
-        \adjustbox{valign=c}{\includegraphics[width=3cm]{LatexPlots/1dplots/r2.png}} &  
-        \adjustbox{valign=c}{\includegraphics[width=3cm]{LatexPlots/1dplots/fom.png}} &  
-        \adjustbox{valign=c}{\includegraphics[width=3cm]{LatexPlots/1dplots/pearson.png}} \\  
-        \hline
-    \end{tabular}
-    
-    \caption{Comparison of different performance metrics used in evaluating models.  
-    RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included.  
-    MAE is similar to RMSE but without squaring errors.  
-    Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \).
-    The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8.}
-    
-    \label{tab:metrics-comparison}
-\end{table}
-
 \section{Multi-Dimensional Gaussian Process Regression}
 
+\Sean{Add in}
 \begin{itemize}
     \item Here we want to bring up how we can have a different length parameter for each dimension of the data.
     \item Get a few plots to demonstrate this maybe.
@@ -1089,33 +1040,86 @@ This means that when visualising GPR predictions, we do not need to interpolate,
 \textbf{7D}
 
 \subsection{The Models}
-To construct a robust Gaussian Process Regression model, I undertook an exhaustive evaluation of possible models.
-This began by building models for every combination of kernel described in Section~\ref{sec: Kernels} and noise-handling approach outlined in Section~\ref{sec: Handlingnoise}.
-During this process, I observed that the optimisation of noise-related hyperparameters was highly sensitive to the bounds applied. To address this, I introduced three additional model variants for each kernel:one using very loose noise bounds,
- nother using strict bounds decided by scaling the mean of the obseerved uncertainty estimates $(0.7\text{meanerror},1.3\text{meanerror})$, and a third using bounds decided by the 5\% and 95\% quantiles of the observed uncertainty estimates.
-For each model, the hyperparameters were optimised by maximising the log marginal likelihood, as discussed in Section~\ref{sec: Hyper_parameters}.
+To build a robust Gaussian Process Regression model, I built an extensive selection of models for comparison.
+These models included all combinations of kernels introduced in Section~\ref{sec: Kernels} and noise-handling strategies discussed in Section~\ref{sec: Handlingnoise}. 
+A summary of all these models is provided in Table~\ref{tab:model_summary}. I began with the \texttt{fixedalpha} model, which assumes known noise added directly to the diagonal of the kernel matrix discussed in Section.
+Following this I added noise to my model as a hyper-parameter in the selection of White Kernel models I used. \Sean{Define White Kernel its purpose}. Upon initial visualisations it was clear that the resulting optimised noise depended massively on the optimisation bounds. I therefore evaluated different models with different noise bounds. These included
+\texttt{whitenoerror} model which used loose bounds \((10^{-6}, 10^6)\), along with two additional variants: \texttt{whiteminmaxerror}, which uses bounds set by the 5\% and 95\% quantiles of the observed uncertainty, and \texttt{whitemeanerror}, which constrains the noise using scaled bounds around the mean of the observed uncertainties. 
+A hybrid model (\texttt{hybrid}) combining a fixed alpha with a learnable white noise term was also tested. To better capture uncertainty in input observations, I included a Monte Carlo model (\texttt{montecarlo}) that samples from the input distribution instead of optimising a noise parameter.
+Finally, I experimented with additive kernel structures (\texttt{combinekernel}) by summing the RBF kernel with Matern, RationalQuadratic, and Laplace kernels to model more complex function behaviours. For each configuration, hyperparameters were optimised by maximising the log marginal likelihood as detailed in Section~\ref{sec: Hyper_parameters}.
+
+\begin{table}[h!]
+    \renewcommand{\arraystretch}{1.3}
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \textbf{Model Label} & \textbf{Noise Optimisation Bounds} & \textbf{Kernels} \\
+    \hline
+    \texttt{fixedalpha} & -- & All kernels \\
+    \hline
+    \texttt{whitenoerror} & \((10^{-6}, 10^6)\) & All kernels \\
+    \texttt{whiteminmaxerror} & 5\% lower and 95\% upper error & All kernels \\
+    \texttt{whitemeanerror} & \((0.7\mu_{\text{error}}, 1.3\mu_{\text{error}})\) & All kernels \\
+    \hline
+    \texttt{hybrid} & \((10^{-6}, 10^6)\) & All kernels \\
+    \hline
+    \texttt{montecarlo} & Sampling & All kernels \\
+    \hline
+    \texttt{combinekernel} & -- & RBF + Matern \\
+    \texttt{combinekernel} & -- & RBF + RationalQuadratic \\
+    \texttt{combinekernel} & -- & RBF + Laplace \\
+    \hline
+    \end{tabular}
+    \caption{Summary of the Gaussian Process Regression models evaluated.
+     "All kernels" refers to the RBF, Matern, Rational Quadratic, ExpSine Squared and the Laplace kernels discussed in Section~\ref{sec: Kernels}.}
+    \label{tab:model_summary}
+\end{table}
+
 
 \Sean{Optimisation details, algorithm used}
 
+\subsection{Model Evaluation Metrics}
+\label{sec:metrics}
+
+To assess the performance of each Gaussian Process Regression model, I used six evaluation metrics. These metrics were discussed and chosen in \cite{metrics} for the specific reason that they offer a robust metrics that capture different information about the model. In this paper they divide the metrics into two types Average Expected Error \textbf{AEE} metrics and correlation metrics. 
+
+\subsubsection*{AEE Metrics}
+\begin{itemize}
+    \item \textbf{Root Mean Squared Error (RMSE)} \( \left(\sqrt{\frac{1}{N} \sum (y_i - \hat{y}_i)^2} \right)\): Measures the average distance between true values and the prediction. Since at each point the error is squared the RMSE has a heavier penalty for larger errors.
+    \item \textbf{Mean Absolute Error (MAE)} \( \left( \frac{1}{N} \sum |y_i - \hat{y}_i|\right) \):  The MAE measures the average absolute difference between predicted and true values. It is less sensitive to larger errors than the RMSE since it is not quadratically scaled.
+    \item \textbf{Figure of Merit (FOM)} \( \left( \frac{\text{RMSE}}{\sigma}\right) \): This is the ratio of our RMSE to the standard deviation. It can be interpreted as the average expected error scaled by the spread of the data. 
+    Lower FOM values indicate higher model accuracy, as they imply that the model's predictive error is small compared to the variation in the data. A value near zero reflects excellent predictive performance, while larger values suggest less accurate predictions.
+\end{itemize}
+
+\subsubsection*{Correlation Metrics}
+\begin{itemize}
+    \item \textbf{Coefficient of Determination}\(\left(\mathbf{R^2}\right)\)\( \left(1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}\right) \): Finds 1 - the ratio of how well the mean predicts the true values compared to the model predictions. Measures how much better our model is at predicting than a baseline mean prediction.
+    
+    \item \textbf{Adjusted} \(\mathbf{R^2 \left( \bar{R^2}\right)}\)\( \left( 1 - (1 - R^2) \cdot \frac{n - 1}{n - p - 1} \right) \): Updates our \( R^2 \) value to take account the number of predictors compared to the number of observed points. This helps to prevent over-fitting because trivially if we used \(p=n\) predictors we should get perfect results but our model would be drastically over-fitted.
+    
+    \item \textbf{Pearson Correlation Coefficient}\( \left(\frac{\text{cov}(y, \hat{y})}{\sigma_y \sigma_{\hat{y}}} \right) \):  Quantifies the linear relationship between true and predicted values.
+\end{itemize}
+In \cite{metrics} the author concluded that lower AEE metrics (close to 0) correspond to higher regressor accuracy, and higher correlation metrics (closer to 1) correspond to better predictions. We set out to evaluate our models with these metrics.
+
 \subsection{Training, Comparing, and Testing My Models}
 
-\Sean{Average Rank across metrics, how I compared the metrics}
-To ensure my models were not overly dependent on the data used to train them, I implemented K-fold cross-validation \Sean{Find cite for this}. The full dataset was split into a 90-10 ratio: 90\% of the data was used for 10-fold cross-validation, while the remaining 10\% was held out as an untouched test set for final evaluation.
-During cross-validation, each model was trained on 9 out of the 10 folds and tested on the remaining fold. This process was repeated so that each fold served as the test set once. For every fold, I evaluated the model predictions against the true values using the six metrics outlined in Section~\ref{sec:metrics}. 
-To analyse model stability and consistency, I visualised the metric distributions across folds using box plots for each model-type. I also plotted the mean performance for each metric across all folds and model types. These visualisations enabled me to identify a subset of high-performing models to carry forward to final testing.
+To ensure that each of my models was not overly dependent on a particular dataset and to mitigate overfitting, I implemented K-fold cross-validation, evaluating the metrics outlined in Section~\ref{sec:metrics} on each validation fold. This approach is supported by Rasmussen and Williams in Chapter~5 of \cite{bible}, where cross-validation is discussed as a method for model selection.
+I divided the full dataset into a 90--10 split, where 90\% of the data was used for 10-fold cross-validation, and the remaining 10\% was held out as an untouched test set for final evaluation.
+During cross-validation, each model was trained on 9 out of the 10 folds and evaluated on the remaining fold, with the process repeated such that every fold served as the validation set once. For each fold, model predictions were compared against the true values using the six metrics described in Section~\ref{sec:metrics}.
+To analyse model stability and consistency, I visualised the distribution of each metric across folds using box plots for each model type. Additionally, I plotted the mean performance for every metric across all folds and model types.
+Each model was then ranked for each metric individually (e.g., lower is better for AEE, higher is better for correlation), and these rankings were averaged across all metrics to produce an overall ranking table. To understand relationships between metrics, I constructed a dendrogram based on the correlation of their model rankings, enabling the identification of clusters of similar metrics
+ and those with differing behaviours. Finally, to ensure robust generalisation, I used the most distinct metrics identified from the dendrogram to create a scatter plot and selected a subset of models that consistently performed best across these dimensions.
 
-\subsubsection*{Final Testing}
-
-In the final stage, each of the shortlisted models was retrained using the entire 90\% cross-validation training set and then evaluated on the held-out 10\% test set. 
-By comparing the predictions to the true values using the same six metrics and visualising their performance, I was able to identify the most accurate and robust model as the final winner.
-\Sean{MCMC}
-
-
+ \subsubsection*{Final Testing}
+ In the final stage, each of the shortlisted models was retrained on the full 90\% cross-validation training set and evaluated on the held-out 10\% test set. Model predictions were compared to the true values using the same six metrics, and performance was visualised to identify the most accurate and robust candidates.
+ Two final models were selected: one with the overall best test performance, and a second with simpler hyperparameters to serve as a baseline for comparison and to help guard against overfitting. For both models, I performed Markov Chain Monte Carlo (MCMC) sampling as demonstrated in Section~\ref{sec: MCMC}
+to construct posterior distributions over their hyperparameters, allowing for a visual and probabilistic assessment of hyperparameter uncertainty.
+ 
 
 \subsubsection*{Implementation Details}
-I used the programming language Python to implement my models. To build my Gaussian Process Regression models I primarily used
-the sci kit learn GaussianProcessRegressor package. To implement MCMC I used the emcee package. To interpolate I used scipy.interpolate and throughout my model I consistently 
-set my random state at 42
+All models were implemented in Python. Gaussian Process Regression was carried out using the \texttt{GaussianProcessRegressor} class from the \texttt{scikit-learn} library.
+For MCMC sampling, I used the \texttt{emcee} package. Interpolation was performed using \texttt{scipy.interpolate}. To ensure reproducibility, I consistently set the random seed to 42 throughout all experiments.
+
 
 
 \section{Results}
@@ -1400,7 +1404,51 @@ This kernel grows with the similarity (inner product) between inputs, and it all
 \end{table}
     
 
+\section{Appendix E: Bin}
+\label{appendix:bin}
+\Sean{Moving Evaluation Metrics to Methods}
 
+In figure \ref{tab:metrics-comparison}, we made a graphical representation of four out of six metrics used to evaluate our model’s accuracy. \cite{bible} discusses how these metrics provide a balanced assessment of model performance.
+The Root Mean Squared Error (RMSE) and Mean Absolute Error (MAE) measure the average deviation of predictions from the true values, with RMSE penalizing larger errors more heavily.
+The coefficient of determination \( R^2 \) quantifies how well the model predicts relative to the mean of the test set. It is computed as \( 1 \) minus the ratio of the squared residuals to the total variance. A value closer to \( 1 \) indicates better predictive performance.
+The adjusted \( R^2 \) (\(\bar{R}^2\)) accounts for model complexity by penalizing excessive predictor variables, preventing overfitting.
+The Figure of Merit (FOM) evaluates the ratio of a point’s prediction error to its associated standard deviation. A FOM near \( 1 \) is ideal, indicating that the model’s uncertainty estimates are well-calibrated. A FOM \( \ll 1 \) suggests an overly conservative model with large uncertainty, while a FOM \( \gg 1 \) may indicate overconfidence, failing to capture true variability.
+The Pearson correlation coefficient measures the linear relationship between predictions and true values. A correlation of \( 1 \) (\(-1\)) signifies a perfect positive (negative) linear relationship, whereas a correlation of \( 0 \) indicates no linear association.
+
+
+
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{4} % Adjust row spacing
+    \setlength{\tabcolsep}{2pt} % Adjust column spacing
+    \small % Reduce text size
+
+    \begin{tabular}{|>{\centering\arraybackslash}m{2.5cm}|*{4}{>{\centering\arraybackslash}m{3cm}|}} 
+        \hline
+        \textbf{Metric Name} & \textbf{RMSE} & \textbf{\(R^2\)} & \textbf{FOM} & \textbf{Pearson Coefficient} \\ 
+        \hline
+        \textbf{Formula} & 
+        \( \sqrt{\frac{1}{N} \sum (y_i - \hat{y}_i)^2} \)   & 
+        \( 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2} \) &    
+        \( \frac{RMSE}{\sigma} \) &  
+        \( \frac{\text{cov}(y - \hat{y})}{\sigma_y \sigma_{\hat{y}}} \) \\ 
+        \hline
+        \textbf{Visual Illustration} &  
+        \adjustbox{valign=c}{\includegraphics[width=3cm]{LatexPlots/1dplots/MAE.png}} &  
+        \adjustbox{valign=c}{\includegraphics[width=3cm]{LatexPlots/1dplots/r2.png}} &  
+        \adjustbox{valign=c}{\includegraphics[width=3cm]{LatexPlots/1dplots/fom.png}} &  
+        \adjustbox{valign=c}{\includegraphics[width=3cm]{LatexPlots/1dplots/pearson.png}} \\  
+        \hline
+    \end{tabular}
+    
+    \caption{Comparison of different performance metrics used in evaluating models.  
+    RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included.  
+    MAE is similar to RMSE but without squaring errors.  
+    Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \).
+    The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8.}
+    
+    \label{tab:metrics-comparison}
+\end{table}
 
 % %\printbibliography
 % \bibliographystyle{acm}
