@@ -13,8 +13,7 @@
 
 \bibitem{Ogpaper}
 {\sc Hoy, C., Akcay, S., Mac~Uilliam, J., and Thompson, J.~E.}
-\newblock {Incorporating model accuracy into gravitational-wave Bayesian
-  inference}.
+\newblock {Incorporating model accuracy into gravitational-wave Bayesian inference}.
 
 \bibitem{GRbook}
 {\sc Maggiore, M.}
@@ -23,8 +22,7 @@
 
 \bibitem{mismatch}
 {\sc Owen, B.~J.}
-\newblock Search templates for gravitational waves from inspiraling binaries:
-  Choice of template spacing.
+\newblock Search templates for gravitational waves from inspiraling binaries: Choice of template spacing.
 \newblock {\em arXiv preprint gr-qc/9511032\/} (1995).
 \newblock Submitted to Physical Review D: November 7, 1995.
 
@@ -35,8 +33,7 @@
 
 \bibitem{metrics}
 {\sc Zaman, Q., Alraho, S., and K{\"o}nig, A.}
-\newblock Gaussian process regression based robust optimization with observer
-  uncertainty for reconfigurable self-x sensory electronics for industry 4.0.
+\newblock Gaussian process regression based robust optimization with observer uncertainty for reconfigurable self-x sensory electronics for industry 4.0.
 \newblock {\em tm - Technisches Messen 88}, S1 (2021), S83--S88.
 
 \end{thebibliography}
