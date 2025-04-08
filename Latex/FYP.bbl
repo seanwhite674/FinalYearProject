@@ -33,4 +33,9 @@
 \newblock {\em Gaussian Processes for Machine Learning}.
 \newblock MIT Press, Cambridge, MA, USA, 2006.
 
+\bibitem{metrics}
+{\sc Zaman, Q., Alraho, S., and K{\"o}nig, A.}
+\newblock Gaussian process regression based robust optimization with observer uncertainty for reconfigurable self-x sensory electronics for industry 4.0.
+\newblock {\em tm - Technisches Messen 88}, S1 (2021), S83--S88.
+
 \end{thebibliography}

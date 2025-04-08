@@ -40,6 +40,16 @@
 
 
 \section{Abstract}
+\begin{itemize}
+    \item Motivated by the need for fast and accurate models of gravitational waveforms, this project explores Gaussian Process Regression (GPR) as a way to model the waveform mismatch in black hole binary mergers.
+    \item Begin by understanding GPR fundamentals on a low-dimensional toy problem following \cite{bible},.
+    \item We extend this approach to a 4-dimensional and 7-dimensional parameter space, derived from the 8D intrinsic black hole parameter set.
+    \item Multiple kernels (RBF, Matern, RationalQuadratic, Laplacian) and noise modelling techniques (homoscedastic, heteroscedastic) are compared.
+    \item Using cross-validation and metrics \cite{metrics}, we find that several models are very accurate with the best models achieving .......
+    \item We also apply MCMC to sample hyperparameter posteriors and understand how uncertain our predictions are. Emphasis maybe how MCMC is ideal but too computationally expensive 
+    \item Visualise the GPR across its parameter space taking cross-cuts
+    \item Finally our GPR provides a fast and accurate mismatch model that will help the work being carried out in \cite{Ogpaper}.
+\end{itemize}
 
 
 
@@ -253,10 +263,10 @@ the black contours here represent a ratio of the mismatch between two different 
 
 In the following subsections, I discuss the foundational concepts of Gaussian Process Regression \textbf{(GPR)} in four main steps:
 \begin{enumerate}
-    \item \textbf{Gaussian Processes:} Section~\ref{sec: GP_backgroound} introduces Gaussian Processes and explains how their priors and posteriors are constructed from finite sets of points.
-    \item \textbf{Kernel Functions:} In Section~\ref{sec: Kernels}, I explore how kernels encode assumptions about smoothness, periodicity, and structural properties of the underlying function.
-    \item \textbf{Noise Modeling:} Section~\ref{sec: Handlingnoise} covers several approaches for incorporating observational noise into the GP framework.
-    \item \textbf{Hyperparameter Optimization:} Finally, in Section~\ref{sec: Hyper_parameters}, I discuss how kernel and noise hyperparameters influence the posterior and how they can be optimized to improve model performance.
+    \item \textbf{Gaussian Processes Regression Background:} Section~\ref{sec: GP_backgroound} introduces Gaussian Processes and explains how their priors and posteriors are constructed from finite sets of points.
+    \item \textbf{Kernel Functions:} In Section~\ref{sec: Kernels}, I explore how kernels encode the basic assumptions about smoothness and structural properties of the underlying function. I look at how kernel hyper-parameters effect the shape of samples from our prior distribution.
+    \item \textbf{Noise Modeling:} Section~\ref{sec: Handlingnoise} covers several approaches for incorporating observational noise into the GP framework. I look at how noise effects the samples from our prior distribution.
+    \item \textbf{Hyperparameter Optimization:} Finally, in Section~\ref{sec: Hyper_parameters}, I discuss how kernel and noise hyper-parameters can be optimised resulting in a posterior distribution that better explains our data.
 \end{enumerate}
 
 \subsection{Gaussian Proces Regression Background}
@@ -378,7 +388,7 @@ indicating strong correlation (approximately 0.9). As the distance increases, su
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_background.png}
+        \includegraphics[width=1\textwidth]{LatexPlots/1dplots/Kernel_background.png}
         \caption{Sampling from the GP prior with zero mean and an RBF kernel ($\ell = 0.5$, $\sigma_f^2 = 1$). 
         The first plot shows three sample functions drawn from the prior distribution. 
         The second plot visualizes the covariance matrix as a heatmap, revealing the strength of correlations between inputs.
@@ -487,50 +497,50 @@ the signal variance hyperparameter on the GP prior. We will use the RBF kernel a
 
 \Sean{Comment on how each effects prior. Below is waffle from a while ago could potentially add}
 
-\noindent
-It is evident that the choice of kernel hyperparameters has a significant impact on the shape of the posterior mean and its uncertainty.
-The RBF kernel with noise is given by:
-\[
-k(x, x') = \sigma_f^2 \exp\left( -\frac{(x - x')^2}{2\ell^2} \right) + \sigma_n^2 I,
-\]
-where $\ell$ controls the length scale, $\sigma_f^2$ represents the signal variance, and $\sigma_n^2$ denotes the noise level.
+% \noindent
+% It is evident that the choice of kernel hyperparameters has a significant impact on the shape of the posterior mean and its uncertainty.
+% The RBF kernel with noise is given by:
+% \[
+% k(x, x') = \sigma_f^2 \exp\left( -\frac{(x - x')^2}{2\ell^2} \right) + \sigma_n^2 I,
+% \]
+% where $\ell$ controls the length scale, $\sigma_f^2$ represents the signal variance, and $\sigma_n^2$ denotes the noise level.
 
-\noindent
-From Figure~\ref{fig: GPprior_hyperparams}, we observe that a very small length scale $\ell \approx 0$ leads to overfitting:
-the GP closely tracks the training data, with sharp fluctuations between points. This occurs because the kernel's covariance rapidly decays with distance,
-making function values at different inputs nearly uncorrelated unless they are extremely close. As a result, the model fits the noise and exhibits a jagged appearance.
-In contrast, a large length scale such as $\ell \approx 3$ causes over-smoothing. Distant points remain highly correlated,
-producing a nearly linear mean function that fails to capture local variations. A moderate length scale ($\ell = 0.109$ in this case)
-provides a balance—producing a smooth yet flexible mean function that captures trends in the data without overfitting.
+% \noindent
+% From Figure~\ref{fig: GPprior_hyperparams}, we observe that a very small length scale $\ell \approx 0$ leads to overfitting:
+% the GP closely tracks the training data, with sharp fluctuations between points. This occurs because the kernel's covariance rapidly decays with distance,
+% making function values at different inputs nearly uncorrelated unless they are extremely close. As a result, the model fits the noise and exhibits a jagged appearance.
+% In contrast, a large length scale such as $\ell \approx 3$ causes over-smoothing. Distant points remain highly correlated,
+% producing a nearly linear mean function that fails to capture local variations. A moderate length scale ($\ell = 0.109$ in this case)
+% provides a balance—producing a smooth yet flexible mean function that captures trends in the data without overfitting.
 
-\noindent
-Regarding the signal variance $\sigma_f^2$, we find that a very small value (e.g., $\sigma_f^2 \approx 0.01$) causes the GP mean to flatten,
-as the prior assumes the function to vary very little. As the variance increases (e.g., $\sigma_f^2 = 1.2$ and $\sigma_f^2 = 10$), the credible intervals widen slightly,
-but the overall mean function shape remains relatively stable. This suggests that posterior inference over $\sigma_f^2$ may exhibit considerable uncertainty, a point we explore further using MCMC sampling in Section \ref{sec: MCMC}.
-
-
-\noindent
-Lastly, varying the noise level $\sigma_n^2$ primarily affects the width of the credible interval, 
-while the mean function remains largely unchanged. As $\sigma_n^2$ increases, the model accounts for higher observation noise, 
-and uncertainty in the predictions increases accordingly. This relationship appears approximately linear in the visualizations.
+% \noindent
+% Regarding the signal variance $\sigma_f^2$, we find that a very small value (e.g., $\sigma_f^2 \approx 0.01$) causes the GP mean to flatten,
+% as the prior assumes the function to vary very little. As the variance increases (e.g., $\sigma_f^2 = 1.2$ and $\sigma_f^2 = 10$), the credible intervals widen slightly,
+% but the overall mean function shape remains relatively stable. This suggests that posterior inference over $\sigma_f^2$ may exhibit considerable uncertainty, a point we explore further using MCMC sampling in Section \ref{sec: MCMC}.
 
 
-\textcolor{red}{From previous section may be worth including}
-\textbf{Credible Interval Behavior:} In Gaussian Process regression, the predictive variance at a new input $x^*$ is given by
-\[
-k(x^*, x^*) - k(x^*, X)(K_{XX}^{-1})k(X, x^*).
-\]
+% \noindent
+% Lastly, varying the noise level $\sigma_n^2$ primarily affects the width of the credible interval, 
+% while the mean function remains largely unchanged. As $\sigma_n^2$ increases, the model accounts for higher observation noise, 
+% and uncertainty in the predictions increases accordingly. This relationship appears approximately linear in the visualizations.
 
-With an RBF kernel, $k(x^*, X)$ will be near-zero if $x^*$ is farther than a few $\ell$'s away from all training inputs $X$. 
-For small $\ell$, this situation happens frequently – any point outside a tiny neighborhood of training data effectively has $k(x^*, X) 
-\approx 0$, so its predictive variance is roughly
-\[
-k(x^*, x^*) = \sigma_f^2
-\]
-(the prior variance). Thus, the 95\% credible interval reverts to roughly $\pm 2\sigma_f$ in large gaps or outside the data range.
-For large $\ell$, on the other hand, $k(x^*, X)$ remains sizable over a much broader range, reducing the variance term. The uncertainty
-only approaches the prior level far outside the data (several $\ell$'s away). In effect, a large $\ell$ flattens the covariance function
-so that the GP “remembers” the training set far out, maintaining narrower error bars over a wider domain.
+
+\Sean{Could mention something about credible interval here, Maybe next section}
+% \textbf{Credible Interval Behavior:} In Gaussian Process regression, the predictive variance at a new input $x^*$ is given by
+% \[
+% k(x^*, x^*) - k(x^*, X)(K_{XX}^{-1})k(X, x^*).
+% \]
+
+% With an RBF kernel, $k(x^*, X)$ will be near-zero if $x^*$ is farther than a few $\ell$'s away from all training inputs $X$. 
+% For small $\ell$, this situation happens frequently – any point outside a tiny neighborhood of training data effectively has $k(x^*, X) 
+% \approx 0$, so its predictive variance is roughly
+% \[
+% k(x^*, x^*) = \sigma_f^2
+% \]
+% (the prior variance). Thus, the 95\% credible interval reverts to roughly $\pm 2\sigma_f$ in large gaps or outside the data range.
+% For large $\ell$, on the other hand, $k(x^*, X)$ remains sizable over a much broader range, reducing the variance term. The uncertainty
+% only approaches the prior level far outside the data (several $\ell$'s away). In effect, a large $\ell$ flattens the covariance function
+% so that the GP “remembers” the training set far out, maintaining narrower error bars over a wider domain.
 
 
 
@@ -544,7 +554,6 @@ we can make predictive inferences about the function value at any new test locat
 By applying the standard conditional Gaussian formulas (see appendix \textcolor{red}{Must clean up this derivation in appendix} \ref{appendix:A} for the full derivation),
 the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and given by:
 
-
 \begin{equation}
 p\bigl(f(x_*) \mid f(X), X, X_*,\theta \bigr)
 \;=\;
@@ -553,15 +562,12 @@ m(x_*),\;\sigma^2(x_*)
 \Bigr),
 \label{eq: predictive_dist}
 \end{equation}
-
 \noindent
 where
-
 \begin{equation}
 m(x_*) \;=\; \mu(x_*) \;+\;k(x_*, X)\,k(X, X)^{-1}\bigl[f(X) - \mu(X)\bigr],
 \label{eq: predictive_mean}
 \end{equation}
-
 \begin{equation}
 \sigma^2(x_*) \;=\;k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
 \label{eq: predictive_variance}
@@ -595,7 +601,6 @@ we examine the different kernel choices available and the assumptions that each 
 \begin{figure}[H]
     \centering
         \includegraphics[width=\textwidth]{LatexPlots/1dplots/priortoposterior.png}
-        \caption{Prior Distribution}
     \caption{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. 
     The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterio distribution. 
     The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior. }
@@ -671,6 +676,7 @@ k(x_n, x_1) & \cdots & k(x_n, x_n) + \sigma_n^2
 Our prior distribution now becomes:
 \begin{equation}
 y \sim \mathcal{N}(0, K+\sigma_n^2 I)
+\label{eq: prior_withnoise}
 \end{equation}
 where $\sigma_n^2$ is a new parameter which effects the shape of the distribution. In figure \ref{fig: GPprior_hyperparams} we 
 explored how the internal kernel hyper-parameters effect the shape of the sampes from our prior distribution. We now examin how the noise (i.e $\sigma_n^2$) effects samples from our prior distribution from \ref{eq:  predictive_distribution_noise}.
@@ -722,22 +728,23 @@ The coefficients \( \theta_1 \) and \( \theta_2 \) are parameters that control t
 
 \subsubsection*{Monte Carlo Sampling of Noise}  
 
-This technique can be applied to both homoscedastic and heteroscedastic noise settings. Instead of modifying the kernel matrix analytically, we simulate the effect of noise by generating multiple noisy realizations of the observed outputs.
+This technique can be applied to both homoscedastic and heteroscedastic noise settings. Instead of modifying the kernel matrix (adding noise to the diagonal), we mimic the effect of noise by adding random noise to our observed outputs.
 \noindent
 We assume the observation noise is Gaussian:
 \[
 \epsilon_i \sim \mathcal{N}(0, \sigma_i^2),
 \]
-and therefore, the observed data \( y \) is a noisy version of the true latent function values:
+we have the observed data \( y \) which is a noisy version of our true function values
 \[
 y = f + \epsilon, \quad \text{with } y \sim \mathcal{N}(f, \Sigma),
 \]
 where \( \Sigma = \mathrm{diag}(\sigma_1^2, \dots, \sigma_n^2) \).
-To simulate this, we generate \( M \) noisy samples of the observations:
+Each true function value corresponds to our observed value \(\pm \epsilon\)
+To account for this, we generate \( M \) noisy samples of the observations
 \begin{equation}
-    y^{(s)} = y + \epsilon^{(s)}, \quad \epsilon^{(s)} \sim \mathcal{N}(0, \Sigma)
+    y^{(s)} = y + \epsilon^{(s)}, \quad \epsilon^{(s)} \sim \mathcal{N}(0, \Sigma).
 \end{equation}
-For each sampled dataset \( y^{(s)} \), we compute an independent GP posterior:
+For each sampled dataset \( y^{(s)} \), we compute a GP posterior
 \begin{equation}
     p(f_* \mid X, X_*, \theta, y^{(s)}).
 \end{equation}
@@ -745,11 +752,10 @@ To obtain the final predictive distribution, we marginalize over these sampled p
 \begin{equation}
     p(f_* \mid X, X_*, \theta, y) = \int p(f_* \mid X, X_*, \theta, y^{(s)}) \, p(y^{(s)} \mid y) \, dy^{(s)}.
 \end{equation}
-This integral is intractable in closed form, so we approximate it using Monte Carlo integration:
+This integral is intractable so we approximate it using Monte Carlo integration where we get the average of each of our predictions on sampled datasets \(y^{(s)}\):
 \begin{equation}
     p(f_* \mid X, X_*, \theta, y) \approx \frac{1}{M} \sum_{s=1}^{M} p(f_* \mid X, X_*, \theta, y^{(s)}).
 \end{equation}
-
 
 \begin{figure}[H]
     \centering
@@ -761,54 +767,49 @@ This integral is intractable in closed form, so we approximate it using Monte Ca
     \label{fig:noise_comparison}
 \end{figure}
 
-\Sean{Own words}
-
 \noindent
-We can observe in Figure~\ref{fig:noise_comparison} how different noise assumptions influence samples drawn from the Gaussian Process prior. 
-In the homoscedastic case (left), the output exhibits consistent fluctuations across the entire domain due to a constant noise variance applied uniformly to all inputs. 
-In contrast, the heteroscedastic case (middle) introduces input-dependent noise, resulting in regions of smoothness interspersed with abrupt variations—reflecting the fact that each output has its own associated noise level.
-Finally, in the Monte Carlo noise sampling approach (right), we generate multiple realizations by perturbing the data with different noise samples. This highlights the diversity of plausible functions consistent with the observed data and captures the full range of uncertainty introduced by noisy observations.
+From Figure~\ref{fig:noise_comparison} we see how different noise assumptions influence samples drawn from the Gaussian Process prior. 
+In the homoscedastic case (left), our samples exhibit consistent fluctuations across the entire domain due to a constant noise variance applied uniformly to all inputs. 
+The heteroscedastic case (middle) introduces input-dependent noise, this results in regions of smoothness followed by abrupt variations—reflecting the fact that each output has its own associated noise level.
+Finally, in the Monte Carlo noise sampling approach (right), we generate multiple samples by adding different levels of noise to our prior distribution on our true function values.
+This highlight all the plausible functions consistent with the observed data and captures the full range of uncertainty introduced by noisy observations.
  
 
 
 
 \subsection{Hyper-parameters}
 \label{sec: Hyper_parameters}
-
-\noindent
 Until now, all predictive distributions such as Equations~\ref{eq: predictive_distribution_noise} and~\ref{eq: predictive_dist} have been conditioned on fixed kernel hyperparameters. As demonstrated in Figures~\ref{fig: GPprior_hyperparams} and~\ref{fig: kernel_noise}, these hyperparameters have a significant influence on the structure and behaviour of the Gaussian Process, shaping both the prior and posterior distributions. 
+In practice, these hyperparameters are not known and must be inferred from the data. To do so, we aim to find the set of hyperparameters that best explain the observed data by maximising the log marginal likelihood, a method detailed in [Ch5\cite{bible}.]
 
 \noindent
-In practice, these hyperparameters are not known a priori and must be inferred from the data. To do so, we seek the set of hyperparameters that best explain the observed data by maximising the \textit{log marginal likelihood}, a method detailed in Chapter 5 of \cite{bible}.
-
-\bigskip
-\noindent
-From Equation~\ref{eq:  predictive_distribution_noise}, we have:
+As outlined in Section~\ref{sec: Handlingnoise} we have different methods of handling noise resulting in different hyper-parameters to be optimised. We will focus on the general case here which can be easily manipulated for each spefici method.
+From Equation~\ref{eq: prior_withnoise}, we have:
 \[
-y \sim \mathcal{N}(0, K + \sigma_n^2 I)
+y \sim \mathcal{N}(0, K + \Sigma I),
 \]
-where \( K \) is the kernel matrix computed from the training inputs \( X \), and \( \sigma_n^2 \) is the noise variance.
+where \( K \) is the kernel matrix computed from the training inputs \( X \), and \( \Sigma\) is the noise variance.
 
 \noindent
-This implies that the marginal likelihood (i.e., the probability of the observed outputs \( y \) given the inputs \( X \) and hyperparameters \( \theta \)) is given by the multivariate Gaussian density:
+This implies that the marginal likelihood which is the probability of the observed outputs \( y \) given the inputs \( X \) and hyperparameters \( \theta \)) is given by the multivariate Gaussian density. 
+
 \[
 p(y \mid X, \theta) = \frac{1}{(2\pi)^{n/2} |K_y|^{1/2}} \exp\left( -\frac{1}{2} y^\top K_y^{-1} y \right)
 \]
-where \( K_y = K + \sigma_n^2 I \).
-
-\bigskip
-
+where \( K_y = K + \Sigma I \), and \( \Sigma \) may be constant or input-dependent depending on the noise model used.
+\noindent
+The hyperparameters are given by:
+\[
+\theta = \left\{ \sigma_f^2, \ell, \text{(other internal kernel params)}, \sigma_n^2 \,\, \text{(if noise is modelled as a hyperparameter)} \right\}.
+\]
 \noindent
 Taking the logarithm of this expression yields the \textit{log marginal likelihood}:
 \begin{equation}\label{eq: 5}
 \log p(y \mid X, \theta) = -\frac{1}{2} y^\top K_y^{-1} y - \frac{1}{2} \log |K_y| - \frac{n}{2} \log 2\pi
 \end{equation}
-
 \noindent
 Our goal is to maximise this log marginal likelihood with respect to the hyperparameters \( \theta \), which typically includes the kernel lengthscale, signal variance, and noise variance. Once optimal values are found, we can use them to make accurate posterior predictions.
-
-
-
+\Sean{Explain the below Figure~\ref{figure: Optimising Hyper-params}}
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -839,15 +840,10 @@ Our goal is to maximise this log marginal likelihood with respect to the hyperpa
 \end{figure} 
 
 
-\subsubsection{Cross Validation}
-
-While maximising our parameters with respect to the log likelihood is common practice [ch 5, \cite{bible}] details how we may overfit our model to the training data.
-To account for this we use cross validation where we split our data into disjoint sets. One set is used to train our model (find the hyper-parameters) and the other set is used to monitor performance.
-If we split our data into K sets every iteration we train on K-1 sets, and validate on the kth set. We iterate this until all sets have been used to validate our model. 
-
-\Sean{Have to think about this model selection is what I am talking about here. Maybe leave out cross val here because I am not doing cross val for hyper-parameters}
+\Sean{Moved my cross evaluation section to methods}
 
 
+\Sean{Cut to 1.5 pgs and clean. add into GPR background}
 \section{Quantifying Uncertainty and Evaluating Model Accuracy}
 \label{sec:uncertainty_and_evaluation}
 \subsection{Monte Carlo Markov Chain (MCMC): A Posterior over Hyperparameters}
@@ -980,7 +976,7 @@ This procedure yields a predictive distribution that fully reflects both the unc
 \end{figure}
 
 
-
+\Sean{Moving Evaluation Metrics to Methods}
 \subsection{Model Evaluation Metrics}
 \label{sec:metrics}
 
@@ -1046,8 +1042,7 @@ The Pearson correlation coefficient measures the linear relationship between pre
 \end{figure}
 
 \subsection{Data Description}
-\Sean{What data am I using what is its label??}
-
+\Sean{How data was asquired. What is the data what simulation number}
 \noindent
 \textbf{4D}
 
@@ -1062,7 +1057,7 @@ For our 4d model we reduce this 8 dimensional parameter space to 4. These 4 para
 \end{itemize}
 Here, the spin vectors are defined as $\mathbf{S} = (S_x, S_y, S_z)$
 
-\Sean{Maybe Redundant Graph}
+\Sean{Maybe Redundant Graph. Almost definitely leave out}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{LatexPlots/GRdiagram.png}
@@ -1082,27 +1077,25 @@ cut our 3d surface at $z=0$ and interpolate over our values to visualise a plane
 When working directly with the true data, interpolation is necessary to estimate values between sample points. However, a major advantage of using Gaussian Process Regression (GPR) is that it gives us an analytic model that can be evaluated at any point within the domain. 
 This means that when visualising GPR predictions, we do not need to interpolate, instead we can directly evaluate the GPR while holding selected dimensions constant.
 
-\Sean{Not nice visual}
+\Sean{Not nice visual, looks very bad}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
+    \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
     \caption{Visualising our data by moving from 4d to 1d}
     \label{fig:visualising_data}
 \end{figure}
 
+\noindent
+\textbf{7D}
 
-\subsection*{The Models}
-\Sean{Optimisation details, algorithm used}
-
+\subsection{The Models}
 To construct a robust Gaussian Process Regression model, I undertook an exhaustive evaluation of possible models.
 This began by building models for every combination of kernel described in Section~\ref{sec: Kernels} and noise-handling approach outlined in Section~\ref{sec: Handlingnoise}.
 During this process, I observed that the optimisation of noise-related hyperparameters was highly sensitive to the bounds applied. To address this, I introduced three additional model variants for each kernel:one using very loose noise bounds,
  nother using strict bounds decided by scaling the mean of the obseerved uncertainty estimates $(0.7\text{meanerror},1.3\text{meanerror})$, and a third using bounds decided by the 5\% and 95\% quantiles of the observed uncertainty estimates.
 For each model, the hyperparameters were optimised by maximising the log marginal likelihood, as discussed in Section~\ref{sec: Hyper_parameters}.
 
-
-\subsubsection*{Implementation Details}
-Include packages used 
+\Sean{Optimisation details, algorithm used}
 
 \subsection{Training, Comparing, and Testing My Models}
 
@@ -1116,6 +1109,13 @@ To analyse model stability and consistency, I visualised the metric distribution
 In the final stage, each of the shortlisted models was retrained using the entire 90\% cross-validation training set and then evaluated on the held-out 10\% test set. 
 By comparing the predictions to the true values using the same six metrics and visualising their performance, I was able to identify the most accurate and robust model as the final winner.
 \Sean{MCMC}
+
+
+
+\subsubsection*{Implementation Details}
+I used the programming language Python to implement my models. To build my Gaussian Process Regression models I primarily used
+the sci kit learn GaussianProcessRegressor package. To implement MCMC I used the emcee package. To interpolate I used scipy.interpolate and throughout my model I consistently 
+set my random state at 42
 
 
 \section{Results}
@@ -1236,10 +1236,22 @@ However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparam
 
 
 \section{Conclusion}
+\begin{itemize}
+    \item successfully developed accurate models
+    \item Evaluated a wide variety of kernels
+    \item Used MCMC to visuale hyper-parameters posteriors
+    \item Compared 4d to 7d model how did reducing the parameters space effect the model, loose much information??
+    \item Potential Scaling issues
+\end{itemize}
 
 
 \section{Discussion}
-
+\begin{itemize}
+    \item In future would like to build a model with kernel uncertainty built into model, full gpr
+    \item Combined GPR , including multiple posteriors weighted
+    \item Use other GPR methods, sparse GPR \Sean{(read and bried comment)}
+    \item Maybe using physical constraints somewhat in the model
+\end{itemize}
 
 \appendix
 
