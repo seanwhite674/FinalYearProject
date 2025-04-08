@@ -25,6 +25,8 @@
 \onehalfspacing
 \newcommand{\Sarp}[1]{{\textcolor{blue}{{SA: #1}} }}
 \newcommand{\Sean}[1]{{\textcolor{red}{{Sean: #1}} }}
+\newcommand{\todo}[1]{\textcolor{orange}{\texttt{TODO: #1}}}
+
 
 
 \usepackage{cite} % For citation handling
@@ -40,7 +42,7 @@
 \maketitle
 
 
-\section{Abstract}
+\abstract{
 \begin{itemize}
     \item Motivated by the need for fast and accurate models of gravitational waveforms, this project explores Gaussian Process Regression (GPR) as a way to model the waveform mismatch in black hole binary mergers.
     \item Begin by understanding GPR fundamentals on a low-dimensional toy problem following \cite{bible},.
@@ -51,6 +53,7 @@
     \item Visualise the GPR across its parameter space taking cross-cuts
     \item Finally our GPR provides a fast and accurate mismatch model that will help the work being carried out in \cite{Ogpaper}.
 \end{itemize}
+}
 
 
 
@@ -137,7 +140,7 @@ each at distances \(r_1\) and \(r_2\) from their common center of mass (CoM), wi
 \(\mathbf{x}_1(t) = r_1(\cos\Omega t,\,\sin\Omega t)\) and mass~2 on
 \(\mathbf{x}_2(t) = r_2(\cos(\Omega t+\pi),\,\sin(\Omega t+\pi))\). The system’s orbital
 frequency is \(\Omega\). A short calculation yields
-
+%
 \begin{equation}
     Q^{ij} = 4 \Omega^3 \left(m_1 r_1^2 + m_2 r_2^2\right)
     \begin{pmatrix}
@@ -145,10 +148,10 @@ frequency is \(\Omega\). A short calculation yields
     -\cos(2\Omega t) & -\sin(2\Omega t)
     \end{pmatrix}.
 \end{equation}
-
-\noindent
+%
+%
 Introducing the reduced mass \(\mu = m_1 m_2/(m_1 + m_2)\), we get that the \(\ell=2\) power emission is
-
+%
 \begin{equation}\label{eq:E_dot_2}
 \dot{E}_{\ell=2}
 \;=\;
@@ -157,6 +160,8 @@ Introducing the reduced mass \(\mu = m_1 m_2/(m_1 + m_2)\), we get that the \(\e
 Both \(\Omega\) and \(R\) are functions of time, but they evolve on a time scale much longer than the orbital time
 scale and so when averaging over orbits we approximate them as constant. Applying Kepler’s law, \(\Omega^2 = GM/R^3\), and defining
 \(\omega = 2\Omega\) as the GW frequency, we find
+%
+%
 \begin{equation}
 \dot{E}_{\ell=2}
 \;=\;
@@ -167,8 +172,7 @@ scale and so when averaging over orbits we approximate them as constant. Applyin
 \quad
 \mathcal{M} \;=\;\mu^{3/5}\,M^{2/5}
 \end{equation}
-
-\noindent
+%
 is known as the chirp mass where $M = m_1+m_2$ is the total mass.
 \Sarp{You already kind of mention this below Eq.~\eqref{eq:E_dot_2}, so maybe provide slightly
 more detail there.}
@@ -370,7 +374,7 @@ In the next section we examine the different kernel choices available and the as
 \label{sec: Kernels}
 The kernel function encodes our assumptions about the relationship between input points in a Gaussian Process (GP).
 It defines the covariance between any two function values and thereby determines the smoothness, periodicity, or other properties of the functions drawn from the GP prior.
-Fundamentally, kernels reflect the idea of *similarity*: input points \( x \) and \( x' \) that are close together are assumed to have highly correlated outputs \( f(x) \) and \( f(x') \),
+Fundamentally, kernels reflect the idea of \emph{similarity}: input points \( x \) and \( x' \) that are close together are assumed to have highly correlated outputs \( f(x) \) and \( f(x') \),
 while distant inputs are assumed to produce less correlated values. This notion of similarity, as emphasized in \cite[p.~79]{bible}, is central to how Gaussian processes learn from and generalize beyond training data.
 
 \vspace{1em}
@@ -389,7 +393,7 @@ indicating strong correlation (approximately 0.9). As the distance increases, su
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=1\textwidth]{LatexPlots/1dplots/Kernel_background.png}
+      %  \includegraphics[width=1\textwidth]{LatexPlots/1dplots/Kernel_background.png}
         \caption{Sampling from the GP prior with zero mean and an RBF kernel ($\ell = 0.5$, $\sigma_f^2 = 1$). 
         The first plot shows three sample functions drawn from the prior distribution. 
         The second plot visualizes the covariance matrix as a heatmap, revealing the strength of correlations between inputs.
@@ -489,7 +493,7 @@ the signal variance hyperparameter on the GP prior. We will use the RBF kernel a
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_hyperparams.png}
+   %     \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_hyperparams.png}
         \caption{Sampling from the GP prior with mean 0 and covariance given by the RBF kernel.
         The first plot shows the effect of the lengthscale hyperparameter \(\ell\) on the GP prior.We fix the signal variance to 1.
         The second plot shows the effect of the signal variance hyperparameter \(\sigma_f^2\) on the GP prior.We fix the lengthscale to 0.5.}
@@ -597,7 +601,7 @@ we examine the different kernel choices available and the assumptions that each 
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/priortoposterior.png}
+   %     \includegraphics[width=\textwidth]{LatexPlots/1dplots/priortoposterior.png}
     \caption{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. 
     The RBF kernel was used with hyper-parameters: $l = 1$, $\sigma^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterio distribution. 
     The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior. }
@@ -637,18 +641,20 @@ where \( \Sigma = \mathrm{diag}(\sigma_{n,1}^2, \sigma_{n,2}^2, \dots, \sigma_{n
 \bigskip
 \noindent
 This now updates our previous posterior mean and variance (eq: \ref{eq: predictive_mean} and \ref{eq: predictive_variance}) to a revised posterior:
-\begin{equation}
-    P(f_*|X,X_*,\theta,y) = \sim \mathcal{N}(m(f_*), Var(f_*))
-    \label{eq: predictive_distribution_noise}
-\end{equation}
-\begin{equation}
-m(f_*) = K_*^T (K_y)^{-1} y,
-\label{eq: predictive_mean_noise}
-\end{equation}
-\begin{equation}
-\text{Var}(f_*) = K_{**} - K_*^T (K_y)^{-1} K_*.
+%
+%
+\begin{subequations}
+\begin{align}
+    P(f_*|X,X_*,\theta,y) &\sim \mathcal{N}(m(f_*), \text{Var}(f_*))
+    \label{eq: predictive_distribution_noise},\\
+m(f_*) &= K_*^T (K_y)^{-1} y,
+\label{eq: predictive_mean_noise}\\
+\text{Var}(f_*) &= K_{**} - K_*^T (K_y)^{-1} K_*,
 \label{eq: predictive_variance_noise}
-\end{equation}
+\end{align}
+\end{subequations}
+%
+%
 where \(K_y\) depends on how we handle our noise. There are three main cases of how we handle our noise
 
 \subsubsection*{Homoscedastic Noise} 
@@ -681,7 +687,7 @@ Our predictive distribution remains as in \ref{eq: predictive_distribution_noise
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_noise.png}
+   %     \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_noise.png}
         \caption{Sampling from the GP prior with mean 0 and covariance given by the RBF kernel.
         The plot shows the effect of the noise hyperparameter \(\sigma_n^2\) on the GP prior.We fix the signal variance to 1 and length scale to 0.5.}
     \label{fig: kernel_noise}
@@ -756,7 +762,7 @@ This integral is intractable so we approximate it using Monte Carlo integration 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{LatexPlots/1dplots/GPR_noise_comparison.png}
+   % \includegraphics[width=\textwidth]{LatexPlots/1dplots/GPR_noise_comparison.png}
     \caption{Samples drawn from a zero-mean Gaussian Process prior with varying noise assumptions.
     \textbf{Left:} Homoscedastic noise, where a constant noise variance \(\sigma_n^2 = 0.5\) is added uniformly across all inputs.
     \textbf{Middle:} Heteroscedastic noise, where individual noise variances \(\sigma_i^2\) are known and drawn from \(\mathcal{N}(0, 0.5)\), resulting in a diagonal noise covariance.
@@ -881,7 +887,7 @@ Using MCMC, we generate samples \( \{\theta^{(s)}\}_{s=1}^S \sim p(\theta \mid \
 \subsubsection*{Implementing MCMC}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/MCMC_Flow.png}
+ %   \includegraphics[width=0.8\textwidth]{LatexPlots/MCMC_Flow.png}
     \caption{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference.
      This pipeline samples from the posterior \( p(\theta \mid \mathbf{y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}
     \label{fig:MCMC flowchart}
@@ -953,19 +959,19 @@ This procedure yields a predictive distribution that fully reflects both the unc
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/MCMCmeangpr.png}
+   %     \includegraphics[width=\textwidth]{LatexPlots/1dplots/MCMCmeangpr.png}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/MCMCpeakgpr.png}
+     %   \includegraphics[width=\textwidth]{LatexPlots/1dplots/MCMCpeakgpr.png}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{LatexPlots/1dplots/MCMCaveragegpr.png}
+      %  \includegraphics[width=\textwidth]{LatexPlots/1dplots/MCMCaveragegpr.png}
     \end{subfigure}
-    \caption{
+    \caption{\Sarp{We agreed that this figure be removed.}
         Left: This is the GPR plotted with the mean hyper-parameters
         Middle: This is the GPR plotted with the peak hyper-parameters
         Right: This is the full predictive distribution over all the hyper-parameter samples
@@ -987,13 +993,18 @@ This procedure yields a predictive distribution that fully reflects both the unc
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/Flowchart.png}
-    \caption{My Process Flowchart}
+   \includegraphics[width=0.8\textwidth]{LatexPlots/Flowchart.png}
+    \caption{\Sarp{Acquisition is misspelled} My Process Flowchart}
     \label{fig:flowchart}
 \end{figure}
 
 \subsection{Data Description}
+\Sarp{This section should go probably after the intro.}
 \Sean{How data was asquired. What is the data what simulation number}
+\Sarp{The data is mismatches between waveform model \textsc{SEOBNRv5PHM} and the NR surrogate
+\textsc{NRSur7dq4} for a set of 250 intrinsic parameters such that it covers 5 different mass ratios and 
+a grid of concentric ellipses in the spin projection space. This 250-element set is then repeated for 4 different
+masses. Each mismatch is further an average of 294 mismatches computed over a grid of 3 different extrinsic parameters.}
 \noindent
 \textbf{4D}
 
@@ -1185,7 +1196,7 @@ To understand the general shape of all our models we pick two cross-sections of 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png}
-    \caption{Comparing Cross-cuts of best models}
+    \caption{\todo{Make labels bigger} Comparing Cross-cuts of best models}
     \label{fig:crosscuts_bestmodels}
 \end{figure}
 
@@ -1233,6 +1244,7 @@ However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparam
 \subsubsection*{MCMC}
 
 \subsection{7D Results}
+\Sarp{Don't do anything for this now, simply discuss in the Discussion section as the next thing to do.}
 \Sean{Ask Sarp how to compare 4D with 7D obviously need to use transformation formulas to get equivalent}
 \Sean{Ask Sarp if it is at all possible to plots of other other functional fits of Mismatch like he had in his plot}
 \Sean{Ask Sar if possible to get true mismatch data from other data-set to test, if model generalises}
@@ -1252,6 +1264,7 @@ However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparam
 \section{Discussion}
 \begin{itemize}
     \item In future would like to build a model with kernel uncertainty built into model, full gpr
+    \todo{Add the 7D discussion here}
     \item Combined GPR , including multiple posteriors weighted
     \item Use other GPR methods, sparse GPR \Sean{(read and bried comment)}
     \item Maybe using physical constraints somewhat in the model
