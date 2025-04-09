@@ -285,6 +285,7 @@ the black contours here represent a ratio of the mismatch between two different 
 \end{comment}
 
 \subsection{Data Description}
+\label{sec:data_description}
 We have discussed what the mismatch between wave signals is and why we want to model the mismatch between GW's from NR and GW's from analytical models.
 Our proposed GPR method will take as inputs the intrinsic parameters of the binary black hole and will output the mismatch predictions.
 The inrinsic parameter space of a binary black hole is 8 dimensional visualised in Figure~\ref{fig:gr_diagram}. This accounts for two masses and two spin vectors both in 3 dimensions. 
@@ -969,40 +970,74 @@ k(\mathbf{x}, \mathbf{x}') = \sigma_f^2 \exp\left( -\frac{1}{2} \sum_{d=1}^D \fr
 \begin{figure}[H]
     \centering
    \includegraphics[width=0.8\textwidth]{LatexPlots/Flowchart.png}
-    \caption{\Sarp{Acquisition is misspelled} My Process Flowchart}
+    \caption{Method Flow Chart}
     \label{fig:flowchart}
 \end{figure}
 \subsection{The Models}
-To build a robust Gaussian Process Regression model, I built an extensive selection of models for comparison.
-These models included all combinations of kernels introduced in Section~\ref{sec: Kernels} and noise-handling strategies discussed in Section~\ref{sec: Handlingnoise}. 
-A summary of all these models is provided in Table~\ref{tab:model_summary}. I began with the \texttt{fixedalpha} model, which assumes known noise added directly to the diagonal of the kernel matrix discussed in Section.
-Following this I added noise to my model as a hyper-parameter in the selection of White Kernel models I used. \Sean{Define White Kernel its purpose}. Upon initial visualisations it was clear that the resulting optimised noise depended massively on the optimisation bounds. I therefore evaluated different models with different noise bounds. These included
-\texttt{whitenoerror} model which used loose bounds \((10^{-6}, 10^6)\), along with two additional variants: \texttt{whiteminmaxerror}, which uses bounds set by the 5\% and 95\% quantiles of the observed uncertainty, and \texttt{whitemeanerror}, which constrains the noise using scaled bounds around the mean of the observed uncertainties. 
-A hybrid model (\texttt{hybrid}) combining a fixed alpha with a learnable white noise term was also tested. To better capture uncertainty in input observations, I included a Monte Carlo model (\texttt{montecarlo}) that samples from the input distribution instead of optimising a noise parameter.
-Finally, I experimented with additive kernel structures (\texttt{combinekernel}) by summing the RBF kernel with Matern, RationalQuadratic, and Laplace kernels to model more complex function behaviours. For each configuration, hyperparameters were optimised by maximising the log marginal likelihood as detailed in Section~\ref{sec: Hyper_parameters}.
+\label{subsec:Models}
+To build a robust Gaussian Process Regression (GPR) model, I constructed a comprehensive set of model configurations by combining the kernels described in Section~\ref{sec: Kernels} with the noise-handling techniques introduced in Section~\ref{sec: Handlingnoise}. 
+A full summary is provided in Table~\ref{tab:model_summary}. Below, we outline the different classes of models explored:
 
+\noindent
+\textbf{Homoscedastic Noise Models}
+\begin{itemize}
+    \item \textbf{White Kernel:} Noise is modelled as a global hyperparameter using the \texttt{WhiteKernel} class added to each kernel. After initial examination I found that the results of optimising the noise hyper-parameter varied massively with the noise bounds. 
+    To get a full picture of the noise hyper-paraters I implemented three variants of this model with different noise bounds:
+    \begin{itemize}
+        \item \texttt{whitenoerror}: loose bounds \((10^{-6}, 10^6)\),
+        \item \texttt{whiteminmaxerror}: bounds set using the 5th and 95th percentiles of the known standard deviations,
+        \item \texttt{whitemeanerror}: bounds centered around the mean known uncertainty.
+    \end{itemize}
+\end{itemize}
+%
+%
+
+\noindent
+\textbf{Heteroscedastic Noise Models}
+\begin{itemize}
+    \item \textbf{Known Noise:} The \texttt{fixedalpha} model assumes noise variance is known at each input and adds this directly into the kernel diagonal using the \texttt{alpha} argument of \texttt{GaussianProcessRegressor}.
+    \item \textbf{Monte Carlo Sampling:} The \texttt{montecarlo} model accounts for our observed mismatch values not being the true values and so builds posteriors for noisy and averages over these. 
+    \item \textbf{Additive Kernel Structures:} The \texttt{combinekernel} models use additive combinations of kernels to capture both smooth and variable structures in the mismatch data. From our examination of the kernels in Section~\ref{sec: Kernels} we have seen that the RBF producs smooth curves while kernels like the Matern, Rational Quadratic and the Laplace produce more variational fits.
+            From Examining our data in Section~\ref{sec:data_description} we noticed smooth general shapes with local variations. This was the motivation to make an additive Kernel of the form 
+    \begin{equation}
+        k(x, x') = \theta_1k_{\mathrm{RBF}}(x, x') + \theta_2k_{\mathrm{extra}}(x, x'),
+    \end{equation}
+    where \(k_{\mathrm{extra}}\) is one of Matern, RationalQuadratic, or Laplacian. We constrain the RBF Kernel to large \(\ell\) parameters with an optimisation range of \((0.5,100)\) since this will force the RBF Kernel to model the general smooth shape over inputs
+    and then we give the additional kernel much smaller \(\ell\) bounds so that it captures the local variation. \(\theta_1\) and \(\theta_2\) capture the weighting of each kernel.
+\end{itemize}
+%
+%
+
+\noindent
+\textbf{Hybrid Model}
+\begin{itemize}
+    \item \textbf{Hybrid Noise:} The \texttt{hybrid} model includes both fixed known noise and a trainable noise parameter. The fixed component helps where the noise is known (training inputs), while the learnable part generalizes to unseen regions.
+\end{itemize}
+%
+For each configuration, the kernel hyperparameters were optimised by maximising the log marginal likelihood, as described in Section~\ref{sec: Hyper_parameters}.
+%
+%
+%
 
 \begin{table}[h!]
     \renewcommand{\arraystretch}{1.3}
     \centering
-    {\fontsize{7}{9.5}\selectfont
-    \begin{tabular}{|l|l|l|}
+    {\fontsize{10}{9.5}\selectfont
+    \begin{tabular}{|l|l|l|l|}
     \hline
-    \textbf{Model Label} & \textbf{Noise Optimisation Bounds} & \textbf{Kernels} \\
+    \textbf{Model Label} & \textbf{Noise Type} & \textbf{Noise Optimisation Bounds} & \textbf{Kernels} \\
     \hline
-    \texttt{fixedalpha} & -- & All kernels \\
+    \texttt{whitenoerror} & Homoscedastic & \((10^{-6}, 10^6)\) & All kernels \\
+    \texttt{whiteminmaxerror} & Homoscedastic & 5\% lower and 95\% upper error & All kernels \\
+    \texttt{whitemeanerror} & Homoscedastic & \((0.7\mu_{\text{error}}, 1.3\mu_{\text{error}})\) & All kernels \\
     \hline
-    \texttt{whitenoerror} & \((10^{-6}, 10^6)\) & All kernels \\
-    \texttt{whiteminmaxerror} & 5\% lower and 95\% upper error & All kernels \\
-    \texttt{whitemeanerror} & \((0.7\mu_{\text{error}}, 1.3\mu_{\text{error}})\) & All kernels \\
+    \texttt{fixedalpha} & Heteroscedastic & -- & All kernels \\
+    \texttt{montecarlo} & Heteroscedastic & Sampling & All kernels \\
+    \texttt{combinekernel} & Heteroscedastic & -- & RBF + Matern \\
+    \texttt{combinekernel} & Heteroscedastic & -- & RBF + RationalQuadratic \\
+    \texttt{combinekernel} & Heteroscedastic & -- & RBF + Laplace \\
     \hline
-    \texttt{hybrid} & \((10^{-6}, 10^6)\) & All kernels \\
-    \hline
-    \texttt{montecarlo} & Sampling & All kernels \\
-    \hline
-    \texttt{combinekernel} & -- & RBF + Matern \\
-    \texttt{combinekernel} & -- & RBF + RationalQuadratic \\
-    \texttt{combinekernel} & -- & RBF + Laplace \\
+    \texttt{hybrid} & Hybrid & \((10^{-6}, 10^6)\) & All kernels \\
     \hline
     \end{tabular}}
     \caption{Summary of the Gaussian Process Regression models evaluated.
@@ -1010,12 +1045,8 @@ Finally, I experimented with additive kernel structures (\texttt{combinekernel})
     \label{tab:model_summary}
 \end{table}
 
-
-\Sean{Optimisation details, algorithm used}
-
 \subsection{Model Evaluation Metrics}
 \label{sec:metrics}
-
 To assess the performance of each Gaussian Process Regression model, I used six evaluation metrics. These metrics were discussed and chosen in \cite{metrics} for the specific reason that they offer a robust metrics that capture different information about the model. In this paper they divide the metrics into two types Average Expected Error \textbf{AEE} metrics and correlation metrics. 
 
 \subsubsection*{AEE Metrics}
@@ -1037,108 +1068,89 @@ To assess the performance of each Gaussian Process Regression model, I used six 
 In \cite{metrics} the author concluded that lower AEE metrics (close to 0) correspond to higher regressor accuracy, and higher correlation metrics (closer to 1) correspond to better predictions. We set out to evaluate our models with these metrics.
 
 \subsection{Training, Comparing, and Testing My Models}
-
-To ensure that each of my models was not overly dependent on a particular dataset and to mitigate overfitting, I implemented K-fold cross-validation, evaluating the metrics outlined in Section~\ref{sec:metrics} on each validation fold. This approach is supported by Rasmussen and Williams in Chapter~5 of \cite{bible}, where cross-validation is discussed as a method for model selection.
+%
+%
+To ensure that each of my models was not overly dependent on a particular dataset and to mitigate overfitting, I implemented K-fold cross-validation, evaluating the metrics outlined in Section~\ref{sec:metrics} on each validation fold. This approach is supported by Rasmussen and Williams in \cite[Ch.5]{bible}, where cross-validation is discussed as a method for model selection.
 I divided the full dataset into a 90--10 split, where 90\% of the data was used for 10-fold cross-validation, and the remaining 10\% was held out as an untouched test set for final evaluation.
 During cross-validation, each model was trained on 9 out of the 10 folds and evaluated on the remaining fold, with the process repeated such that every fold served as the validation set once. For each fold, model predictions were compared against the true values using the six metrics described in Section~\ref{sec:metrics}.
 To analyse model stability and consistency, I visualised the distribution of each metric across folds using box plots for each model type. Additionally, I plotted the mean performance for every metric across all folds and model types.
-Each model was then ranked for each metric individually (e.g., lower is better for AEE, higher is better for correlation), and these rankings were averaged across all metrics to produce an overall ranking table. To understand relationships between metrics, I constructed a dendrogram based on the correlation of their model rankings, enabling the identification of clusters of similar metrics
- and those with differing behaviours. Finally, to ensure robust generalisation, I used the most distinct metrics identified from the dendrogram to create a scatter plot and selected a subset of models that consistently performed best across these dimensions.
+
+\Sean{Explain Better}Each model was then ranked for each metric individually (e.g., lower is better for AEE, higher is better for correlation), and these rankings were averaged across all metrics to produce an overall ranking table. To understand relationships between metrics, I constructed a dendrogram based on the correlation of their model rankings, enabling the identification of clusters of similar metrics
+and those with differing behaviours. Finally, to ensure robust generalisation, I used the most distinct metrics identified from the dendrogram to create a scatter plot and selected a subset of models that consistently performed best across these dimensions.
 
  \subsubsection*{Final Testing}
- In the final stage, each of the shortlisted models was retrained on the full 90\% cross-validation training set and evaluated on the held-out 10\% test set. Model predictions were compared to the true values using the same six metrics, and performance was visualised to identify the most accurate and robust candidates.
- Two final models were selected: one with the overall best test performance, and a second with simpler hyperparameters to serve as a baseline for comparison and to help guard against overfitting. For both models, I performed Markov Chain Monte Carlo (MCMC) sampling as demonstrated in Section~\ref{sec: MCMC}
+In the final stage, each of the shortlisted models was retrained on the full 90\% cross-validation training set and evaluated on the held-out 10\% test set. Model predictions were compared to the true values using the same six metrics, and performance was visualised to identify the most accurate and robust candidates.
+Two final models were selected: one with the overall best test performance, and a second with simpler hyperparameters to serve as a baseline for comparison and to help guard against overfitting. For both models, I performed Markov Chain Monte Carlo (MCMC) sampling as demonstrated in Section~\ref{sec: MCMC}
 to construct posterior distributions over their hyperparameters, allowing for a visual and probabilistic assessment of hyperparameter uncertainty.
  
 
 \subsubsection*{Implementation Details}
-All models were implemented in Python. Gaussian Process Regression was carried out using the \texttt{GaussianProcessRegressor} class from the \texttt{scikit-learn} library.
+All models were implemented in Python. Gaussian Process Regression was carried out using the \texttt{GaussianProcessRegressor} class from the \texttt{scikit-learn} library, with hyperparameter optimisation performed using the default \texttt{optimizer="fmin\_l\_bfgs\_b"} routine. 
 For MCMC sampling, I used the \texttt{emcee} package. Interpolation was performed using \texttt{scipy.interpolate}. To ensure reproducibility, I consistently set the random seed to 42 throughout all experiments.
-
-
-
+%
+%
+%
 \section{Results}
-\subsection{4D Results}
-\Sean{Unsure about visuals here need to build them in better, don't know which models to plot, I am plotting too much atm maybe combined noerror and minmax}
-
 \subsubsection*{Cross-Validation Performance}
 
-After running cross-validation for all model types discussed, we summarize the results in Figure~\ref{fig:broad_comparison}. A few notable observations emerge. Firstly, the \texttt{monte\_carlo} noise modeling method performs poorly.
-This may be partly due to computational limitations (we only ran 10 samples per fold) but also due to instability in optimization. For noisy systems, sampling extreme values for noise led to difficulty during optimization, 
-and averaging across such varied samples likely caused over-generalized predictions. \Sean{Add graph to demonstrate a GP prediction after Monte Carlo sampling of the noise.}
-Incorporating the true noise (standard deviation of the data) values resulted in worse performance than learning the noise as a hyperparameter.
-This is evidenced by the relatively poor results from \texttt{fixed\_alpha} and the slightly improved but still limited performance of \texttt{hybrid}.
-We conclude that learning noise through a hyperparameter is the most effective approach in these models.
-
+After running cross-validation for all model types discussed in Section~\ref{subsec:Models}, we summarize the results in Figure~\ref{fig:broad_comparison}. A few notable observations emerge. Firstly, the \texttt{montecarlo} noise modeling method performs poorly.
+This may be due to the fact that the noise associated with our data is relatively large. When sampling different noise levels, this results in a mixture of large- and small-noise systems whose effects, when averaged, tend to cancel out—leading to overly generalised predictions.
+We also find that interestingkly incorporating the true noise in our GP results in worse performance than learning the noise as a hyperparameter.
+This is evidenced by the relatively poor results from \texttt{fixedalpha}, and the slightly improved, but still limited, performance of \texttt{hybrid}.
+We conclude that learning the noise via a hyperparameter is the most effective approach for our models. \Sean{Comment in conclusion}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/CV_plots/metrics_compared.png}
-    \caption{}
+    \includegraphics[width=\textwidth]{LatexPlots/CV_plots/metrics_compared.png}
+    \caption{Comparison of the average performance of each model type and for each kernel across all 10 folds of the training/validation data for each metric. Note: The \texttt{combinedkernel} approach is excluded here for clarity, but is included in all subsequent evaluations.}
     \label{fig:broad_comparison}
 \end{figure}
-\noindent
-Note:In figure \ref{fig:broad_comparison} we focused on known noise and noise being modeled as a hyper-parameter we did not visualise the combined kernel approach. They are included in all subsequent evaluations.
-
-\noindent
-To rank models across multiple metrics, we compute the average rank of each model across all metrics. These rankings are shown in Table~\ref{tab:rankingtable}. To investigate which metrics produce similar or different model rankings,
-we plot a dendrogram of the ranking distances between metrics in (Figure~\ref{fig:CV_sidebyside},left). From this, we observe that the Figure of Merit (FoM), MAE, and $R^2$ yield notably different rankings.
-To visualise model performance and how the model generalises over all metrics we compare all models in a scatter plot of $R^2$ versus FoM (Figure~\ref{fig:CV_sidebyside}, right) with the color of each scatter point representing the MAE.
-We label each point with its ranking from Table~\ref{tab:rankingtable}, which reveals that the top 8 models form a clearly distinguishable set of optimal performers. These are examined more closely in the next section.
-
+The average rank of each model across all metrics is shown in Table~\ref{tab:rankingtable}. The heatmap in Figure~\ref{fig:CV_sidebyside} (left) illustrates each model's ranking by metric. We can observe that the rankings are fairly consistent across metrics.
+To examine this further we plot a dendrogram of their pairwise distances between metric ranking results in Figure~\ref{fig:CV_sidebyside} (middle). From this, we observe that the FOM produces noticeably different rankings compared to the other metrics. The most divergent metrics appear to be FOM, \(R^2\), and MAE.
+To explore this further, we plot a scatter diagram in Figure~\ref{fig:CV_sidebyside}(right) with \(R^2\) on the x-axis, FOM on the y-axis, and MAE shown as the color scale. This highlights a clear group of the top 8 models, which form a distinctly optimal cluster. These are examined in more detail in the following section.
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/CV_plots/clustermetrics.png}
-    \end{subfigure}
-    \hspace{0.03\textwidth}
-    \begin{subfigure}[t]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{LatexPlots/CV_plots/r2vsfom.png}
-    \end{subfigure}
-    \caption{Left: Dendrogram of difference in ranking between metrics, Right: Comparing clustered model performance by $R^2$ and FoM.}
+    \includegraphics[width=\textwidth]{LatexPlots/CV_plots/ranking_visualisation.png}
+    \caption{Left: Heatmap showing each model’s rank across the evaluation metrics. The x-axis lists models according to their ranking in Table~\ref{tab:rankingtable}, and the y-axis shows the metrics. The color bar represents rank (blue indicates better rank, red indicates worse). 
+    Middle: Dendrogram showing hierarchical clustering of metrics based on how similarly they rank models. The vertical axis denotes correlation distance—smaller values indicate higher agreement between metric rankings.
+    Right: Scatter plot of all models with \(R^2\) on the x-axis, FOM on the y-axis, and MAE represented by the color of each point. Models are indexed by their rank from Table~\ref{tab:rankingtable}.}
     \label{fig:CV_sidebyside}
 \end{figure}
 
 
 
-
-
 \subsubsection*{Training on 90\% of Data}
-Now selecting our 8 models that formed that cluster of high performing models in (Figure~\ref{fig:CV_sidebyside}, right) we train all these models on the full 90\% of the data that cross validation was corried out with.
-The resulting model hyper-parameterers are available in \ref{tab:final_gpr_hyperparams}. With these trained models we predict on our test set (10\% of data completely unseen) and like in (Figure~\ref{fig:CV_sidebyside}, right)
-we plot our results as a scatter showing how models generalise over the \(R^2\),FOM and MAE metrics.
-
+After identifying the top 8 models forming a high-performing cluster in Figure~\ref{fig:CV_sidebyside} (right),
+ we retrained these models using the full 90\% of the data previously used for cross-validation. The optimized hyperparameters for these final models are detailed in Table~\ref{tab:final_gpr_hyperparams}. 
+To evaluate generalization performance, we tested each model on the remaining 10\% of unseen data and visualized their results in Figure~\ref{fig:comparing_metrics}.
+ The left panel shows a heatmap of model rankings across six metrics, and the right panel presents a scatter plot of $R^2$ vs FoM, with color indicating RMSE. 
+ Model ranks are annotated in the scatter to highlight relative performance.
+As shown, the rankings remain fairly consistent across metrics, with some variation in the FoM. The best performing models on the test set are \texttt{RBFMat}, \texttt{Matnoerr}, and \texttt{RBFnoerr} are ranked 1st, 2nd, and 3rd respectively.
+These models achieve the strongest trade-offs between predictive accuracy and uncertainty calibration, making them the most promising candidates for deployment.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\textwidth]{LatexPlots/final_gps_plots/metric_of_finalists_comparison.png}
-    \caption{Comparing metrics}
+    \includegraphics[width=\textwidth]{LatexPlots/final_gps_plots/metric_of_finalists_comparison.png}
+    \caption{Left: Heatmap of top 8 model rankings by metric indexed by ranking.
+    Right: Scatter of FOM against \(R^2\) with the colour bar representing the RMSE.
+    The Rankings are given in Table~\ref{tab:finalmadelsrankingtable}} and listed here for convenience
     \label{fig:comparing_metrics}
 \end{figure}
-\noindent
-To understand the general shape of all our models we pick two cross-sections of our data and plot all our models for each.
+From these visualizations, we observe that while all models perform well, they differ in how they handle local noise.
+Let's examine the \texttt{RBFMat} model. It remains smooth where the data is clean but responds sharply in regions containing outliers or local irregularities.
+This behaviour is reflected in its optimized hyperparameters (Table~\ref{tab:final_gpr_hyperparams}). The RBF component has long characteristic length scales (around 1.0--1.5) and a large scale factor ($2.34$),
+which captures the global smooth structure of the data. Meanwhile, the Matern component has much shorter length scales (mostly < 0.5) and a smaller scale ($0.207$), allowing it to respond to local variability—effectively modeling input-dependent noise.
+In contrast, models using a single kernel with a \texttt{WhiteKernel} for noise (e.g., \texttt{Mat\_noerr}, \texttt{RBF\_noerr}) appear smoother overall. These models result in smaller length scales and relatively small noise variances ($\sigma_n^2 < 0.01$).
+When using tighter optimisation bounds for noise in the \texttt{min\_maxerr} models, we observe from Table~\ref{tab:final_gpr_hyperparams} that the noise hyperparameter consistently sits at or near the lower bound. 
+This suggests that the GP is compensating for noise directly through the kernel, not through the explicit noise model. This provides further credibility to the \texttt{RBFMat} combined model, where the noise appears to be effectively captured within the \texttt{Matern} kernel.
+Finally, examining Laplacian-based kernel models (\texttt{Laplace\_noerr} and \texttt{Laplace\_minmaxerr}), which only have a single hyperparameter ($\gamma$), they still perform reasonably well but tend to produce more linear predictions. This is likely due to their limited flexibility compared to other kernels.
+Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metrics} and our qualitative examination of the crosscuts in Figure~\ref{fig:crosscuts_bestmodels}, we conclude that the \texttt{RBFMat} model offers the best trade-off between flexibility, interpretability, and robustness.
+However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparameters, there is a risk we are overfitting to the data. Therefore, we retain the \texttt{Mat\_noerr} model for comparative purposes, as it offers a smooth fit with fewer hyperparameters.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png}
     \caption{\todo{Make labels bigger} Comparing Cross-cuts of best models}
     \label{fig:crosscuts_bestmodels}
 \end{figure}
-
-\noindent
-From these visualizations, we observe that while all models perform well, they differ in how they handle local noise.
-Let's examine the \texttt{RBFMat} model. It remains smooth where the data is clean but responds sharply in regions containing outliers or local irregularities.
-This behaviour is reflected in its optimized hyperparameters (Table~\ref{tab:final_gpr_hyperparams}). The RBF component has long characteristic length scales (around 1.0--1.5) and a large scale factor ($2.34$),
-which captures the global smooth structure of the data. Meanwhile, the Matern component has much shorter length scales (mostly < 0.5) and a smaller scale ($0.207$), allowing it to respond to local variability—effectively modeling input-dependent noise.
-
-\noindent
-In contrast, models using a single kernel with a \texttt{WhiteKernel} for noise (e.g., \texttt{Mat\_noerr}, \texttt{RBF\_noerr}) appear smoother overall. These models result in smaller length scales and relatively small noise variances ($\sigma_n^2 < 0.01$).
-When using tighter optimisation bounds for noise in the \texttt{min\_maxerr} models, we observe from Table~\ref{tab:final_gpr_hyperparams} that the noise hyperparameter consistently sits at or near the lower bound. 
-This suggests that the GP is compensating for noise directly through the kernel, not through the explicit noise model. This provides further credibility to the \texttt{RBFMat} combined model, where the noise appears to be effectively captured within the \texttt{Matern} kernel.
-Finally, examining Laplacian-based kernel models (\texttt{Laplace\_noerr} and \texttt{Laplace\_minmaxerr}), which only have a single hyperparameter ($\gamma$), they still perform reasonably well but tend to produce more linear predictions. This is likely due to their limited flexibility compared to other kernels.
-
-\noindent
-Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metrics} and our qualitative examination of the crosscuts in Figure~\ref{fig:crosscuts_bestmodels}, we conclude that the \texttt{RBFMat} model offers the best trade-off between flexibility, interpretability, and robustness.
-However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparameters, there is a risk we are overfitting to the data. Therefore, we retain the \texttt{Mat\_noerr} model for comparative purposes, as it offers a smooth fit with fewer hyperparameters.
 
 \begin{table}[H]
 \centering
@@ -1333,7 +1345,17 @@ This kernel grows with the similarity (inner product) between inputs, and it all
 
 \begin{table}[H]
     \centering
-    \caption{Final Model Rankings from CSV}
+    \caption{Final Model Rankings after training on 90\% and testing on 10\%}
+    {\fontsize{7}{9.5}\selectfont
+    \csvautotabular{LatexPlots/CV_plots/final_model_rankings.csv}}
+    \label{tab:finalmadelsrankingtable}
+\end{table}
+
+
+
+\begin{table}[H]
+    \centering
+    \caption{All 32 Model Rankings from CV}
     {\fontsize{7}{9.5}\selectfont
     \csvautotabular{LatexPlots/CV_plots/model_rankings.csv}
     }
