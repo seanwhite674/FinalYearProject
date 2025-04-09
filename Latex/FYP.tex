@@ -220,8 +220,11 @@ The mismatch between two signals is defined by \cite{mismatch, Ogpaper}
 {\sqrt{\langle h_{\text{simple}},h_{\text{simple}}\rangle \,
 \langle h_{\text{accurate}},h_{\text{accurate}}\rangle}},
 \end{equation}
-where \(\langle\cdot,\cdot\rangle\) is the inner product of both GW, and we maximise over a set of (intrinsic and/or extrinsic) model parameters \(\mathbf{\lambda_m}\) depending on the type of mismatch we wish to compute.
-\Sarp{Probably earlier on you need to introduce and list all 15 parameters: 8 intrinsic, 7 extrinsic (Assuming quasicircular orbits}
+where \(\langle\cdot,\cdot\rangle\) is the inner product of both GW, 
+\Sarp{You need to provide the equation for the inner product as well, it is an integral in the frequency domain that
+is weighted by the detector's amplitude spectral density (sensitivity)}
+and we maximise over a set of (intrinsic and/or extrinsic) model parameters \(\mathbf{\lambda_m}\) depending on the type of mismatch we wish to compute.
+\Sarp{Maybe refer to the section where you introduce the parameters}
 A mismatch \(\mathcal{M}\ll 1\) indicates that our simple waveform
 faithfully represents the physical signal, whereas larger mismatches highlight missing
 physics ( overly simplified).
@@ -285,10 +288,11 @@ the black contours here represent a ratio of the mismatch between two different 
 We have discussed what the mismatch between wave signals is and why we want to model the mismatch between GW's from NR and GW's from analytical models.
 Our proposed GPR method will take as inputs the intrinsic parameters of the binary black hole and will output the mismatch predictions.
 The inrinsic parameter space of a binary black hole is 8 dimensional visualised in Figure~\ref{fig:gr_diagram}. This accounts for two masses and two spin vectors both in 3 dimensions. 
-To generate this mismatch data we calculated the mismatch between waveform model \textsc{SEOBNRv5PHM} and the NR surrogate \textsc{NRSur7dq4} using eqn~\eqref{eq:mismatch_def} for a set of 250 intrinsic parameters 
+To generate this mismatch data we calculated the mismatch between waveform model \textsc{SEOBNRv5PHM}\todo{cite} and the NR surrogate \textsc{NRSur7dq4}\todo{cite} using eqn~\eqref{eq:mismatch_def} for a set of 250 intrinsic parameters 
 such that it covers 5 different mass ratios and a grid of concentric ellipses in the spin projection space.
 This 250 element set is then repeated for 4 different masses.
 Each mismatch is further an average of 294 mismatches computed over a grid of 3 different extrinsic parameters.
+See Hoy et al. \todo{citation} for further details.
 %
 
 We reduce our eight-dimensional parameter space (two masses \(M_1\) and \(M_2\), and two spin vectors in three dimensions \(\mathbf{S} = (S_x, S_y, S_z)\)) to four parameters:
@@ -307,16 +311,16 @@ Here, \( q = \frac{M_2}{M_1} \) is the mass ratio, and \( \eta \) is the symmetr
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{LatexPlots/GRdiagram.png}
-    \caption{GR diagram}
+    \caption{GR diagram \todo{Write a better caption!}}
     \label{fig:gr_diagram}
 \end{figure}
-To assist in training our GPR model, we begin by scaling the input parameters. The total mass is scaled to lie in the interval \([0, 1]\), with four discrete values. For each total mass, the five symmetric mass ratios are scaled to span the interval \([-1, 1]\). 
+To assist in training our GPR model, we begin by scaling the input parameters. The total mass is scaled to lie in the interval \([0, 1]\), with four discrete values. For each total mass, the five values for the symmetric mass ratio are scaled to span the interval \([-1, 1]\). 
 We also transform the spin data \((X_{\parallel}, X_{\perp})\) onto a uniform grid of size \(10 \times 25\), with:
 \[
-X_{\parallel} \in [0.1, 1], \qquad X_{\perp} \in \left[-\frac{\pi}{2}, \frac{\pi}{2}\right].
+x \in \{0.1, 0.2, \ldots, 1\}, \qquad y \in \left\{-\frac{\pi}{2},-\frac{\pi}{2}+\frac{\pi}{24},\ldots, \frac{\pi}{2}\right\}.
 \]
 \begin{equation}
-(x, y, z, w) = \text{transformed}(X_{\parallel}, X_{\perp}, \eta, M_{\text{tot}}),
+(x, y, z, w) = \text{transformed}(X_{\perp}, X_{\parallel}, \eta, M_{\text{tot}}),
 \end{equation}
 where \(x\), \(y\), \(z\), and \(w\) are the scaled inputs used in our GPR framework.
 
@@ -325,8 +329,8 @@ where \(x\), \(y\), \(z\), and \(w\) are the scaled inputs used in our GPR frame
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
     \caption{
     Visualisation of the input data across reduced dimensions. 
-    Left: A 3D scatter plot of all data points for fixed total mass \(w = 0.25\). 
-    Centre: A 2D slice of the data at symmetric mass ratio \(z = 0\), interpolated over spin components.
+    Left: A 3D scatter plot of all data points for fixed total mass \(w = 0.25\) ($M_\text{tot}=37.5 M_\odot$). 
+    Centre: A 2D slice of the data at rescaled symmetric mass ratio \(z = 0\) \todo{provide the corresponding $q$ value?}, interpolated over spin components.
     Right: A 1D cut through the data at \(x = 0.8\) showing variation across \(y\). 
     When using raw data, interpolation is needed between samples, but GPR provides an analytic model that can be directly evaluated without interpolation.
     }
