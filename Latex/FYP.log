@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.11)  8 APR 2025 23:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.11)  9 APR 2025 18:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -657,11 +657,6 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (10.8595pt too wide) in paragraph at lines 65--66
-\OT1/cmr/m/n/10.95 This is for-mully app-proached by ex-pand-ing the Ein-stein equa-tions around the flat Minkowski
- []
-
-
 
 [1
 
@@ -670,173 +665,168 @@ Overfull \hbox (10.8595pt too wide) in paragraph at lines 65--66
 [2]
 
 [3]
-<LatexPlots/GRdiagram.png, id=173, 466.74374pt x 182.48175pt>
+
+[4] Excluding 'comment' comment.
+
+[5]
+<LatexPlots/GRdiagram.png, id=206, 178.047pt x 123.297pt>
 File: LatexPlots/GRdiagram.png Graphic file (type png)
 <use LatexPlots/GRdiagram.png>
-Package pdftex.def Info: LatexPlots/GRdiagram.png  used on input line 237.
-(pdftex.def)             Requested size: 192.74724pt x 75.35817pt.
-
-
-[4 <./LatexPlots/GRdiagram.png>]
-<LatexPlots/final_gps_plots/data_visual.png, id=186, 1286.8075pt x 401.5pt>
+Package pdftex.def Info: LatexPlots/GRdiagram.png  used on input line 303.
+(pdftex.def)             Requested size: 192.74724pt x 133.488pt.
+<LatexPlots/final_gps_plots/data_visual.png, id=208, 1286.8075pt x 401.5pt>
 File: LatexPlots/final_gps_plots/data_visual.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/data_visual.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/data_visual.png  used on input line 257.
+Package pdftex.def Info: LatexPlots/final_gps_plots/data_visual.png  used on input line 319.
 (pdftex.def)             Requested size: 481.87546pt x 150.35382pt.
 
 
-[5 <./LatexPlots/final_gps_plots/data_visual.png>]
-Overfull \hbox (22.70518pt too wide) in paragraph at lines 287--287
-[][]\OT1/cmr/bx/n/14.4 New Pro-posed Method: Nu-mer-i-cal Rel-a-tiv-ity In-formed Method 
- []
-
-Excluding 'comment' comment.
-
-[6]
+[6 <./LatexPlots/GRdiagram.png> <./LatexPlots/final_gps_plots/data_visual.png>]
 
 [7]
 
 [8]
-<LatexPlots/1dplots/Kernel_background.png, id=235, 2154.0475pt x 639.38875pt>
+<LatexPlots/1dplots/Kernel_background.png, id=251, 2154.0475pt x 639.38875pt>
 File: LatexPlots/1dplots/Kernel_background.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_background.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_background.png  used on input line 446.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_background.png  used on input line 467.
 (pdftex.def)             Requested size: 481.87546pt x 143.02698pt.
-<LatexPlots/1dplots/Kernel_RBF_SE.png, id=240, 269.005pt x 218.8175pt>
+
+
+[9 <./LatexPlots/1dplots/Kernel_background.png>]
+<LatexPlots/1dplots/Kernel_RBF_SE.png, id=263, 269.005pt x 218.8175pt>
 File: LatexPlots/1dplots/Kernel_RBF_SE.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_RBF_SE.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_RBF_SE.png  used on input line 485.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_RBF_SE.png  used on input line 506.
 (pdftex.def)             Requested size: 64.01869pt x 52.0732pt.
-<LatexPlots/1dplots/Kernel_Rational_Quadratic.png, id=241, 269.005pt x 218.8175pt>
+<LatexPlots/1dplots/Kernel_Rational_Quadratic.png, id=264, 269.005pt x 218.8175pt>
 File: LatexPlots/1dplots/Kernel_Rational_Quadratic.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Rational_Quadratic.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Rational_Quadratic.png  used on input line 486.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Rational_Quadratic.png  used on input line 507.
 (pdftex.def)             Requested size: 64.01869pt x 52.0732pt.
-<LatexPlots/1dplots/Kernel_Periodic.png, id=242, 269.005pt x 218.8175pt>
+<LatexPlots/1dplots/Kernel_Periodic.png, id=265, 269.005pt x 218.8175pt>
 File: LatexPlots/1dplots/Kernel_Periodic.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Periodic.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Periodic.png  used on input line 487.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Periodic.png  used on input line 508.
 (pdftex.def)             Requested size: 64.01869pt x 52.0732pt.
-<LatexPlots/1dplots/Kernel_Matern_nu05.png, id=243, 269.3262pt x 215.8464pt>
+<LatexPlots/1dplots/Kernel_Matern_nu05.png, id=266, 269.3262pt x 215.8464pt>
 File: LatexPlots/1dplots/Kernel_Matern_nu05.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Matern_nu05.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Matern_nu05.png  used on input line 488.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Matern_nu05.png  used on input line 509.
 (pdftex.def)             Requested size: 64.01869pt x 51.30685pt.
-<LatexPlots/1dplots/Kernel_Laplace_Exponential.png, id=244, 269.005pt x 218.8175pt>
+<LatexPlots/1dplots/Kernel_Laplace_Exponential.png, id=267, 269.005pt x 218.8175pt>
 File: LatexPlots/1dplots/Kernel_Laplace_Exponential.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Laplace_Exponential.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Laplace_Exponential.png  used on input line 489.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Laplace_Exponential.png  used on input line 510.
 (pdftex.def)             Requested size: 64.01869pt x 52.0732pt.
-<LatexPlots/1dplots/Kernel_Linear_Dot_Product.png, id=245, 259.97125pt x 223.83624pt>
+<LatexPlots/1dplots/Kernel_Linear_Dot_Product.png, id=268, 259.97125pt x 223.83624pt>
 File: LatexPlots/1dplots/Kernel_Linear_Dot_Product.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Linear_Dot_Product.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Linear_Dot_Product.png  used on input line 490.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Linear_Dot_Product.png  used on input line 511.
 (pdftex.def)             Requested size: 64.01869pt x 55.11871pt.
-<LatexPlots/1dplots/KernelSample_RBF_SE.png, id=246, 273.02pt x 214.8025pt>
+<LatexPlots/1dplots/KernelSample_RBF_SE.png, id=269, 273.02pt x 214.8025pt>
 File: LatexPlots/1dplots/KernelSample_RBF_SE.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_RBF_SE.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_RBF_SE.png  used on input line 493.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_RBF_SE.png  used on input line 514.
 (pdftex.def)             Requested size: 64.01869pt x 50.36714pt.
-<LatexPlots/1dplots/KernelSample_Rational_Quadratic.png, id=247, 273.02pt x 217.81375pt>
+<LatexPlots/1dplots/KernelSample_Rational_Quadratic.png, id=270, 273.02pt x 217.81375pt>
 File: LatexPlots/1dplots/KernelSample_Rational_Quadratic.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Rational_Quadratic.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Rational_Quadratic.png  used on input line 494.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Rational_Quadratic.png  used on input line 515.
 (pdftex.def)             Requested size: 64.01869pt x 51.07323pt.
-<LatexPlots/1dplots/KernelSample_Periodic.png, id=248, 273.02pt x 214.8025pt>
+<LatexPlots/1dplots/KernelSample_Periodic.png, id=271, 273.02pt x 214.8025pt>
 File: LatexPlots/1dplots/KernelSample_Periodic.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Periodic.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Periodic.png  used on input line 495.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Periodic.png  used on input line 516.
 (pdftex.def)             Requested size: 64.01869pt x 50.36714pt.
-<LatexPlots/1dplots/KernelSample_Matern_nu05.png, id=249, 264.99pt x 215.1237pt>
+<LatexPlots/1dplots/KernelSample_Matern_nu05.png, id=272, 264.99pt x 215.1237pt>
 File: LatexPlots/1dplots/KernelSample_Matern_nu05.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Matern_nu05.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Matern_nu05.png  used on input line 496.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Matern_nu05.png  used on input line 517.
 (pdftex.def)             Requested size: 64.01869pt x 51.97212pt.
-<LatexPlots/1dplots/KernelSample_Laplace_Exponential.png, id=250, 264.99pt x 214.8025pt>
+<LatexPlots/1dplots/KernelSample_Laplace_Exponential.png, id=273, 264.99pt x 214.8025pt>
 File: LatexPlots/1dplots/KernelSample_Laplace_Exponential.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Laplace_Exponential.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Laplace_Exponential.png  used on input line 497.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Laplace_Exponential.png  used on input line 518.
 (pdftex.def)             Requested size: 64.01869pt x 51.89452pt.
-<LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png, id=251, 264.99pt x 214.8025pt>
+<LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png, id=274, 264.99pt x 214.8025pt>
 File: LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png  used on input line 498.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png  used on input line 519.
 (pdftex.def)             Requested size: 64.01869pt x 51.89452pt.
 
-Overfull \hbox (9.224pt too wide) in paragraph at lines 504--504
+Overfull \hbox (9.224pt too wide) in paragraph at lines 525--525
  []|[]| 
  []
 
 
 
-[9 <./LatexPlots/1dplots/Kernel_background.png>]
-
 [10 <./LatexPlots/1dplots/Kernel_RBF_SE.png> <./LatexPlots/1dplots/Kernel_Rational_Quadratic.png> <./LatexPlots/1dplots/Kernel_Periodic.png> <./LatexPlots/1dplots/Kernel_Matern_nu05.png> <./LatexPlots/1dplots/Kernel_Laplace_Exponential.png> <./LatexPlots/1dplots/Kernel_Linear_Dot_Product.png> <./LatexPlots/1dplots/KernelSample_RBF_SE.png> <./LatexPlots/1dplots/KernelSample_Rational_Quadratic.png> <./LatexPlots/1dplots/KernelSample_Periodic.png> <./LatexPlots/1dplots/KernelSample_Matern_nu05.png> <./LatexPlots/1dplots/KernelSample_Laplace_Exponential.png> <./LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png>]
-<LatexPlots/1dplots/Kernel_hyperparams.png, id=280, 1146.2825pt x 572.1375pt>
+<LatexPlots/1dplots/Kernel_hyperparams.png, id=295, 1146.2825pt x 572.1375pt>
 File: LatexPlots/1dplots/Kernel_hyperparams.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_hyperparams.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_hyperparams.png  used on input line 546.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_hyperparams.png  used on input line 568.
 (pdftex.def)             Requested size: 481.87546pt x 240.51436pt.
 
 
 [11 <./LatexPlots/1dplots/Kernel_hyperparams.png>]
-<LatexPlots/1dplots/priortoposterior.png, id=296, 1581.91pt x 353.32pt>
+<LatexPlots/1dplots/priortoposterior.png, id=310, 1581.91pt x 353.32pt>
 File: LatexPlots/1dplots/priortoposterior.png Graphic file (type png)
 <use LatexPlots/1dplots/priortoposterior.png>
-Package pdftex.def Info: LatexPlots/1dplots/priortoposterior.png  used on input line 654.
+Package pdftex.def Info: LatexPlots/1dplots/priortoposterior.png  used on input line 678.
 (pdftex.def)             Requested size: 481.87546pt x 107.62495pt.
 
 
 [12 <./LatexPlots/1dplots/priortoposterior.png>]
 
 [13]
-<LatexPlots/1dplots/Kernel_noise.png, id=322, 1146.2825pt x 284.06125pt>
+<LatexPlots/1dplots/Kernel_noise.png, id=338, 1146.2825pt x 284.06125pt>
 File: LatexPlots/1dplots/Kernel_noise.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_noise.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_noise.png  used on input line 740.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_noise.png  used on input line 764.
 (pdftex.def)             Requested size: 481.87546pt x 119.41325pt.
 
 
 [14 <./LatexPlots/1dplots/Kernel_noise.png>]
-<LatexPlots/1dplots/GPR_noise_comparison.png, id=338, 1128.215pt x 264.99pt>
+<LatexPlots/1dplots/GPR_noise_comparison.png, id=353, 1128.215pt x 264.99pt>
 File: LatexPlots/1dplots/GPR_noise_comparison.png Graphic file (type png)
 <use LatexPlots/1dplots/GPR_noise_comparison.png>
-Package pdftex.def Info: LatexPlots/1dplots/GPR_noise_comparison.png  used on input line 799.
+Package pdftex.def Info: LatexPlots/1dplots/GPR_noise_comparison.png  used on input line 823.
 (pdftex.def)             Requested size: 481.87546pt x 113.17926pt.
 
 
-[15 <./LatexPlots/1dplots/GPR_noise_comparison.png>]
-Overfull \hbox (7.6075pt too wide) detected at line 834
+[15]
+Overfull \hbox (7.6075pt too wide) detected at line 858
 \OML/cmm/m/it/10.95 ^^R \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 :
  []
 
-<LatexPlots/1dplots/LogLikeallparams.png, id=355, 1287.81125pt x 1078.0275pt>
+<LatexPlots/1dplots/LogLikeallparams.png, id=370, 1287.81125pt x 1078.0275pt>
 File: LatexPlots/1dplots/LogLikeallparams.png Graphic file (type png)
 <use LatexPlots/1dplots/LogLikeallparams.png>
-Package pdftex.def Info: LatexPlots/1dplots/LogLikeallparams.png  used on input line 845.
+Package pdftex.def Info: LatexPlots/1dplots/LogLikeallparams.png  used on input line 869.
 (pdftex.def)             Requested size: 385.50183pt x 322.70341pt.
 
 
-[16]
+[16 <./LatexPlots/1dplots/GPR_noise_comparison.png>]
 
 [17 <./LatexPlots/1dplots/LogLikeallparams.png>]
-<LatexPlots/1dplots/MCMCdistribution.png, id=370, 1291.82625pt x 356.33125pt>
+<LatexPlots/1dplots/MCMCdistribution.png, id=387, 1291.82625pt x 356.33125pt>
 File: LatexPlots/1dplots/MCMCdistribution.png Graphic file (type png)
 <use LatexPlots/1dplots/MCMCdistribution.png>
-Package pdftex.def Info: LatexPlots/1dplots/MCMCdistribution.png  used on input line 885.
+Package pdftex.def Info: LatexPlots/1dplots/MCMCdistribution.png  used on input line 909.
 (pdftex.def)             Requested size: 481.87546pt x 132.91705pt.
 
 
 [18 <./LatexPlots/1dplots/MCMCdistribution.png>]
-<LatexPlots/final_gps_plots/2dkernels.png, id=381, 1148.29pt x 303.1325pt>
+<LatexPlots/final_gps_plots/2dkernels.png, id=398, 1148.29pt x 303.1325pt>
 File: LatexPlots/final_gps_plots/2dkernels.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/2dkernels.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/2dkernels.png  used on input line 926.
+Package pdftex.def Info: LatexPlots/final_gps_plots/2dkernels.png  used on input line 950.
 (pdftex.def)             Requested size: 481.87546pt x 127.20839pt.
-<LatexPlots/Flowchart.png, id=382, 822.1917pt x 475.5366pt>
+<LatexPlots/Flowchart.png, id=399, 822.1917pt x 475.5366pt>
 File: LatexPlots/Flowchart.png Graphic file (type png)
 <use LatexPlots/Flowchart.png>
-Package pdftex.def Info: LatexPlots/Flowchart.png  used on input line 938.
+Package pdftex.def Info: LatexPlots/Flowchart.png  used on input line 961.
 (pdftex.def)             Requested size: 385.50183pt x 222.96527pt.
 
 
@@ -849,47 +839,47 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [20 <./LatexPlots/Flowchart.png>]
 
 [21]
-Overfull \hbox (13.00612pt too wide) in paragraph at lines 1027--1029
+Overfull \hbox (13.00612pt too wide) in paragraph at lines 1045--1047
 \OT1/cmr/m/n/10.95 sam-pling, I used the \OT1/cmtt/m/n/10.95 emcee \OT1/cmr/m/n/10.95 pack-age. In-ter-po-la-tion was per-formed us-ing \OT1/cmtt/m/n/10.95 scipy.interpolate\OT1/cmr/m/n/10.95 .
  []
 
 
 
 [22]
-<LatexPlots/CV_plots/metrics_compared.png, id=432, 951.555pt x 427.5975pt>
+<LatexPlots/CV_plots/metrics_compared.png, id=449, 951.555pt x 427.5975pt>
 File: LatexPlots/CV_plots/metrics_compared.png Graphic file (type png)
 <use LatexPlots/CV_plots/metrics_compared.png>
-Package pdftex.def Info: LatexPlots/CV_plots/metrics_compared.png  used on input line 1047.
+Package pdftex.def Info: LatexPlots/CV_plots/metrics_compared.png  used on input line 1065.
 (pdftex.def)             Requested size: 385.50183pt x 173.23476pt.
 
 
 [23 <./LatexPlots/CV_plots/metrics_compared.png>]
-<LatexPlots/CV_plots/clustermetrics.png, id=446, 611.28375pt x 384.43625pt>
+<LatexPlots/CV_plots/clustermetrics.png, id=463, 611.28375pt x 384.43625pt>
 File: LatexPlots/CV_plots/clustermetrics.png Graphic file (type png)
 <use LatexPlots/CV_plots/clustermetrics.png>
-Package pdftex.def Info: LatexPlots/CV_plots/clustermetrics.png  used on input line 1064.
+Package pdftex.def Info: LatexPlots/CV_plots/clustermetrics.png  used on input line 1082.
 (pdftex.def)             Requested size: 144.5641pt x 90.91153pt.
-<LatexPlots/CV_plots/r2vsfom.png, id=447, 680.5425pt x 429.605pt>
+<LatexPlots/CV_plots/r2vsfom.png, id=464, 680.5425pt x 429.605pt>
 File: LatexPlots/CV_plots/r2vsfom.png Graphic file (type png)
 <use LatexPlots/CV_plots/r2vsfom.png>
-Package pdftex.def Info: LatexPlots/CV_plots/r2vsfom.png  used on input line 1069.
+Package pdftex.def Info: LatexPlots/CV_plots/r2vsfom.png  used on input line 1087.
 (pdftex.def)             Requested size: 144.5641pt x 91.25543pt.
-<LatexPlots/final_gps_plots/metric_of_finalists_comparison.png, id=451, 693.59125pt x 500.87125pt>
+<LatexPlots/final_gps_plots/metric_of_finalists_comparison.png, id=468, 693.59125pt x 500.87125pt>
 File: LatexPlots/final_gps_plots/metric_of_finalists_comparison.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/metric_of_finalists_comparison.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/metric_of_finalists_comparison.png  used on input line 1086.
+Package pdftex.def Info: LatexPlots/final_gps_plots/metric_of_finalists_comparison.png  used on input line 1104.
 (pdftex.def)             Requested size: 192.74724pt x 139.1883pt.
-<LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png, id=452, 1726.45pt x 1437.37pt>
+<LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png, id=469, 1726.45pt x 1437.37pt>
 File: LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png  used on input line 1094.
+Package pdftex.def Info: LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png  used on input line 1112.
 (pdftex.def)             Requested size: 481.87546pt x 401.18878pt.
 
 
 [24 <./LatexPlots/CV_plots/clustermetrics.png> <./LatexPlots/CV_plots/r2vsfom.png> <./LatexPlots/final_gps_plots/metric_of_finalists_comparison.png>]
 
 [25 <./LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png>]
-Overfull \hbox (23.27956pt too wide) in paragraph at lines 1123--1137
+Overfull \hbox (23.27956pt too wide) in paragraph at lines 1141--1155
  [][] 
  []
 
@@ -898,79 +888,79 @@ Overfull \hbox (23.27956pt too wide) in paragraph at lines 1123--1137
 [26]
 
 [27]
-<LatexPlots/final_gps_plots/final_gps_ycuts.png, id=489, 1798.72pt x 2882.77pt>
+<LatexPlots/final_gps_plots/final_gps_ycuts.png, id=506, 1798.72pt x 2882.77pt>
 File: LatexPlots/final_gps_plots/final_gps_ycuts.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/final_gps_ycuts.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/final_gps_ycuts.png  used on input line 1275.
+Package pdftex.def Info: LatexPlots/final_gps_plots/final_gps_ycuts.png  used on input line 1293.
 (pdftex.def)             Requested size: 385.50183pt x 617.80405pt.
 
 
 [28]
-<LatexPlots/final_gps_plots/final_gps_xcuts.png, id=499, 1798.72pt x 2882.77pt>
+<LatexPlots/final_gps_plots/final_gps_xcuts.png, id=516, 1798.72pt x 2882.77pt>
 File: LatexPlots/final_gps_plots/final_gps_xcuts.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/final_gps_xcuts.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/final_gps_xcuts.png  used on input line 1283.
+Package pdftex.def Info: LatexPlots/final_gps_plots/final_gps_xcuts.png  used on input line 1301.
 (pdftex.def)             Requested size: 385.50183pt x 617.80405pt.
 
 
 [29 <./LatexPlots/final_gps_plots/final_gps_ycuts.png>]
-<LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png, id=506, 1798.72pt x 1798.72pt>
+<LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png, id=523, 1798.72pt x 1798.72pt>
 File: LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png  used on input line 1290.
+Package pdftex.def Info: LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png  used on input line 1308.
 (pdftex.def)             Requested size: 385.50183pt x 385.48218pt.
 
 
 [30 <./LatexPlots/final_gps_plots/final_gps_xcuts.png>]
-Overfull \hbox (18.5217pt too wide) in paragraph at lines 1296--1296
+Overfull \hbox (18.5217pt too wide) in paragraph at lines 1314--1314
 []\OT1/cmr/bx/n/17.28 Appendix D: Model Eval-u-a-tion Ta-ble and graphs 
  []
 
-<LatexPlots/CV_plots/boxplots.png, id=513, 1164.35pt x 503.8825pt>
+<LatexPlots/CV_plots/boxplots.png, id=530, 1164.35pt x 503.8825pt>
 File: LatexPlots/CV_plots/boxplots.png Graphic file (type png)
 <use LatexPlots/CV_plots/boxplots.png>
-Package pdftex.def Info: LatexPlots/CV_plots/boxplots.png  used on input line 1301.
+Package pdftex.def Info: LatexPlots/CV_plots/boxplots.png  used on input line 1319.
 (pdftex.def)             Requested size: 385.50183pt x 166.82762pt.
 
-Overfull \hbox (32.31924pt too wide) in paragraph at lines 1310--1313
+Overfull \hbox (32.31924pt too wide) in paragraph at lines 1328--1331
  [][] 
  []
 
 
 
 [31 <./LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png> <./LatexPlots/CV_plots/boxplots.png>]
-<LatexPlots/1dplots/MAE.png, id=525, 524.1984pt x 328.8285pt>
+<LatexPlots/1dplots/MAE.png, id=542, 524.1984pt x 328.8285pt>
 File: LatexPlots/1dplots/MAE.png Graphic file (type png)
 <use LatexPlots/1dplots/MAE.png>
-Package pdftex.def Info: LatexPlots/1dplots/MAE.png  used on input line 1346.
+Package pdftex.def Info: LatexPlots/1dplots/MAE.png  used on input line 1364.
 (pdftex.def)             Requested size: 85.35826pt x 53.54187pt.
-<LatexPlots/1dplots/r2.png, id=526, 524.1984pt x 328.8285pt>
+<LatexPlots/1dplots/r2.png, id=543, 524.1984pt x 328.8285pt>
 File: LatexPlots/1dplots/r2.png Graphic file (type png)
 <use LatexPlots/1dplots/r2.png>
-Package pdftex.def Info: LatexPlots/1dplots/r2.png  used on input line 1347.
+Package pdftex.def Info: LatexPlots/1dplots/r2.png  used on input line 1365.
 (pdftex.def)             Requested size: 85.35826pt x 53.54187pt.
-<LatexPlots/1dplots/fom.png, id=527, 516.4896pt x 328.8285pt>
+<LatexPlots/1dplots/fom.png, id=544, 516.4896pt x 328.8285pt>
 File: LatexPlots/1dplots/fom.png Graphic file (type png)
 <use LatexPlots/1dplots/fom.png>
-Package pdftex.def Info: LatexPlots/1dplots/fom.png  used on input line 1348.
+Package pdftex.def Info: LatexPlots/1dplots/fom.png  used on input line 1366.
 (pdftex.def)             Requested size: 85.35826pt x 54.33965pt.
-<LatexPlots/1dplots/pearson.png, id=528, 507.3354pt x 323.7696pt>
+<LatexPlots/1dplots/pearson.png, id=545, 507.3354pt x 323.7696pt>
 File: LatexPlots/1dplots/pearson.png Graphic file (type png)
 <use LatexPlots/1dplots/pearson.png>
-Package pdftex.def Info: LatexPlots/1dplots/pearson.png  used on input line 1349.
+Package pdftex.def Info: LatexPlots/1dplots/pearson.png  used on input line 1367.
 (pdftex.def)             Requested size: 85.35826pt x 54.47195pt.
 
 
 [32]
-<LatexPlots/MCMC_Flow.png, id=534, 863.6265pt x 406.6392pt>
+<LatexPlots/MCMC_Flow.png, id=551, 863.6265pt x 406.6392pt>
 File: LatexPlots/MCMC_Flow.png Graphic file (type png)
 <use LatexPlots/MCMC_Flow.png>
-Package pdftex.def Info: LatexPlots/MCMC_Flow.png  used on input line 1369.
+Package pdftex.def Info: LatexPlots/MCMC_Flow.png  used on input line 1387.
 (pdftex.def)             Requested size: 385.50183pt x 181.51541pt.
 
 
 [33 <./LatexPlots/1dplots/MAE.png> <./LatexPlots/1dplots/r2.png> <./LatexPlots/1dplots/fom.png> <./LatexPlots/1dplots/pearson.png> <./LatexPlots/MCMC_Flow.png>]
-Overfull \hbox (11.2397pt too wide) in paragraph at lines 1385--1385
+Overfull \hbox (11.2397pt too wide) in paragraph at lines 1403--1403
 []\OT1/cmr/bx/n/17.28 Appendix G: Noise mod-el-ing us-ing Monte Carlo
  []
 
@@ -984,21 +974,21 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `FYP.out' has not changed.
-(rerunfilecheck)             Checksum: BF689A9431E48B2F50B05E1800C136EA;4610.
+(rerunfilecheck)             Checksum: A0882E8CF420FA86A62250CC047084F0;5229.
  ) 
 Here is how much of TeX's memory you used:
- 25008 strings out of 473201
- 467863 string characters out of 5720299
- 861520 words of memory out of 5000000
- 47659 multiletter control sequences out of 15000+600000
+ 25022 strings out of 473201
+ 468105 string characters out of 5720299
+ 861381 words of memory out of 5000000
+ 47669 multiletter control sequences out of 15000+600000
  572940 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,15n,107p,871b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,16n,107p,871b,565s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on FYP.pdf (35 pages, 4379935 bytes).
+Output written on FYP.pdf (35 pages, 4393428 bytes).
 PDF statistics:
- 727 PDF objects out of 1000 (max. 8388607)
- 548 compressed objects within 6 object streams
- 172 named destinations out of 1000 (max. 500000)
- 414 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 746 PDF objects out of 1000 (max. 8388607)
+ 567 compressed objects within 6 object streams
+ 176 named destinations out of 1000 (max. 500000)
+ 430 words of extra memory for PDF output out of 10000 (max. 10000000)
 

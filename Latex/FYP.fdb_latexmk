@@ -1,17 +1,17 @@
 # Fdb version 4
-["bibtex FYP"] 1744149545.06665 "FYP.aux" "FYP.bbl" "FYP" 1744149682.26694 0
-  "./references.bib" 1744144966 3465 bdd59279f709f715c8ae09fac4313273 ""
-  "FYP.aux" 1744149680 22479 c0cd1477edd50431f8cb37af059f3590 "pdflatex"
+["bibtex FYP"] 1744218266.63098 "FYP.aux" "FYP.bbl" "FYP" 1744218563.67483 0
+  "./references.bib" 1744206583 4314 a465f466e5316b1ca1be26162226b1fd ""
+  "FYP.aux" 1744218562 24316 1046a020b8b29dde58d0be13e0cc870e "pdflatex"
   "c:/texlive/2024/texmf-dist/bibtex/bst/base/acm.bst" 1739279557 21064 c61a48664f3c347ce7f73c1a6a530506 ""
   (generated)
   "FYP.bbl"
   "FYP.blg"
   (rewritten before read)
-["pdflatex"] 1744149672.12826 "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" "FYP.pdf" "FYP" 1744149682.27072 0
-  "FYP.aux" 1744149680 22479 c0cd1477edd50431f8cb37af059f3590 "pdflatex"
-  "FYP.bbl" 1744149545 1456 41dbd1fbcc8d61e3934bb35b6255854e "bibtex FYP"
-  "FYP.out" 1744149680 4610 bf689a9431e48b2f50b05e1800c136ea "pdflatex"
-  "FYP.tex" 1744149670 86265 a67de203ee0dae5a3e051699103edb5a ""
+["pdflatex"] 1744218555.45048 "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" "FYP.pdf" "FYP" 1744218563.67739 0
+  "FYP.aux" 1744218562 24316 1046a020b8b29dde58d0be13e0cc870e "pdflatex"
+  "FYP.bbl" 1744218540 1845 b4c6051d4ec63e89cea4e13cb8b97316 "bibtex FYP"
+  "FYP.out" 1744218562 5229 a0882e8cf420fa86a62250cc047084f0 "pdflatex"
+  "FYP.tex" 1744218531 88138 c8b6c3f5d9248bef566fb322d50cd912 ""
   "LatexPlots/1dplots/GPR_noise_comparison.png" 1744103520 90772 e3208fa54dad056474a200a07283bac6 ""
   "LatexPlots/1dplots/KernelSample_Laplace_Exponential.png" 1743607264 19503 fd35d798c8b7f675763d59c657241201 ""
   "LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png" 1743607264 7266 1cf202bae6e0cdb3e373231a469b98da ""
@@ -40,8 +40,8 @@
   "LatexPlots/CV_plots/metrics_compared.png" 1744031607 98537 fbcd88934d9cbba14c4947562ea2edbd ""
   "LatexPlots/CV_plots/model_rankings.csv" 1744034097 1747 19fa81f51b2e8e45a9263e03d90d4313 ""
   "LatexPlots/CV_plots/r2vsfom.png" 1744021085 32320 602626273f25a5db937a4c995968fc00 ""
-  "LatexPlots/Flowchart.png" 1744108382 75266 977bdfa707e7e6dcd863df193fa7b73b ""
-  "LatexPlots/GRdiagram.png" 1744039491 37963 d7915b8f6b9d311f3fff52dcb62e0ea3 ""
+  "LatexPlots/Flowchart.png" 1744218472 75273 4a1d24fbc5db50f47429375e14325977 ""
+  "LatexPlots/GRdiagram.png" 1744213999 34802 29efbdf03b9fdb2a92e56f3134ec25b1 ""
   "LatexPlots/MCMC_Flow.png" 1743080006 69755 e142ece6b82afe79f9d3c91d7e15da56 ""
   "LatexPlots/final_gps_plots/2dkernels.png" 1744146705 191583 fa2ec74375b1235f8053aee5b68e44b5 ""
   "LatexPlots/final_gps_plots/data_visual.png" 1744051050 148045 14568d7eeda0a8530d56a0cde733165c ""
@@ -50,7 +50,7 @@
   "LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png" 1744055309 361497 bee2b981bd54afc76f8d0185d23e7632 ""
   "LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png" 1743976990 361796 d7f562c2421aefb4cbc704a85869d54c ""
   "LatexPlots/final_gps_plots/metric_of_finalists_comparison.png" 1744021981 30844 ec551e35271914e2369daaa5ff3af84d ""
-  "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" 1744149670 86265 a67de203ee0dae5a3e051699103edb5a ""
+  "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" 1744218531 88138 c8b6c3f5d9248bef566fb322d50cd912 ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1739280170 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1739281794 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1739281101 1536 02c06700a42be0f5a28664c7273f82e7 ""

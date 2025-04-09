@@ -56,13 +56,11 @@
 }
 
 
-
-\section{GR intro}
-Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. As described in \textit{Gravitational Waves, Vol. 1} by Maggiore~\cite[p.~29]{GRbook},
-\begin{quote}
-“In this setting, the definition of GWs is relatively clear: the background spacetime is flat, and the small fluctuations around it have been called ‘gravitational waves’. The term ‘waves’ is justified by the fact that, in a suitable gauge, \(h_{\mu\nu}\) indeed satisfies a wave equation.”
-\end{quote}
-This is formully appproached by expanding the Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
+\section{Gravitational Waves Background}
+\subsection{General Relativity intro}
+\label{sec:GRintro}
+Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. In the simplified linearized theory, we assume a flat Minkowski spacetime, and the small fluctuations around it are referred to as gravitational waves. The term "waves" is justified since, in an appropriate gauge (specific choices of coordinates), \(h_{\mu\nu}\) satisfies the wave equation. This is described in detail in Gravitational Waves, Vol. 1 by Maggiore~\cite[Sec~ 1.1]{GRbook}.
+Formully we appproach this by expanding Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
 \begin{equation}
 g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
 \qquad
@@ -79,12 +77,10 @@ However we are interested in this equation outside of the source (i.e $T_{\mu \n
     \Box \bar{h}_{ab} = 0, 
 \end{equation}
 with \(\Box\) the d’Alembertian operator in flat spacetime.
+%
 
-\noindent
 Although \(h_{ab}\) initially has 10 independent components (as a symmetric $4 \times 4$ tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorentz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
-
-\noindent
-This wave equation admits plane-wave solutions. For a wave propagating in the \(z\)-direction, the TT-gauge form of the perturbation is:
+This wave equation admits plane-wave solutions. For a wave propagating in the \(z\)-direction, the TT-gauge form of the perturbation is
 \begin{equation}
 h_{ab}^{(\mathrm{TT})} \;\propto\;
 \begin{pmatrix}
@@ -101,7 +97,7 @@ e^{i(kz-\omega t)}.
 % axes, whereas \(h_\times\) acts on diagonals at \(\pm45^\circ\). In realistic astrophysical
 % sources, both polarizations are generally present.
 
-\subsection*{Leading-Order Power Emission by Gravitational Waves}
+\subsubsection*{Leading-Order Power Emission by Gravitational Waves}
 \label{subsec:GW_power}
 
 In general, the power emitted by a radiative field can be expressed schematically as
@@ -109,17 +105,16 @@ In general, the power emitted by a radiative field can be expressed schematicall
     \dot{E} = \sum_{\ell = 0}^{\infty} \left\langle \left| \left( \frac{\partial}{\partial t} \right)^{\ell+1} P_\ell(t) \right| \right\rangle.
 \end{equation}
 Here, \(P_{\ell}(t)\) represents the multipole moments of the radiating source. The \(\ell = 0\) term corresponds to the monopole moment, which in the gravitational case is the total mass of the system. Assuming mass is conserved, this term vanishes.
-
-\noindent
 The \(\ell = 1\) term represents the dipole moment, which is also zero in the gravitational case due to conservation of linear momentum. Therefore, the leading-order contribution to gravitational-wave emission arises from the \(\ell = 2\) term, known as the quadrupole.
-
-\noindent
-This gives the leading-order expression for the power emitted in gravitational waves:
+This gives the leading-order expression for the power emitted in gravitational waves
+%
 \begin{equation}
 \dot{E} = \frac{G}{5\,c^5}
 \left\langle \dddot{Q}_{ij}\,\dddot{Q}^{\,ij} \right\rangle,
 \end{equation}
+%
 where \(Q_{ij}\) is the mass quadrupole moment of the source. It is related to the mass moment \(M_{ij}\) by
+%
 \begin{equation}
 Q_{ij} := M_{ij} - \frac{1}{3} \delta_{ij} M^k_{\ k},
 \end{equation}
@@ -127,13 +122,8 @@ where \(M_{ij} = \int d^3x\, T^{00}(x^i x^j)\).
 
 
 
-\subsection*{A Simple Two-Mass Inspiral Model}
+\subsubsection*{A Simple Two-Mass Inspiral Model}
 \label{subsec:two_mass_example}
-
-
-\textcolor{red}{I took this example and summarised it from Sarp's notes, leads nicely to mismatch}
-
-\noindent
 We will now consider a generic problem as illistrated in \cite{intoGRSarp} where two point masses, \(m_1 \ge m_2\), are in a quasi-circular orbit of separation \(R\),
 each at distances \(r_1\) and \(r_2\) from their common center of mass (CoM), with
 \(R = r_1 + r_2\). We place the orbit in the \(x\)--\(y\) plane so that mass~1 moves on
@@ -171,28 +161,53 @@ scale and so when averaging over orbits we approximate them as constant. Applyin
 \text{where}
 \quad
 \mathcal{M} \;=\;\mu^{3/5}\,M^{2/5}
+\label{eq:Energy}
 \end{equation}
 %
 is known as the chirp mass where $M = m_1+m_2$ is the total mass.
-\Sarp{You already kind of mention this below Eq.~\eqref{eq:E_dot_2}, so maybe provide slightly
-more detail there.}
-
-\noindent
-\textcolor{red}{Could maybe mention radiation time scale being much smaller than orbit timescale but I don't see what this will add}
-
-\noindent
+%
+%
 $ \dot{E} $ represents the rate at which the system loses energy due to gravitational-wave emission.
 This energy loss causes the binary orbit to shrink and the GW frequency to increase, 
 with the chirp mass \(\mathcal{M}\) and frequency \(\omega\) capturing the key features of this inspiral.
 
 \Sarp{From here you should go on to derive the form of a simple waveform in first time domain then frequency domain. Then you can go into the Mismatch}
 
-\subsection*{Introducing the Waveform Mismatch}
-\label{subsec:mismatch_intro}
+% Quick comment about frequency extra I think
+% Using conservation of energy and the \eqref{eq:Energy}, we find the gravitational-wave frequency evolves as:
+% \begin{equation}
+% \dot{f} \propto f^{11/3},
+% \end{equation}
+% highlighting that the GW frequency grows as the system radiates.
+The two polarization states generated by such a system are fully derived in \cite[Sec.~4.1]{GRbook} and are stated here. These are expressed in terms of the characteristic strain \( h_c(t) \), which captures the amplitude of the waveform
+\begin{subequations}
+\begin{align}
+h_+(t) &= h_c(t) \left( \frac{1 + \cos^2\iota}{2} \right) \cos[\Phi_N(t)],
+\label{eq:hp_time}\\
+h_\times(t) &= h_c(t) \cos\iota \sin[\Phi_N(t)],
+\label{eq:hc_time}\\
+h_c(t) &= \frac{4}{D} \left( \frac{G \mathcal{M}}{c^2} \right)^{5/3} \left( \pi f(t) \right)^{2/3}
+\label{eq:char_strain}.
+\end{align}
+\end{subequations}
+Here \(\iota = \cos^{-1}(\hat{n} \cdot \hat{L}) \) is the inclination angle between the line-of-sight unit vector \( \hat{n} \) and the orbital angular momentum unit vector \( \hat{L} \),
+\( \mathcal{M} \) is the chirp mass, and
+\( D \) is the distance to the source.
+As the frequency \( f(t) \) increases, so too does \( h_c(t) \), giving rise to the characteristic chirping waveform.
 
-This simplified two-mass, circular-orbit model captures the main physical components of the model such as the "chirp behaviour" (frequency of GW increasing as the orbit shrinks).
-However we want to quantify how neglecting for example eccentricity of the orbit and the spin vectors of the masses
-effects the waveform. We compare the simplified model to more complete waveforms using the waveform mismatch discussed in \cite{mismatch} and \cite{Ogpaper}. The mismatch between two signals is defined by
+\Sean{Confused on frequency domain, It is a fourier transform of this??? Maybe plot of chirping behaviour}
+
+
+
+\subsubsection*{Introducing the Waveform Mismatch}
+\label{subsec:mismatch_intro}
+%
+%
+This simplified two-mass, circular-orbit model captures the main physical features of an inspiraling binary system such as the characteristic chirp behaviour. However, it omits several key physical effects such as orbital eccentricity and the spin of each mass. 
+To quantify how these simplifications affect the accuracy of the waveform, we compare this model against more complete waveforms using the waveform mismatch metric, as defined in~\cite{mismatch, Ogpaper}.
+%
+%
+The mismatch between two signals is defined by
 \begin{equation}
 \label{eq:mismatch_def}
 \mathcal{M} 
@@ -206,99 +221,47 @@ effects the waveform. We compare the simplified model to more complete waveforms
 where \(\langle\cdot,\cdot\rangle\) is the inner product of both GW, and we maximise over a set of (intrinsic or extrinsic) model parameters \(\mathbf{\lambda_m}\).
 A mismatch \(\mathcal{M}\ll 1\) indicates that our simple waveform
 faithfully represents the physical signal, whereas larger mismatches highlight missing
-physics (e.g. not circular orbit).
+physics ( overly simplified).
 
 
 
-\subsection{Data Description}
-\Sarp{This section should go probably after the intro.}
-\Sean{How data was asquired. What is the data what simulation number}
-\Sarp{The data is mismatches between waveform model \textsc{SEOBNRv5PHM} and the NR surrogate
-\textsc{NRSur7dq4} for a set of 250 intrinsic parameters such that it covers 5 different mass ratios and 
-a grid of concentric ellipses in the spin projection space. This 250-element set is then repeated for 4 different
-masses. Each mismatch is further an average of 294 mismatches computed over a grid of 3 different extrinsic parameters.}
-\noindent
-\textbf{4D}
 
-\noindent
-The inrinsic parameter space of a binary black hole is 8 dimension. This accounts for two masses and two spin vectors both in 3 dimensions. 
-For our 4d model we reduce this 8 dimensional parameter space to 4. These 4 parameters are:
+\subsection{GW Approximation using Bayesian Methods}
+\label{sec:GW_and_Bayes}
+
+In Section~\ref{sec:GRintro} we focused on linearised thoery and a simple Netwon two-body inspiral model. This helped motivate the ideas behind gravitational wave generation and emisson.
+However the gold standard for generating gravitational waveforms is to directly solve the full Einstein equations via numerical relativity (NR).
+However, the computational cost is enormous, and therefore only a limited number of NR simulations are currently available.
+Consequently, many analytic or semi-analytic GW models have been created that are calibrated to these NR simulations.
+Each of these models carries its own approximation error.We utilise the mismatch between signals discussed in Section~\ref{subsec:mismatch_intro} 
+to quantify how close one of these GW models is to the NR simulations.
+
+The standard approach to account for modelling errors when inferring the properties of binary black holes is to construct a mixture model, where results from numerous models are combined.
+Bayesian methods have been utilised here to build posterior distributions for each model over intrinsic model parameters (Mass, Spin vectors) given the data. Different approaches exist for combining these posteriors:
 \begin{itemize}
-    \item \textbf{Total Mass:} $M_1 + M_2$
-    \item \textbf{Symmetric Mass Ratio:} $\displaystyle \frac{q}{(1+q)^2}$ where $q = \frac{M_2}{M_1}$
-    \item \textbf{Parallel Spin Component:} $\displaystyle \chi_{\parallel} = \frac{|\mathbf{S}_{1,\parallel} + \mathbf{S}_{2,\parallel}|}{M^2}$, the magnitude of the component of the spin vectors parallel to the orbital angular momentum
-    \item \textbf{Perpendicular Spin Component:} $\displaystyle \chi_{\perp} = \frac{|\mathbf{S}_{1,\perp} + \mathbf{S}_{2,\perp}|}{M^2}$, the magnitude of the component perpendicular to the orbital angular momentum
+    \item Standard Method: Combine all model-specific posterior distributions with equal weights, yielding a single mixture distribution that, in practice, may ignore large differences in model fidelity (\cite{linearcombination}).
+    \item Evidence-Informed Method: Weigh each model by its Bayesian evidence i.e., by how well it fits the observed data overall. This approach is commonly referred to in the gravitational-wave literature (\cite{Bayesianapproach}).
 \end{itemize}
-Here, the spin vectors are defined as $\mathbf{S} = (S_x, S_y, S_z)$
 
-\Sean{Maybe Redundant Graph. Almost definitely leave out}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{LatexPlots/GRdiagram.png}
-    \caption{GR diagram}
-    \label{fig:gr_diagram}
-\end{figure}
-\noindent
-We scale our Total Mass data to lie between 0 and 1 (4 different total masses), and denote the scaled total mass by \( w \). For each total mass, we define 5 different symmetric mass ratios, which are scaled to lie between \(-1\) and \(1\); we denote these scaled values by \( z \).
-Next, we transform our \( X_{\parallel} \) and \( X_{\perp} \) data onto a square grid of size \( 10 \times 25 \), with \( X_{\parallel} \in [0.1, 1] \) and \( X_{\perp} \in [-\pi/2, \pi/2] \).
-We now have:
-\begin{equation}
-(x, y, z, w) = \text{transformed}(X_{\parallel}, X_{\perp}, \text{Symmetric Mass Ratio}, \text{Total Mass})
-\end{equation}
-\noindent
-We can visualise our data by holding parameters fixed and extracting cross-sections. In figure \ref{fig:visualising_data} we first show a 3d scatter plot of all our data for $w = 0.25$. We then 
-cut our 3d surface at $z=0$ and interpolate over our values to visualise a plane. Finally to extract a 1d-cut from the plane we cut the plane at $x=0.8$ and interpolate, helping visualise how our data changes over y. 
-When working directly with the true data, interpolation is necessary to estimate values between sample points. However, a major advantage of using Gaussian Process Regression (GPR) is that it gives us an analytic model that can be evaluated at any point within the domain. 
-This means that when visualising GPR predictions, we do not need to interpolate, instead we can directly evaluate the GPR while holding selected dimensions constant.
-
-\Sean{Not nice visual, looks very bad}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
-    \caption{Visualising our data by moving from 4d to 1d}
-    \label{fig:visualising_data}
-\end{figure}
+Recent work by Hoy, Akcay and collaborators~\cite{Ogpaper} emphasized that some waveform models may be more faithful to full NR solutions in certain regions of parameter space (e.g., certain mass ratios or spin orientations),
+while others do better in other regions. An evidence-based method that uses an overall Bayes factor does not account for local differences if, for example, one waveform is slightly worse globally but significantly better locally.
+To address this limitation, Hoy et al.\cite{Ogpaper} introduced an approach which prioritizes whichever model is locally more accurate, thereby mitigating bias.
+They showed that this new technique can use up to 30\% fewer computational resources while recovering the true parameters more faithfully compared to standard mixture methods.
+This numerical relativity informed method used model mismatch to inform how accurate models were in certain parameter spaces and then using Bayesian methods choice models with better 
+mismatch scores in different parameter spaces.
 
 
+\subsection{Project Motivation}
+Although the NR-informed method is conceptually appealing, it requires us to know (or at least to esti-
+mate) the mismatch of each model throughout the parameter space of interest. Because
+NR simulations are costly, we cannot generate an exhaustive library of NR waveforms
+everywhere. This is where my project comes in
 
-\section{Background}
-\noindent
-\textcolor{red}{This section was written ages ago and needs to be updated but I think could still be worth time
-just going over how bayesian methods are currently used in GW and how making a mismatch predictor model may help
-moving forward}
+We propose to build a GPR model that interpolates the mismatch as a function of parameters. Specifically, from a finite set of computed mismatches (obtained at a limited but carefully chosen set of parameter points), we train a GPR. The trained model can then predict the mismatch in the untested regions of parameter space. This approach circumvents the need for high-resolution NR simulations at every point of interest,
+offering an efficient and scalable alternative. The Gaussian Process framework is advantageous because it not only provides a smooth interpolation but also yields uncertainty estimates for its predictions.
+ As more NR data become available, the GPR can be updated or retrained, systematically improving the global mismatch predictions.
 
-\noindent
-The gold standard gravitational waveforms are obtained by numerical relativity simulations which involve directly solving Einstein's equations of general relativity which is massively computationally expensive. For this reason, only several thousand simulations are currently available. As a result, GW models rely on analytical or semi-analytical prescriptions that are calibrated to the numerical relativity simulations.
-
-\par
-\noindent
-Each of these modelling approaches will incur a certain amount of error. We quantify this error as the mismatch between the "true" relativity simulation of a gravitational waveform and the analytic model for the waveform.The mismatch \cite{mismatch} varies between 0, signifying that the model and the true waveform are identical (up to an overall amplitude rescaling), and 1, meaning that the two are completely orthogonal. To begin we will delve into the methods used before to "combine" these models and then discuss the new proposed method. This will lead us onto my project.
-
-
-
-\subsection*{Methods Used Before}
-
-\subsubsection*{Standard Method}
-We build a distribution based off of each of the 3 models. We then combine these distributions with equal weight to form a new total distribution from which we make our predictions from.
-
-\subsubsection*{Evidence-Informed Method}
-This method again builds a distribution based off of each of the 3 models. The distributions are then combined with weights which are determined by how well the model explains the observed data. From this new distribution predictions are made.
-
-\subsection*{New Proposed Method: Numerical Relativity Informed Method }%\cite{hoy2024multi}}
-
-\subsubsection*{Numerical Relativity Informed Method}
-This method builds a distribution based off of each of the 3 models. Then the mismatch (difference between NR simulations and model) is calculated. We then find the ratios of the mismatch between each model, for example:
-\[
-\frac{\text{mismatch(model 1)}}{\text{mismatch(model 2)}}.
-\]
-A distribution using the ratio of mismatch of each model is built. This distribution is used to determine the probability of selecting each model in each region of the parameter space. Predictions are then made using the model selected in that region of the parameter space using the ratio distribution. This selection of the model is probabilistic and so the best model in a certain region may be chosen 85\% of the time and the second best 10\% etc etc.
-
-\subsubsection*{Comparison}
-The Standard Method and the Evidence-Informed Method build a distribution from which we make our predictions. The Numerical Relativity Informed method builds a distribution which helps us choose the best model in that parameter space ``most of the time"".
-
-\noindent
-Now the issue is that to calculate the mismatch for the models needed in the NR informed method, we must have gravitational waveforms generated from NR simulations. This as we discussed is a computationally expensive process and is often not feasible. The goal of my project is to build a Gaussian Process Regression model to model the mismatch of the model's to the NR simulations.
-
+ In summary, by modeling the mismatch between approximate waveforms and NR waveforms via GPR, we can better implement the locally accurate approach introduced by Hoy et al.~\cite{Ogpaper}. This strategy reduces bias from using just a single “global best” model and leverages a sparse but valuable set of NR simulations to yield more accurate gravitational-wave parameter estimation.
 \begin{comment}
 \newpage
 A motivating example for this is outlined below.
@@ -311,6 +274,64 @@ A motivating example for this is outlined below.
 
 the black contours here represent a ratio of the mismatch between two different models for Gravitational Waveforms. Models used: model1: IMRPHENOMXPHM, model2: SEOBNRV5PHM, model3: IMRPHENOMTPHM. The left graph contours give the $\frac{mismatch(model1)}{mismatch(model2)}$ and right gives $\frac{mismatch(model3)}{mismatch(model2)}$. A mismatch ratio greater than 1 indicates that model 2 is closer to the NR simulations.
 \end{comment}
+
+\subsection{Data Description}
+We have discussed what the mismatch between wave signals is and why we want to model the mismatch between GW's from NR and GW's from analytical models.
+Our proposed GPR method will take as inputs the intrinsic parameters of the binary black hole and will output the mismatch predictions.
+The inrinsic parameter space of a binary black hole is 8 dimensional visualised in Figure~\ref{fig:gr_diagram}. This accounts for two masses and two spin vectors both in 3 dimensions. 
+To generate this mismatch data we calculated the mismatch between waveform model \textsc{SEOBNRv5PHM} and the NR surrogate \textsc{NRSur7dq4} using eqn~\eqref{eq:mismatch_def} for a set of 250 intrinsic parameters 
+such that it covers 5 different mass ratios and a grid of concentric ellipses in the spin projection space.
+This 250 element set is then repeated for 4 different masses.
+Each mismatch is further an average of 294 mismatches computed over a grid of 3 different extrinsic parameters.
+%
+
+We reduce our eight-dimensional parameter space (two masses \(M_1\) and \(M_2\), and two spin vectors in three dimensions \(\mathbf{S} = (S_x, S_y, S_z)\)) to four parameters:
+\begin{align}
+    \begin{aligned}
+    M_{\mathrm{tot}} & = M_1 + M_2, \\
+    \eta & = \frac{q}{(1 + q)^2},
+    \end{aligned}
+    \hspace{1.5cm}
+    \begin{aligned}
+    \chi_{\parallel} &= \frac{\left|\mathbf{S}_{1,\parallel} + \mathbf{S}_{2,\parallel}\right|}{M_{\mathrm{tot}}^2}, \\
+    \chi_{\perp} &= \frac{\left|\mathbf{S}_{1,\perp} + \mathbf{S}_{2,\perp}\right|}{M_{\mathrm{tot}}^2}.
+    \end{aligned}
+\end{align}
+Here, \( q = \frac{M_2}{M_1} \) is the mass ratio, and \( \eta \) is the symmetric mass ratio. The parameters \( \chi_{\parallel} \) and \( \chi_{\perp} \) correspond to the magnitudes of the combined spin vectors projected parallel and perpendicular to the orbital angular momentum, respectively.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{LatexPlots/GRdiagram.png}
+    \caption{GR diagram}
+    \label{fig:gr_diagram}
+\end{figure}
+To assist in training our GPR model, we begin by scaling the input parameters. The total mass is scaled to lie in the interval \([0, 1]\), with four discrete values. For each total mass, the five symmetric mass ratios are scaled to span the interval \([-1, 1]\). 
+We also transform the spin data \((X_{\parallel}, X_{\perp})\) onto a uniform grid of size \(10 \times 25\), with:
+\[
+X_{\parallel} \in [0.1, 1], \qquad X_{\perp} \in \left[-\frac{\pi}{2}, \frac{\pi}{2}\right].
+\]
+\begin{equation}
+(x, y, z, w) = \text{transformed}(X_{\parallel}, X_{\perp}, \eta, M_{\text{tot}}),
+\end{equation}
+where \(x\), \(y\), \(z\), and \(w\) are the scaled inputs used in our GPR framework.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
+    \caption{
+    Visualisation of the input data across reduced dimensions. 
+    Left: A 3D scatter plot of all data points for fixed total mass \(w = 0.25\). 
+    Centre: A 2D slice of the data at symmetric mass ratio \(z = 0\), interpolated over spin components.
+    Right: A 1D cut through the data at \(x = 0.8\) showing variation across \(y\). 
+    When using raw data, interpolation is needed between samples, but GPR provides an analytic model that can be directly evaluated without interpolation.
+    }
+    \label{fig:visualising_data}
+\end{figure}
+
+
+
+
+
+
 
 
 \section{Gaussian Process Regression \textbf{GPR} Background}
@@ -525,6 +546,7 @@ In the following subsections, we explore each of these kernels in detail and dis
 \end{table}
 
 \noindent
+\Sean{Update}
 Note: In practice, we scale each kernel by a signal variance hyperparameter \(\sigma_f^2\), which governs the overall vertical variation in the function.
 This scaling is applied consistently across all kernel types and is discussed further in the \ref{sec: Handlingnoise}.
 
@@ -606,24 +628,26 @@ We have discussed how our prior distribution is dependent on the choice of kerne
 we will discuss how we can update our prior distribution \ref{eq: Multivariate prior} to achieve our new prediction distribution distribution from which we can make
 inferences. One of the key strengths of Gaussian Processes is that, given observations at training inputs \(X\) and setting kernel hyper-parameters \(\theta\)
 we can make predictive inferences about the function value at any new test location \(x_*\).
-By applying the standard conditional Gaussian formulas (see appendix \textcolor{red}{Must clean up this derivation in appendix} \ref{appendix:A} for the full derivation),
+By applying the standard conditional Gaussian formulas (see appendix \Sean{Must clean up this derivation in appendix} \ref{appendix:A} for the full derivation),
 the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and given by:
-
-\begin{equation}
-p\bigl(f(x_*) \mid f(X), X, X_*,\theta \bigr) \sim \mathcal{N}\!\left(m(x_*),\;\sigma^2(x_*)\right),
-\label{eq: predictive_dist}
-\end{equation}
-\noindent
-where
-\begin{equation}
-m(x_*) = \mu(x_*) + k(x_*, X)\,k(X, X)^{-1}\left[f(X) - \mu(X)\right],
-\label{eq: predictive_mean}
-\end{equation}
-\begin{equation}
-\sigma^2(x_*) = k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
-\label{eq: predictive_variance}
-\end{equation}
-
+%
+\begin{subequations}
+    \begin{equation}
+    p\bigl(f(x_*) \mid f(X), X, X_*,\theta \bigr) 
+    \sim \mathcal{N}\!\left(m(x_*),\;\sigma^2(x_*)\right),
+    \label{eq: predictive_dist}
+    \end{equation}
+    \vspace{-8ex}
+    \begin{align}
+    m(x_*) 
+    &= \mu(x_*) + k(x_*, X)\,k(X, X)^{-1}\left[f(X) - \mu(X)\right],
+    \label{eq: predictive_mean} \\
+    \sigma^2(x_*) 
+    &= k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
+    \label{eq: predictive_variance}
+    \end{align}
+\end{subequations}    
+% 
 In these expressions:
 \begin{itemize}
     \item \( \mu(\cdot) \) is the mean function ( We take this to be zero since we centre the data prior to prediction),
@@ -932,18 +956,12 @@ k(\mathbf{x}, \mathbf{x}') = \sigma_f^2 \exp\left( -\frac{1}{2} \sum_{d=1}^D \fr
 
 
 \section{Method}
-
 \begin{figure}[H]
     \centering
    \includegraphics[width=0.8\textwidth]{LatexPlots/Flowchart.png}
     \caption{\Sarp{Acquisition is misspelled} My Process Flowchart}
     \label{fig:flowchart}
 \end{figure}
-
-
-\noindent
-\textbf{7D}
-
 \subsection{The Models}
 To build a robust Gaussian Process Regression model, I built an extensive selection of models for comparison.
 These models included all combinations of kernels introduced in Section~\ref{sec: Kernels} and noise-handling strategies discussed in Section~\ref{sec: Handlingnoise}. 

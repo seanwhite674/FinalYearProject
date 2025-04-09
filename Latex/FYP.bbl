@@ -1,9 +1,19 @@
 \begin{thebibliography}{1}
 
+\bibitem{linearcombination}
+{\sc Abbott, R., et~al.}
+\newblock {GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo during the Second Part of the Third Observing Run}.
+
 \bibitem{intoGRSarp}
 {\sc Akcay, S.}
 \newblock {Forecasting Gamma-Ray Bursts Using Gravitational Waves}.
 \newblock {\em Annalen Phys. 531}, 1 (2019), 1800365.
+
+\bibitem{Bayesianapproach}
+{\sc Ashton, G., and Khan, S.}
+\newblock Multi-waveform inference of gravitational waves.
+\newblock {\em arXiv e-prints\/} (2019).
+\newblock \url{https://arxiv.org/abs/1910.09138}.
 
 \bibitem{kernelcookbook}
 {\sc Duvenaud, D.}
