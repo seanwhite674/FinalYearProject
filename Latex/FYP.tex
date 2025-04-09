@@ -60,7 +60,7 @@
 \subsection{General Relativity intro}
 \label{sec:GRintro}
 Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. In the simplified linearized theory, we assume a flat Minkowski spacetime, and the small fluctuations around it are referred to as gravitational waves. The term "waves" is justified since, in an appropriate gauge (specific choices of coordinates), \(h_{\mu\nu}\) satisfies the wave equation. This is described in detail in Gravitational Waves, Vol. 1 by Maggiore~\cite[Sec~ 1.1]{GRbook}.
-Formully we appproach this by expanding Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
+Formally we appproach this by expanding Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
 \begin{equation}
 g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
 \qquad
@@ -70,9 +70,9 @@ g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
 \end{equation}
 where \(h_{ab}\) represents the perturbation. In the linearized regime of general relativity, the Einstein field equations simplify to
 \begin{equation}
-    \Box \bar{h}_{ab} = \frac{-16\pi G}{c^4} T_{\mu \nu}.
+    \Box \bar{h}_{ab} = \frac{-16\pi G}{c^4} T_{ab}.
 \end{equation}
-However we are interested in this equation outside of the source (i.e $T_{\mu \nu} =0$) therefore we are left with 
+However we are interested in this equation outside of the source (i.e $T_{ab} =0$) therefore we are left with 
 \begin{equation}
     \Box \bar{h}_{ab} = 0, 
 \end{equation}
@@ -105,7 +105,7 @@ In general, the power emitted by a radiative field can be expressed schematicall
     \dot{E} = \sum_{\ell = 0}^{\infty} \left\langle \left| \left( \frac{\partial}{\partial t} \right)^{\ell+1} P_\ell(t) \right| \right\rangle.
 \end{equation}
 Here, \(P_{\ell}(t)\) represents the multipole moments of the radiating source. The \(\ell = 0\) term corresponds to the monopole moment, which in the gravitational case is the total mass of the system. Assuming mass is conserved, this term vanishes.
-The \(\ell = 1\) term represents the dipole moment, which is also zero in the gravitational case due to conservation of linear momentum. Therefore, the leading-order contribution to gravitational-wave emission arises from the \(\ell = 2\) term, known as the quadrupole.
+The \(\ell = 1\) term represents the dipole moment, which is also zero in the gravitational case due to conservation of linear momentum. Therefore, the leading-order contribution to gravitational-wave emission arises from the \(\ell = 2\) term, known as the quadrupole radiation.
 This gives the leading-order expression for the power emitted in gravitational waves
 %
 \begin{equation}
@@ -118,11 +118,11 @@ where \(Q_{ij}\) is the mass quadrupole moment of the source. It is related to t
 \begin{equation}
 Q_{ij} := M_{ij} - \frac{1}{3} \delta_{ij} M^k_{\ k},
 \end{equation}
-where \(M_{ij} = \int d^3x\, T^{00}(x^i x^j)\).
+where \(M_{ij} = \int d^3x\, T^{00}x^i x^j\).
 
 
 
-\subsubsection*{A Simple Two-Mass Inspiral Model}
+\subsubsection*{Quasi-circular Inspiral of two Point Masses}
 \label{subsec:two_mass_example}
 We will now consider a generic problem as illistrated in \cite{intoGRSarp} where two point masses, \(m_1 \ge m_2\), are in a quasi-circular orbit of separation \(R\),
 each at distances \(r_1\) and \(r_2\) from their common center of mass (CoM), with
@@ -147,7 +147,7 @@ Introducing the reduced mass \(\mu = m_1 m_2/(m_1 + m_2)\), we get that the \(\e
 \;=\;
 \frac{32}{5}\;\frac{G}{c^5}\;\Omega^6\,\mu^2\,R^4.
 \end{equation}
-Both \(\Omega\) and \(R\) are functions of time, but they evolve on a time scale much longer than the orbital time
+Both \(\Omega\) and \(R\) are functions of time, but they evolve on a time scale (radiation reaction) much longer than the orbital time
 scale and so when averaging over orbits we approximate them as constant. Applying Kepler’s law, \(\Omega^2 = GM/R^3\), and defining
 \(\omega = 2\Omega\) as the GW frequency, we find
 %
@@ -196,7 +196,7 @@ Here \(\iota = \cos^{-1}(\hat{n} \cdot \hat{L}) \) is the inclination angle betw
 As the frequency \( f(t) \) increases, so too does \( h_c(t) \), giving rise to the characteristic chirping waveform.
 
 \Sean{Confused on frequency domain, It is a fourier transform of this??? Maybe plot of chirping behaviour}
-
+\Sarp{Yes, it is the Fourier transform using SPA. I'll show you where to find the relevant expressions.}
 
 
 \subsubsection*{Introducing the Waveform Mismatch}
