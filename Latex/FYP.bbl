@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{linearcombination}
 {\sc Abbott, R., et~al.}
@@ -15,11 +15,21 @@
 \newblock {\em arXiv e-prints\/} (2019).
 \newblock \url{https://arxiv.org/abs/1910.09138}.
 
+\bibitem{NRsimulation}
+{\sc Boyle, M., Hemberger, D., Iozzo, D.~A., Lovelace, G., Ossokine, S., Pfeiffer, H.~P., Scheel, M.~A., Stein, L.~C., Woodford, C.~J., Zimmerman, A.~B., Afshari, N., Barkett, K., Blackman, J., Chatziioannou, K., Chu, T., Demos, N., Deppe, N., Field, S.~E., Fischer, N.~L., Foley, E., Fong, H., Garcia, A., Giesler, M., Hebert, F., Hinder, I., Katebi, R., Khan, H., Kidder, L.~E., Kumar, P., Kuper, K., Lim, H., Okounkova, M., Ramirez, T., Rodriguez, S., Rüter, H.~R., Schmidt, P., Szilagyi, B., Teukolsky, S.~A., Varma, V., and Walker, M.}
+\newblock The sxs collaboration catalog of binary black hole simulations.
+\newblock {\em Classical and Quantum Gravity 36}, 19 (2019), 195006.
+
 \bibitem{kernelcookbook}
 {\sc Duvenaud, D.}
 \newblock The kernel cookbook: Advice on covariance functions.
 \newblock \url{https://www.cs.toronto.edu/~duvenaud/cookbook/}, 2014.
 \newblock Accessed: 2024-03-14.
+
+\bibitem{NRfitMT}
+{\sc Estell{\'e}s, H., Colleoni, M., Garc{\'\i}a-Quir{\'o}s, C., Husa, S., Keitel, D., Mateu-Lucena, M., de~Lluc~Planas, M., and Ramos-Buades, A.}
+\newblock New twists in compact binary waveform modelling: a fast time domain model for precession.
+\newblock {\em arXiv preprint arXiv:2105.05872\/} (2021).
 
 \bibitem{Ogpaper}
 {\sc Hoy, C., Akcay, S., Mac~Uilliam, J., and Thompson, J.~E.}
@@ -36,10 +46,25 @@
 \newblock {\em arXiv preprint gr-qc/9511032\/} (1995).
 \newblock Submitted to Physical Review D: November 7, 1995.
 
+\bibitem{NRfitMP}
+{\sc Pratten, G., Garc{\'\i}a-Quir{\'o}s, C., Colleoni, M., Ramos-Buades, A., Estell{\'e}s, H., Mateu-Lucena, M., Jaume, R., Haney, M., Keitel, D., Thompson, J.~E., and Husa, S.}
+\newblock Computationally efficient models for the dominant and sub-dominant harmonic modes of precessing binary black holes.
+\newblock {\em arXiv preprint arXiv:2004.06503\/} (2021).
+
+\bibitem{bestNRfitS}
+{\sc Ramos-Buades, A., Buonanno, A., Estell{\'e}s, H., Khalil, M., Mihaylov, D.~P., Ossokine, S., Pompili, L., and Shiferaw, M.}
+\newblock {SEOBNRv5PHM: Next generation of accurate and efficient multipolar precessing-spin effective-one-body waveforms for binary black holes}.
+\newblock {\em arXiv e-prints\/} (Mar. 2023).
+
 \bibitem{bible}
 {\sc Rasmussen, C.~E., and Williams, C. K.~I.}
 \newblock {\em Gaussian Processes for Machine Learning}.
 \newblock MIT Press, Cambridge, MA, USA, 2006.
+
+\bibitem{NRsurrogate}
+{\sc Varma, V., Field, S.~E., Scheel, M.~A., Blackman, J., Gerosa, D., Stein, L.~C., Kidder, L.~E., and Pfeiffer, H.~P.}
+\newblock Surrogate models for precessing binary black hole simulations with unequal masses.
+\newblock {\em arXiv preprint arXiv:1905.09300\/} (2019).
 
 \bibitem{metrics}
 {\sc Zaman, Q., Alraho, S., and K{\"o}nig, A.}
