@@ -60,6 +60,12 @@ Our GPR model thus provides a fast, accurate way to estimate mismatches without 
  This approach fits seamlessly into NR-informed strategies for parameter estimation, paving the way for more efficient and precise characterization of gravitational-wave signals from merging black holes.
 \end{abstract}
 
+\newpage
+
+\tableofcontents
+
+\newpage
+
 \section{Gravitational Waves Background}
 \subsection{General Relativity intro}
 \label{sec:GRintro}
@@ -407,12 +413,13 @@ In the following subsections, I discuss the foundational concepts of Gaussian Pr
     \item \textbf{Kernel Functions:} In Section~\ref{sec: Kernels}, I explore how kernels encode the basic assumptions about smoothness and structural properties of the underlying function. I look at how kernel hyper-parameters effect the shape of samples from our prior distribution.
     \item \textbf{Noise Modeling:} Section~\ref{sec: Handlingnoise} covers several approaches for incorporating observational noise into the GP framework. I look at how noise effects the samples from our prior distribution.
     \item \textbf{Hyperparameter Optimization:} Finally, in Section~\ref{sec: Hyper_parameters}, I discuss how kernel and noise hyper-parameters can be optimised resulting in a posterior distribution that better explains our data.
+    \item \textbf{Hyperparameter Uncertainty:} \ref{sec: MCMC}
 \end{enumerate}
 
 \subsection{Gaussian Proces Regression Background}
 \label{sec: GP_backgroound}
 
-\subsubsection*{Definition of a Gaussian Process}
+\subsubsection{Definition of a Gaussian Process}
 \label{sec: Definition_of_GP}
 
 A Gaussian Process \textbf{(GP)} defines a probabilistic model over all possible functions rather than assuming a single function to be true
@@ -459,7 +466,7 @@ f \sim \mathcal{N}\left(\mu(X), K(X, X)\right).
 \noindent
 Each sample from this multivariate distribution represents a function evaluated at \( n \) different points.
 
-\subsubsection*{The Prior Distribution}
+\subsubsection{The Prior Distribution}
 \label{sec: prior_dist}
 
 Before observing any data, we assume a joint Gaussian distribution over both training and test points. Let \( X \) denote training inputs and \( X_* \) test inputs. 
@@ -685,7 +692,7 @@ the signal variance hyperparameter on the GP prior. We will use the RBF kernel a
 
 
 
-\subsubsection*{Adding Data: Prior to Posterior}
+\subsection{Building the Posterior Distribution}
 \label{sec: priortoposterior}
 
 We have discussed how our prior distribution is dependent on the choice of kernel and the hyper-parameters of said kernel. In this section
@@ -795,7 +802,7 @@ m(f_*) &= K_*^T (K_y)^{-1} y,
 %
 where \(K_y\) depends on how we handle our noise. There are three main cases of how we handle our noise
 
-\subsubsection*{Homoscedastic Noise} 
+\subsubsection{Homoscedastic Noise} 
 
 In the homoscedastic case, we assume that all observations have the same noise level, meaning the noise variance is constant across the dataset:
 \[
@@ -834,7 +841,7 @@ Our predictive distribution remains as in \ref{eq: predictive_distribution_noise
 Our posterior distribution is as in eqn \ref{eq:  predictive_distribution_noise} with \(K_y = K(X, X) + \sigma_n^2 I \) for some constant \(\sigma_n\)
 
 
-\subsubsection*{Heteroscedastic Noise}  
+\subsubsection{Heteroscedastic Noise}  
 \textbf{Known Noise:}
 %
 In this case, the noise variance changes across the input space—some observations are noisier than others. If we know the individual noise variances \( \sigma_i^2 \) for each training input \( x_i \), we incorporate them by adding a diagonal noise matrix to the kernel:
@@ -875,7 +882,7 @@ This Monte Carlo-style approach allows uncertainty in the outputs to be naturall
 
 %
 %
-\subsubsection*{Comparing Noise Models}
+\subsubsection{Comparing Noise Models}
 From Figure~\ref{fig:noise_comparison} we see how different noise assumptions influence samples drawn from the Gaussian Process prior. 
 In the homoscedastic case (left), our samples exhibit consistent fluctuations across the entire domain due to a constant noise variance applied uniformly to all inputs. 
 The heteroscedastic case (middle) introduces input-dependent noise, this results in regions of smoothness followed by abrupt variations—reflecting the fact that each output has its own associated noise level.
@@ -941,7 +948,7 @@ Our goal is to maximise this log marginal likelihood with respect to the hyperpa
 \end{figure} 
 
 
-\section{Quantifying Uncertainty}
+\subsection{Quantifying Hyper-parameter Uncertainty}
 \label{sec: MCMC}
 We have previously discussed the role of kernels and how their hyperparameters influence the shape of both the prior and posterior predictive distributions. As shown in Figure~\ref{figure: Optimising Hyper-params}, optimising hyperparameters does not necessarily yield a single “best” solution. 
 Instead, there often exists a region of hyperparameter values that explain the data equally well, resulting in a flat or multi-modal log marginal likelihood surface.
@@ -1033,7 +1040,7 @@ To build a robust Gaussian Process Regression (GPR) model, I constructed a compr
 A full summary of models implemented is provided in Table~\ref{tab:model_summary}. Below, we outline the different classes of models explored:
 
 \noindent
-\textbf{Homoscedastic Noise Models}
+\subsubsection{Homoscedastic Noise Models}
 \begin{itemize}
     \item \textbf{White Kernel:} Noise is modelled as a global hyperparameter using the \texttt{WhiteKernel} class added to each kernel.
     After initial examination I found that the results of optimising the noise hyper-parameter varied massively with the noise bounds. 
@@ -1047,8 +1054,7 @@ A full summary of models implemented is provided in Table~\ref{tab:model_summary
 %
 %
 
-\noindent
-\textbf{Heteroscedastic Noise Models}
+\subsubsection{Heteroscedastic Noise Models}
 \begin{itemize}
     \item \textbf{Known Noise:} The \texttt{fixedalpha} model assumes noise variance is known at each input and adds this directly into the kernel diagonal using the \texttt{alpha} argument of \texttt{GaussianProcessRegressor}.
     \item \textbf{Monte Carlo Sampling:} The \texttt{montecarlo} model accounts for our observed mismatch values having noise associated with them. It adds noise to our observations and builds posterior distributions for each of these ''noisy'' samples. 
@@ -1064,7 +1070,7 @@ A full summary of models implemented is provided in Table~\ref{tab:model_summary
 %
 
 \noindent
-\textbf{Hybrid Model}
+\subsubsection{Hybrid Model}
 \begin{itemize}
     \item \textbf{Hybrid Noise:} The \texttt{hybrid} model includes both fixed known noise and a trainable noise parameter. The fixed component helps get accurate levels of uncertainty where the noise is known (training inputs), while the learnable part generalizes to unseen regions.
 \end{itemize}
@@ -1106,7 +1112,7 @@ are available in Section~\ref{subsubsec:implementdetails}
 \label{sec:metrics}
 To assess the performance of each Gaussian Process Regression model, I used six evaluation metrics. These metrics were discussed and chosen in \cite{metrics} for the specific reason that they offer a robust metrics that capture different information about the model. In this paper they divide the metrics into two types Average Expected Error \textbf{AEE} metrics and correlation metrics. 
 
-\subsubsection*{AEE Metrics}
+\subsubsection{AEE Metrics}
 \begin{itemize}
     \item \textbf{Root Mean Squared Error (RMSE)} \( \left(\sqrt{\frac{1}{N} \sum (y_i - \hat{y}_i)^2} \right)\): Measures the average distance between true values and the prediction. Since at each point the error is squared the RMSE has a heavier penalty for larger errors.
     \item \textbf{Mean Absolute Error (MAE)} \( \left( \frac{1}{N} \sum |y_i - \hat{y}_i|\right) \):  The MAE measures the average absolute difference between predicted and true values. It is less sensitive to larger errors than the RMSE since it is not quadratically scaled.
@@ -1114,7 +1120,7 @@ To assess the performance of each Gaussian Process Regression model, I used six 
     Lower FOM values indicate higher model accuracy, as they imply that the model's predictive error is small compared to the variation in the data. A value near zero reflects excellent predictive performance, while larger values suggest less accurate predictions.
 \end{itemize}
 
-\subsubsection*{Correlation Metrics}
+\subsubsection{Correlation Metrics}
 \begin{itemize}
     \item \textbf{Coefficient of Determination}\(\left(\mathbf{R^2}\right)\)\( \left(1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}\right) \): Finds 1 - the ratio of how well the mean predicts the true values compared to the model predictions. Measures how much better our model is at predicting than a baseline mean prediction.
     
@@ -1160,7 +1166,7 @@ For MCMC sampling, I used the \texttt{emcee} package. Interpolation was performe
 %
 %
 \section{Results}
-\subsubsection*{Cross-Validation Performance}
+\subsection{Cross-Validation Performance}
 \Sean{Is using we/I ok here???}
 The cross validation results for all model types discussed in Section~\ref{subsec:Models} are visualised in Figure~\ref{fig:broad_comparison}. A few notable observations emerge. Firstly, the \texttt{montecarlo} noise modeling method performs poorly.
 This may be due to the fact that the noise associated with our data is relatively large. When sampling different noise levels, this results in a mixture of large- and small-noise systems whose effects, when averaged, tend to cancel out—leading to overly generalised predictions.
@@ -1190,7 +1196,8 @@ In Figure~\ref{fig:CV_sidebyside}(right), we visualize model performance across 
 
 
 
-\subsubsection*{Training on 90\% of Data}
+\subsection{Training on 90\% of Data}
+\Sean{Section Name needs work}
 After identifying the top 8 models forming a high-performing cluster in Figure~\ref{fig:CV_sidebyside} (right),
 we retrained these models using the full 90\% of the data previously used for cross-validation. The optimized hyperparameters for these final models are detailed in Table~\ref{tab:final_gpr_hyperparams}. 
 To evaluate performance, we tested each model on the remaining 10\% of unseen data and visualized their results in Figure~\ref{fig:comparing_metrics}.
@@ -1247,7 +1254,7 @@ by building a posterior over them using MCMC.
 \end{tabular}}
 \end{table}
 
-\subsubsection{MCMC}
+\subsection{Hyper-parameter Uncertainty}
 \textbf{MCMC on \texttt{RBFMatern}}
 In Figure~\ref{fig:MCMCRBFMatern} we plot the posterior distributions of each hyper-parameter after running our MCMC as detailed in Section~\ref{sec: MCMC}.
 The MCMC 
@@ -1272,7 +1279,7 @@ The MCMC
 \end{figure}
 
 
-\section{Conclusion}
+\section{Conclusion/Discussion}
 \begin{itemize}
     \item successfully developed accurate models
     \item Evaluated a wide variety of kernels
@@ -1281,8 +1288,6 @@ The MCMC
     \item Potential Scaling issues
 \end{itemize}
 
-
-\section{Discussion}
 \begin{itemize}
     \item In future would like to build a model with kernel uncertainty built into model, full gpr
     \todo{Add the 7D discussion here}
@@ -1291,9 +1296,13 @@ The MCMC
     \item Maybe using physical constraints somewhat in the model
 \end{itemize}
 
-\appendix
+\newpage
+\bibliography{references} 
 
-\section{Appendix A: Derivation of Predictive Distribution}
+
+\newpage
+\appendix
+\subsection{Derivation of Predictive Distribution}
 \label{appendix:A}
 Using Bayes' Theorem applied to continuous probabilities, we have:
 \[
@@ -1348,7 +1357,7 @@ p(f) = \frac{1}{\sqrt{2\pi} |K|^{1/2}}
 
 
 
-\section{Appendix B: Kernel Formulas}
+\subsection{Kernel Formulas}
 \label{appendix:B}
 \subsubsection*{Radial Basis Function (RBF) Kernel}
 \[
@@ -1391,7 +1400,7 @@ k(x, x') = \sigma_b^2 + x^\top x'
 This kernel grows with the similarity (inner product) between inputs, and it allows the function to vary globally. Since it depends directly on the values of \( x \) and \( x' \), not just their difference, it is non-stationary. It is particularly useful for modeling linear trends.
 
 
-\section{Appendix C: Graphs of 4d finalist GPs}
+\subsection{Graphs of 4d finalist GPs}
 \label{appendix:C}
 
 
@@ -1418,7 +1427,7 @@ This kernel grows with the similarity (inner product) between inputs, and it all
 \end{figure}
 
 
-\section{Appendix D: Model Evaluation Table and graphs}
+\subsection{Model Evaluation Table and graphs}
 \label{appendix:D}
 
 \begin{figure}[H]
@@ -1448,7 +1457,7 @@ This kernel grows with the similarity (inner product) between inputs, and it all
 \end{table}
     
 
-\section{Appendix E: Bin}
+\subsection{Bin}
 \label{appendix:bin}
 \Sean{Moving Evaluation Metrics to Methods}
 
@@ -1497,7 +1506,7 @@ The Pearson correlation coefficient measures the linear relationship between pre
 
 
 
-\section{Appendix F: MCMC details}
+\subsection{MCMC details}
 \subsubsection*{Implementing MCMC}
 \begin{figure}[H]
     \centering
@@ -1517,7 +1526,7 @@ We then construct a multivariate normal distribution centred at this point estim
 To ensure convergence and sample independence, we discard the first 100 samples from each walker as burn-in and apply a thinning factor of 15—retaining every 15\textsuperscript{th} sample. The resulting collection of samples forms our posterior distribution over hyperparameters, which we visualise using a kernel density estimate (KDE).
 
 
-\section{Appendix G: Noise modeling using Monte Carlo Sampling}
+\subsection{Noise modeling using Monte Carlo Sampling}
 \label{appendix:monte_carlo}
 
 We assume the observation noise is Gaussian:
@@ -1550,7 +1559,6 @@ This integral is intractable so we approximate it using Monte Carlo integration 
 % %\printbibliography
 % \bibliographystyle{acm}
 % \bibliography{references}
-\bibliography{references} 
 
 \end{document}
 
