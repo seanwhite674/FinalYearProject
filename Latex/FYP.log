@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.11)  10 APR 2025 01:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.11)  10 APR 2025 10:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex
+**c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP
 (c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -882,19 +882,19 @@ Overfull \hbox (23.27956pt too wide) in paragraph at lines 1163--1177
 
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1181.
-<LatexPlots/final_gps_plots/MCMCRBFMat.png, id=498, 1290.8225pt x 574.145pt>
+<LatexPlots/final_gps_plots/MCMCRBFMat.png, id=498, 1437.37pt x 718.685pt>
 File: LatexPlots/final_gps_plots/MCMCRBFMat.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/MCMCRBFMat.png>
 Package pdftex.def Info: LatexPlots/final_gps_plots/MCMCRBFMat.png  used on input line 1184.
-(pdftex.def)             Requested size: 481.87546pt x 214.3314pt.
+(pdftex.def)             Requested size: 481.87546pt x 240.93916pt.
 
 
 [28 <./LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png>]
-<LatexPlots/final_gps_plots/MCMCWhiteMat.png, id=511, 1288.815pt x 573.14125pt>
+<LatexPlots/final_gps_plots/MCMCWhiteMat.png, id=511, 858.20625pt x 428.60126pt>
 File: LatexPlots/final_gps_plots/MCMCWhiteMat.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/MCMCWhiteMat.png>
 Package pdftex.def Info: LatexPlots/final_gps_plots/MCMCWhiteMat.png  used on input line 1192.
-(pdftex.def)             Requested size: 481.87546pt x 214.28902pt.
+(pdftex.def)             Requested size: 481.87546pt x 240.65598pt.
 
 
 [29 <./LatexPlots/final_gps_plots/MCMCRBFMat.png> <./LatexPlots/final_gps_plots/MCMCWhiteMat.png>]
@@ -990,13 +990,13 @@ Package rerunfilecheck Info: File `FYP.out' has not changed.
 Here is how much of TeX's memory you used:
  25026 strings out of 473201
  468507 string characters out of 5720299
- 884830 words of memory out of 5000000
+ 884831 words of memory out of 5000000
  47667 multiletter control sequences out of 15000+600000
  573416 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,16n,107p,890b,567s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 102i,16n,107p,886b,567s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on FYP.pdf (38 pages, 4575166 bytes).
+Output written on FYP.pdf (38 pages, 4587761 bytes).
 PDF statistics:
  774 PDF objects out of 1000 (max. 8388607)
  585 compressed objects within 6 object streams
