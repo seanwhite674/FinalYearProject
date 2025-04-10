@@ -327,11 +327,13 @@ INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT ./LatexPlots/GRdiagram.png
 INPUT ./LatexPlots/GRdiagram.png
 INPUT ./LatexPlots/GRdiagram.png
 INPUT ./LatexPlots/GRdiagram.png
 INPUT ./LatexPlots/GRdiagram.png
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT ./LatexPlots/final_gps_plots/data_visual.png
 INPUT ./LatexPlots/final_gps_plots/data_visual.png
 INPUT ./LatexPlots/final_gps_plots/data_visual.png
@@ -448,7 +450,6 @@ INPUT ./LatexPlots/Flowchart.png
 INPUT ./LatexPlots/Flowchart.png
 INPUT ./LatexPlots/Flowchart.png
 INPUT ./LatexPlots/Flowchart.png
-INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
@@ -461,7 +462,6 @@ INPUT ./LatexPlots/CV_plots/metrics_compared.png
 INPUT ./LatexPlots/CV_plots/metrics_compared.png
 INPUT ./LatexPlots/CV_plots/metrics_compared.png
 INPUT ./LatexPlots/CV_plots/metrics_compared.png
-INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT ./LatexPlots/CV_plots/ranking_visualisation.png
 INPUT ./LatexPlots/CV_plots/ranking_visualisation.png
 INPUT ./LatexPlots/CV_plots/ranking_visualisation.png
@@ -478,6 +478,16 @@ INPUT ./LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png
 INPUT ./LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png
 INPUT ./LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
+INPUT ./LatexPlots/final_gps_plots/MCMCRBFMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCRBFMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCRBFMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCRBFMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCRBFMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCWhiteMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCWhiteMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCWhiteMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCWhiteMat.png
+INPUT ./LatexPlots/final_gps_plots/MCMCWhiteMat.png
 INPUT ./LatexPlots/final_gps_plots/final_gps_ycuts.png
 INPUT ./LatexPlots/final_gps_plots/final_gps_ycuts.png
 INPUT ./LatexPlots/final_gps_plots/final_gps_ycuts.png
