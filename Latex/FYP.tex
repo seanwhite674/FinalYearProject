@@ -1,7 +1,15 @@
 \documentclass[12pt]{article}
 \usepackage{multirow}
-\PassOptionsToPackage{a4paper,left=30mm,top=20mm,right=20mm,bottom=30mm}{geometry}
+%%\PassOptionsToPackage{a4paper,left=30mm,top=20mm,right=20mm,bottom=30mm}{geometry}
 %\usepackage[backend=biber,style=numeric]{biblatex} % Use biblatex with numeric citations
+\usepackage{geometry}  % Use the geometry package
+\geometry{
+    a4paper,            % Paper size
+    left=30mm,          % Left margin
+    right=20mm,         % Right margin
+    top=20mm,           % Top margin
+    bottom=30mm,     % Bottom margin
+}
 \usepackage{cite}
 \usepackage{hyperref}  
 \usepackage{tikz}
@@ -12,10 +20,9 @@
 \usepackage{amsmath}
 \usepackage{float} 
 \setlength{\parskip}{0.5em}
-% Enable clickable references
-\usepackage{graphicx}        
+% Enable clickable references    
 \usepackage{array}
-\usepackage[margin=0.8in]{geometry}
+\usepackage{graphicx}    
 \usepackage{adjustbox}
 \usepackage{makecell}
 \usepackage{csvsimple}
@@ -40,21 +47,18 @@
 \begin{document}
 
 \maketitle
-
-
-\abstract{
-\begin{itemize}
-    \item Motivated by the need for fast and accurate models of gravitational waveforms, this project explores Gaussian Process Regression (GPR) as a way to model the waveform mismatch in black hole binary mergers.
-    \item Begin by understanding GPR fundamentals on a low-dimensional toy problem following \cite{bible},.
-    \item We extend this approach to a 4-dimensional and 7-dimensional parameter space, derived from the 8D intrinsic black hole parameter set.
-    \item Multiple kernels (RBF, Matern, RationalQuadratic, Laplacian) and noise modelling techniques (homoscedastic, heteroscedastic) are compared.
-    \item Using cross-validation and metrics \cite{metrics}, we find that several models are very accurate with the best models achieving .......
-    \item We also apply MCMC to sample hyperparameter posteriors and understand how uncertain our predictions are. Emphasis maybe how MCMC is ideal but too computationally expensive 
-    \item Visualise the GPR across its parameter space taking cross-cuts
-    \item Finally our GPR provides a fast and accurate mismatch model that will help the work being carried out in \cite{Ogpaper}.
-\end{itemize}
-}
-
+\Sean{Why is this indenting???}
+\begin{abstract}The gold standard for gravitational waveforms (GW) from merging black holes comes from computationally expensive numerical relativity (NR) simulations. While analytic approximations can greatly reduce costs,
+ they are not uniformly accurate across parameter space. To address this, \cite{Ogpaper} introduced a Bayesian framework that selects the most accurate analytic model in each region, requiring mismatch values between models and NR. Instead of running dense,
+  high-cost NR simulations for these mismatches, we propose a Gaussian Process Regression (GPR) model to predict them.
+We begin by reviewing Gaussian Process fundamentals and systematically evaluating various kernels (RBF, Matern, Rational Quadratic, Laplacian) under both homoscedastic and heteroscedastic noise.
+ Using cross-validation on six performance metrics, we rank and select eight finalists. Retraining these on 90\% of the data and testing on a 10\% holdout reveals that our best model—combining RBF
+  and Matern kernels—achieves an impressive \(R^2 \approx 0.99\).
+To capture the uncertainty in our hyperparameters, we employ Markov Chain Monte Carlo (MCMC) sampling. 
+Certain cases exhibit multimodal posterior distributions, highlighting the importance of integrating over these posteriors to obtain robust mismatch predictions.
+Our GPR model thus provides a fast, accurate way to estimate mismatches without resorting to computationally intensive NR simulations at every point.
+ This approach fits seamlessly into NR-informed strategies for parameter estimation, paving the way for more efficient and precise characterization of gravitational-wave signals from merging black holes.
+\end{abstract}
 
 \section{Gravitational Waves Background}
 \subsection{General Relativity intro}
@@ -308,7 +312,7 @@ the existing techniques.
 \Sean{Is it possible for you to send cleaner image to me?.}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/Sarppaperprojectmotivation.png}
+    \includegraphics[width=\textwidth]{LatexPlots/Sarppaperprojectmotivation.png}
     \caption{Contour plots showing the ratio of mismatches with respect to NR simulations, for different effective parallel and perpendicular spin components, averaged over a range of mass ratios. 
     The left plot shows \( \mathcal{M}(\textsc{IMRPhenomXPHM}) / \mathcal{M}(\textsc{SEOBNRV5PHM}) \), and the right shows \( \mathcal{M}(\textsc{IMRPhenomTPHM}) / \mathcal{M}(\textsc{SEOBNRV5PHM}) \).}
     \label{fig:projectmotivation}
@@ -374,18 +378,18 @@ x \in \{0.1, 0.2, \ldots, 1\}, \qquad y \in \left\{-\frac{\pi}{2},-\frac{\pi}{2}
 \end{equation}
 where \(x\), \(y\), \(z\), and \(w\) are the scaled inputs used in our GPR framework.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
-    \caption{
-    Visualisation of the input data across reduced dimensions. 
-    Left: A 3D scatter plot of all data points for fixed total mass \(w = 0.25\) ($M_\text{tot}=37.5 M_\odot$). 
-    Centre: A 2D slice of the data at rescaled symmetric mass ratio \(z = 0\) ($q=0.404$), interpolated over spin components.
-    Right: A 1D cut through the data at \(x = 0.8\) showing variation across \(y\). 
-    When using raw data, interpolation is needed between samples, but GPR provides an analytic model that can be directly evaluated without interpolation.
-    }
-    \label{fig:visualising_data}
-\end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{LatexPlots/final_gps_plots/data_visual.png}
+        \caption{
+        Visualisation of the input data across reduced dimensions. 
+        Left: A 3D scatter plot of all data points for fixed total mass \(w = 0.25\) ($M_\text{tot}=37.5 M_\odot$). 
+        Centre: A 2D slice of the data at rescaled symmetric mass ratio \(z = 0\) ($q=0.404$), interpolated over spin components.
+        Right: A 1D cut through the data at \(x = 0.8\) showing variation across \(y\). 
+        When using raw data, interpolation is needed between samples, but GPR provides an analytic model that can be directly evaluated without interpolation.
+        }
+        \label{fig:visualising_data}
+    \end{figure}
 
 
 
@@ -524,7 +528,7 @@ indicating strong correlation (approximately 0.9). As the distance increases, su
 
 \begin{figure}[H]
     \centering
-       \includegraphics[width=1\textwidth]{LatexPlots/1dplots/Kernel_background.png}
+       \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_background.png}
         \caption{Sampling from the GP prior with zero mean and an RBF kernel ($\ell = 0.5$, $\sigma_f^2 = 1$). 
         The first plot shows three sample functions drawn from the prior distribution. 
         The second plot visualizes the covariance matrix as a heatmap, revealing the strength of correlations between inputs.
@@ -893,6 +897,7 @@ This highlight all the plausible functions consistent with the observed data and
 
 \subsection{Hyper-parameters}
 \label{sec: Hyper_parameters}
+\Sean{Small bit of work required}
 Until now, all predictive distributions such as Equations~\ref{eq: predictive_distribution_noise} and~\ref{eq: predictive_dist} have been conditioned on fixed kernel hyperparameters. As demonstrated in Figures~\ref{fig: GPprior_hyperparams} and~\ref{fig: kernel_noise}, these hyperparameters have a significant influence on the structure and behaviour of the Gaussian Process, shaping both the prior and posterior distributions. 
 In practice, these hyperparameters are not known and must be inferred from the data. To do so, we aim to find the set of hyperparameters that best explain the observed data by maximising the log marginal likelihood, a method detailed in [Ch5\cite{bible}.]
 
@@ -996,7 +1001,7 @@ This procedure allows the final predictive distribution to reflect both data noi
 
 
 \section{Multi-Dimensional GPR}
-
+\Sean{Improve explanation here}
 To model functions with multiple input dimensions, a common and flexible approach is to construct kernels that operate over each input dimension individually, 
 and then combine them using a product. For example, multiplying RBF kernels defined on each input dimension yields a multi-dimensional RBF kernel.
 A specific case of this is the RBF-ARD (Automatic Relevance Determination) kernel, which assigns a separate lengthscale parameter \( \ell_d \) to each input dimension \( d \):
@@ -1065,7 +1070,7 @@ A full summary of models implemented is provided in Table~\ref{tab:model_summary
 \end{itemize}
 %
 For each configuration, the kernel hyperparameters were optimised by maximising the log marginal likelihood, as described in Section~\ref{sec: Hyper_parameters}. Exact implimentation details
-are available in Section~\ref{sec:implementdetails}
+are available in Section~\ref{subsubsec:implementdetails}
 %
 %
 %
@@ -1168,7 +1173,7 @@ We conclude that learning the noise via a hyperparameter is the most effective a
     \caption{Comparison of the average performance of each model type and for each kernel across all 10 folds of the training/validation data for each metric. Note: The \texttt{combinedkernel} approach is excluded here for clarity, but is included in all subsequent evaluations.}
     \label{fig:broad_comparison}
 \end{figure}
-The average rank of each model across all metrics is presented in Table~\ref{tab:rankingtable} and all the plots in Figure~\ref{fig:CV_sidebyside} label the models as their ranking.
+The average rank of each model across all metrics is presented in Table~\ref{tab:rankingtable} and all the plots in Figure~\ref{fig:CV_sidebyside} label the models as their final ranking in this table.
 The heatmap in Figure~\ref{fig:CV_sidebyside} (left) illustrates the rankings by metric, showing that most rankings are fairly consistent. To explore this further, a dendrogram of pairwise distances based on the correlation of metric rankings is plotted in Figure~\ref{fig:CV_sidebyside} (middle).
 The dendrogram highlights three clusters of metrics with different ranking behaviors: the first cluster (including \(R^2\), adjusted \(R^2\), RMSE, and Pearson) ranks models similarly, while the MAE rankings differ slightly, 
 and the FOM rankings vary significantly. This pattern is also evident in the heatmap, where FOM colors stand out from the other metrics.
@@ -1189,10 +1194,8 @@ In Figure~\ref{fig:CV_sidebyside}(right), we visualize model performance across 
 After identifying the top 8 models forming a high-performing cluster in Figure~\ref{fig:CV_sidebyside} (right),
 we retrained these models using the full 90\% of the data previously used for cross-validation. The optimized hyperparameters for these final models are detailed in Table~\ref{tab:final_gpr_hyperparams}. 
 To evaluate performance, we tested each model on the remaining 10\% of unseen data and visualized their results in Figure~\ref{fig:comparing_metrics}.
-The left panel shows a heatmap of model rankings across six metrics, and the right panel presents a scatter plot of $R^2$ vs FoM, with color indicating RMSE. 
-Model ranks are annotated in the scatter to highlight relative performance.
-As shown, the rankings remain fairly consistent across metrics, with some variation in the FoM. The best performing models on the test set are \texttt{RBFMat}, \texttt{Matnoerr}, and \texttt{RBFnoerr} are ranked 1st, 2nd, and 3rd respectively.
-These models achieve the strongest trade-offs between predictive accuracy and uncertainty calibration, making them the most promising candidates for deployment.
+From the heatmap we can see that the rankings remain fairly consistent across metrics, with some variation in the FoM. The best performing models on the test set seperate themselves in the scatter plot. The best 3 models have high \(R^2 \sim 0.99\) , low FOM \(\sim 0.45\) and low MAE \(\sim 0.04\).
+From Table~\ref{tab:finalmadelsrankingtable} we can see that these top 3 models correspond to the \texttt{RBFMat}, \texttt{Matnoerr} and \texttt{RBFnoerr}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{LatexPlots/final_gps_plots/metric_of_finalists_comparison.png}
@@ -1201,17 +1204,17 @@ These models achieve the strongest trade-offs between predictive accuracy and un
     The Rankings are given in Table~\ref{tab:finalmadelsrankingtable}.}
     \label{fig:comparing_metrics}
 \end{figure}
-From these visualizations, we observe that while all models perform well, they differ in how they handle local noise.
-Let's examine the \texttt{RBFMat} model. It remains smooth where the data is clean but responds sharply in regions containing outliers or local irregularities.
+
+Plotting the top 8 model predictions for various cross-cuts in Figure~\ref{fig:crosscuts_bestmodels}, we observe that while all models perform well, they differ in how they handle local noise.
+The \texttt{RBFMat} model remains smooth in regions with sparse data and then responds sharply in regions containing outliers or local irregularities.
 This behaviour is reflected in its optimized hyperparameters (Table~\ref{tab:final_gpr_hyperparams}). The RBF component has long characteristic length scales (around 1.0--1.5) and a large scale factor ($2.34$),
 which captures the global smooth structure of the data. Meanwhile, the Matern component has much shorter length scales (mostly $< 0.5$) and a smaller scale ($0.207$), allowing it to respond to local variability—effectively modeling input-dependent noise.
-In contrast, models using a single kernel with a \texttt{WhiteKernel} for noise (e.g., \texttt{Mat\_noerr}, \texttt{RBF\_noerr}) appear smoother overall. These models result in smaller length scales and relatively small noise variances ($\sigma_n^2 < 0.01$).
-When using tighter optimisation bounds for noise in the \texttt{min\_maxerr} models, we observe from Table~\ref{tab:final_gpr_hyperparams} that the noise hyperparameter consistently sits at or near the lower bound. 
-This suggests that the GP is compensating for noise directly through the kernel, not through the explicit noise model. This provides further credibility to the \texttt{RBFMat} combined model, where the noise appears to be effectively captured within the \texttt{Matern} kernel.
+Examining models that use a single kernel and a constant noise hyper-parameter we see that the optimised noise hyper-parameter is very small with \(\sigma_n^2 << 0.01\). For the models with tighter noise bounds (\texttt{minmaxerr})the optimiser always opts for the same lower noise bound. The loser bound models (\texttt{noerr})
+also results in small noise hyper-parameter values. This suggests that the GP is compensating for noise directly through the kernel, not through the explicit noise model. This provides further credibility to the \texttt{RBFMat} combined model, where the noise appears to be effectively captured within the Matern kernel.
 Finally, examining Laplacian-based kernel models (\texttt{Laplace\_noerr} and \texttt{Laplace\_minmaxerr}), which only have a single hyperparameter ($\gamma$), they still perform reasonably well but tend to produce more linear predictions. This is likely due to their limited flexibility compared to other kernels.
 Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metrics} and our qualitative examination of the crosscuts in Figure~\ref{fig:crosscuts_bestmodels}, we conclude that the \texttt{RBFMat} model offers the best trade-off between flexibility, interpretability, and robustness.
-However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparameters, there is a risk we are overfitting to the data. Therefore, we retain the \texttt{Mat\_noerr} model for comparative purposes, as it offers a smooth fit with fewer hyperparameters.
-
+However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparameters, there is a risk we are overfitting to the data. Therefore, we retain the \texttt{Mat\_noerr} model for comparative purposes, as it offers a smooth fit with fewer hyperparameters. In the next section we examine the uncertainty with respect to the hyper-parameters used in these two models
+by building a posterior over them using MCMC.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png}
@@ -1244,15 +1247,21 @@ However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparam
 \end{tabular}}
 \end{table}
 
-
-\subsubsection*{MCMC}
+\subsubsection{MCMC}
 \textbf{MCMC on \texttt{RBFMatern}}
+In Figure~\ref{fig:MCMCRBFMatern} we plot the posterior distributions of each hyper-parameter after running our MCMC as detailed in Section~\ref{sec: MCMC}.
+The MCMC 
+
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCRBFMat.png}
     \caption{MCMC on \texttt{RBFMatern} combined kernel model}
     \label{fig:MCMCRBFMatern}
 \end{figure}
+
+
 
 \textbf{MCMC on \texttt{Maternnoerr}}
 \begin{figure}[H]

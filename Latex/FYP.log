@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.11)  10 APR 2025 22:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.11)  10 APR 2025 23:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -29,18 +29,35 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@cntb=\count270
 \multirow@dima=\skip52
 \bigstrutjot=\dimen142
+) (c:/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (c:/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+) (c:/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (c:/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2024/12/12 v1.0g TeX engine tests
+))
+\Gm@cnth=\count271
+\Gm@cntv=\count272
+\c@Gm@tempcnt=\count273
+\Gm@bindingoffset=\dimen143
+\Gm@wd@mp=\dimen144
+\Gm@odd@mp=\dimen145
+\Gm@even@mp=\dimen146
+\Gm@layoutwidth=\dimen147
+\Gm@layoutheight=\dimen148
+\Gm@layouthoffset=\dimen149
+\Gm@layoutvoffset=\dimen150
+\Gm@dimlist=\toks18
 ) (c:/texlive/2024/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
 ) (c:/texlive/2024/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
- (c:/texlive/2024/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2024/12/12 v1.0g TeX engine tests
-) (c:/texlive/2024/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
-) (c:/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+ (c:/texlive/2024/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ) (c:/texlive/2024/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
@@ -67,16 +84,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
  (c:/texlive/2024/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count271
+\c@section@level=\count274
 ) (c:/texlive/2024/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count272
+\etb@tempcnta=\count275
 ) (c:/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\@linkdim=\dimen143
-\Hy@linkcounter=\count273
-\Hy@pagecounter=\count274
+\@linkdim=\dimen151
+\Hy@linkcounter=\count276
+\Hy@pagecounter=\count277
  (c:/texlive/2024/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -84,7 +101,7 @@ Now handling font encoding PD1 ...
 ) (c:/texlive/2024/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count275
+\Hy@SavedSpaceFactor=\count278
  (c:/texlive/2024/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -97,21 +114,21 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count276
+\c@Hy@tempcnt=\count279
  (c:/texlive/2024/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen144
+\XeTeXLinkMargin=\dimen152
  (c:/texlive/2024/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
  (c:/texlive/2024/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count277
-\Field@Width=\dimen145
-\Fld@charsize=\dimen146
+\Fld@menulength=\count280
+\Field@Width=\dimen153
+\Fld@charsize=\dimen154
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -123,9 +140,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count278
-\c@Item=\count279
-\c@Hfootnote=\count280
+\Hy@abspage=\count281
+\c@Item=\count282
+\c@Hfootnote=\count283
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
  (c:/texlive/2024/texmf-dist/tex/latex/hyperref/hpdftex.def
@@ -134,8 +151,8 @@ File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
-\Fld@listcount=\count281
-\c@bookmark@seq@number=\count282
+\Fld@listcount=\count284
+\c@bookmark@seq@number=\count285
  (c:/texlive/2024/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
  (c:/texlive/2024/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
@@ -145,9 +162,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 )
 \Hy@SectionHShift=\skip53
 ) (c:/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks18
-\pgfutil@tempdima=\dimen147
-\pgfutil@tempdimb=\dimen148
+\pgfutil@everybye=\toks19
+\pgfutil@tempdima=\dimen155
+\pgfutil@tempdimb=\dimen156
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box52
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/pgf.revision.tex)
@@ -167,36 +184,36 @@ Package graphics Info: Driver file: pdftex.def on input line 106.
  (c:/texlive/2024/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen149
-\Gin@req@width=\dimen150
+\Gin@req@height=\dimen157
+\Gin@req@width=\dimen158
 ) (c:/texlive/2024/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks19
-\pgfkeys@temptoks=\toks20
+\pgfkeys@pathtoks=\toks20
+\pgfkeys@temptoks=\toks21
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks21
+\pgfkeys@tmptoks=\toks22
 ))
-\pgf@x=\dimen151
-\pgf@y=\dimen152
-\pgf@xa=\dimen153
-\pgf@ya=\dimen154
-\pgf@xb=\dimen155
-\pgf@yb=\dimen156
-\pgf@xc=\dimen157
-\pgf@yc=\dimen158
-\pgf@xd=\dimen159
-\pgf@yd=\dimen160
+\pgf@x=\dimen159
+\pgf@y=\dimen160
+\pgf@xa=\dimen161
+\pgf@ya=\dimen162
+\pgf@xb=\dimen163
+\pgf@yb=\dimen164
+\pgf@xc=\dimen165
+\pgf@yc=\dimen166
+\pgf@xd=\dimen167
+\pgf@yd=\dimen168
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count283
-\c@pgf@countb=\count284
-\c@pgf@countc=\count285
-\c@pgf@countd=\count286
-\t@pgf@toka=\toks22
-\t@pgf@tokb=\toks23
-\t@pgf@tokc=\toks24
-\pgf@sys@id@count=\count287
+\c@pgf@counta=\count286
+\c@pgf@countb=\count287
+\c@pgf@countc=\count288
+\c@pgf@countd=\count289
+\t@pgf@toka=\toks23
+\t@pgf@tokb=\toks24
+\t@pgf@tokc=\toks25
+\pgf@sys@id@count=\count290
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -207,8 +224,8 @@ File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count288
-\pgfsyssoftpath@bigbuffer@items=\count289
+\pgfsyssoftpath@smallbuffer@items=\count291
+\pgfsyssoftpath@bigbuffer@items=\count292
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/texlive/2024/texmf-dist/tex/latex/xcolor/xcolor.sty
@@ -230,52 +247,52 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen161
-\pgfmath@count=\count290
+\pgfmath@dimen=\dimen169
+\pgfmath@count=\count293
 \pgfmath@box=\box53
-\pgfmath@toks=\toks25
-\pgfmath@stack@operand=\toks26
-\pgfmath@stack@operation=\toks27
+\pgfmath@toks=\toks26
+\pgfmath@stack@operand=\toks27
+\pgfmath@stack@operation=\toks28
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count291
+\c@pgfmathroundto@lastzeros=\count294
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen162
-\pgf@picmaxx=\dimen163
-\pgf@picminy=\dimen164
-\pgf@picmaxy=\dimen165
-\pgf@pathminx=\dimen166
-\pgf@pathmaxx=\dimen167
-\pgf@pathminy=\dimen168
-\pgf@pathmaxy=\dimen169
-\pgf@xx=\dimen170
-\pgf@xy=\dimen171
-\pgf@yx=\dimen172
-\pgf@yy=\dimen173
-\pgf@zx=\dimen174
-\pgf@zy=\dimen175
+\pgf@picminx=\dimen170
+\pgf@picmaxx=\dimen171
+\pgf@picminy=\dimen172
+\pgf@picmaxy=\dimen173
+\pgf@pathminx=\dimen174
+\pgf@pathmaxx=\dimen175
+\pgf@pathminy=\dimen176
+\pgf@pathmaxy=\dimen177
+\pgf@xx=\dimen178
+\pgf@xy=\dimen179
+\pgf@yx=\dimen180
+\pgf@yy=\dimen181
+\pgf@zx=\dimen182
+\pgf@zy=\dimen183
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen176
-\pgf@path@lasty=\dimen177
+\pgf@path@lastx=\dimen184
+\pgf@path@lasty=\dimen185
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen178
-\pgf@shorten@start@additional=\dimen179
+\pgf@shorten@end@additional=\dimen186
+\pgf@shorten@start@additional=\dimen187
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box54
 \pgf@hbox=\box55
 \pgf@layerbox@main=\box56
-\pgf@picture@serial@count=\count292
+\pgf@picture@serial@count=\count295
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen180
+\pgflinewidth=\dimen188
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen181
-\pgf@pt@y=\dimen182
-\pgf@pt@temp=\dimen183
+\pgf@pt@x=\dimen189
+\pgf@pt@y=\dimen190
+\pgf@pt@temp=\dimen191
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -284,12 +301,12 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen184
+\pgfarrowsep=\dimen192
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen185
-\pgf@sys@shading@range@num=\count293
-\pgf@shadingcount=\count294
+\pgf@max=\dimen193
+\pgf@sys@shading@range@num=\count296
+\pgf@shadingcount=\count297
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
@@ -310,46 +327,46 @@ File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen186
-\pgf@nodesepend=\dimen187
+\pgf@nodesepstart=\dimen194
+\pgf@nodesepend=\dimen195
 ) (c:/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (c:/texlive/2024/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen188
-\pgffor@skip=\dimen189
-\pgffor@stack=\toks28
-\pgffor@toks=\toks29
+\pgffor@iter=\dimen196
+\pgffor@skip=\dimen197
+\pgffor@stack=\toks29
+\pgffor@toks=\toks30
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count295
-\pgfplotmarksize=\dimen190
+\pgf@plot@mark@count=\count298
+\pgfplotmarksize=\dimen198
 )
-\tikz@lastx=\dimen191
-\tikz@lasty=\dimen192
-\tikz@lastxsaved=\dimen193
-\tikz@lastysaved=\dimen194
-\tikz@lastmovetox=\dimen195
-\tikz@lastmovetoy=\dimen196
-\tikzleveldistance=\dimen197
-\tikzsiblingdistance=\dimen198
+\tikz@lastx=\dimen199
+\tikz@lasty=\dimen256
+\tikz@lastxsaved=\dimen257
+\tikz@lastysaved=\dimen258
+\tikz@lastmovetox=\dimen259
+\tikz@lastmovetoy=\dimen260
+\tikzleveldistance=\dimen261
+\tikzsiblingdistance=\dimen262
 \tikz@figbox=\box59
 \tikz@figbox@bg=\box60
 \tikz@tempbox=\box61
 \tikz@tempbox@bg=\box62
-\tikztreelevel=\count296
-\tikznumberofchildren=\count297
-\tikznumberofcurrentchild=\count298
-\tikz@fig@count=\count299
+\tikztreelevel=\count299
+\tikznumberofchildren=\count300
+\tikznumberofcurrentchild=\count301
+\tikz@fig@count=\count302
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count300
-\pgfmatrixcurrentcolumn=\count301
-\pgf@matrix@numberofcolumns=\count302
+\pgfmatrixcurrentrow=\count303
+\pgfmatrixcurrentcolumn=\count304
+\pgf@matrix@numberofcolumns=\count305
 )
-\tikz@expandcount=\count303
+\tikz@expandcount=\count306
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
@@ -360,35 +377,35 @@ Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (c:/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen199
-\captionmargin=\dimen256
-\caption@leftmargin=\dimen257
-\caption@rightmargin=\dimen258
-\caption@width=\dimen259
-\caption@indent=\dimen260
-\caption@parindent=\dimen261
-\caption@hangindent=\dimen262
+\caption@tempdima=\dimen263
+\captionmargin=\dimen264
+\caption@leftmargin=\dimen265
+\caption@rightmargin=\dimen266
+\caption@width=\dimen267
+\caption@indent=\dimen268
+\caption@parindent=\dimen269
+\caption@hangindent=\dimen270
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count304
-\c@continuedfloat=\count305
+\c@caption@flags=\count307
+\c@continuedfloat=\count308
 Package caption Info: hyperref package is loaded.
 )
 Package caption Info: New subtype `subfigure' on input line 238.
-\c@subfigure=\count306
+\c@subfigure=\count309
 Package caption Info: New subtype `subtable' on input line 238.
-\c@subtable=\count307
+\c@subtable=\count310
 ) (c:/texlive/2024/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box63
 \UL@hyphenbox=\box64
 \UL@skip=\skip54
-\UL@hook=\toks30
-\UL@height=\dimen263
-\UL@pe=\count308
-\UL@pixel=\dimen264
+\UL@hook=\toks31
+\UL@height=\dimen271
+\UL@pe=\count311
+\UL@pixel=\dimen272
 \ULC@box=\box65
 Package: ulem 2019/11/18
-\ULdepth=\dimen265
+\ULdepth=\dimen273
 ) (c:/texlive/2024/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write4
  Excluding comment 'comment') (c:/texlive/2024/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -400,22 +417,22 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2021/08/26 v2.01 AMS text
  (c:/texlive/2024/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks31
-\ex@=\dimen266
+\@emptytoks=\toks32
+\ex@=\dimen274
 )) (c:/texlive/2024/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen267
+\pmbraise@=\dimen275
 ) (c:/texlive/2024/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count309
+\inf@bad=\count312
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count310
-\leftroot@=\count311
+\uproot@=\count313
+\leftroot@=\count314
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count312
-\DOTSCASE@=\count313
+\classnum@=\count315
+\DOTSCASE@=\count316
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
@@ -425,69 +442,52 @@ LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen268
+\big@size=\dimen276
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count314
+\macc@depth=\count317
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count315
+\c@MaxMatrixCols=\count318
 \dotsspace@=\muskip18
-\c@parentequation=\count316
-\dspbrk@lvl=\count317
-\tag@help=\toks32
-\row@=\count318
-\column@=\count319
-\maxfields@=\count320
-\andhelp@=\toks33
-\eqnshift@=\dimen269
-\alignsep@=\dimen270
-\tagshift@=\dimen271
-\tagwidth@=\dimen272
-\totwidth@=\dimen273
-\lineht@=\dimen274
-\@envbody=\toks34
+\c@parentequation=\count319
+\dspbrk@lvl=\count320
+\tag@help=\toks33
+\row@=\count321
+\column@=\count322
+\maxfields@=\count323
+\andhelp@=\toks34
+\eqnshift@=\dimen277
+\alignsep@=\dimen278
+\tagshift@=\dimen279
+\tagwidth@=\dimen280
+\totwidth@=\dimen281
+\lineht@=\dimen282
+\@envbody=\toks35
 \multlinegap=\skip56
 \multlinetaggap=\skip57
-\mathdisplay@stack=\toks35
+\mathdisplay@stack=\toks36
 LaTeX Info: Redefining \[ on input line 2953.
 LaTeX Info: Redefining \] on input line 2954.
 ) (c:/texlive/2024/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count321
-\float@exts=\toks36
+\c@float@type=\count324
+\float@exts=\toks37
 \float@box=\box68
-\@float@everytoks=\toks37
+\@float@everytoks=\toks38
 \@floatcapt=\box69
 ) (c:/texlive/2024/texmf-dist/tex/latex/tools/array.sty
 Package: array 2024/10/17 v2.6g Tabular extension package (FMi)
-\col@sep=\dimen275
+\col@sep=\dimen283
 \ar@mcellbox=\box70
-\extrarowheight=\dimen276
-\NC@list=\toks38
+\extrarowheight=\dimen284
+\NC@list=\toks39
 \extratabsurround=\skip58
 \backup@length=\skip59
 \ar@cellbox=\box71
-) (c:/texlive/2024/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
- (c:/texlive/2024/texmf-dist/tex/generic/iftex/ifvtex.sty
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-)
-\Gm@cnth=\count322
-\Gm@cntv=\count323
-\c@Gm@tempcnt=\count324
-\Gm@bindingoffset=\dimen277
-\Gm@wd@mp=\dimen278
-\Gm@odd@mp=\dimen279
-\Gm@even@mp=\dimen280
-\Gm@layoutwidth=\dimen281
-\Gm@layoutheight=\dimen282
-\Gm@layouthoffset=\dimen283
-\Gm@layoutvoffset=\dimen284
-\Gm@dimlist=\toks39
 ) (c:/texlive/2024/texmf-dist/tex/latex/adjustbox/adjustbox.sty
 Package: adjustbox 2022/10/17 v1.3a Adjusting TeX boxes (trim, clip, ...)
  (c:/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
@@ -569,26 +569,61 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 ) (./FYP.aux)
 \openout1 = `FYP.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
-LaTeX Font Info:    ... okay on input line 40.
-Package hyperref Info: Link coloring OFF on input line 40.
- (./FYP.out) (./FYP.out)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 455.24411pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 702.78308pt, 85.35826pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=455.24411pt
+* \textheight=702.78308pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring OFF on input line 47.
+(./FYP.out) (./FYP.out)
 \@outlinefile=\write6
 \openout6 = `FYP.out'.
 
@@ -614,53 +649,18 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-
-*geometry* driver: auto-detecting
-*geometry* detected driver: pdftex
-*geometry* verbose mode - [ preamble ] result:
-* driver: pdftex
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(57.81621pt, 481.87546pt, 57.81621pt)
-* v-part:(T,H,B)=(57.81621pt, 729.41443pt, 57.81621pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=481.87546pt
-* \textheight=729.41443pt
-* \oddsidemargin=-14.45378pt
-* \evensidemargin=-14.45378pt
-* \topmargin=-51.45378pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=44.0pt
-* \marginparsep=10.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
-(c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
+ (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
 [1
 
-{c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+{c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 [2]
 
@@ -669,355 +669,366 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [4]
 
 [5]
-<LatexPlots/Sarppaperprojectmotivation.png, id=241, 735.9495pt x 356.532pt>
+
+[6{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+<LatexPlots/Sarppaperprojectmotivation.png, id=245, 735.9495pt x 356.532pt>
 File: LatexPlots/Sarppaperprojectmotivation.png Graphic file (type png)
 <use LatexPlots/Sarppaperprojectmotivation.png>
-Package pdftex.def Info: LatexPlots/Sarppaperprojectmotivation.png  used on input line 311.
-(pdftex.def)             Requested size: 385.50183pt x 186.75775pt.
+Package pdftex.def Info: LatexPlots/Sarppaperprojectmotivation.png  used on input line 315.
+(pdftex.def)             Requested size: 455.24411pt x 220.5416pt.
 
 
-[6 <./LatexPlots/Sarppaperprojectmotivation.png>]
-<LatexPlots/GRdiagram.png, id=256, 178.047pt x 123.297pt>
+[7 <./LatexPlots/Sarppaperprojectmotivation.png>]
+<LatexPlots/GRdiagram.png, id=261, 178.047pt x 123.297pt>
 File: LatexPlots/GRdiagram.png Graphic file (type png)
 <use LatexPlots/GRdiagram.png>
-Package pdftex.def Info: LatexPlots/GRdiagram.png  used on input line 361.
-(pdftex.def)             Requested size: 192.74724pt x 133.488pt.
-<LatexPlots/final_gps_plots/data_visual.png, id=257, 1286.8075pt x 401.5pt>
+Package pdftex.def Info: LatexPlots/GRdiagram.png  used on input line 365.
+(pdftex.def)             Requested size: 182.09486pt x 126.10931pt.
+
+
+[8]
+<LatexPlots/final_gps_plots/data_visual.png, id=269, 1286.8075pt x 401.5pt>
 File: LatexPlots/final_gps_plots/data_visual.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/data_visual.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/data_visual.png  used on input line 379.
-(pdftex.def)             Requested size: 481.87546pt x 150.35382pt.
+Package pdftex.def Info: LatexPlots/final_gps_plots/data_visual.png  used on input line 383.
+(pdftex.def)             Requested size: 455.24411pt x 142.04031pt.
 
 
-[7 <./LatexPlots/GRdiagram.png>]
-
-[8 <./LatexPlots/final_gps_plots/data_visual.png>]
-
-[9]
-<LatexPlots/1dplots/Kernel_background.png, id=298, 2154.0475pt x 639.38875pt>
-File: LatexPlots/1dplots/Kernel_background.png Graphic file (type png)
-<use LatexPlots/1dplots/Kernel_background.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_background.png  used on input line 527.
-(pdftex.def)             Requested size: 481.87546pt x 143.02698pt.
-
+[9 <./LatexPlots/GRdiagram.png> <./LatexPlots/final_gps_plots/data_visual.png>]
 
 [10]
-<LatexPlots/1dplots/Kernel_RBF_SE.png, id=309, 269.005pt x 218.8175pt>
+
+[11]
+<LatexPlots/1dplots/Kernel_background.png, id=307, 2154.0475pt x 639.38875pt>
+File: LatexPlots/1dplots/Kernel_background.png Graphic file (type png)
+<use LatexPlots/1dplots/Kernel_background.png>
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_background.png  used on input line 531.
+(pdftex.def)             Requested size: 455.24411pt x 135.12439pt.
+
+
+[12]
+<LatexPlots/1dplots/Kernel_RBF_SE.png, id=318, 269.005pt x 218.8175pt>
 File: LatexPlots/1dplots/Kernel_RBF_SE.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_RBF_SE.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_RBF_SE.png  used on input line 566.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_RBF_SE.png  used on input line 570.
 (pdftex.def)             Requested size: 64.01869pt x 52.0732pt.
-<LatexPlots/1dplots/Kernel_Rational_Quadratic.png, id=310, 269.005pt x 218.8175pt>
+<LatexPlots/1dplots/Kernel_Rational_Quadratic.png, id=319, 269.005pt x 218.8175pt>
 File: LatexPlots/1dplots/Kernel_Rational_Quadratic.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Rational_Quadratic.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Rational_Quadratic.png  used on input line 567.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Rational_Quadratic.png  used on input line 571.
 (pdftex.def)             Requested size: 64.01869pt x 52.0732pt.
-<LatexPlots/1dplots/Kernel_Periodic.png, id=311, 269.005pt x 218.8175pt>
+<LatexPlots/1dplots/Kernel_Periodic.png, id=320, 269.005pt x 218.8175pt>
 File: LatexPlots/1dplots/Kernel_Periodic.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Periodic.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Periodic.png  used on input line 568.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Periodic.png  used on input line 572.
 (pdftex.def)             Requested size: 64.01869pt x 52.0732pt.
-<LatexPlots/1dplots/Kernel_Matern_nu05.png, id=312, 269.3262pt x 215.8464pt>
+<LatexPlots/1dplots/Kernel_Matern_nu05.png, id=321, 269.3262pt x 215.8464pt>
 File: LatexPlots/1dplots/Kernel_Matern_nu05.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Matern_nu05.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Matern_nu05.png  used on input line 569.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Matern_nu05.png  used on input line 573.
 (pdftex.def)             Requested size: 64.01869pt x 51.30685pt.
-<LatexPlots/1dplots/Kernel_Laplace_Exponential.png, id=313, 269.005pt x 218.8175pt>
+<LatexPlots/1dplots/Kernel_Laplace_Exponential.png, id=322, 269.005pt x 218.8175pt>
 File: LatexPlots/1dplots/Kernel_Laplace_Exponential.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Laplace_Exponential.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Laplace_Exponential.png  used on input line 570.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Laplace_Exponential.png  used on input line 574.
 (pdftex.def)             Requested size: 64.01869pt x 52.0732pt.
-<LatexPlots/1dplots/Kernel_Linear_Dot_Product.png, id=314, 259.97125pt x 223.83624pt>
+<LatexPlots/1dplots/Kernel_Linear_Dot_Product.png, id=323, 259.97125pt x 223.83624pt>
 File: LatexPlots/1dplots/Kernel_Linear_Dot_Product.png Graphic file (type png)
 <use LatexPlots/1dplots/Kernel_Linear_Dot_Product.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_Linear_Dot_Product.png  used on input line 571.
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_Linear_Dot_Product.png  used on input line 575.
 (pdftex.def)             Requested size: 64.01869pt x 55.11871pt.
-<LatexPlots/1dplots/KernelSample_RBF_SE.png, id=315, 273.02pt x 214.8025pt>
+<LatexPlots/1dplots/KernelSample_RBF_SE.png, id=324, 273.02pt x 214.8025pt>
 File: LatexPlots/1dplots/KernelSample_RBF_SE.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_RBF_SE.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_RBF_SE.png  used on input line 574.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_RBF_SE.png  used on input line 578.
 (pdftex.def)             Requested size: 64.01869pt x 50.36714pt.
-<LatexPlots/1dplots/KernelSample_Rational_Quadratic.png, id=316, 273.02pt x 217.81375pt>
+<LatexPlots/1dplots/KernelSample_Rational_Quadratic.png, id=325, 273.02pt x 217.81375pt>
 File: LatexPlots/1dplots/KernelSample_Rational_Quadratic.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Rational_Quadratic.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Rational_Quadratic.png  used on input line 575.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Rational_Quadratic.png  used on input line 579.
 (pdftex.def)             Requested size: 64.01869pt x 51.07323pt.
-<LatexPlots/1dplots/KernelSample_Periodic.png, id=317, 273.02pt x 214.8025pt>
+<LatexPlots/1dplots/KernelSample_Periodic.png, id=326, 273.02pt x 214.8025pt>
 File: LatexPlots/1dplots/KernelSample_Periodic.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Periodic.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Periodic.png  used on input line 576.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Periodic.png  used on input line 580.
 (pdftex.def)             Requested size: 64.01869pt x 50.36714pt.
-<LatexPlots/1dplots/KernelSample_Matern_nu05.png, id=318, 264.99pt x 215.1237pt>
+<LatexPlots/1dplots/KernelSample_Matern_nu05.png, id=327, 264.99pt x 215.1237pt>
 File: LatexPlots/1dplots/KernelSample_Matern_nu05.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Matern_nu05.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Matern_nu05.png  used on input line 577.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Matern_nu05.png  used on input line 581.
 (pdftex.def)             Requested size: 64.01869pt x 51.97212pt.
-<LatexPlots/1dplots/KernelSample_Laplace_Exponential.png, id=319, 264.99pt x 214.8025pt>
+<LatexPlots/1dplots/KernelSample_Laplace_Exponential.png, id=328, 264.99pt x 214.8025pt>
 File: LatexPlots/1dplots/KernelSample_Laplace_Exponential.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Laplace_Exponential.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Laplace_Exponential.png  used on input line 578.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Laplace_Exponential.png  used on input line 582.
 (pdftex.def)             Requested size: 64.01869pt x 51.89452pt.
-<LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png, id=320, 264.99pt x 214.8025pt>
+<LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png, id=329, 264.99pt x 214.8025pt>
 File: LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png Graphic file (type png)
 <use LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png>
-Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png  used on input line 579.
+Package pdftex.def Info: LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png  used on input line 583.
 (pdftex.def)             Requested size: 64.01869pt x 51.89452pt.
 
-Overfull \hbox (9.224pt too wide) in paragraph at lines 585--585
+Overfull \hbox (9.224pt too wide) in paragraph at lines 589--589
  []|[]| 
  []
 
 
-
-[11 <./LatexPlots/1dplots/Kernel_background.png>]
-
-[12 <./LatexPlots/1dplots/Kernel_RBF_SE.png> <./LatexPlots/1dplots/Kernel_Rational_Quadratic.png> <./LatexPlots/1dplots/Kernel_Periodic.png> <./LatexPlots/1dplots/Kernel_Matern_nu05.png> <./LatexPlots/1dplots/Kernel_Laplace_Exponential.png> <./LatexPlots/1dplots/Kernel_Linear_Dot_Product.png> <./LatexPlots/1dplots/KernelSample_RBF_SE.png> <./LatexPlots/1dplots/KernelSample_Rational_Quadratic.png> <./LatexPlots/1dplots/KernelSample_Periodic.png> <./LatexPlots/1dplots/KernelSample_Matern_nu05.png> <./LatexPlots/1dplots/KernelSample_Laplace_Exponential.png> <./LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png>]
-<LatexPlots/1dplots/Kernel_hyperparams.png, id=349, 1146.2825pt x 572.1375pt>
-File: LatexPlots/1dplots/Kernel_hyperparams.png Graphic file (type png)
-<use LatexPlots/1dplots/Kernel_hyperparams.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_hyperparams.png  used on input line 628.
-(pdftex.def)             Requested size: 481.87546pt x 240.51436pt.
-
-
-[13 <./LatexPlots/1dplots/Kernel_hyperparams.png>]
-<LatexPlots/1dplots/priortoposterior.png, id=367, 1581.91pt x 353.32pt>
-File: LatexPlots/1dplots/priortoposterior.png Graphic file (type png)
-<use LatexPlots/1dplots/priortoposterior.png>
-Package pdftex.def Info: LatexPlots/1dplots/priortoposterior.png  used on input line 738.
-(pdftex.def)             Requested size: 481.87546pt x 107.62495pt.
-
-
-[14 <./LatexPlots/1dplots/priortoposterior.png>]
-
-[15]
-<LatexPlots/1dplots/Kernel_noise.png, id=392, 1146.2825pt x 284.06125pt>
-File: LatexPlots/1dplots/Kernel_noise.png Graphic file (type png)
-<use LatexPlots/1dplots/Kernel_noise.png>
-Package pdftex.def Info: LatexPlots/1dplots/Kernel_noise.png  used on input line 824.
-(pdftex.def)             Requested size: 481.87546pt x 119.41325pt.
-
-
-[16 <./LatexPlots/1dplots/Kernel_noise.png>]
-<LatexPlots/1dplots/GPR_noise_comparison.png, id=407, 1128.215pt x 264.99pt>
-File: LatexPlots/1dplots/GPR_noise_comparison.png Graphic file (type png)
-<use LatexPlots/1dplots/GPR_noise_comparison.png>
-Package pdftex.def Info: LatexPlots/1dplots/GPR_noise_comparison.png  used on input line 883.
-(pdftex.def)             Requested size: 481.87546pt x 113.17926pt.
-
-
-[17 <./LatexPlots/1dplots/GPR_noise_comparison.png>]
-Overfull \hbox (7.6075pt too wide) detected at line 918
-\OML/cmm/m/it/10.95 ^^R \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 :
+Overfull \hbox (25.50987pt too wide) in paragraph at lines 565--608
+ [][] 
  []
 
-<LatexPlots/1dplots/LogLikeallparams.png, id=424, 1287.81125pt x 1078.0275pt>
-File: LatexPlots/1dplots/LogLikeallparams.png Graphic file (type png)
-<use LatexPlots/1dplots/LogLikeallparams.png>
-Package pdftex.def Info: LatexPlots/1dplots/LogLikeallparams.png  used on input line 929.
-(pdftex.def)             Requested size: 385.50183pt x 322.70341pt.
+
+
+[13 <./LatexPlots/1dplots/Kernel_background.png>]
+
+[14 <./LatexPlots/1dplots/Kernel_RBF_SE.png> <./LatexPlots/1dplots/Kernel_Rational_Quadratic.png> <./LatexPlots/1dplots/Kernel_Periodic.png> <./LatexPlots/1dplots/Kernel_Matern_nu05.png> <./LatexPlots/1dplots/Kernel_Laplace_Exponential.png> <./LatexPlots/1dplots/Kernel_Linear_Dot_Product.png> <./LatexPlots/1dplots/KernelSample_RBF_SE.png> <./LatexPlots/1dplots/KernelSample_Rational_Quadratic.png> <./LatexPlots/1dplots/KernelSample_Periodic.png> <./LatexPlots/1dplots/KernelSample_Matern_nu05.png> <./LatexPlots/1dplots/KernelSample_Laplace_Exponential.png> <./LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png>]
+<LatexPlots/1dplots/Kernel_hyperparams.png, id=359, 1146.2825pt x 572.1375pt>
+File: LatexPlots/1dplots/Kernel_hyperparams.png Graphic file (type png)
+<use LatexPlots/1dplots/Kernel_hyperparams.png>
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_hyperparams.png  used on input line 632.
+(pdftex.def)             Requested size: 455.24411pt x 227.22714pt.
+
+
+[15 <./LatexPlots/1dplots/Kernel_hyperparams.png>]
+<LatexPlots/1dplots/priortoposterior.png, id=372, 1581.91pt x 353.32pt>
+File: LatexPlots/1dplots/priortoposterior.png Graphic file (type png)
+<use LatexPlots/1dplots/priortoposterior.png>
+Package pdftex.def Info: LatexPlots/1dplots/priortoposterior.png  used on input line 742.
+(pdftex.def)             Requested size: 455.24411pt x 101.67844pt.
+
+
+[16]
+
+[17 <./LatexPlots/1dplots/priortoposterior.png>]
+<LatexPlots/1dplots/Kernel_noise.png, id=395, 1146.2825pt x 284.06125pt>
+File: LatexPlots/1dplots/Kernel_noise.png Graphic file (type png)
+<use LatexPlots/1dplots/Kernel_noise.png>
+Package pdftex.def Info: LatexPlots/1dplots/Kernel_noise.png  used on input line 828.
+(pdftex.def)             Requested size: 455.24411pt x 112.81627pt.
 
 
 [18]
 
-[19 <./LatexPlots/1dplots/LogLikeallparams.png>]
-<LatexPlots/1dplots/MCMCdistribution.png, id=441, 1291.82625pt x 356.33125pt>
-File: LatexPlots/1dplots/MCMCdistribution.png Graphic file (type png)
-<use LatexPlots/1dplots/MCMCdistribution.png>
-Package pdftex.def Info: LatexPlots/1dplots/MCMCdistribution.png  used on input line 969.
-(pdftex.def)             Requested size: 481.87546pt x 132.91705pt.
+[19 <./LatexPlots/1dplots/Kernel_noise.png>]
+<LatexPlots/1dplots/GPR_noise_comparison.png, id=421, 1128.215pt x 264.99pt>
+File: LatexPlots/1dplots/GPR_noise_comparison.png Graphic file (type png)
+<use LatexPlots/1dplots/GPR_noise_comparison.png>
+Package pdftex.def Info: LatexPlots/1dplots/GPR_noise_comparison.png  used on input line 887.
+(pdftex.def)             Requested size: 455.24411pt x 106.9241pt.
 
 
-[20 <./LatexPlots/1dplots/MCMCdistribution.png>]
-<LatexPlots/final_gps_plots/2dkernels.png, id=452, 1148.29pt x 303.1325pt>
-File: LatexPlots/final_gps_plots/2dkernels.png Graphic file (type png)
-<use LatexPlots/final_gps_plots/2dkernels.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/2dkernels.png  used on input line 1010.
-(pdftex.def)             Requested size: 481.87546pt x 127.20839pt.
-<LatexPlots/Flowchart.png, id=453, 822.1917pt x 475.5366pt>
-File: LatexPlots/Flowchart.png Graphic file (type png)
-<use LatexPlots/Flowchart.png>
-Package pdftex.def Info: LatexPlots/Flowchart.png  used on input line 1021.
-(pdftex.def)             Requested size: 385.50183pt x 222.96527pt.
-
-
-[21 <./LatexPlots/final_gps_plots/2dkernels.png>]
-Overfull \hbox (5.7512pt too wide) in paragraph at lines 1033--1036
-[]\OT1/cmr/bx/n/10.95 White Ker-nel: \OT1/cmr/m/n/10.95 Noise is mod-elled as a global hy-per-pa-ram-e-ter us-ing the \OT1/cmtt/m/n/10.95 WhiteKernel
+[20]
+Overfull \hbox (6.5165pt too wide) detected at line 923
+\OML/cmm/m/it/12 ^^R \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 :
  []
 
 
 
-[22 <./LatexPlots/Flowchart.png>]
+[21 <./LatexPlots/1dplots/GPR_noise_comparison.png>]
+<LatexPlots/1dplots/LogLikeallparams.png, id=442, 1287.81125pt x 1078.0275pt>
+File: LatexPlots/1dplots/LogLikeallparams.png Graphic file (type png)
+<use LatexPlots/1dplots/LogLikeallparams.png>
+Package pdftex.def Info: LatexPlots/1dplots/LogLikeallparams.png  used on input line 934.
+(pdftex.def)             Requested size: 364.19667pt x 304.87231pt.
 
-LaTeX Warning: Reference `sec:implementdetails' on page 23 undefined on input line 1068.
 
+[22 <./LatexPlots/1dplots/LogLikeallparams.png>]
+<LatexPlots/1dplots/MCMCdistribution.png, id=454, 1291.82625pt x 356.33125pt>
+File: LatexPlots/1dplots/MCMCdistribution.png Graphic file (type png)
+<use LatexPlots/1dplots/MCMCdistribution.png>
+Package pdftex.def Info: LatexPlots/1dplots/MCMCdistribution.png  used on input line 974.
+(pdftex.def)             Requested size: 455.24411pt x 125.57143pt.
 
 
 [23]
 
-[24]
-<LatexPlots/CV_plots/metrics_compared.png, id=502, 951.555pt x 427.5975pt>
+[24 <./LatexPlots/1dplots/MCMCdistribution.png>]
+<LatexPlots/final_gps_plots/2dkernels.png, id=472, 1148.29pt x 303.1325pt>
+File: LatexPlots/final_gps_plots/2dkernels.png Graphic file (type png)
+<use LatexPlots/final_gps_plots/2dkernels.png>
+Package pdftex.def Info: LatexPlots/final_gps_plots/2dkernels.png  used on input line 1015.
+(pdftex.def)             Requested size: 455.24411pt x 120.17775pt.
+<LatexPlots/Flowchart.png, id=473, 822.1917pt x 475.5366pt>
+File: LatexPlots/Flowchart.png Graphic file (type png)
+<use LatexPlots/Flowchart.png>
+Package pdftex.def Info: LatexPlots/Flowchart.png  used on input line 1026.
+(pdftex.def)             Requested size: 364.19667pt x 210.63718pt.
+
+
+[25 <./LatexPlots/final_gps_plots/2dkernels.png> <./LatexPlots/Flowchart.png>]
+Overfull \hbox (6.3374pt too wide) in paragraph at lines 1038--1041
+[]\OT1/cmr/bx/n/12 White Ker-nel: \OT1/cmr/m/n/12 Noise is mod-elled as a global hy-per-pa-ram-e-ter us-ing the \OT1/cmtt/m/n/12 WhiteKernel
+ []
+
+
+
+[26]
+Overfull \hbox (1.54364pt too wide) in paragraph at lines 1082--1101
+ [][] 
+ []
+
+
+
+[27]
+
+[28]
+<LatexPlots/CV_plots/metrics_compared.png, id=523, 951.555pt x 427.5975pt>
 File: LatexPlots/CV_plots/metrics_compared.png Graphic file (type png)
 <use LatexPlots/CV_plots/metrics_compared.png>
-Package pdftex.def Info: LatexPlots/CV_plots/metrics_compared.png  used on input line 1167.
-(pdftex.def)             Requested size: 481.87546pt x 216.53856pt.
+Package pdftex.def Info: LatexPlots/CV_plots/metrics_compared.png  used on input line 1172.
+(pdftex.def)             Requested size: 455.24411pt x 204.57243pt.
 
 
-[25]
-<LatexPlots/CV_plots/ranking_visualisation.png, id=515, 1997.4625pt x 571.13374pt>
+[29]
+<LatexPlots/CV_plots/ranking_visualisation.png, id=533, 1997.4625pt x 571.13374pt>
 File: LatexPlots/CV_plots/ranking_visualisation.png Graphic file (type png)
 <use LatexPlots/CV_plots/ranking_visualisation.png>
-Package pdftex.def Info: LatexPlots/CV_plots/ranking_visualisation.png  used on input line 1179.
-(pdftex.def)             Requested size: 481.87546pt x 137.78079pt.
+Package pdftex.def Info: LatexPlots/CV_plots/ranking_visualisation.png  used on input line 1184.
+(pdftex.def)             Requested size: 455.24411pt x 130.16406pt.
 
 
-[26 <./LatexPlots/CV_plots/metrics_compared.png>]
-<LatexPlots/final_gps_plots/metric_of_finalists_comparison.png, id=531, 1273.75874pt x 426.59375pt>
+[30 <./LatexPlots/CV_plots/metrics_compared.png>]
+<LatexPlots/final_gps_plots/metric_of_finalists_comparison.png, id=551, 1273.75874pt x 426.59375pt>
 File: LatexPlots/final_gps_plots/metric_of_finalists_comparison.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/metric_of_finalists_comparison.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/metric_of_finalists_comparison.png  used on input line 1198.
-(pdftex.def)             Requested size: 481.87546pt x 161.38477pt.
+Package pdftex.def Info: LatexPlots/final_gps_plots/metric_of_finalists_comparison.png  used on input line 1201.
+(pdftex.def)             Requested size: 455.24411pt x 152.46054pt.
 
 
-[27 <./LatexPlots/CV_plots/ranking_visualisation.png>]
-<LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png, id=546, 1725.44624pt x 1433.355pt>
+[31 <./LatexPlots/CV_plots/ranking_visualisation.png>]
+<LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png, id=568, 1725.44624pt x 1433.355pt>
 File: LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png  used on input line 1217.
-(pdftex.def)             Requested size: 481.87546pt x 400.28685pt.
+Package pdftex.def Info: LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png  used on input line 1220.
+(pdftex.def)             Requested size: 455.24411pt x 378.17506pt.
 
 
-[28 <./LatexPlots/final_gps_plots/metric_of_finalists_comparison.png>]
-Overfull \hbox (23.27956pt too wide) in paragraph at lines 1231--1245
+[32 <./LatexPlots/final_gps_plots/metric_of_finalists_comparison.png>]
+Overfull \hbox (49.9109pt too wide) in paragraph at lines 1234--1248
  [][] 
  []
 
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1249.
-<LatexPlots/final_gps_plots/MCMCRBFMat.png, id=554, 1437.37pt x 718.685pt>
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 1250.
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1251.
+<LatexPlots/final_gps_plots/MCMCRBFMat.png, id=577, 1437.37pt x 718.685pt>
 File: LatexPlots/final_gps_plots/MCMCRBFMat.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/MCMCRBFMat.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/MCMCRBFMat.png  used on input line 1252.
-(pdftex.def)             Requested size: 481.87546pt x 240.93916pt.
+Package pdftex.def Info: LatexPlots/final_gps_plots/MCMCRBFMat.png  used on input line 1259.
+(pdftex.def)             Requested size: 455.24411pt x 227.61519pt.
 
 
-[29 <./LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png>]
-<LatexPlots/final_gps_plots/MCMCWhiteMat.png, id=567, 858.20625pt x 428.60126pt>
+[33 <./LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png>]
+<LatexPlots/final_gps_plots/MCMCWhiteMat.png, id=589, 858.20625pt x 428.60126pt>
 File: LatexPlots/final_gps_plots/MCMCWhiteMat.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/MCMCWhiteMat.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/MCMCWhiteMat.png  used on input line 1260.
-(pdftex.def)             Requested size: 481.87546pt x 240.65598pt.
+Package pdftex.def Info: LatexPlots/final_gps_plots/MCMCWhiteMat.png  used on input line 1269.
+(pdftex.def)             Requested size: 455.24411pt x 227.35378pt.
 
 
-[30 <./LatexPlots/final_gps_plots/MCMCRBFMat.png> <./LatexPlots/final_gps_plots/MCMCWhiteMat.png>]
+[34 <./LatexPlots/final_gps_plots/MCMCRBFMat.png> <./LatexPlots/final_gps_plots/MCMCWhiteMat.png>]
 
-[31]
-<LatexPlots/final_gps_plots/final_gps_ycuts.png, id=581, 1798.72pt x 2882.77pt>
+[35]
+
+[36]
+<LatexPlots/final_gps_plots/final_gps_ycuts.png, id=610, 1798.72pt x 2882.77pt>
 File: LatexPlots/final_gps_plots/final_gps_ycuts.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/final_gps_ycuts.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/final_gps_ycuts.png  used on input line 1391.
-(pdftex.def)             Requested size: 385.50183pt x 617.80405pt.
+Package pdftex.def Info: LatexPlots/final_gps_plots/final_gps_ycuts.png  used on input line 1400.
+(pdftex.def)             Requested size: 364.19667pt x 583.66977pt.
 
 
-[32]
-<LatexPlots/final_gps_plots/final_gps_xcuts.png, id=592, 1798.72pt x 2882.77pt>
+[37]
+<LatexPlots/final_gps_plots/final_gps_xcuts.png, id=619, 1798.72pt x 2882.77pt>
 File: LatexPlots/final_gps_plots/final_gps_xcuts.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/final_gps_xcuts.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/final_gps_xcuts.png  used on input line 1399.
-(pdftex.def)             Requested size: 385.50183pt x 617.80405pt.
+Package pdftex.def Info: LatexPlots/final_gps_plots/final_gps_xcuts.png  used on input line 1408.
+(pdftex.def)             Requested size: 364.19667pt x 583.66977pt.
 
 
-[33 <./LatexPlots/final_gps_plots/final_gps_ycuts.png>]
-<LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png, id=599, 1798.72pt x 1798.72pt>
+[38 <./LatexPlots/final_gps_plots/final_gps_ycuts.png>]
+<LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png, id=626, 1798.72pt x 1798.72pt>
 File: LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png Graphic file (type png)
 <use LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png>
-Package pdftex.def Info: LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png  used on input line 1406.
-(pdftex.def)             Requested size: 385.50183pt x 385.48218pt.
+Package pdftex.def Info: LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png  used on input line 1415.
+(pdftex.def)             Requested size: 364.19667pt x 364.18391pt.
 
 
-[34 <./LatexPlots/final_gps_plots/final_gps_xcuts.png>]
-Overfull \hbox (18.5217pt too wide) in paragraph at lines 1412--1412
-[]\OT1/cmr/bx/n/17.28 Appendix D: Model Eval-u-a-tion Ta-ble and graphs 
- []
-
-<LatexPlots/CV_plots/boxplots.png, id=607, 1164.35pt x 503.8825pt>
+[39 <./LatexPlots/final_gps_plots/final_gps_xcuts.png>]
+<LatexPlots/CV_plots/boxplots.png, id=633, 1164.35pt x 503.8825pt>
 File: LatexPlots/CV_plots/boxplots.png Graphic file (type png)
 <use LatexPlots/CV_plots/boxplots.png>
-Package pdftex.def Info: LatexPlots/CV_plots/boxplots.png  used on input line 1417.
-(pdftex.def)             Requested size: 385.50183pt x 166.82762pt.
+Package pdftex.def Info: LatexPlots/CV_plots/boxplots.png  used on input line 1426.
+(pdftex.def)             Requested size: 364.19667pt x 157.60898pt.
 
 
-[35 <./LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png> <./LatexPlots/CV_plots/boxplots.png>]
-Overfull \hbox (35.0137pt too wide) in paragraph at lines 1436--1439
+[40 <./LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png> <./LatexPlots/CV_plots/boxplots.png>]
+Overfull \hbox (61.64505pt too wide) in paragraph at lines 1445--1448
  [][] 
  []
 
 
 
-[36]
-<LatexPlots/1dplots/MAE.png, id=623, 524.1984pt x 328.8285pt>
+[41]
+<LatexPlots/1dplots/MAE.png, id=649, 524.1984pt x 328.8285pt>
 File: LatexPlots/1dplots/MAE.png Graphic file (type png)
 <use LatexPlots/1dplots/MAE.png>
-Package pdftex.def Info: LatexPlots/1dplots/MAE.png  used on input line 1472.
+Package pdftex.def Info: LatexPlots/1dplots/MAE.png  used on input line 1481.
 (pdftex.def)             Requested size: 85.35826pt x 53.54187pt.
-<LatexPlots/1dplots/r2.png, id=624, 524.1984pt x 328.8285pt>
+<LatexPlots/1dplots/r2.png, id=650, 524.1984pt x 328.8285pt>
 File: LatexPlots/1dplots/r2.png Graphic file (type png)
 <use LatexPlots/1dplots/r2.png>
-Package pdftex.def Info: LatexPlots/1dplots/r2.png  used on input line 1473.
+Package pdftex.def Info: LatexPlots/1dplots/r2.png  used on input line 1482.
 (pdftex.def)             Requested size: 85.35826pt x 53.54187pt.
-<LatexPlots/1dplots/fom.png, id=625, 516.4896pt x 328.8285pt>
+<LatexPlots/1dplots/fom.png, id=651, 516.4896pt x 328.8285pt>
 File: LatexPlots/1dplots/fom.png Graphic file (type png)
 <use LatexPlots/1dplots/fom.png>
-Package pdftex.def Info: LatexPlots/1dplots/fom.png  used on input line 1474.
+Package pdftex.def Info: LatexPlots/1dplots/fom.png  used on input line 1483.
 (pdftex.def)             Requested size: 85.35826pt x 54.33965pt.
-<LatexPlots/1dplots/pearson.png, id=626, 507.3354pt x 323.7696pt>
+<LatexPlots/1dplots/pearson.png, id=652, 507.3354pt x 323.7696pt>
 File: LatexPlots/1dplots/pearson.png Graphic file (type png)
 <use LatexPlots/1dplots/pearson.png>
-Package pdftex.def Info: LatexPlots/1dplots/pearson.png  used on input line 1475.
+Package pdftex.def Info: LatexPlots/1dplots/pearson.png  used on input line 1484.
 (pdftex.def)             Requested size: 85.35826pt x 54.47195pt.
-<LatexPlots/MCMC_Flow.png, id=627, 863.6265pt x 406.6392pt>
+<LatexPlots/MCMC_Flow.png, id=653, 863.6265pt x 406.6392pt>
 File: LatexPlots/MCMC_Flow.png Graphic file (type png)
 <use LatexPlots/MCMC_Flow.png>
-Package pdftex.def Info: LatexPlots/MCMC_Flow.png  used on input line 1495.
-(pdftex.def)             Requested size: 385.50183pt x 181.51541pt.
+Package pdftex.def Info: LatexPlots/MCMC_Flow.png  used on input line 1504.
+(pdftex.def)             Requested size: 364.19667pt x 171.48224pt.
 
 
-[37 <./LatexPlots/1dplots/MAE.png> <./LatexPlots/1dplots/r2.png> <./LatexPlots/1dplots/fom.png> <./LatexPlots/1dplots/pearson.png> <./LatexPlots/MCMC_Flow.png>]
-Overfull \hbox (11.2397pt too wide) in paragraph at lines 1511--1511
-[]\OT1/cmr/bx/n/17.28 Appendix G: Noise mod-el-ing us-ing Monte Carlo
- []
+[42 <./LatexPlots/1dplots/MAE.png> <./LatexPlots/1dplots/r2.png> <./LatexPlots/1dplots/fom.png> <./LatexPlots/1dplots/pearson.png>]
 
+[43 <./LatexPlots/MCMC_Flow.png>] (./FYP.bbl
 
+[44]
 
-[38] (./FYP.bbl
+[45])
 
-[39])
-
-[40] (./FYP.aux)
+[46] (./FYP.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `FYP.out' has not changed.
-(rerunfilecheck)             Checksum: 8A5589BB89782C05C536D832C48094DC;6442.
+(rerunfilecheck)             Checksum: 7568A7D91736618CF5CC5E4568ACCB9A;6525.
  ) 
 Here is how much of TeX's memory you used:
- 25088 strings out of 473201
- 469594 string characters out of 5720299
- 886557 words of memory out of 5000000
+ 25095 strings out of 473201
+ 469658 string characters out of 5720299
+ 887525 words of memory out of 5000000
  47705 multiletter control sequences out of 15000+600000
- 576160 words of font info for 102 fonts, out of 8000000 for 9000
+ 575688 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,16n,107p,909b,567s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on FYP.pdf (40 pages, 5126094 bytes).
+ 102i,16n,107p,909b,572s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on FYP.pdf (46 pages, 5117393 bytes).
 PDF statistics:
- 846 PDF objects out of 1000 (max. 8388607)
- 648 compressed objects within 7 object streams
- 199 named destinations out of 1000 (max. 500000)
- 472 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 877 PDF objects out of 1000 (max. 8388607)
+ 673 compressed objects within 7 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 480 words of extra memory for PDF output out of 10000 (max. 10000000)
 
