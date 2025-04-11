@@ -47,19 +47,18 @@
 \begin{document}
 
 \maketitle
-\Sean{Why is this indenting???}
+\Sean{Why is this indenting???}\Sarp{Indent is standard, and looks better in my opinion, but it's your call.}
 \begin{abstract}The gold standard for gravitational waveforms (GW) from merging black holes comes from computationally expensive numerical relativity (NR) simulations. While analytic approximations can greatly reduce costs,
- they are not uniformly accurate across parameter space. To address this, \cite{Ogpaper} introduced a Bayesian framework that selects the most accurate analytic model in each region, requiring mismatch values between models and NR. Instead of running dense,
-  high-cost NR simulations for these mismatches, we propose a Gaussian Process Regression (GPR) model to predict them.
-We begin by reviewing Gaussian Process fundamentals and systematically evaluating various kernels (RBF, Matern, Rational Quadratic, Laplacian) under both homoscedastic and heteroscedastic noise.
- Using cross-validation on six performance metrics, we rank and select eight finalists. Retraining these on 90\% of the data and testing on a 10\% holdout reveals that our best model—combining RBF
-  and Matern kernels—achieves an impressive \(R^2 \approx 0.99\).
-To capture the uncertainty in our hyperparameters, we employ Markov Chain Monte Carlo (MCMC) sampling. 
-Certain cases exhibit multimodal posterior distributions, highlighting the importance of integrating over these posteriors to obtain robust mismatch predictions.
-Our GPR model thus provides a fast, accurate way to estimate mismatches without resorting to computationally intensive NR simulations at every point.
- This approach fits seamlessly into NR-informed strategies for parameter estimation, paving the way for more efficient and precise characterization of gravitational-wave signals from merging black holes.
-\end{abstract}
-
+    they are not uniformly accurate across parameter space. To address this, Reference~\cite{Ogpaper} introduced a Bayesian framework that selects the most accurate analytic model --- in a given region of the binary black hole parameter space --- based on mismatch values between models and NR. Instead of running dense,
+     high-cost NR simulations for these mismatches, we propose a Gaussian Process Regression (GPR) model to predict them.
+   We begin by reviewing Gaussian Process fundamentals and systematically evaluating various kernels (RBF, Matern, Rational Quadratic, Laplacian) under both homoscedastic and heteroscedastic noise.
+    Using cross-validation on six performance metrics, we rank and select eight finalists. Retraining these on 90\% of the data and testing on a 10\% holdout reveals that our best model—combining RBF
+     and Matern kernels—achieves an impressive \(R^2 \approx 0.99\).
+   To capture the uncertainty in our hyperparameters, we employ Markov Chain Monte Carlo (MCMC) sampling. 
+   Certain cases exhibit multimodal posterior distributions, highlighting the importance of integrating over these posteriors to obtain robust mismatch predictions.
+   Our GPR model thus provides a fast, accurate way to estimate mismatches without resorting to computationally intensive NR simulations at every point.
+    This approach fits seamlessly into NR-informed strategies for parameter estimation, paving the way for more efficient and precise characterization of gravitational-wave signals from merging black holes.
+   \end{abstract}
 \newpage
 
 \tableofcontents
@@ -67,7 +66,7 @@ Our GPR model thus provides a fast, accurate way to estimate mismatches without 
 \newpage
 
 \section{Gravitational Waves Background}
-\subsection{General Relativity intro}
+\subsection{Plane Wave Solution from General Relativity}
 \label{sec:GRintro}
 Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. In the simplified linearized theory, we assume a flat Minkowski spacetime, and the small fluctuations around it are referred to as gravitational waves. The term ``waves'' is justified since, in an appropriate gauge (specific choices of coordinates), \(h_{\mu\nu}\) satisfies the wave equation. This is described in detail in Gravitational Waves, Vol. 1 by Maggiore~\cite[Sec~ 1.1]{GRbook}.
 Formally we appproach this by expanding Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
@@ -1001,14 +1000,16 @@ This procedure allows the final predictive distribution to reflect both data noi
 
 
 \subsection{Multi-Dimensional GPR}
-\Sean{Improve explanation here}
-To model functions with multiple input dimensions, a common and flexible approach is to construct kernels that operate over each input dimension individually, 
-and then combine them using a product. For example, multiplying RBF kernels defined on each input dimension yields a multi-dimensional RBF kernel.
-A specific case of this is the RBF-ARD (Automatic Relevance Determination) kernel, which assigns a separate lengthscale parameter \( \ell_d \) to each input dimension \( d \):
-
-\[
-k(\mathbf{x}, \mathbf{x}') = \sigma_f^2 \exp\left( -\frac{1}{2} \sum_{d=1}^D \frac{(x_d - x'_d)^2}{\ell_d^2} \right)
-\]
+To model functions with multiple input dimensions, a common approach is to construct kernels that operate over each input dimension individually
+and then combine them by multiply them. For example, multiplying RBF kernels defined on each input dimension yields a multi-dimensional RBF kernel.
+A specific case of this is the RBF-ARD (Automatic Relevance Determination) kernel, which assigns a separate lengthscale parameter \( \ell_d \) to each input dimension \( d \). Since an RBF ultilises an exponential function
+the product of the kernel can be written as the exponential of the sum of the different dimension. Figure~\ref{fig:2dkernels} shows how different kernels with different length-scales can combine to produce a kernel in higher dimensions.
+\begin{equation}
+    k(\mathbf{x}, \mathbf{x}') 
+    = \sigma_f^2 \prod_{d=1}^D \exp\left( -\frac{1}{2} \frac{(x_d - x_d')^2}{\ell_d^2} \right)
+    = \sigma_f^2 \exp\left( -\frac{1}{2} \sum_{d=1}^D \frac{(x_d - x_d')^2}{\ell_d^2} \right)
+\end{equation}
+    
 
 \begin{figure}[H]
     \centering
@@ -1325,7 +1326,7 @@ In contrast, \texttt{RBFMatern} leverages the Matern kernel with \(\nu = 0.75\) 
 
 \newpage
 \appendix
-\subsection{Derivation of Predictive Distribution}
+\section{Derivation of Predictive Distribution}
 \label{appendix:A}
 Using Bayes' Theorem applied to continuous probabilities, we have:
 \[
