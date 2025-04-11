@@ -150,16 +150,16 @@
 \newlabel{fig:comparing_metrics}{{15}{27}{Left: Heatmap of top 8 model rankings by metric indexed by ranking. Right: Scatter of FOM against \(R^2\) with the colour bar representing the RMSE. The Rankings are given in Table~\ref {tab:finalmadelsrankingtable}}{figure.caption.19}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Comparing Cross-cuts of best models. See text for details. Recall that $z=1\ (z=-1)$ corresponds to mass ratio of $q=1\ (q=1/4)$, and similarly $w=0.25$ corresponds to $M_\text  {tot}=37.5M_\odot $.}}{28}{figure.caption.20}\protected@file@percent }
 \newlabel{fig:crosscuts_bestmodels}{{16}{28}{Comparing Cross-cuts of best models. See text for details. Recall that $z=1\ (z=-1)$ corresponds to mass ratio of $q=1\ (q=1/4)$, and similarly $w=0.25$ corresponds to $M_\text {tot}=37.5M_\odot $}{figure.caption.20}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textcolor {orange}{\texttt  {TODO: Explain what scale 1/2 mean}} Optimized Hyperparameters for Final GPR Models}}{29}{table.caption.21}\protected@file@percent }
-\newlabel{tab:final_gpr_hyperparams}{{3}{29}{\todo {Explain what scale 1/2 mean} Optimized Hyperparameters for Final GPR Models}{table.caption.21}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces This table contains the optimized hyperparameters for the final 8 GPR models. $\sigma _{f,1}^2$ and $\sigma _{f,2}^2$ represent the constant factor the each kernel is multiplied by and is referred to as the signal variance since it controls the amplitute of the resulting model. The Length scales are the corresponding length scales for each dimension and then $\sigma _n^2$ is the optimised noise hyper-parameter introduced by the \textsc  {WhiteKernel}. Mat and Lap refer to the Matern and Laplacian kernel.}}{29}{table.caption.21}\protected@file@percent }
+\newlabel{tab:final_gpr_hyperparams}{{3}{29}{This table contains the optimized hyperparameters for the final 8 GPR models. $\sigma _{f,1}^2$ and $\sigma _{f,2}^2$ represent the constant factor the each kernel is multiplied by and is referred to as the signal variance since it controls the amplitute of the resulting model. The Length scales are the corresponding length scales for each dimension and then $\sigma _n^2$ is the optimised noise hyper-parameter introduced by the \textsc {WhiteKernel}. Mat and Lap refer to the Matern and Laplacian kernel}{table.caption.21}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Hyper-parameter Uncertainty}{29}{subsection.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces The hyper-parameter posterior of the best \texttt  {RBFMatern} model. The model hyper-parameters from Table~\ref {tab:final_gpr_hyperparams} initialise each of the walkers (theres 4*10(dimension number) walkers). For each walker we generate 500 samples and use a burnin of 100 and a thin of 15. The resulting parameter distributions are then plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}}{29}{figure.caption.22}\protected@file@percent }
-\newlabel{fig:MCMCRBFMatern}{{17}{29}{The hyper-parameter posterior of the best \texttt {RBFMatern} model. The model hyper-parameters from Table~\ref {tab:final_gpr_hyperparams} initialise each of the walkers (theres 4*10(dimension number) walkers). For each walker we generate 500 samples and use a burnin of 100 and a thin of 15. The resulting parameter distributions are then plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively}{figure.caption.22}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces MCMC marginalised vs pointwise}}{30}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:MCMCvsmarginalised}{{18}{30}{MCMC marginalised vs pointwise}{figure.caption.23}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparison of regression performance metrics for the RBFMat model using a pointwise (MAP) solution versus the MCMC marginalised model. The MCMC model reflects increased uncertainty, resulting in reduced fit scores but a more robust and probabilistically faithful representation.}}{30}{table.caption.24}\protected@file@percent }
-\newlabel{tab:pointwise_vs_mcmc}{{4}{30}{Comparison of regression performance metrics for the RBFMat model using a pointwise (MAP) solution versus the MCMC marginalised model. The MCMC model reflects increased uncertainty, resulting in reduced fit scores but a more robust and probabilistically faithful representation}{table.caption.24}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion/Discussion}{30}{section.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces The hyper-parameter posterior of the best \texttt  {RBFMatern} model. The model hyper-parameters from Table~\ref {tab:final_gpr_hyperparams} initialise each of the walkers (4 walkers for every extra parameter so 40 walkers). For each walker we generate 300 samples and use a burnin of 100 and a thin of 15 resulting in a total of 560 samples used to build this distribution. The resulting parameter distributions are plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}}{30}{figure.caption.22}\protected@file@percent }
+\newlabel{fig:MCMCRBFMatern}{{17}{30}{The hyper-parameter posterior of the best \texttt {RBFMatern} model. The model hyper-parameters from Table~\ref {tab:final_gpr_hyperparams} initialise each of the walkers (4 walkers for every extra parameter so 40 walkers). For each walker we generate 300 samples and use a burnin of 100 and a thin of 15 resulting in a total of 560 samples used to build this distribution. The resulting parameter distributions are plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively}{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Plotting the marginalised posterior distribution over the hyper-parameters with the point wise \texttt  {RBFMatern} model. We again plot cross-cuts of our data, taking \(z = (1,0,-1)\) which corresponds to the mass ratio of \(q = (1,0.404,0.25)\) and \(w = 0.25\) which corresponds to \(M_{\text  {tot}} = 37.5M_\odot \). We are marginalising over the distributions in Figure~\ref {fig:MCMCRBFMatern}. Since marginalising is computationally expensive of our 300 samples for 40 walkers we discard the first 200 samples and thin every 10 sample. By doing this we marginalise over 400 converged MCMC samples.}}{30}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:MCMCvsmarginalised}{{18}{30}{Plotting the marginalised posterior distribution over the hyper-parameters with the point wise \texttt {RBFMatern} model. We again plot cross-cuts of our data, taking \(z = (1,0,-1)\) which corresponds to the mass ratio of \(q = (1,0.404,0.25)\) and \(w = 0.25\) which corresponds to \(M_{\text {tot}} = 37.5M_\odot \). We are marginalising over the distributions in Figure~\ref {fig:MCMCRBFMatern}. Since marginalising is computationally expensive of our 300 samples for 40 walkers we discard the first 200 samples and thin every 10 sample. By doing this we marginalise over 400 converged MCMC samples}{figure.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Comparison of regression performance metrics for the RBFMat model using a pointwise (MAP) solution versus the MCMC marginalised model. The MCMC model reflects increased uncertainty, resulting in reduced fit scores but a more robust and probabilistically faithful representation.}}{31}{table.caption.24}\protected@file@percent }
+\newlabel{tab:pointwise_vs_mcmc}{{4}{31}{Comparison of regression performance metrics for the RBFMat model using a pointwise (MAP) solution versus the MCMC marginalised model. The MCMC model reflects increased uncertainty, resulting in reduced fit scores but a more robust and probabilistically faithful representation}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion/Discussion}{31}{section.5}\protected@file@percent }
 \bibdata{references}
 \bibcite{linearcombination}{1}
 \bibcite{intoGRSarp}{2}
@@ -175,34 +175,34 @@
 \bibcite{bible}{12}
 \bibcite{NRsurrogate}{13}
 \bibcite{metrics}{14}
-\@writefile{toc}{\contentsline {subsection}{\numberline {.1}Derivation of Predictive Distribution}{33}{subsection.Alph0.1}\protected@file@percent }
-\newlabel{appendix:A}{{.1}{33}{Derivation of Predictive Distribution}{subsection.Alph0.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {.2}Kernel Formulas}{33}{subsection.Alph0.2}\protected@file@percent }
-\newlabel{appendix:B}{{.2}{33}{Kernel Formulas}{subsection.Alph0.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {.3}Graphs of 4d finalist GPs}{35}{subsection.Alph0.3}\protected@file@percent }
-\newlabel{appendix:C}{{.3}{35}{Graphs of 4d finalist GPs}{subsection.Alph0.3}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces \textcolor {orange}{\texttt  {TODO: Improve caption}} All 8 gps with cutting their y-axis}}{35}{figure.caption.32}\protected@file@percent }
-\newlabel{fig:best8_ycuts}{{19}{35}{\todo {Improve caption} All 8 gps with cutting their y-axis}{figure.caption.32}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces All 8 gps with cutting their x-axis}}{36}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:best8_xcuts}{{20}{36}{All 8 gps with cutting their x-axis}{figure.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Examining my chosen model RBF Matern kernel}}{37}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:RBF_Matern_xcuts}{{21}{37}{Examining my chosen model RBF Matern kernel}{figure.caption.34}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {.4}Model Evaluation Table and graphs}{37}{subsection.Alph0.4}\protected@file@percent }
-\newlabel{appendix:D}{{.4}{37}{Model Evaluation Table and graphs}{subsection.Alph0.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Seeing how the best models performed over different clusters}}{37}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:boxplots}{{22}{37}{Seeing how the best models performed over different clusters}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {.1}Derivation of Predictive Distribution}{34}{subsection.Alph0.1}\protected@file@percent }
+\newlabel{appendix:A}{{.1}{34}{Derivation of Predictive Distribution}{subsection.Alph0.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {.2}Kernel Formulas}{34}{subsection.Alph0.2}\protected@file@percent }
+\newlabel{appendix:B}{{.2}{34}{Kernel Formulas}{subsection.Alph0.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {.3}Graphs of 4d finalist GPs}{36}{subsection.Alph0.3}\protected@file@percent }
+\newlabel{appendix:C}{{.3}{36}{Graphs of 4d finalist GPs}{subsection.Alph0.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces \textcolor {orange}{\texttt  {TODO: Improve caption}} All 8 gps with cutting their y-axis}}{36}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:best8_ycuts}{{19}{36}{\todo {Improve caption} All 8 gps with cutting their y-axis}{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces All 8 gps with cutting their x-axis}}{37}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:best8_xcuts}{{20}{37}{All 8 gps with cutting their x-axis}{figure.caption.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Examining my chosen model RBF Matern kernel}}{38}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:RBF_Matern_xcuts}{{21}{38}{Examining my chosen model RBF Matern kernel}{figure.caption.34}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {.4}Model Evaluation Table and graphs}{38}{subsection.Alph0.4}\protected@file@percent }
+\newlabel{appendix:D}{{.4}{38}{Model Evaluation Table and graphs}{subsection.Alph0.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Seeing how the best models performed over different clusters}}{38}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:boxplots}{{22}{38}{Seeing how the best models performed over different clusters}{figure.caption.35}{}}
 \citation{bible}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Final Model Rankings after training on 90\% and testing on 10\%}}{38}{table.caption.36}\protected@file@percent }
-\newlabel{tab:finalmadelsrankingtable}{{5}{38}{Final Model Rankings after training on 90\% and testing on 10\%}{table.caption.36}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces All 32 Model Rankings from CV}}{38}{table.caption.37}\protected@file@percent }
-\newlabel{tab:rankingtable}{{6}{38}{All 32 Model Rankings from CV}{table.caption.37}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {.5}Bin}{38}{subsection.Alph0.5}\protected@file@percent }
-\newlabel{appendix:bin}{{.5}{38}{Bin}{subsection.Alph0.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8.}}{39}{table.caption.38}\protected@file@percent }
-\newlabel{tab:metrics-comparison}{{7}{39}{Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8}{table.caption.38}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {.6}MCMC details}{39}{subsection.Alph0.6}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf  {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}}{39}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:MCMC flowchart}{{23}{39}{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers}{figure.caption.40}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {.7}Noise modeling using Monte Carlo Sampling}{40}{subsection.Alph0.7}\protected@file@percent }
-\newlabel{appendix:monte_carlo}{{.7}{40}{Noise modeling using Monte Carlo Sampling}{subsection.Alph0.7}{}}
-\gdef \@abspage@last{40}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Final Model Rankings after training on 90\% and testing on 10\%}}{39}{table.caption.36}\protected@file@percent }
+\newlabel{tab:finalmadelsrankingtable}{{5}{39}{Final Model Rankings after training on 90\% and testing on 10\%}{table.caption.36}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces All 32 Model Rankings from CV}}{39}{table.caption.37}\protected@file@percent }
+\newlabel{tab:rankingtable}{{6}{39}{All 32 Model Rankings from CV}{table.caption.37}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {.5}Bin}{39}{subsection.Alph0.5}\protected@file@percent }
+\newlabel{appendix:bin}{{.5}{39}{Bin}{subsection.Alph0.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8.}}{40}{table.caption.38}\protected@file@percent }
+\newlabel{tab:metrics-comparison}{{7}{40}{Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8}{table.caption.38}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {.6}MCMC details}{40}{subsection.Alph0.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf  {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}}{40}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:MCMC flowchart}{{23}{40}{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers}{figure.caption.40}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {.7}Noise modeling using Monte Carlo Sampling}{41}{subsection.Alph0.7}\protected@file@percent }
+\newlabel{appendix:monte_carlo}{{.7}{41}{Noise modeling using Monte Carlo Sampling}{subsection.Alph0.7}{}}
+\gdef \@abspage@last{41}

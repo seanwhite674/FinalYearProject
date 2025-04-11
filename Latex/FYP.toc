@@ -36,11 +36,11 @@
 \contentsline {subsection}{\numberline {4.1}Cross-Validation Performance}{26}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Training on 90\% of Data}{27}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Hyper-parameter Uncertainty}{29}{subsection.4.3}%
-\contentsline {section}{\numberline {5}Conclusion/Discussion}{30}{section.5}%
-\contentsline {subsection}{\numberline {.1}Derivation of Predictive Distribution}{33}{subsection.Alph0.1}%
-\contentsline {subsection}{\numberline {.2}Kernel Formulas}{33}{subsection.Alph0.2}%
-\contentsline {subsection}{\numberline {.3}Graphs of 4d finalist GPs}{35}{subsection.Alph0.3}%
-\contentsline {subsection}{\numberline {.4}Model Evaluation Table and graphs}{37}{subsection.Alph0.4}%
-\contentsline {subsection}{\numberline {.5}Bin}{38}{subsection.Alph0.5}%
-\contentsline {subsection}{\numberline {.6}MCMC details}{39}{subsection.Alph0.6}%
-\contentsline {subsection}{\numberline {.7}Noise modeling using Monte Carlo Sampling}{40}{subsection.Alph0.7}%
+\contentsline {section}{\numberline {5}Conclusion/Discussion}{31}{section.5}%
+\contentsline {subsection}{\numberline {.1}Derivation of Predictive Distribution}{34}{subsection.Alph0.1}%
+\contentsline {subsection}{\numberline {.2}Kernel Formulas}{34}{subsection.Alph0.2}%
+\contentsline {subsection}{\numberline {.3}Graphs of 4d finalist GPs}{36}{subsection.Alph0.3}%
+\contentsline {subsection}{\numberline {.4}Model Evaluation Table and graphs}{38}{subsection.Alph0.4}%
+\contentsline {subsection}{\numberline {.5}Bin}{39}{subsection.Alph0.5}%
+\contentsline {subsection}{\numberline {.6}MCMC details}{40}{subsection.Alph0.6}%
+\contentsline {subsection}{\numberline {.7}Noise modeling using Monte Carlo Sampling}{41}{subsection.Alph0.7}%

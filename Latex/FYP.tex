@@ -1064,10 +1064,10 @@ A full summary of models implemented is provided in Table~\ref{tab:model_summary
     \item \textbf{Additive Kernel Structures:} The \texttt{combinekernel} models use additive combinations of kernels to capture both smooth and variable structures in the mismatch data. From our examination of the kernels in Section~\ref{sec: Kernels} we have seen that the RBF producs smooth curves while kernels like the Matern, Rational Quadratic and the Laplace produce more variational fits.
             From Examining our data in Section~\ref{sec:data_description} we noticed smooth general shapes with local variations. This was the motivation to make an additive Kernel of the form 
     \begin{equation}
-        k(x, x') = \theta_1k_{\mathrm{RBF}}(x, x') + \theta_2k_{\mathrm{extra}}(x, x'),
+        k(x, x') = \sigma_{f,1}^2k_{\mathrm{RBF}}(x, x') + \sigma_{f,2}^2k_{\mathrm{extra}}(x, x'),
     \end{equation}
     where \(k_{\mathrm{extra}}\) is one of Matern, RationalQuadratic, or Laplacian. We constrain the RBF Kernel to large \(\ell\) parameters with an optimisation range of \((0.5,100)\) since this will force the RBF Kernel to model the general smooth shape over inputs
-    and then we give the additional kernel much smaller \(\ell\) bounds so that it captures the local variation. \(\theta_1\) and \(\theta_2\) capture the weighting of each kernel.
+    and then we give the additional kernel much smaller \(\ell\) bounds so that it captures the local variation. \(\sigma_{f,1}^2\) and \(\sigma_{f,2}^2\) are the signal variance for each kernel and capture the weighting of each model towards this combined signal variance.
 \end{itemize}
 %
 %
@@ -1087,7 +1087,7 @@ are available in Section~\ref{subsubsec:implementdetails}
 \begin{table}[h!]
     \renewcommand{\arraystretch}{1.3}
     \centering
-    {\fontsize{10}{9.5}\selectfont
+    {\fontsize{8}{9.5}\selectfont
     \begin{tabular}{|l|l|l|l|}
     \hline
     \textbf{Model Label} & \textbf{Noise Type} & \textbf{Noise Optimisation Bounds} & \textbf{Kernels} \\
@@ -1235,54 +1235,64 @@ by building a posterior over them using MCMC.
 
 \begin{table}[H]
 \centering
-\caption{\todo{Explain what scale 1/2 mean} Optimized Hyperparameters for Final GPR Models}
 \footnotesize  % Smaller than normalsize, slightly larger than scriptsize
 \renewcommand{\arraystretch}{1.15}  % Slightly tighter row spacing
 \setlength{\tabcolsep}{4pt}  % Reduce column padding
-\label{tab:final_gpr_hyperparams}
-{\fontsize{7}{9.5}\selectfont
+{\fontsize{7}{8.5}\selectfont
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
-\textbf{Model} & \textbf{Kernel 1} & \textbf{Scale 1} & \textbf{Length Scales 1} & \textbf{Kernel 2} & \textbf{Scale 2} & \textbf{Length Scales 2 / Noise} \\
+\textbf{Model} & \textbf{Kernel 1} & $\mathbf{\sigma_{f,1}^2}$ & \textbf{Length Scales 1} & \textbf{Kernel 2} & $\mathbf{\sigma_{f,2}^2}$ & \textbf{Length Scales 2 / Noise} \\
 \hline
-\texttt{RBFMat} & RBF & $2.34$ & $[1.00, 1.51, 1.38, 1.36]$ & Matern ($\nu = 0.75$) & $0.207$ & $[0.0996, 0.0582, 0.414, 2.31]$ \\
-\texttt{RBFLap} & RBF & $0.354$ & $[0.10, 0.10, 1.18, 2.91]$ & Laplacian ($\gamma = 0.964$) & $0.292$ & --- \\
-\texttt{Mat\_noerr} & Matern ($\nu = 1.75$) & $0.926$ & $[0.227, 0.20, 1.15, 2.85]$ & White & --- & $\sigma_n^2 = 0.00637$ \\
-\texttt{Laplace\_noerr} & Laplacian ($\gamma = 0.358$) & $7.24$ & --- & White & --- & $\sigma_n^2 = 10^{-6}$ \\
+\texttt{RBFMat} & RBF & $2.34$ & $[1.00, 1.51, 1.38, 1.36]$ & Mat ($\nu = 0.75$) & $0.207$ & $[0.0996, 0.0582, 0.414, 2.31]$ \\
+\texttt{RBFLap} & RBF & $0.354$ & $[0.10, 0.10, 1.18, 2.91]$ & Lap ($\gamma = 0.964$) & $0.292$ & --- \\
+\texttt{Mat\_noerr} & Mat ($\nu = 1.75$) & $0.926$ & $[0.227, 0.20, 1.15, 2.85]$ & White & --- & $\sigma_n^2 = 0.00637$ \\
+\texttt{Laplace\_noerr} & Lap ($\gamma = 0.358$) & $7.24$ & --- & White & --- & $\sigma_n^2 = 10^{-6}$ \\
 \texttt{RBF\_noerr} & RBF & $0.728$ & $[0.112, 0.112, 0.958, 1.6]$ & White & --- & $\sigma_n^2 = 0.00728$ \\
-\texttt{Mat\_minmaxerr} & Matern ($\nu = 1.75$) & $1.14$ & $[0.27, 0.22, 1.34, 4.73]$ & White & --- & $\sigma_n^2 = 0.0439$ \\
-\texttt{Laplace\_minmaxerr} & Laplacian ($\gamma = 0.284$) & $6.60$ & --- & White & --- & $\sigma_n^2 = 0.0439$ \\
+\texttt{Mat\_minmaxerr} & Mat ($\nu = 1.75$) & $1.14$ & $[0.27, 0.22, 1.34, 4.73]$ & White & --- & $\sigma_n^2 = 0.0439$ \\
+\texttt{Laplace\_minmaxerr} & Lap ($\gamma = 0.284$) & $6.60$ & --- & White & --- & $\sigma_n^2 = 0.0439$ \\
 \texttt{RBF\_minmaxerr} & RBF & $0.821$ & $[0.12, 0.115, 1.19, 2.52]$ & White & --- & $\sigma_n^2 = 0.0439$ \\
 \hline
 \end{tabular}}
+\caption{This table contains the optimized hyperparameters for the final 8 GPR models. $\sigma_{f,1}^2$ and $\sigma_{f,2}^2$ represent the constant factor the each kernel is multiplied by and is referred to as the signal variance since it controls the amplitute of the resulting model.
+The Length scales are the corresponding length scales for each dimension and then $\sigma_n^2$ is the optimised noise hyper-parameter introduced by the \textsc{WhiteKernel}. Mat and Lap refer to the Matern and Laplacian kernel.}
+\label{tab:final_gpr_hyperparams}
 \end{table}
 
 \subsection{Hyper-parameter Uncertainty}
-\textbf{MCMC on \texttt{RBFMatern}}
-From Figure~\ref{fig:MCMCRBFMatern} we can see that some parameters have single peak distributions with low variance associated to their posterior distribution such as \(\theta_2, \ell_5,\ell_6,\ell_1\). This distributions indicate that 
-these hyper-parameters have relatively low uncertainty to them. Other hyper-parameeters such as \(\theta_1\) exhibits a bi-model distribution with large variance. This shows that there is no clear best parameter in this space to maximise the likelihood
-and so this paramater space has a high uncertainty to it. 
+We construct the posterior distribution over the \texttt{RBFMatern} model's hyper-parameters using MCMC sampling. As shown in Figure~\ref{fig:MCMCRBFMatern}, it is evident that the RBF kernel is capturing the long length scale smooth variations in the data. This is evident since the RBF length span larger \(\ell\) values than those of the Matern kernel posterior.
+Furthering examining the distributions, we find that some parameters - such as \((\sigma_{f,2}^2, \ell_5,\ell_1)\)- have sharply peaked distributions with low variance,indicating relatively low uncertainty in their posterior distribution. 
+In contrast parameters such as \(\sigma_{f,1}^2 , \ell_8\) exhibit nearly bi-model distributions with large variance, demonstrating that these regions of the hyperparameter space are highly uncertain.
+
+This uncertainty in \(\sigma_{f,1}^2\) can be understood by examining the underlying data. While the true data often exhibits global smooth trends, there are regions where it becomes noisy and has abrupt variations. As a result, 
+the optimiser appears to struggle between assigning a higher or lower weight to the RBF kernel relative to the Matern kernel. 
+A higher weight favours the RBF component which would emphasise global smoothness, whereas a lower weight allows the Matern kernel to account for local fluctuations. 
+Ultimately, the optimiser resolves this ambiguity by selecting a compromise between the two competing modes by choosing the 
+mean of the distribution.
+
+resulting in substantial uncertainty in that part of the hyperparameter space.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCRBFMat.png}
-    \caption{The hyper-parameter posterior of the best \texttt{RBFMatern} model. The model hyper-parameters from Table~\ref{tab:final_gpr_hyperparams} initialise each of the walkers (theres 4*10(dimension number) walkers). For each walker we generate 500 samples and use a burnin of 100 and a thin of 15.
-    The resulting parameter distributions are then plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}
+    \caption{The hyper-parameter posterior of the best \texttt{RBFMatern} model. The model hyper-parameters from Table~\ref{tab:final_gpr_hyperparams} initialise each of the walkers (4 walkers for every extra parameter so 40 walkers). For each walker we generate 300 samples and use a burnin of 100 and a thin of 15 resulting in a total of 560 samples used to build this distribution.
+    The resulting parameter distributions are plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}
     \label{fig:MCMCRBFMatern}
 \end{figure}
-To visualise the difference in distributions from a posterior marginalised over these parameter distrubtions to our point estimate posteriors plotted prevously in Figure~\ref{MCMCvsmarginalised}
-we plot the \text{RBFMatern} pointwise model along with the \texttt{RBFMatern} model marginalised over its hyper-parameters. We observe that in all three panels, the MCMC credible regions are noticeably 
-wider than the pointwise confidence intervals, especially in regions with sparse or noisy data. 
-This reflects the additional uncertainty introduced by accounting for hyperparameter variability. 
-In the left and right panels, the wider spread of the blue region highlights locations where the likelihood surface is relatively flat, 
-leading to greater variation across plausible hyperparameter samples.
+To visualise how the parameter uncertainty effects the final posterior predictive distribution, we marginalise over our sampled hyper-parameter posteriors and compare this prediction to the previous pointwise results of the \texttt{RBFMatern} model shown in Figure~\ref{fig:crosscuts_bestmodels}.
+Figure~\ref{fig:MCMCvsmarginalised} reveals that the marginalised MCMC credible intervals are noticeably wider than those of the pointwise model, especially in regions with sparse or noisy data. This is expected since the marginalised model is taking extra hyper-parameter
+uncertainty into account. 
+%
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCpointwisecomparison_all.png}
-    \caption{MCMC marginalised vs pointwise}
+    \caption{Plotting the marginalised posterior distribution over the hyper-parameters with the point wise \texttt{RBFMatern} model. We again plot cross-cuts of our data, taking \(z = (1,0,-1)\) which corresponds to the mass ratio of \(q = (1,0.404,0.25)\) and \(w = 0.25\) which corresponds to \(M_{\text{tot}} = 37.5M_\odot\). We are marginalising over the distributions in Figure~\ref{fig:MCMCRBFMatern}. 
+    Since marginalising is computationally expensive of our 300 samples for 40 walkers we discard the first 200 samples and thin every 10 sample. By doing this we marginalise over 400 converged MCMC samples.}
     \label{fig:MCMCvsmarginalised}
 \end{figure}
-Examining Table~\ref{tab:pointwise_vs_mcmc} we see that the pointwise model results in much better
-metric scores.
+%
+Table~\ref{tab:pointwise_vs_mcmc} compares the performance metrics for the marginalised MCMC model against the pointwise \texttt{RBFMatern} model.
+The pointwise model outperforms the marginalised model over all metrics except for the FOM measurement. This makes intuitive sense since the large credible intevals
+formed by the marginalised model result in a lower FOM. 
+% 
 \begin{table}[H]
     \centering
     \small
@@ -1298,30 +1308,22 @@ metric scores.
     \caption{Comparison of regression performance metrics for the RBFMat model using a pointwise (MAP) solution versus the MCMC marginalised model. The MCMC model reflects increased uncertainty, resulting in reduced fit scores but a more robust and probabilistically faithful representation.}
     \label{tab:pointwise_vs_mcmc}
 \end{table}
-    
-
-
-
-% \textbf{MCMC on \texttt{Maternnoerr}}
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCWhiteMat.png}
-%     \caption{The hyper-parameter posterior of the \text{Matnoerr} model. The model hyper-parameters from Table~\ref{tab:final_gpr_hyperparams} initialise the walker. We generate 500 samples and use a burnin of 100 and a thin of 15.
-%     The resulting parameter distributions are then plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}
-%     \label{fig:MCMCMaternnoerr}
-% \end{figure}
-
-
+%
 \section{Conclusion/Discussion}
+\Sean{Going to de-ai this.}
+Ideally, we would compute the full hyperparameter posterior for each candidate model and marginalise over it to capture uncertainties in our predictions. However, this approach is not computationally practical for our problem setting, in which fast and accurate parameter estimates are paramount (e.g., for the NR-informed model). Consequently, we need a model that balances predictive accuracy with computational efficiency.
+%
+Our results indicate that the \texttt{RBFMatern} model best achieves this trade-off. It not only attains top performance metrics during cross-validation, but also generalises effectively to the final test set. By contrast, directly embedding known noise in the kernel diagonal exhibited poor generalisation, especially when extrapolating beyond the training domain. Meanwhile, treating the noise strictly as a single hyperparameter proved suboptimal as well, as the optimiser tended to drive that noise parameter toward its lower bound, relying on kernel parameters to absorb the remaining uncertainty.
+%
+In contrast, \texttt{RBFMatern} leverages the Matern kernel with \(\nu = 0.75\) for localized variations and the RBF kernel for smoother, long-length-scale features. All hyperparameters remain nonzero, indicating that each contributes meaningfully to the overall fit. This synergy of smoothness and local flexibility, without artificially collapsing any parameter to zero, ultimately allows the \texttt{RBFMatern} model to capture noise more accurately. Hence, it stands out as our preferred model for efficiently predicting gravitational-wave mismatch while retaining robust uncertainty quantification.
+
+
 \begin{itemize}
     \item successfully developed accurate models
     \item Evaluated a wide variety of kernels
     \item Used MCMC to visuale hyper-parameters posteriors
     \item Compared 4d to 7d model how did reducing the parameters space effect the model, loose much information??
     \item Potential Scaling issues
-\end{itemize}
-
-\begin{itemize}
     \item In future would like to build a model with kernel uncertainty built into model, full gpr
     \todo{Add the 7D discussion here}
     \item Combined GPR , including multiple posteriors weighted
