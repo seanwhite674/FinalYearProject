@@ -708,7 +708,6 @@ the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and g
     \begin{equation}
     p\bigl(f(x_*) \mid f(X), X, X_*,\theta \bigr) 
     \sim \mathcal{N}\!\left(m(x_*),\;\sigma^2(x_*)\right),
-    \label{eq: predictive_dist}
     \end{equation}
     \vspace{-8ex}
     \begin{align}
@@ -719,6 +718,7 @@ the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and g
     &= k(x_*, x_*) - k(x_*, X)\,k(X, X)^{-1}\,k(X, x_*).
     \label{eq: predictive_variance}
     \end{align}
+    \label{eq: predictive_dist}
 \end{subequations}    
 % 
 In these expressions:
@@ -787,18 +787,18 @@ where \( \Sigma = \mathrm{diag}(\sigma_{n,1}^2, \sigma_{n,2}^2, \dots, \sigma_{n
 
 \bigskip
 \noindent
-This now updates our previous posterior mean and variance (eq: \ref{eq: predictive_mean} and \ref{eq: predictive_variance}) to a revised posterior:
+This now updates our previous posterior distribution (Eqns: \ref{eq: predictive_dist}) to a revised posterior:
 %
 %
 \begin{subequations}
 \begin{align}
-    P(f_*|X,X_*,\theta,y) &\sim \mathcal{N}(m(f_*), \text{Var}(f_*))
-    \label{eq: predictive_distribution_noise},\\
+    P(f_*|X,X_*,\theta,y) &\sim \mathcal{N}(m(f_*), \text{Var}(f_*)),\\
 m(f_*) &= K_*^T (K_y)^{-1} y,
 \label{eq: predictive_mean_noise}\\
 \text{Var}(f_*) &= K_{**} - K_*^T (K_y)^{-1} K_*,
 \label{eq: predictive_variance_noise}
 \end{align}
+\label{eq: predictive_distribution_noise}
 \end{subequations}
 %
 %
@@ -844,7 +844,7 @@ Our posterior distribution is as in eqn \ref{eq:  predictive_distribution_noise}
 
 
 \subsubsection{Heteroscedastic Noise}  
-\textbf{Known Noise:}
+\paragraph{Known Noise:}
 %
 In this case, the noise variance changes across the input space—some observations are noisier than others. If we know the individual noise variances \( \sigma_i^2 \) for each training input \( x_i \), we incorporate them by adding a diagonal noise matrix to the kernel:
 \[
@@ -858,10 +858,8 @@ k(x_n, x_1) & \cdots & k(x_n, x_n) + \sigma_n^2
 where \( \Sigma = \text{diag}(\sigma_1^2, \sigma_2^2, \dots, \sigma_n^2) \).
 In this case the noise is not found as a hyper-parameter but instead just added to the diagonal of the covariance matrix.
 Our posterior distribution is as in eqn \ref{eq:  predictive_distribution_noise} with \(K_y =K(X, X) + \Sigma \) where \(\Sigma\) is the known noise of our data. 
-
-\vspace{1em}
-\noindent
-\textbf{Learning Noise over the Input Space:}
+%
+\paragraph{Learning Noise over the Input Space:}
 %
 If the noise variance is unknown but varies across the input space, we can model it as a function. 
 This is done by building a kernel that captures both smooth, global trends and rough, local fluctuations. 
@@ -876,7 +874,7 @@ Our posterior distribution is as in eqn \ref{eq:  predictive_distribution_noise}
 where \( K_1 \) and \( K_2 \) are distinct kernels chosen to capture different aspects of the data. 
 The coefficients \( \theta_1 \) and \( \theta_2 \) are parameters that control the relative contribution of each kernel component.
 
-\subsubsection*{Monte Carlo Sampling of Noise}  
+\subsubsection{Monte Carlo Sampling of Noise}  
 
 This technique can be applied in both homoscedastic and heteroscedastic noise settings. Rather than explicitly modelling observation noise by adding a noise term to the kernel matrix, we instead account for uncertainty by perturbing the observed outputs with sampled noise.
 Assuming Gaussian noise, we generate multiple noisy versions of the observed data by sampling from our noise distribution defined by the known noise. For each of these sampled datasets, we compute a Gaussian Process posterior, and then average the predictions to obtain a final predictive distribution that integrates over observation noise.
@@ -906,46 +904,36 @@ This highlight all the plausible functions consistent with the observed data and
 
 \subsection{Hyper-parameters}
 \label{sec: Hyper_parameters}
-\Sean{Small bit of work required}
-Until now, all predictive distributions such as Equations~\ref{eq: predictive_distribution_noise} and~\ref{eq: predictive_dist} have been conditioned on fixed kernel hyperparameters. As demonstrated in Figures~\ref{fig: GPprior_hyperparams} and~\ref{fig: kernel_noise}, these hyperparameters have a significant influence on the structure and behaviour of the Gaussian Process, shaping both the prior and posterior distributions. 
-In practice, these hyperparameters are not known and must be inferred from the data. To do so, we aim to find the set of hyperparameters that best explain the observed data by maximising the log marginal likelihood, a method detailed in [Ch5\cite{bible}.]
+Until now, the predictive distributions (Eqns~(\ref{eq: predictive_distribution_noise},\ref{eq: predictive_dist})) have been conditioned on fixed kernel hyperparameters. As shown in Figures~\ref{fig: GPprior_hyperparams} and~\ref{fig: kernel_noise}, these hyperparameters significantly shape both the prior and posterior behaviour of the Gaussian Process. However, they are not known a priori and must be inferred from data. To do this, we maximize the log marginal likelihood \cite[Ch.~5]{bible}.
 
-\noindent
-As outlined in Section~\ref{sec: Handlingnoise} we have different methods of handling noise resulting in different hyper-parameters to be optimised. We will focus on the general case here which can be easily manipulated for each spefici method.
-From Equation~\ref{eq: prior_withnoise}, we have:
+From Equation~\ref{eq: prior_withnoise}, our observed data 
 \[
 y \sim \mathcal{N}(0, K + \Sigma I),
 \]
-where \( K \) is the kernel matrix computed from the training inputs \( X \), and \( \Sigma\) is the noise variance.
-
-\noindent
-This implies that the marginal likelihood which is the probability of the observed outputs \( y \) given the inputs \( X \) and hyperparameters \( \theta \)) is given by the multivariate Gaussian density. 
-
+imply a marginal likelihood governed by a multivariate Gaussian:
 \[
-p(y \mid X, \theta) = \frac{1}{(2\pi)^{n/2} |K_y|^{1/2}} \exp\left( -\frac{1}{2} y^\top K_y^{-1} y \right)
+p(y \mid X, \theta) = \frac{1}{(2\pi)^{n/2} \,\lvert K_y \rvert^{1/2}} 
+\exp\!\Bigl(-\tfrac12\,y^\top K_y^{-1} y\Bigr), 
+\quad\!\text{where}\quad K_y = K + \Sigma I.
 \]
-where \( K_y = K + \Sigma I \), and \( \Sigma \) may be constant or input-dependent depending on the noise model used.
-\noindent
-The hyperparameters are given by:
-\[
-\theta = \left\{ \sigma_f^2, \ell, \text{(other internal kernel params)}, \sigma_n^2 \,\, \text{(if noise is modelled as a hyperparameter)} \right\}.
-\]
-\noindent
-Taking the logarithm of this expression yields the \textit{log marginal likelihood}:
+Taking the logarithm yields:
 \begin{equation}\label{eq: 5}
-\log p(y \mid X, \theta) = -\frac{1}{2} y^\top K_y^{-1} y - \frac{1}{2} \log |K_y| - \frac{n}{2} \log 2\pi
+\log p(y \mid X, \theta) 
+= -\tfrac{1}{2}\,y^\top K_y^{-1}y \;-\; \tfrac{1}{2}\,\log\lvert K_y \rvert \;-\; \tfrac{n}{2}\,\log 2\pi.
 \end{equation}
-Our goal is to maximise this log marginal likelihood with respect to the hyperparameters \( \theta \), which typically includes the kernel lengthscale, signal variance, and noise variance. Once optimal values are found, we can use them to make accurate posterior predictions.
-In Figure~\ref{fig:Optimising_Hyperparams}, we plot surfaces of the log marginal likelihood across different pairs of hyperparameters. In several panels, we observe relatively flat peaks, indicating that a broad region of the hyperparameter space yields similarly high log likelihood values.
-In the final 3D scatter plot, we zoom into the region surrounding the point estimate hyperparameters obtained by the optimisation algorithm. The consistent colouring in this region reinforces the idea that multiple hyperparameter combinations can produce near-optimal log likelihoods. 
-This ambiguity or flatness in the likelihood surface is addressed in the following section.
+Optimizing this with respect to \(\theta\) provides hyperparameter estimates for kernel lengthscales, variances, and (if applicable) noise levels. Once these estimates are obtained, we can make accurate posterior predictions.
+
+Figure~\ref{fig:Optimising_Hyperparams} plots the log marginal likelihood over different hyperparameter pairs. In several panels, a flat surface forms around the peak of the surface indicating that multiple hyperparameter combinations yield nearly the same log likelihood.
+The final 3D scatter plot zooms in on the region surrounding the optimiser’s point estimate, illustrating how small variations in \(\theta\) can produce very similar likehood values. 
+This flatness in the likelihood surface leads to difficulty in choosing a true optimal point and leads to uncertainty in our model. This will be further discussed in the following section.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{LatexPlots/1dplots/LogLikeallparams.png}
     \caption{For a GPR with noise where we have the noise as a hyper-parameter we are forced to optimise a length \((\ell\)) hyper-parameter, a variance \(\sigma_f^2\) hyper-parameter and a noise \(\sigma_n^2\) hyper-parameter. 
     Here we have kept one parameter constant on each graph and compared the log likelihood space varying the other two parameters. 
     In the upper left panel the noise is set to $\sigma^2_n= 0.1$, in the upper right panel the length is set at $ \ell=0.5$, in the lower left panel the variance is set at $\sigma^2_f=1.5$. 
-    In the final panel we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm \texttt{optimizer="fmin\_l\_bfgs\_b"} as the black dot. This point is located at
+    In the final panel we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm \texttt{"fmin\_l\_bfgs\_b"} as the black dot. This point is located at
     $(\sigma_f^2 = 1.16, \ell = 0.109 \sigma_n^2 = 0.105)$.}
    \label{fig:Optimising_Hyperparams}
 \end{figure} 
@@ -953,15 +941,15 @@ This ambiguity or flatness in the likelihood surface is addressed in the followi
 
 \subsection{Quantifying Hyper-parameter Uncertainty}
 \label{sec: MCMC}
-We have previously discussed the role of kernels and how their hyperparameters influence the shape of both the prior and posterior predictive distributions. As shown in Figure~\ref{fig:Optimising_Hyperparams}, optimising hyperparameters does not necessarily yield a single “best” solution. 
+As shown in Figure~\ref{fig:Optimising_Hyperparams}, optimising hyperparameters does not necessarily yield a single “best” solution. 
 Instead, there often exists a region of hyperparameter values that explain the data equally well, resulting in a flat or multi-modal log marginal likelihood surface.
-Up to this point, the models considered have relied on point estimates—selecting the hyperparameters that maximise the log marginal likelihood and using them directly for prediction. 
-While convenient, this approach ignores the underlying uncertainty across hyperparameters that achieve similarly high likelihood scores. To account for this, we now aim to construct a posterior distribution over the hyperparameters, thereby enabling us to quantify and visualise uncertainty in their values.
+Up to this point, the models considered have relied on point estimates (selecting the hyperparameters that maximise the log marginal likelihood and using them directly for prediction). 
+While this process is convenient, by choosing one parameter we ignore the underlying uncertainty across hyperparameters that achieve similarly high likelihood scores. 
+To account for this, we now aim to construct a posterior distribution over the hyperparameters, thereby enabling us to quantify and visualise uncertainty in their values.
+%
 
-\noindent
-Whereas previously we maximised the log marginal likelihood (see Equation~\ref{eq: 5}) to obtain a point estimate, we now turn to a fully Bayesian treatment. We seek the posterior distribution over hyperparameters \( \theta \), 
-given the data \((X, y)\), expressed as:
-
+We aim to build the posterior distribution over the hyperparameters \( \theta \), given the data \((X, y)\), this is expressed as:
+%
 \begin{equation}
 p(\theta \mid y, X) = \frac{p(y \mid X, \theta) \, p(\theta)}{p(y \mid X)}
 \end{equation}
@@ -977,13 +965,15 @@ p(\theta \mid \mathbf{y}, X) \propto p(\mathbf{y} \mid X, \theta) \, p(\theta)
 \end{equation}
 %
 %
-Using MCMC, we generate samples \( \{\theta^{(s)}\}_{s=1}^S \sim p(\theta \mid y, X) \) from this posterior.
-From these samples we can then build a KDE to help visualise the distribution of our hyper-parameters. An example of this is done in figure~\ref{fig:MCMCresults}.
+We generate samples \( \{\theta^{(s)}\}_{s=1}^S \sim p(\theta \mid y, X) \) from this posterior distribution.
+From a collection of these samples we can then build a distribution over these samples helping to visualise the uncertainty associated with each parameter. An example of this is done in figure~\ref{fig:MCMCresults}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{LatexPlots/1dplots/MCMCdistribution.png}
     \caption{
-    Results from an MCMC run using a Gaussian Process Regression model with an RBF kernel and a WhiteKernel to model noise. We plot the Kernel density estimates of the posterior distributions for each hyperparameter, constructed from the sampled chains in our MCMC sampling. 
+    Results from an MCMC run using a Gaussian Process Regression model with an RBF kernel and a WhiteKernel to model noise. We used the point estimates from Figure~\ref{fig:Optimising_Hyperparams} as the starting point 
+    for our samples. We sampled the parameter space using 12 walkers and taking 1000 steps with each walker. We discarded 100 of the initialed samples and thinned every 15 resulting in 720 final samples. (For more details on this implementation refer to the Appendix \Sean{MCMC Ref}.)
+    Using these samples we plot the approximate posterior distributions for each hyperparameter. 
     the vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}
     \label{fig:MCMCresults}
 \end{figure}
@@ -995,7 +985,7 @@ To address this, we incorporate hyperparameter uncertainty directly into the pre
 \begin{equation}
 p(f_* \mid \mathbf{y}, X, X_*) = \int p(f_* \mid \mathbf{y}, X, X_*, \theta) \, p(\theta \mid \mathbf{y}, X) \, d\theta.
 \end{equation}
-Since this integral is also often intractable we approximate the marginalised predictive distribution via MCMC samples \( \{\theta^{(s)}\}_{s=1}^S \):
+Since this integral is also often intractable we approximate the marginalised predictive distribution using our MCMC samples \( \{\theta^{(s)}\}_{s=1}^S \):
 %
 \begin{equation}
 p(f_* \mid \mathbf{y}, X, X_*) \approx \frac{1}{S} \sum_{s=1}^{S} p(f_* \mid \mathbf{y}, X, X_*, \theta^{(s)}).
@@ -1222,9 +1212,7 @@ which captures the global smooth structure of the data. Meanwhile, the Matern co
 Examining models that use a single kernel and a constant noise hyper-parameter we see that the optimised noise hyper-parameter is very small with \(\sigma_n^2 << 0.01\). For the models with tighter noise bounds (\texttt{minmaxerr})the optimiser always opts for the same lower noise bound. The loser bound models (\texttt{noerr})
 also results in small noise hyper-parameter values. This suggests that the GP is compensating for noise directly through the kernel, not through the explicit noise model. This provides further credibility to the \texttt{RBFMat} combined model, where the noise appears to be effectively captured within the Matern kernel.
 Finally, examining Laplacian-based kernel models (\texttt{Laplace\_noerr} and \texttt{Laplace\_minmaxerr}), which only have a single hyperparameter ($\gamma$), they still perform reasonably well but tend to produce more linear predictions. This is likely due to their limited flexibility compared to other kernels.
-Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metrics} and our qualitative examination of the crosscuts in Figure~\ref{fig:crosscuts_bestmodels}, we conclude that the \texttt{RBFMat} model offers the best trade-off between flexibility, interpretability, and robustness.
-However, since the \texttt{RBFMat} combined kernel model optimises 10 hyperparameters, there is a risk we are overfitting to the data. Therefore, we retain the \texttt{Mat\_noerr} model for comparative purposes, as it offers a smooth fit with fewer hyperparameters. In the next section we examine the uncertainty with respect to the hyper-parameters used in these two models
-by building a posterior over them using MCMC.
+Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metrics} and our qualitative examination of the crosscuts in Figure~\ref{fig:crosscuts_bestmodels}, we see that the \texttt{RBFMat} model offers the best trade-off between flexibility, interpretability, and robustness.
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png}

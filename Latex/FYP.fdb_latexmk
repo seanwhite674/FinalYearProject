@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex FYP"] 1744405254.24535 "FYP.aux" "FYP.bbl" "FYP" 1744405416.4361 0
+["bibtex FYP"] 1744411500.0805 "FYP.aux" "FYP.bbl" "FYP" 1744411509.03975 0
   "./references.bib" 1744305768 7436 8e4df38a5a01feafb8b1b49721ce8057 ""
-  "FYP.aux" 1744405414 38005 dc3fc965d1a48ab707aecfdfcd1f6e3b "pdflatex"
+  "FYP.aux" 1744411507 39028 58d60788fa11a243e91ef6b30033c034 "pdflatex"
   "c:/texlive/2024/texmf-dist/bibtex/bst/base/acm.bst" 1739279557 21064 c61a48664f3c347ce7f73c1a6a530506 ""
   (generated)
   "FYP.bbl"
   "FYP.blg"
   (rewritten before read)
-["pdflatex"] 1744405407.52844 "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" "FYP.pdf" "FYP" 1744405416.43843 0
-  "FYP.aux" 1744405414 38005 dc3fc965d1a48ab707aecfdfcd1f6e3b "pdflatex"
-  "FYP.bbl" 1744405388 3900 8229cc7352084645daad8e531930fd06 "bibtex FYP"
-  "FYP.out" 1744405414 8789 87186f8cdd8010a46d0a1effddf07540 "pdflatex"
-  "FYP.tex" 1744405379 104136 e0289afa29033485852556997a4e6b30 ""
-  "FYP.toc" 1744405414 4359 f06234f532f7ffd75045873a19fd9f86 "pdflatex"
+["pdflatex"] 1744411500.69344 "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" "FYP.pdf" "FYP" 1744411509.04164 0
+  "FYP.aux" 1744411507 39028 58d60788fa11a243e91ef6b30033c034 "pdflatex"
+  "FYP.bbl" 1744411500 3900 8229cc7352084645daad8e531930fd06 "bibtex FYP"
+  "FYP.out" 1744411507 9014 5f3c2ceb68d65b970c03e230fc764343 "pdflatex"
+  "FYP.tex" 1744411490 102638 86658f090b787780c3be5c95d65dbe32 ""
+  "FYP.toc" 1744411507 4605 ed9b1d26af44fa3f75296309bd288ead "pdflatex"
   "LatexPlots/1dplots/GPR_noise_comparison.png" 1744103520 90772 e3208fa54dad056474a200a07283bac6 ""
   "LatexPlots/1dplots/KernelSample_Laplace_Exponential.png" 1743607264 19503 fd35d798c8b7f675763d59c657241201 ""
   "LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png" 1743607264 7266 1cf202bae6e0cdb3e373231a469b98da ""
@@ -29,7 +29,7 @@
   "LatexPlots/1dplots/Kernel_background.png" 1744390387 156517 dd1c9bea7eae4ed794bd670423390240 ""
   "LatexPlots/1dplots/Kernel_hyperparams.png" 1744391412 200960 c329e49ab4700e57eb0ad826ae0c19e9 ""
   "LatexPlots/1dplots/Kernel_noise.png" 1744103483 116931 54739c4696238747288b27afa7e24a44 ""
-  "LatexPlots/1dplots/LogLikeallparams.png" 1744149669 629732 0e8bdd222296dec7119999d538fec452 ""
+  "LatexPlots/1dplots/LogLikeallparams.png" 1744409272 415337 b01a115f73a5370f743008d3cf0b24ec ""
   "LatexPlots/1dplots/MAE.png" 1742312794 128316 1888dff46126c0d6eaf1ed624f2f167c ""
   "LatexPlots/1dplots/MCMCdistribution.png" 1744141386 43729 1f34b8c817dc0beaa8235b3852db0229 ""
   "LatexPlots/1dplots/fom.png" 1742311605 130971 7fb9e678576ed80e4763fb767f5b261d ""
@@ -54,7 +54,7 @@
   "LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png" 1744241341 370101 a2852b713a53fae6708be43e5ba93630 ""
   "LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png" 1743976990 361796 d7f562c2421aefb4cbc704a85869d54c ""
   "LatexPlots/final_gps_plots/metric_of_finalists_comparison.png" 1744241341 41450 d2cec143e4a18842ca8fc47701aa5f6f ""
-  "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" 1744405379 104136 e0289afa29033485852556997a4e6b30 ""
+  "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" 1744411490 102638 86658f090b787780c3be5c95d65dbe32 ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1739280170 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1739281794 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1739281101 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -95,7 +95,6 @@
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1739280128 1116 933a60c408fc0a863a92debe84b2d294 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1739280128 1120 8b7d695260f3cff42e636090a8002094 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1739280128 1116 25a7bf822c58caf309a702ef79f4afbb ""
-  "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmti10.tfm" 1739280128 1480 aa8e34af0eb6a2941b776984cf1dfdc4 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1739280128 768 1321e9409b4137d6fb428ac9dc956269 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm" 1739280128 768 d7b9a2629a0c353102ad947dc9221d49 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm" 1739293572 520 4889cce2180234b97cad636b6039c722 ""
@@ -127,7 +126,6 @@
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1739278734 32587 65067f817f408bc71a7312f3d9828a9b ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1739278734 32716 08e384dc442464e7285e891af9f45947 ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1739278734 32442 c975af247b6702f7ca0c299af3616b80 ""
-  "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1739278734 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1739278734 31099 342ef5a582aacbd3346f3cf4579679fa ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb" 1739278734 24287 6b803fa9eb1ddff9112e00519b09dd9e ""
   "c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb" 1739278735 30457 bc0868ebece724ed7c3d37e3d9bff7bd ""
