@@ -414,6 +414,7 @@ In the following subsections, I discuss the foundational concepts of Gaussian Pr
     \item \textbf{Noise Modeling:} Section~\ref{sec: Handlingnoise} covers several approaches for incorporating observational noise into the GP framework. I look at how noise effects the samples from our prior distribution.
     \item \textbf{Hyperparameter Optimization:} Finally, in Section~\ref{sec: Hyper_parameters}, I discuss how kernel and noise hyper-parameters can be optimised resulting in a posterior distribution that better explains our data.
     \item \textbf{Hyperparameter Uncertainty:} \ref{sec: MCMC}
+    \item \textbf{Multi Dimensional GPR}
 \end{enumerate}
 
 \subsection{Gaussian Proces Regression Background}
@@ -1007,7 +1008,7 @@ The resulting mean and variance are computed using the law of total variance:
 This procedure allows the final predictive distribution to reflect both data noise and model uncertainty.
 
 
-\section{Multi-Dimensional GPR}
+\subsection{Multi-Dimensional GPR}
 \Sean{Improve explanation here}
 To model functions with multiple input dimensions, a common and flexible approach is to construct kernels that operate over each input dimension individually, 
 and then combine them using a product. For example, multiplying RBF kernels defined on each input dimension yields a multi-dimensional RBF kernel.
