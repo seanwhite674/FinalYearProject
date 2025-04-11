@@ -540,7 +540,8 @@ indicating strong correlation (approximately 0.9). As the distance increases, su
         \caption{Sampling from the GP prior with zero mean and an RBF kernel ($\ell = 0.5$, $\sigma_f^2 = 1$). 
         The first plot shows three sample functions drawn from the prior distribution. 
         The second plot visualizes the covariance matrix as a heatmap, revealing the strength of correlations between inputs.
-        The final three subplots display joint distributions between selected input pairs, illustrating how output correlation diminishes with increasing input distance.}
+        The final three subplots display joint distributions between selected input pairs. These distributions are multivariate distributions with mean zero and covariance matrix defined by a \(2 \times 2\) where the diagonals are 1 and the off diagonals are the correlation between the selected input points.
+        The contours are drawn at multiples of \(0.5 \sigma\) indicating confidence regions for each distribution}
     \label{fig: samples_from_GP_prior}
 \end{figure}
 
@@ -567,28 +568,28 @@ In the following subsections, we explore each of these kernels in detail and dis
 \begin{table}[H]
     \centering
     \renewcommand{\arraystretch}{4} % Slightly tighter rows
-    \setlength{\tabcolsep}{2pt} % Tighter columns
+    \setlength{\tabcolsep}{0.5pt} % Tighter columns
     \small % Smaller text to fit content
-
-    \begin{tabular}{|>{\centering\arraybackslash}m{2cm}|*{6}{>{\centering\arraybackslash}m{2.3cm}|}} 
+    {\fontsize{6}{9.5}\selectfont
+    \begin{tabular}{|>{\centering\arraybackslash}m{1.85cm}|*{6}{>{\centering\arraybackslash}m{2.3cm}|}} 
         \hline
         \textbf{Kernel name:} & \textbf{RBF (SE)} & \textbf{Rational Quadratic} & \textbf{Periodic} & \textbf{Matern} & \textbf{Laplace} & \textbf{Linear (Dot Product)} \\ 
         \hline
         \textbf{Plot of $k(x, x')$:} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_RBF_SE.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Rational_Quadratic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Periodic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Matern_nu05.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Laplace_Exponential.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/Kernel_Linear_Dot_Product.png}} \\ 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/Kernel_RBF_SE.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/Kernel_Rational_Quadratic.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/Kernel_Periodic.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/Kernel_Matern_nu05.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/Kernel_Laplace_Exponential.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/Kernel_Linear_Dot_Product.png}} \\ 
         \hline
         \textbf{GP Prior Samples:} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_RBF_SE.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Rational_Quadratic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Periodic.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Matern_nu05.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Laplace_Exponential.png}} & 
-        \adjustbox{valign=c}{\includegraphics[width=2.25cm]{LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png}} \\ 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/KernelSample_RBF_SE.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/KernelSample_Rational_Quadratic.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/KernelSample_Periodic.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/KernelSample_Matern_nu05.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/KernelSample_Laplace_Exponential.png}} & 
+        \adjustbox{valign=c}{\includegraphics[width=2cm]{LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png}} \\ 
         \hline
         \textbf{Key Hyperparameters} &
         $\ell$ (Lengthscale) &
@@ -606,7 +607,7 @@ In the following subsections, we explore each of these kernels in detail and dis
         Rougher variation & 
         Linear functions \\ 
         \hline
-    \end{tabular}
+    \end{tabular}}
     \caption{
         Visual comparison of common kernel functions and their effect on Gaussian process priors. 
         Each column shows the kernel shape $k(x, x')$, samples from the corresponding GP prior, and a summary of the structure it imposes. 
@@ -934,24 +935,25 @@ Taking the logarithm of this expression yields the \textit{log marginal likeliho
 \begin{equation}\label{eq: 5}
 \log p(y \mid X, \theta) = -\frac{1}{2} y^\top K_y^{-1} y - \frac{1}{2} \log |K_y| - \frac{n}{2} \log 2\pi
 \end{equation}
-\noindent
 Our goal is to maximise this log marginal likelihood with respect to the hyperparameters \( \theta \), which typically includes the kernel lengthscale, signal variance, and noise variance. Once optimal values are found, we can use them to make accurate posterior predictions.
-\Sean{Explain the below Figure~\ref{figure: Optimising Hyper-params}}
+In Figure~\ref{fig:Optimising_Hyperparams}, we plot surfaces of the log marginal likelihood across different pairs of hyperparameters. In several panels, we observe relatively flat peaks, indicating that a broad region of the hyperparameter space yields similarly high log likelihood values.
+In the final 3D scatter plot, we zoom into the region surrounding the point estimate hyperparameters obtained by the optimisation algorithm. The consistent colouring in this region reinforces the idea that multiple hyperparameter combinations can produce near-optimal log likelihoods. 
+This ambiguity or flatness in the likelihood surface is addressed in the following section.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{LatexPlots/1dplots/LogLikeallparams.png}
-    \caption{For a GPR with noise where we have the noise as a hyper-parameter we are forced to optimise a length hyper-parameter, a variance hyper-parameter and a noise hyper-parameter. 
+    \caption{For a GPR with noise where we have the noise as a hyper-parameter we are forced to optimise a length \((\ell\)) hyper-parameter, a variance \(\sigma_f^2\) hyper-parameter and a noise \(\sigma_n^2\) hyper-parameter. 
     Here we have kept one parameter constant on each graph and compared the log likelihood space varying the other two parameters. 
     In the upper left panel the noise is set to $\sigma^2_n= 0.1$, in the upper right panel the length is set at $ \ell=0.5$, in the lower left panel the variance is set at $\sigma^2_f=1.5$. 
-    In the final panel we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm as the black dot. This point is located at
-    $(\sigma^2 = 1.16, l = 0.109$ noise$ = 0.105)$.}
-   \label{figure: Optimising Hyper-params}
+    In the final panel we plot a 3-dimensional scatter plot and illustrate the point estimate given by the optimisation algorithm \texttt{optimizer="fmin\_l\_bfgs\_b"} as the black dot. This point is located at
+    $(\sigma_f^2 = 1.16, \ell = 0.109 \sigma_n^2 = 0.105)$.}
+   \label{fig:Optimising_Hyperparams}
 \end{figure} 
 
 
 \subsection{Quantifying Hyper-parameter Uncertainty}
 \label{sec: MCMC}
-We have previously discussed the role of kernels and how their hyperparameters influence the shape of both the prior and posterior predictive distributions. As shown in Figure~\ref{figure: Optimising Hyper-params}, optimising hyperparameters does not necessarily yield a single “best” solution. 
+We have previously discussed the role of kernels and how their hyperparameters influence the shape of both the prior and posterior predictive distributions. As shown in Figure~\ref{fig:Optimising_Hyperparams}, optimising hyperparameters does not necessarily yield a single “best” solution. 
 Instead, there often exists a region of hyperparameter values that explain the data equally well, resulting in a flat or multi-modal log marginal likelihood surface.
 Up to this point, the models considered have relied on point estimates—selecting the hyperparameters that maximise the log marginal likelihood and using them directly for prediction. 
 While convenient, this approach ignores the underlying uncertainty across hyperparameters that achieve similarly high likelihood scores. To account for this, we now aim to construct a posterior distribution over the hyperparameters, thereby enabling us to quantify and visualise uncertainty in their values.
@@ -1257,27 +1259,57 @@ by building a posterior over them using MCMC.
 
 \subsection{Hyper-parameter Uncertainty}
 \textbf{MCMC on \texttt{RBFMatern}}
-In Figure~\ref{fig:MCMCRBFMatern} we plot the posterior distributions of each hyper-parameter after running our MCMC as detailed in Section~\ref{sec: MCMC}.
-The MCMC 
-
-
-
+From Figure~\ref{fig:MCMCRBFMatern} we can see that some parameters have single peak distributions with low variance associated to their posterior distribution such as \(\theta_2, \ell_5,\ell_6,\ell_1\). This distributions indicate that 
+these hyper-parameters have relatively low uncertainty to them. Other hyper-parameeters such as \(\theta_1\) exhibits a bi-model distribution with large variance. This shows that there is no clear best parameter in this space to maximise the likelihood
+and so this paramater space has a high uncertainty to it. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCRBFMat.png}
-    \caption{MCMC on \texttt{RBFMatern} combined kernel model}
+    \caption{The hyper-parameter posterior of the best \texttt{RBFMatern} model. The model hyper-parameters from Table~\ref{tab:final_gpr_hyperparams} initialise each of the walkers (theres 4*10(dimension number) walkers). For each walker we generate 500 samples and use a burnin of 100 and a thin of 15.
+    The resulting parameter distributions are then plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}
     \label{fig:MCMCRBFMatern}
 \end{figure}
-
-
-
-\textbf{MCMC on \texttt{Maternnoerr}}
+To visualise the difference in distributions from a posterior marginalised over these parameter distrubtions to our point estimate posteriors plotted prevously in Figure~\ref{MCMCvsmarginalised}
+we plot the \text{RBFMatern} pointwise model along with the \texttt{RBFMatern} model marginalised over its hyper-parameters. We observe that in all three panels, the MCMC credible regions are noticeably 
+wider than the pointwise confidence intervals, especially in regions with sparse or noisy data. 
+This reflects the additional uncertainty introduced by accounting for hyperparameter variability. 
+In the left and right panels, the wider spread of the blue region highlights locations where the likelihood surface is relatively flat, 
+leading to greater variation across plausible hyperparameter samples.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCWhiteMat.png}
-    \caption{MCMC on \texttt{Maternoerr} model}
-    \label{fig:MCMCMaternnoerr}
+    \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCpointwisecomparison_all.png}
+    \caption{MCMC marginalised vs pointwise}
+    \label{fig:MCMCvsmarginalised}
 \end{figure}
+Examining Table~\ref{tab:pointwise_vs_mcmc} we see that the pointwise model results in much better
+metric scores.
+\begin{table}[H]
+    \centering
+    \small
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+    \textbf{Model} & \textbf{R$^2$} & \textbf{RMSE} & \textbf{MAE} & \textbf{adj R$^2$} & \textbf{FOM} & \textbf{Pearson} \\
+    \hline
+    \textbf{Pointwise (RBFMat)} & 0.991 & 0.034 & 0.020 & 0.991 & 0.442 & 0.996 \\
+    \textbf{MCMC (RBFMat)}      & 0.920 & 0.104 & 0.072 & 0.916 & 0.200 & 0.962 \\
+    \hline
+    \end{tabular}
+    \caption{Comparison of regression performance metrics for the RBFMat model using a pointwise (MAP) solution versus the MCMC marginalised model. The MCMC model reflects increased uncertainty, resulting in reduced fit scores but a more robust and probabilistically faithful representation.}
+    \label{tab:pointwise_vs_mcmc}
+\end{table}
+    
+
+
+
+% \textbf{MCMC on \texttt{Maternnoerr}}
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCWhiteMat.png}
+%     \caption{The hyper-parameter posterior of the \text{Matnoerr} model. The model hyper-parameters from Table~\ref{tab:final_gpr_hyperparams} initialise the walker. We generate 500 samples and use a burnin of 100 and a thin of 15.
+%     The resulting parameter distributions are then plotted. The vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}
+%     \label{fig:MCMCMaternnoerr}
+% \end{figure}
 
 
 \section{Conclusion/Discussion}
