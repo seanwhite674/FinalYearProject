@@ -1,0 +1,47 @@
+\BOOKMARK [1][-]{section.1}{Gravitational Waves Background}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Plane Wave Solution from General Relativity}{section.1}% 2
+\BOOKMARK [3][-]{subsubsection.1.1.1}{Leading-Order Power Emission by Gravitational Waves}{subsection.1.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.2}{Quasi-circular Inspiral of two Point Masses}{subsection.1.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.1.3}{Introducing the Waveform Mismatch}{subsection.1.1}% 5
+\BOOKMARK [2][-]{subsection.1.2}{GW Approximation using Bayesian Methods}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.3}{Project Motivation}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.4}{Data Description}{section.1}% 8
+\BOOKMARK [1][-]{section.2}{Gaussian Process Regression GPR Background}{}% 9
+\BOOKMARK [2][-]{subsection.2.1}{Introduction and Roadmap}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.2}{Gaussian Proces Regression Background}{section.2}% 11
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Definition of a Gaussian Process}{subsection.2.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.2.2}{The Prior Distribution}{subsection.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.3}{Kernel Functions}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.4}{Building the Posterior Distribution}{section.2}% 15
+\BOOKMARK [2][-]{subsection.2.5}{Handling Noise in our Data}{section.2}% 16
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Homoscedastic Noise}{subsection.2.5}% 17
+\BOOKMARK [3][-]{subsubsection.2.5.2}{Heteroscedastic Noise}{subsection.2.5}% 18
+\BOOKMARK [3][-]{subsubsection.2.5.3}{Monte Carlo Sampling of Noise}{subsection.2.5}% 19
+\BOOKMARK [3][-]{subsubsection.2.5.4}{Comparing Noise Models}{subsection.2.5}% 20
+\BOOKMARK [2][-]{subsection.2.6}{Hyper-parameters}{section.2}% 21
+\BOOKMARK [2][-]{subsection.2.7}{Quantifying Hyper-parameter Uncertainty}{section.2}% 22
+\BOOKMARK [2][-]{subsection.2.8}{Multi-Dimensional GPR}{section.2}% 23
+\BOOKMARK [1][-]{section.3}{Method}{}% 24
+\BOOKMARK [2][-]{subsection.3.1}{The Models}{section.3}% 25
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Homoscedastic Noise Models}{subsection.3.1}% 26
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Heteroscedastic Noise Models}{subsection.3.1}% 27
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Hybrid Model}{subsection.3.1}% 28
+\BOOKMARK [2][-]{subsection.3.2}{Model Evaluation Metrics}{section.3}% 29
+\BOOKMARK [3][-]{subsubsection.3.2.1}{AEE Metrics}{subsection.3.2}% 30
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Correlation Metrics}{subsection.3.2}% 31
+\BOOKMARK [2][-]{subsection.3.3}{Model Training, Testing and Comparisons}{section.3}% 32
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Cross Validation on all Model Types}{subsection.3.3}% 33
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Final Testing}{subsection.3.3}% 34
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Implementation Details}{subsection.3.3}% 35
+\BOOKMARK [1][-]{section.4}{Results}{}% 36
+\BOOKMARK [2][-]{subsection.4.1}{Cross-Validation Performance}{section.4}% 37
+\BOOKMARK [2][-]{subsection.4.2}{Training on 90\045 of Data}{section.4}% 38
+\BOOKMARK [2][-]{subsection.4.3}{Hyper-parameter Uncertainty}{section.4}% 39
+\BOOKMARK [1][-]{section.5}{Conclusion/Discussion}{}% 40
+\BOOKMARK [1][-]{appendix.A}{Derivation of Predictive Distribution}{}% 41
+\BOOKMARK [2][-]{subsection.A.1}{Kernel Formulas}{appendix.A}% 42
+\BOOKMARK [2][-]{subsection.A.2}{Graphs of 4d finalist GPs}{appendix.A}% 43
+\BOOKMARK [2][-]{subsection.A.3}{Model Evaluation Table and graphs}{appendix.A}% 44
+\BOOKMARK [2][-]{subsection.A.4}{Bin}{appendix.A}% 45
+\BOOKMARK [2][-]{subsection.A.5}{MCMC details}{appendix.A}% 46
+\BOOKMARK [2][-]{subsection.A.6}{Noise modeling using Monte Carlo Sampling}{appendix.A}% 47

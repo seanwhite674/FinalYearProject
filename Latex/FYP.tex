@@ -47,9 +47,9 @@
 \begin{document}
 
 \maketitle
-\Sean{Why is this indenting???}
+\Sean{Why is this indenting???}\Sarp{Indent is standard, and looks better in my opinion, but it's your call.}
 \begin{abstract}The gold standard for gravitational waveforms (GW) from merging black holes comes from computationally expensive numerical relativity (NR) simulations. While analytic approximations can greatly reduce costs,
- they are not uniformly accurate across parameter space. To address this, \cite{Ogpaper} introduced a Bayesian framework that selects the most accurate analytic model in each region, requiring mismatch values between models and NR. Instead of running dense,
+ they are not uniformly accurate across parameter space. To address this, Reference~\cite{Ogpaper} introduced a Bayesian framework that selects the most accurate analytic model --- in a given region of the binary black hole parameter space --- based on mismatch values between models and NR. Instead of running dense,
   high-cost NR simulations for these mismatches, we propose a Gaussian Process Regression (GPR) model to predict them.
 We begin by reviewing Gaussian Process fundamentals and systematically evaluating various kernels (RBF, Matern, Rational Quadratic, Laplacian) under both homoscedastic and heteroscedastic noise.
  Using cross-validation on six performance metrics, we rank and select eight finalists. Retraining these on 90\% of the data and testing on a 10\% holdout reveals that our best model—combining RBF
