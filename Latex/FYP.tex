@@ -69,27 +69,33 @@ Our GPR model thus provides a fast, accurate way to estimate mismatches without 
 \section{Gravitational Waves Background}
 \subsection{Plane Wave Solution from General Relativity}
 \label{sec:GRintro}
-Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. In the simplified linearized theory, we assume a flat Minkowski spacetime, and the small fluctuations around it are referred to as gravitational waves. The term ``waves'' is justified since, in an appropriate gauge (specific choices of coordinates), \(h_{\mu\nu}\) satisfies the wave equation. This is described in detail in Gravitational Waves, Vol. 1 by Maggiore~\cite[Sec~ 1.1]{GRbook}.
-Formally we appproach this by expanding Einstein equations around the flat Minkowski metric $\eta _{a b}$ 
+Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. In the simplified linearized theory, we assume a flat (Minkowski) geometry for the background spacetime, and the small fluctuations about it satisfy the wave equation in an appropriate gauge (specific choices of coordinates). This is described in detail in Gravitational Waves, Vol. 1 by Maggiore~\cite[Sec~ 1.1]{GRbook}, we provide brief
+details here.
+
+Formally we start by perturbing the flat Minkowski metric $\eta _{a b}$ by a small amount encoded by
+the metric perturbation $h_{a   b}$
 \begin{equation}
 g_{ab} = \eta_{ab} + \epsilon\,h_{ab},
 \qquad
 \epsilon \ll 1,
 \qquad
-\eta_{ab} = \mathrm{diag}(-1, 1, 1, 1),
+\eta_{ab} = \mathrm{diag}(-1, 1, 1, 1).
 \end{equation}
-where \(h_{ab}\) represents the perturbation. In the linearized regime of general relativity, the Einstein field equations simplify to
+This is then substituted into the Einstein field equation whereby only terms linear in $h_{ab}$ are kept,
+the so-called linearized regime of general relativity. 
+Using the trace-reversed variable $\bar{h}_{ab}:= h_{ab}-\tfrac{1}{2} \eta_{ab} h_c^{\ c}$,
+the Einstein field equation simplifies to
 \begin{equation}
     \Box \bar{h}_{ab} = \frac{-16\pi G}{c^4} T_{ab}.
 \end{equation}
-However we are interested in this equation outside of the source (i.e $T_{ab} =0$) therefore we are left with 
+However we are interested in this equation outside of the source (i.e $T_{ab} =0$), therefore we are left with 
 \begin{equation}
     \Box \bar{h}_{ab} = 0, 
 \end{equation}
 with \(\Box\) the d’Alembertian operator in flat spacetime.
 %
 
-Although \(h_{ab}\) initially has 10 independent components (as a symmetric $4 \times 4$ tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorentz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
+Although \(h_{ab}\) initially has 10 independent components (as a symmetric $4 \times 4$ rank-2 tensor), 8 of these correspond to gauge freedom and constraints. After imposing the Lorenz and transverse-traceless (TT) gauge conditions, only two physical degrees of freedom remain: the plus (\(h_+\)) and cross (\(h_\times\)) polarizations~\cite[Sec.~1.2]{GRbook}.
 This wave equation admits plane-wave solutions. For a wave propagating in the \(z\)-direction, the TT-gauge form of the perturbation is
 \begin{equation}
 h_{ab}^{(\mathrm{TT})} \;\propto\;
