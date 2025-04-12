@@ -1,8 +1,8 @@
-\contentsline {chapter}{\numberline {1}Gravitational Waves Background}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {1}A brief Introduction to Gravitational Waves}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Plane Wave Solution from General Relativity}{1}{section.1.1}%
 \contentsline {subsection}{\numberline {1.1.1}Leading-Order Power Emission by Gravitational Waves}{2}{subsection.1.1.1}%
 \contentsline {subsection}{\numberline {1.1.2}Quasi-circular Inspiral of two Point Masses}{2}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Introducing the Waveform Mismatch}{3}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.3}Introducing the Waveform Mismatch}{4}{subsection.1.1.3}%
 \contentsline {section}{\numberline {1.2}GW Approximation using Bayesian Methods}{4}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Project Motivation}{5}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Data Description}{6}{section.1.4}%

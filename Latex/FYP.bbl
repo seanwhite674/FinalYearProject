@@ -37,12 +37,6 @@ David~Kristjanson Duvenaud.
 \newblock PhD thesis, University of Cambridge, June 2014.
 \newblock Available at \url{https://www.cs.toronto.edu/~duvenaud/thesis.pdf}.
 
-\bibitem{NRfitMT}
-H{\'e}ctor Estell{\'e}s, Marta Colleoni, Cecilio Garc{\'\i}a-Quir{\'o}s, Sascha Husa, David Keitel, Maite Mateu-Lucena, Maria de~Lluc~Planas, and Antoni Ramos-Buades.
-\newblock New twists in compact binary waveform modelling: a fast time domain model for precession.
-\newblock {\em arXiv preprint arXiv:2105.05872}, 2021.
-\newblock URL: \url{https://arxiv.org/abs/2105.05872}.
-
 \bibitem{Ogpaper}
 Charlie Hoy, Sarp Akcay, Jake Mac~Uilliam, and Jonathan~E. Thompson.
 \newblock {Incorporating model accuracy into gravitational-wave Bayesian inference}.
