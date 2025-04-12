@@ -6,22 +6,22 @@
 \contentsline {section}{\numberline {1.2}GW Approximation using Bayesian Methods}{4}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Project Motivation}{5}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Data Description}{6}{section.1.4}%
-\contentsline {chapter}{\numberline {2}Gaussian Process Regression (GPR) Background}{8}{chapter.2}%
+\contentsline {chapter}{\numberline {2}Gaussian Process Regression Background}{8}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Introduction and Roadmap}{8}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Gaussian Proces Regression Background}{8}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}Definition of a Gaussian Process}{8}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}The Prior Distribution}{9}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Kernel Functions}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Kernel Functions}{10}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Building the Posterior Distribution}{12}{section.2.4}%
 \contentsline {section}{\numberline {2.5}Handling Noise in our Data}{13}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Homoscedastic Noise}{14}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}Heteroscedastic Noise}{15}{subsection.2.5.2}%
 \contentsline {subsubsection}{Known Noise:}{15}{section*.13}%
 \contentsline {subsubsection}{Learning Noise over the Input Space:}{15}{section*.14}%
-\contentsline {subsection}{\numberline {2.5.3}Monte Carlo Sampling of Noise}{16}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Comparing Noise Models}{16}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.3}Monte Carlo Sampling of Noise}{15}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}Comparing Noise Models}{15}{subsection.2.5.4}%
 \contentsline {section}{\numberline {2.6}Hyper-parameters}{16}{section.2.6}%
-\contentsline {section}{\numberline {2.7}Quantifying Hyper-parameter Uncertainty}{18}{section.2.7}%
+\contentsline {section}{\numberline {2.7}Quantifying Hyper-parameter Uncertainty}{17}{section.2.7}%
 \contentsline {section}{\numberline {2.8}Multi-Dimensional GPR}{19}{section.2.8}%
 \contentsline {chapter}{\numberline {3}Methods}{20}{chapter.3}%
 \contentsline {section}{\numberline {3.1}The Models}{20}{section.3.1}%
@@ -38,12 +38,13 @@
 \contentsline {chapter}{\numberline {4}Results}{24}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Cross-Validation Performance}{24}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Training on 90\% of Data}{25}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Hyper-parameter Uncertainty}{27}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Hyper-parameter Uncertainty}{28}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Conclusion}{30}{chapter.5}%
-\contentsline {section}{\numberline {.1}Derivation of Predictive Distribution}{33}{section.Alph0.1}%
-\contentsline {subsection}{\numberline {.1.1}Kernel Formulas}{33}{subsection.Alph0.1.1}%
-\contentsline {subsection}{\numberline {.1.2}Graphs of 4d finalist GPs}{35}{subsection.Alph0.1.2}%
-\contentsline {subsection}{\numberline {.1.3}Model Evaluation Table and graphs}{37}{subsection.Alph0.1.3}%
-\contentsline {subsection}{\numberline {.1.4}Bin}{38}{subsection.Alph0.1.4}%
-\contentsline {subsection}{\numberline {.1.5}MCMC details}{40}{subsection.Alph0.1.5}%
-\contentsline {subsection}{\numberline {.1.6}Noise modeling using Monte Carlo Sampling}{40}{subsection.Alph0.1.6}%
+\contentsline {section}{\numberline {5.1}Further work:}{30}{section.5.1}%
+\contentsline {section}{\numberline {.1}Derivation of Predictive Distribution}{34}{section.Alph0.1}%
+\contentsline {subsection}{\numberline {.1.1}Kernel Formulas}{34}{subsection.Alph0.1.1}%
+\contentsline {subsection}{\numberline {.1.2}Graphs of 4d finalist GPs}{36}{subsection.Alph0.1.2}%
+\contentsline {subsection}{\numberline {.1.3}Model Evaluation Table and graphs}{38}{subsection.Alph0.1.3}%
+\contentsline {subsection}{\numberline {.1.4}Bin}{39}{subsection.Alph0.1.4}%
+\contentsline {subsection}{\numberline {.1.5}MCMC details}{41}{subsection.Alph0.1.5}%
+\contentsline {subsection}{\numberline {.1.6}Noise modeling using Monte Carlo Sampling}{41}{subsection.Alph0.1.6}%

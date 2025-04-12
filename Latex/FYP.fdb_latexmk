@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex FYP"] 1744459534.70204 "FYP.aux" "FYP.bbl" "FYP" 1744460007.3094 0
-  "./references.bib" 1744305768 7436 8e4df38a5a01feafb8b1b49721ce8057 ""
-  "FYP.aux" 1744460005 23257 2dbd896bfedcdd69d97da6058e608294 "pdflatex"
-  "c:/texlive/2024/texmf-dist/bibtex/bst/base/acm.bst" 1739279557 21064 c61a48664f3c347ce7f73c1a6a530506 ""
+["bibtex FYP"] 1744478613.19761 "FYP.aux" "FYP.bbl" "FYP" 1744478622.72209 0
+  "./references.bib" 1744469888 7872 9a141e05fe7558dafcc6d402c793c64f ""
+  "FYP.aux" 1744478621 23543 93b8c3e9dd5b7c1794775b83c345bded "pdflatex"
+  "c:/texlive/2024/texmf-dist/bibtex/bst/urlbst/plainurl.bst" 1739299771 33495 46cfb45e24a877059f9f7e142c7fc61c ""
   (generated)
   "FYP.bbl"
   "FYP.blg"
   (rewritten before read)
-["pdflatex"] 1744459999.00301 "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" "FYP.pdf" "FYP" 1744460007.31186 0
-  "FYP.aux" 1744460005 23257 2dbd896bfedcdd69d97da6058e608294 "pdflatex"
-  "FYP.bbl" 1744459983 4149 18eac066cb5b605f374a385802307b53 "bibtex FYP"
-  "FYP.lof" 1744460005 3638 92ef4496e0a6910202c3eb456843a990 "pdflatex"
-  "FYP.lot" 1744460005 1468 81a6a0c8ef45980c894fd38c416bcf08 "pdflatex"
-  "FYP.out" 1744460005 8980 649b28c5f59518a3fe64262633c9a475 "pdflatex"
-  "FYP.tex" 1744459975 105535 5e98147dce18d6c1746296a5b27e7e86 ""
-  "FYP.toc" 1744460005 4426 b203656f36dfa4a908ff4daa233c6078 "pdflatex"
+["pdflatex"] 1744478613.87138 "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" "FYP.pdf" "FYP" 1744478622.72475 0
+  "FYP.aux" 1744478621 23543 93b8c3e9dd5b7c1794775b83c345bded "pdflatex"
+  "FYP.bbl" 1744478613 6085 4b843c4cb984d50708ae3fbbf649509d "bibtex FYP"
+  "FYP.lof" 1744478621 3637 b727d1266285a2c32260501b98166d3f "pdflatex"
+  "FYP.lot" 1744478621 1468 abca5f3750e960868ee0dbddfc02445e "pdflatex"
+  "FYP.out" 1744478621 9064 1ad2b60d94834a08c1cc06d2bd9f184a "pdflatex"
+  "FYP.tex" 1744478585 104137 31c24231fe95e35620f73748aa56d0dc ""
+  "FYP.toc" 1744478621 4495 e38db408166a77d81937b2230785f5b2 "pdflatex"
   "LatexPlots/1dplots/GPR_noise_comparison.png" 1744103520 90772 e3208fa54dad056474a200a07283bac6 ""
   "LatexPlots/1dplots/KernelSample_Laplace_Exponential.png" 1743607264 19503 fd35d798c8b7f675763d59c657241201 ""
   "LatexPlots/1dplots/KernelSample_Linear_Dot_Product.png" 1743607264 7266 1cf202bae6e0cdb3e373231a469b98da ""
@@ -57,7 +57,7 @@
   "LatexPlots/final_gps_plots/gps_rbfmatern_xcuts.png" 1743976990 361796 d7f562c2421aefb4cbc704a85869d54c ""
   "LatexPlots/final_gps_plots/metric_of_finalists_comparison.png" 1744241341 41450 d2cec143e4a18842ca8fc47701aa5f6f ""
   "UCD_Logo.pdf" 1532683748 10918 33058b7ce57a4bbafca460f135c3b1a8 ""
-  "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" 1744459975 105535 5e98147dce18d6c1746296a5b27e7e86 ""
+  "c:/Users/seanw/OneDrive/Desktop/GitHub/FYP/Latex/FYP.tex" 1744478585 104137 31c24231fe95e35620f73748aa56d0dc ""
   "c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1739280170 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1739281794 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1739281101 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""

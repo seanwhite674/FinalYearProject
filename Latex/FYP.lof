@@ -6,7 +6,7 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Visualising the assumptions the kernel encodes into our GP process.}}{10}{figure.caption.8}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Visualising the effect of kernel hyper-parameters.}}{12}{figure.caption.10}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Building the posterior distribution}}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Visualising the effect of noise on samples from the GP prior.}}{15}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Visualising the effect of noise on samples from the GP prior.}}{14}{figure.caption.12}%
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Comparing samples taken from a GP with Homoscedastic noise,Heterscedastic noise and monte carlo sampling of the noise.}}{16}{figure.caption.15}%
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Visualising the log likelihood optimisation surfaces over the model parameters.}}{17}{figure.caption.16}%
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Visualising the posterior distribution of the hyper-parameters using MCMC.}}{18}{figure.caption.17}%
@@ -19,10 +19,10 @@
 \contentsline {figure}{\numberline {4.3}{\ignorespaces Visualising the ranking of each model on the test data.}}{26}{figure.caption.23}%
 \contentsline {figure}{\numberline {4.4}{\ignorespaces Comparing Cross-cuts of best 8 models.}}{27}{figure.caption.24}%
 \contentsline {figure}{\numberline {4.5}{\ignorespaces The hyper-parameter posterior of the best \texttt {RBFMatern} model.}}{28}{figure.caption.26}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Comparing the pointwised \text {RBFMatern} model with an alternative marginalised over its hyper-parmeters.}}{29}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Comparing the pointwise \text {RBFMatern} model with an alternative marginalised over its hyper-parmeters.}}{29}{figure.caption.27}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces \textcolor {orange}{\texttt {TODO: Improve caption}} All 8 gps with cutting their y-axis}}{35}{figure.caption.36}%
-\contentsline {figure}{\numberline {2}{\ignorespaces All 8 gps with cutting their x-axis}}{36}{figure.caption.37}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Examining my chosen model RBF Matern kernel}}{37}{figure.caption.38}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Seeing how the best models performed over different clusters}}{37}{figure.caption.39}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}}{40}{figure.caption.44}%
+\contentsline {figure}{\numberline {1}{\ignorespaces \textcolor {orange}{\texttt {TODO: Improve caption}} All 8 gps with cutting their y-axis}}{36}{figure.caption.36}%
+\contentsline {figure}{\numberline {2}{\ignorespaces All 8 gps with cutting their x-axis}}{37}{figure.caption.37}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Examining my chosen model RBF Matern kernel}}{38}{figure.caption.38}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Seeing how the best models performed over different clusters}}{38}{figure.caption.39}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference. This pipeline samples from the posterior \( p(\theta \mid \mathbf {y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}}{41}{figure.caption.44}%

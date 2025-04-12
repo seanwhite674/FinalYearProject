@@ -1,80 +1,100 @@
 \begin{thebibliography}{10}
 
 \bibitem{linearcombination}
-{\sc Abbott, R., et~al.}
+R.~Abbott et~al.
 \newblock {GWTC-3: Compact Binary Coalescences Observed by LIGO and Virgo during the Second Part of the Third Observing Run}.
+\newblock 2021.
+\newblock URL: \url{https://arxiv.org/abs/2111.03606}, \href {https://arxiv.org/abs/2111.03606} {\path{arXiv:2111.03606}}.
 
 \bibitem{intoGRSarp}
-{\sc Akcay, S.}
+Sarp Akcay.
 \newblock {Forecasting Gamma-Ray Bursts Using Gravitational Waves}.
-\newblock {\em Annalen Phys. 531}, 1 (2019), 1800365.
+\newblock {\em Annalen Phys.}, 531(1):1800365, 2019.
+\newblock \href {https://arxiv.org/abs/1808.10057} {\path{arXiv:1808.10057}}, \href {https://doi.org/10.1002/andp.201800365} {\path{doi:10.1002/andp.201800365}}.
 
 \bibitem{Bayesianapproach}
-{\sc Ashton, G., and Khan, S.}
+Gregory Ashton and Sebastian Khan.
 \newblock Multi-waveform inference of gravitational waves.
-\newblock {\em arXiv e-prints\/} (2019).
+\newblock {\em arXiv e-prints}, 2019.
 \newblock \url{https://arxiv.org/abs/1910.09138}.
+\newblock \href {https://arxiv.org/abs/1910.09138} {\path{arXiv:1910.09138}}.
 
 \bibitem{NRsimulation}
-{\sc Boyle, M., Hemberger, D., Iozzo, D.~A., Lovelace, G., Ossokine, S., Pfeiffer, H.~P., Scheel, M.~A., Stein, L.~C., Woodford, C.~J., Zimmerman, A.~B., Afshari, N., Barkett, K., Blackman, J., Chatziioannou, K., Chu, T., Demos, N., Deppe, N., Field, S.~E., Fischer, N.~L., Foley, E., Fong, H., Garcia, A., Giesler, M., Hebert, F., Hinder, I., Katebi, R., Khan, H., Kidder, L.~E., Kumar, P., Kuper, K., Lim, H., Okounkova, M., Ramirez, T., Rodriguez, S., Rüter, H.~R., Schmidt, P., Szilagyi, B., Teukolsky, S.~A., Varma, V., and Walker, M.}
+Michael Boyle, Daniel Hemberger, Dante~A.B. Iozzo, Geoffrey Lovelace, Serguei Ossokine, Harald~P. Pfeiffer, Mark~A. Scheel, Leo~C. Stein, Charles~J. Woodford, Aaron~B. Zimmerman, Nousha Afshari, Kevin Barkett, Jonathan Blackman, Katerina Chatziioannou, Tony Chu, Nicholas Demos, Nils Deppe, Scott~E. Field, Nils~L. Fischer, Evan Foley, Heather Fong, Alyssa Garcia, Matthew Giesler, Francois Hebert, Ian Hinder, Reza Katebi, Haroon Khan, Lawrence~E. Kidder, Prayush Kumar, Kevin Kuper, Halston Lim, Maria Okounkova, Teresita Ramirez, Samuel Rodriguez, Hannes~R. Rüter, Patricia Schmidt, Bela Szilagyi, Saul~A. Teukolsky, Vijay Varma, and Marissa Walker.
 \newblock The sxs collaboration catalog of binary black hole simulations.
-\newblock {\em Classical and Quantum Gravity 36}, 19 (2019), 195006.
+\newblock {\em Classical and Quantum Gravity}, 36(19):195006, 2019.
+\newblock \href {https://arxiv.org/abs/1904.04831} {\path{arXiv:1904.04831}}, \href {https://doi.org/10.1088/1361-6382/ab34e2} {\path{doi:10.1088/1361-6382/ab34e2}}.
 
 \bibitem{kernelcookbook}
-{\sc Duvenaud, D.}
+David Duvenaud.
 \newblock The kernel cookbook: Advice on covariance functions.
 \newblock \url{https://www.cs.toronto.edu/~duvenaud/cookbook/}, 2014.
 \newblock Accessed: 2024-03-14.
 
 \bibitem{gprthesis}
-{\sc Duvenaud, D.~K.}
+David~Kristjanson Duvenaud.
 \newblock {\em Automatic Model Construction with Gaussian Processes}.
 \newblock PhD thesis, University of Cambridge, June 2014.
 \newblock Available at \url{https://www.cs.toronto.edu/~duvenaud/thesis.pdf}.
 
 \bibitem{NRfitMT}
-{\sc Estell{\'e}s, H., Colleoni, M., Garc{\'\i}a-Quir{\'o}s, C., Husa, S., Keitel, D., Mateu-Lucena, M., de~Lluc~Planas, M., and Ramos-Buades, A.}
+H{\'e}ctor Estell{\'e}s, Marta Colleoni, Cecilio Garc{\'\i}a-Quir{\'o}s, Sascha Husa, David Keitel, Maite Mateu-Lucena, Maria de~Lluc~Planas, and Antoni Ramos-Buades.
 \newblock New twists in compact binary waveform modelling: a fast time domain model for precession.
-\newblock {\em arXiv preprint arXiv:2105.05872\/} (2021).
+\newblock {\em arXiv preprint arXiv:2105.05872}, 2021.
+\newblock URL: \url{https://arxiv.org/abs/2105.05872}.
 
 \bibitem{Ogpaper}
-{\sc Hoy, C., Akcay, S., Mac~Uilliam, J., and Thompson, J.~E.}
+Charlie Hoy, Sarp Akcay, Jake Mac~Uilliam, and Jonathan~E. Thompson.
 \newblock {Incorporating model accuracy into gravitational-wave Bayesian inference}.
+\newblock 9 2024.
+\newblock \href {https://arxiv.org/abs/2409.19404} {\path{arXiv:2409.19404}}.
+
+\bibitem{kernelposterior}
+Namu Kroupa, David Yallup, Will Handley, and Michael Hobson.
+\newblock Kernel-, mean- and noise-marginalised gaussian processes for exoplanet transits and h0 inference, 2023.
+\newblock Preprint.
+\newblock URL: \url{https://arxiv.org/abs/2311.04153}, \href {https://arxiv.org/abs/2311.04153} {\path{arXiv:2311.04153}}.
 
 \bibitem{GRbook}
-{\sc Maggiore, M.}
+Michele Maggiore.
 \newblock {\em Gravitational Waves. Volume 1: Theory and Experiments}.
 \newblock Oxford University Press, Oxford, 2008.
 
 \bibitem{mismatch}
-{\sc Owen, B.~J.}
+Benjamin~J. Owen.
 \newblock Search templates for gravitational waves from inspiraling binaries: Choice of template spacing.
-\newblock {\em arXiv preprint gr-qc/9511032\/} (1995).
+\newblock {\em arXiv preprint gr-qc/9511032}, 1995.
 \newblock Submitted to Physical Review D: November 7, 1995.
+\newblock URL: \url{https://arxiv.org/abs/gr-qc/9511032}.
 
 \bibitem{NRfitMP}
-{\sc Pratten, G., Garc{\'\i}a-Quir{\'o}s, C., Colleoni, M., Ramos-Buades, A., Estell{\'e}s, H., Mateu-Lucena, M., Jaume, R., Haney, M., Keitel, D., Thompson, J.~E., and Husa, S.}
+Geraint Pratten, Cecilio Garc{\'\i}a-Quir{\'o}s, Marta Colleoni, Antoni Ramos-Buades, H{\'e}ctor Estell{\'e}s, Maite Mateu-Lucena, Rafel Jaume, Maria Haney, David Keitel, Jonathan~E. Thompson, and Sascha Husa.
 \newblock Computationally efficient models for the dominant and sub-dominant harmonic modes of precessing binary black holes.
-\newblock {\em arXiv preprint arXiv:2004.06503\/} (2021).
+\newblock {\em arXiv preprint arXiv:2004.06503}, 2021.
+\newblock \href {https://arxiv.org/abs/2004.06503} {\path{arXiv:2004.06503}}.
 
 \bibitem{bestNRfitS}
-{\sc Ramos-Buades, A., Buonanno, A., Estell{\'e}s, H., Khalil, M., Mihaylov, D.~P., Ossokine, S., Pompili, L., and Shiferaw, M.}
+Antoni Ramos-Buades, Alessandra Buonanno, H{\'e}ctor Estell{\'e}s, Mohammed Khalil, Deyan~P. Mihaylov, Serguei Ossokine, Lorenzo Pompili, and Mahlet Shiferaw.
 \newblock {SEOBNRv5PHM: Next generation of accurate and efficient multipolar precessing-spin effective-one-body waveforms for binary black holes}.
-\newblock {\em arXiv e-prints\/} (Mar. 2023).
+\newblock {\em arXiv e-prints}, March 2023.
+\newblock URL: \url{https://arxiv.org/abs/2303.18046}, \href {https://arxiv.org/abs/2303.18046} {\path{arXiv:2303.18046}}.
 
 \bibitem{bible}
-{\sc Rasmussen, C.~E., and Williams, C. K.~I.}
+Carl~Edward Rasmussen and Christopher K.~I. Williams.
 \newblock {\em Gaussian Processes for Machine Learning}.
 \newblock MIT Press, Cambridge, MA, USA, 2006.
+\newblock URL: \url{http://www.gaussianprocess.org/gpml/}.
 
 \bibitem{NRsurrogate}
-{\sc Varma, V., Field, S.~E., Scheel, M.~A., Blackman, J., Gerosa, D., Stein, L.~C., Kidder, L.~E., and Pfeiffer, H.~P.}
+Vijay Varma, Scott~E. Field, Mark~A. Scheel, Jonathan Blackman, Davide Gerosa, Leo~C. Stein, Lawrence~E. Kidder, and Harald~P. Pfeiffer.
 \newblock Surrogate models for precessing binary black hole simulations with unequal masses.
-\newblock {\em arXiv preprint arXiv:1905.09300\/} (2019).
+\newblock {\em arXiv preprint arXiv:1905.09300}, 2019.
+\newblock \href {https://arxiv.org/abs/1905.09300} {\path{arXiv:1905.09300}}.
 
 \bibitem{metrics}
-{\sc Zaman, Q., Alraho, S., and K{\"o}nig, A.}
+Qummar Zaman, Senan Alraho, and Andreas K{\"o}nig.
 \newblock Gaussian process regression based robust optimization with observer uncertainty for reconfigurable self-x sensory electronics for industry 4.0.
-\newblock {\em tm - Technisches Messen 88}, S1 (2021), S83--S88.
+\newblock {\em tm - Technisches Messen}, 88(S1):S83--S88, 2021.
+\newblock URL: \url{https://www.researchgate.net/publication/354225968_Gaussian_Process_Regression_Based_Robust_Optimization_with_Observer_Uncertainty_for_Reconfigurable_Self-x_Sensory_Electronics_for_Industry_40}, \href {https://doi.org/10.1515/teme-2021-0061} {\path{doi:10.1515/teme-2021-0061}}.
 
 \end{thebibliography}
