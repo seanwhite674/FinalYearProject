@@ -10,45 +10,45 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: references.bib
 Warning--empty journal in linearcombination
 Warning--empty journal in Ogpaper
-You've used 16 entries,
+You've used 17 entries,
             2943 wiz_defined-function locations,
-            746 strings with 9651 characters,
-and the built_in function-call counts, 8568 in all, are:
-= -- 830
-> -- 555
+            752 strings with 9761 characters,
+and the built_in function-call counts, 8914 in all, are:
+= -- 867
+> -- 563
 < -- 0
-+ -- 212
-- -- 194
-* -- 607
-:= -- 1353
-add.period$ -- 65
-call.type$ -- 16
-change.case$ -- 141
++ -- 215
+- -- 196
+* -- 616
+:= -- 1398
+add.period$ -- 69
+call.type$ -- 17
+change.case$ -- 145
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 174
-empty$ -- 626
-format.name$ -- 194
-if$ -- 2051
+cite$ -- 19
+duplicate$ -- 183
+empty$ -- 668
+format.name$ -- 196
+if$ -- 2150
 int.to.chr$ -- 0
-int.to.str$ -- 16
+int.to.str$ -- 17
 missing$ -- 15
-newline$ -- 100
-num.names$ -- 32
-pop$ -- 230
+newline$ -- 106
+num.names$ -- 34
+pop$ -- 244
 preamble$ -- 1
-purify$ -- 128
+purify$ -- 131
 quote$ -- 0
-skip$ -- 492
+skip$ -- 521
 stack$ -- 0
-substring$ -- 152
-swap$ -- 38
+substring$ -- 157
+swap$ -- 39
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 64
 warning$ -- 2
-while$ -- 36
-width$ -- 18
-write$ -- 206
+while$ -- 38
+width$ -- 19
+write$ -- 218
 (There were 2 warnings)

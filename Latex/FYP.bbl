@@ -91,6 +91,12 @@ Vijay Varma, Scott~E. Field, Mark~A. Scheel, Jonathan Blackman, Davide Gerosa, L
 \newblock {\em arXiv preprint arXiv:1905.09300}, 2019.
 \newblock \href {https://arxiv.org/abs/1905.09300} {\path{arXiv:1905.09300}}.
 
+\bibitem{githubrepo}
+Sean White.
+\newblock Final year project, 2025.
+\newblock Accessed: 2025-04-12.
+\newblock URL: \url{https://github.com/seanwhite674/FinalYearProject}.
+
 \bibitem{metrics}
 Qummar Zaman, Senan Alraho, and Andreas K{\"o}nig.
 \newblock Gaussian process regression based robust optimization with observer uncertainty for reconfigurable self-x sensory electronics for industry 4.0.
