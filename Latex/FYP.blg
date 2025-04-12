@@ -5,45 +5,45 @@ The style file: acm.bst
 Database file #1: references.bib
 Warning--empty journal in linearcombination
 Warning--empty journal in Ogpaper
-You've used 14 entries,
+You've used 15 entries,
             2253 wiz_defined-function locations,
-            612 strings with 7542 characters,
-and the built_in function-call counts, 5572 in all, are:
-= -- 464
-> -- 488
+            617 strings with 7718 characters,
+and the built_in function-call counts, 5786 in all, are:
+= -- 487
+> -- 495
 < -- 0
-+ -- 200
-- -- 184
-* -- 505
-:= -- 1017
-add.period$ -- 43
-call.type$ -- 14
-change.case$ -- 131
++ -- 203
+- -- 186
+* -- 518
+:= -- 1059
+add.period$ -- 47
+call.type$ -- 15
+change.case$ -- 134
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 131
-empty$ -- 290
-format.name$ -- 184
-if$ -- 1044
+cite$ -- 17
+duplicate$ -- 141
+empty$ -- 305
+format.name$ -- 186
+if$ -- 1085
 int.to.chr$ -- 0
-int.to.str$ -- 14
+int.to.str$ -- 15
 missing$ -- 15
-newline$ -- 74
-num.names$ -- 28
-pop$ -- 129
+newline$ -- 80
+num.names$ -- 30
+pop$ -- 131
 preamble$ -- 1
-purify$ -- 119
+purify$ -- 122
 quote$ -- 0
-skip$ -- 79
+skip$ -- 85
 stack$ -- 0
-substring$ -- 136
-swap$ -- 26
+substring$ -- 141
+swap$ -- 28
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 52
+type$ -- 56
 warning$ -- 2
-while$ -- 32
-width$ -- 16
-write$ -- 138
+while$ -- 34
+width$ -- 17
+write$ -- 151
 (There were 2 warnings)

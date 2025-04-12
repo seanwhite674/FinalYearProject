@@ -14,7 +14,8 @@
 \PassOptionsToPackage{a4paper,left=30mm,top=20mm,right=20mm,bottom=30mm}{geometry}
 
 % Use 12pt fonts
-\PassOptionsToClass{12pt}{report}
+%%% changed to 10
+\PassOptionsToClass{10pt}{report}
 
 % Based off the report class, 12pt font
 \LoadClass{report}
@@ -27,7 +28,7 @@
 % Enable \url{}
 \RequirePackage{url}
 
-\RequirePackage[square,numbers]{natbib}
+% \RequirePackage[square,numbers]{natbib}
 
 % Fancy headers
 \RequirePackage{fancyhdr}

@@ -26,6 +26,12 @@
 \newblock \url{https://www.cs.toronto.edu/~duvenaud/cookbook/}, 2014.
 \newblock Accessed: 2024-03-14.
 
+\bibitem{gprthesis}
+{\sc Duvenaud, D.~K.}
+\newblock {\em Automatic Model Construction with Gaussian Processes}.
+\newblock PhD thesis, University of Cambridge, June 2014.
+\newblock Available at \url{https://www.cs.toronto.edu/~duvenaud/thesis.pdf}.
+
 \bibitem{NRfitMT}
 {\sc Estell{\'e}s, H., Colleoni, M., Garc{\'\i}a-Quir{\'o}s, C., Husa, S., Keitel, D., Mateu-Lucena, M., de~Lluc~Planas, M., and Ramos-Buades, A.}
 \newblock New twists in compact binary waveform modelling: a fast time domain model for precession.

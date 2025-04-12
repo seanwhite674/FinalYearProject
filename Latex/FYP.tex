@@ -1,5 +1,6 @@
-\documentclass[10pt]{article}
+\documentclass[10pt]{ucdgradtaughtthesis}
 \usepackage{multirow}
+\usepackage{pdfpages}
 %%\PassOptionsToPackage{a4paper,left=30mm,top=20mm,right=20mm,bottom=30mm}{geometry}
 %\usepackage[backend=biber,style=numeric]{biblatex} % Use biblatex with numeric citations
 \usepackage{geometry}  % Use the geometry package
@@ -26,6 +27,8 @@
 \usepackage{adjustbox}
 \usepackage{makecell}
 \usepackage{csvsimple}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 \usepackage{amssymb}
 \usepackage{setspace}
 
@@ -35,19 +38,38 @@
 \newcommand{\todo}[1]{\textcolor{orange}{\texttt{TODO: #1}}}
 
 
+\lhead{\fancyplain{}{\textbf{\large\leftmark}}}
+\rhead{\fancyplain{}{\textbf{\large\rightmark}}}
+\setlength{\headheight}{30pt}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter. #1}{}}
+\renewcommand{\sectionmark}[1]{\markboth{}{\thesection.#1}}
 
-\usepackage{cite} % For citation handling
+
 \bibliographystyle{acm}  
  % without .bib extension
 
-\title{FYP }
-\author{Sean White}
-\date{January 2025}
+
+
+ \title{Thesis title}
+ \author{Student Name}
+ 
+ \degree{BSc Applied and Computational Mathematics}
+ 
+ \college{Science}
+ \school{School of Mathematics and Statistics\\and\\Supervisor's School (if different)}
+ 
+ \supervisor{Supervisor Name\\&Second Supervisor Name (if applicable)}
+ 
+ \thesisdate{\today}
+
+
 
 \begin{document}
+\pagestyle{plain}
+
 
 \maketitle
-\Sean{Why is this indenting???}\Sarp{Indent is standard, and looks better in my opinion, but it's your call.}
+
 \begin{abstract}The gold standard for gravitational waveforms (GW) from merging black holes comes from computationally expensive numerical relativity (NR) simulations. While analytic approximations can greatly reduce costs,
  they are not uniformly accurate across parameter space. To address this, \cite{Ogpaper} introduced a Bayesian framework that selects the most accurate analytic model in each region, requiring mismatch values between models and NR. Instead of running dense,
   high-cost NR simulations for these mismatches, we propose a Gaussian Process Regression (GPR) model to predict them.
@@ -60,12 +82,19 @@ Our GPR model thus provides a fast, accurate way to estimate mismatches without 
  This approach fits seamlessly into NR-informed strategies for parameter estimation, paving the way for more efficient and precise characterization of gravitational-wave signals from merging black holes.
 \end{abstract}
 
-\newpage
+\chapter*{Acknowledgments}
+I would like to thank .....
 
 \tableofcontents
+\listoffigures
+\listoftables
 
-\newpage
+% Normal Chapters. Switch to arabic numbers and turn headers on
+\clearpage
+\pagenumbering{arabic}
+\pagestyle{fancy}
 
+\chapter{Intro}
 \section{Gravitational Waves Background}
 \subsection{Plane Wave Solution from General Relativity}
 \label{sec:GRintro}
@@ -324,8 +353,8 @@ the existing techniques.
 \Sean{Is it possible for you to send cleaner image to me?.}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{LatexPlots/Sarppaperprojectmotivation.png}
-    \caption{Contour plots showing the ratio of mismatches with respect to NR simulations, for different effective parallel and perpendicular spin components, averaged over a range of mass ratios. 
+    \includegraphics[width=\textwidth]{LatexPlots/HoyFigure2.pdf}
+    \caption[Motivating NR Method Figure]{Contour plots showing the ratio of mismatches with respect to NR simulations, for different effective parallel and perpendicular spin components, averaged over a range of mass ratios. 
     The left plot shows \( \mathcal{M}(\textsc{IMRPhenomXPHM}) / \mathcal{M}(\textsc{SEOBNRV5PHM}) \), and the right shows \( \mathcal{M}(\textsc{IMRPhenomTPHM}) / \mathcal{M}(\textsc{SEOBNRV5PHM}) \).}
     \label{fig:projectmotivation}
 \end{figure}
@@ -408,8 +437,7 @@ where \(x\), \(y\), \(z\), and \(w\) are the scaled inputs used in our GPR frame
 
 
 
-
-
+\chapter{Theory}
 \section{Gaussian Process Regression \textbf{GPR} Background}
 \subsection{Introduction and Roadmap}
 
@@ -1008,7 +1036,7 @@ This procedure allows the final predictive distribution to reflect both data noi
 
 \subsection{Multi-Dimensional GPR}
 To model functions with multiple input dimensions, a common approach is to construct kernels that operate over each input dimension individually
-and then combine them by multiply them. For example, multiplying RBF kernels defined on each input dimension yields a multi-dimensional RBF kernel.
+and then combine them by multiply them [\cite{bible},\cite{gprthesis}]. For example, multiplying RBF kernels defined on each input dimension yields a multi-dimensional RBF kernel.
 A specific case of this is the RBF-ARD (Automatic Relevance Determination) kernel, which assigns a separate lengthscale parameter \( \ell_d \) to each input dimension \( d \). Since an RBF ultilises an exponential function
 the product of the kernel can be written as the exponential of the sum of the different dimension. Figure~\ref{fig:2dkernels} shows how different kernels with different length-scales can combine to produce a kernel in higher dimensions.
 \begin{equation}
@@ -1027,7 +1055,7 @@ the product of the kernel can be written as the exponential of the sum of the di
     \label{fig:2dkernels}
 \end{figure}
 
-
+\chapter{Methods}
 \section{Method}
 \begin{figure}[H]
     \centering
@@ -1166,6 +1194,7 @@ For MCMC sampling, I used the \texttt{emcee} package. Interpolation was performe
 %
 %
 %
+\chapter{Results}
 \section{Results}
 \subsection{Cross-Validation Performance}
 \Sean{Is using we/I ok here???}
@@ -1305,6 +1334,7 @@ formed by the marginalised model result in a lower FOM.
     \label{tab:pointwise_vs_mcmc}
 \end{table}
 %
+\chapter{Conclusion}
 \section{Conclusion/Discussion}
 \Sean{Going to de-ai this.}
 Ideally, we would compute the full hyperparameter posterior for each candidate model and marginalise over it to capture uncertainties in our predictions. However, this approach is not computationally practical for our problem setting, in which fast and accurate parameter estimates are paramount (e.g., for the NR-informed model). Consequently, we need a model that balances predictive accuracy with computational efficiency.
