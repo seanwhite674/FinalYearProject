@@ -14,7 +14,7 @@
 \PassOptionsToPackage{a4paper,left=30mm,top=20mm,right=20mm,bottom=30mm}{geometry}
 
 % Use 12pt fonts
-%%% changed to 10
+%%% changed between 10 and 12
 \PassOptionsToClass{10pt}{report}
 
 % Based off the report class, 12pt font
