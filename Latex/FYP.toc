@@ -40,7 +40,7 @@
 \contentsline {section}{\numberline {4.2}Training on 90\% of Data}{25}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Hyper-parameter Uncertainty}{28}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Conclusion}{30}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Further work:}{30}{section.5.1}%
+\contentsline {section}{\numberline {5.1}Further work:}{31}{section.5.1}%
 \contentsline {section}{\numberline {.1}Derivation of Predictive Distribution}{34}{section.Alph0.1}%
 \contentsline {subsection}{\numberline {.1.1}Kernel Formulas}{34}{subsection.Alph0.1.1}%
 \contentsline {subsection}{\numberline {.1.2}Graphs of 4d finalist GPs}{36}{subsection.Alph0.1.2}%
