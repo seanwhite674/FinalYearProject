@@ -104,7 +104,6 @@ I would like to thank .....
 \chapter{A brief Introduction to Gravitational Waves}
 \section{Plane Wave Solution from General Relativity}
 \label{sec:GRintro}
-\todo{Consistent I/we}
 Gravitational waves (GWs) are small fluctuations of spacetime that propagate at the speed of light. In the simplified linearized theory, we assume a flat (Minkowski) geometry for the background spacetime, and the small fluctuations about it satisfy the wave equation in an appropriate gauge (specific choices of coordinates). This is described in detail in Gravitational Waves, Vol. 1 by Maggiore~\cite[Sec~ 1.1]{GRbook}, we provide brief
 details here.
 
@@ -469,13 +468,13 @@ In practice, we approximate the process by evaluating the GP at a finite set of 
 These function values are then assumed to follow a multivariate normal Gaussian distribution.
 %
 Mathematically, for a finite set of input points
-\begin{equation}
+\begin{equation*}
 X = \{X_1, X_2, \dots, X_n\},
-\end{equation}
+\end{equation*}
  the corresponding function values
-\begin{equation}
+\begin{equation*}
 f = \{f(X_1),f(X_2),...,f(X_n)\},
-\end{equation}
+\end{equation*}
 follow a multivariate normal distribution
 \begin{equation}
 f \sim \mathcal{N}\left(\mu(X), K(X, X)\right).
@@ -620,7 +619,7 @@ In the following subsections, we explore each of these kernels in detail and dis
         Each column shows the kernel shape $k(x, x')$, samples from the corresponding GP prior, and a summary of the structure it imposes. 
         All kernels were evaluated using a lengthscale parameter $\ell = 1$ (except where noted). 
         For the Matern kernel, $\nu = 0.5$; Laplace kernel, $\gamma = 6$; Rational Quadratic kernel, $\alpha = 0.25$; and Periodic kernel, period $p = 2$.
-        Detailed formula each kernel are provided in the appendix \ref{appendix:B}.\\Note: In practice, we scale each kernel by a signal variance hyperparameter \(\sigma_f^2\), which governs the overall vertical variation in the function.
+        Detailed formula each kernel are provided in the appendix \ref{appendix:kernel_formula}.\\Note: In practice, we scale each kernel by a signal variance hyperparameter \(\sigma_f^2\), which governs the overall vertical variation in the function.
         This scaling is applied consistently across all kernel types and accounts for the amplitude of the wave.
         }
     \label{tab:kernel-examples}
@@ -656,7 +655,7 @@ We have discussed how our prior distribution is dependent on the choice of kerne
 we will discuss how we can update our prior distribution (Eqn.~\eqref{eq: Multivariate prior}) to achieve our new prediction distribution distribution from which we can make
 inferences. One of the key strengths of Gaussian Processes is that, given observations at training inputs \(X\) and setting kernel hyperparameters \(\theta\)
 we can make predictive inferences about the function value at any new test location \(x_*\).
-By applying the standard conditional Gaussian formulas (see appendix \ref{appendix:A} derivation details),
+By applying the standard conditional Gaussian formulas (see appendix \ref{appendix:predictive-dist} derivation details),
 the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and given by:
 %
 \begin{subequations}
@@ -855,11 +854,11 @@ From Eqn.~\eqref{eq: prior_withnoise}, our observed data is distributed as:
 y \sim \mathcal{N}(0, K + \Sigma I),
 \]
 the corresponding marginal likelihood for a multivariate Gauusian distribution is:
-\[
+\begin{equation}
 p(y \mid X, \theta) = \frac{1}{(2\pi)^{n/2} \,\lvert K_y \rvert^{1/2}} 
 \exp\!\Bigl(-\tfrac12\,y^\top K_y^{-1} y\Bigr), 
 \quad\!\text{where}\quad K_y = K + \Sigma I.
-\]
+\end{equation}
 Taking the logarithm yields:
 \begin{equation}\label{eq: 5}
 \log p(y \mid X, \theta) 
@@ -921,7 +920,7 @@ An example of this is done in figure~\ref{fig:MCMCresults}.
     \caption[Visualising the posterior distribution of the hyperparameters using MCMC.]{
     Results from an MCMC run using a Gaussian Process Regression model with an RBF kernel and a WhiteKernel to model noise. We used the point estimates from Figure~\ref{fig:Optimising_Hyperparams} as the starting point 
     for our samples. We sampled the parameter space using 12 walkers and taking 1000 steps with each walker. We discarded 100 of the initialed samples and thinned every 15 resulting in 720 final samples. 
-    (For more details on this implementation refer to the Appendix \todo{MCMC appendix}.)
+    (For more details on this implementation refer to the appendix \ref{appendix:MCMC}.)
     Using these samples we plot the approximate posterior distributions for each hyperparameter. 
     the vertical red, blue and green lines indicate peak, mean, and pointwise estimates respectively.}
     \label{fig:MCMCresults}
@@ -952,24 +951,32 @@ This procedure allows the final predictive distribution to reflect both data noi
 
 \section{Multi-Dimensional GPR}
 \label{sec:multidims}
-\todo{Improve or link better}
-To model functions with multiple input dimensions, a common approach is to construct kernels that operate over each input dimension individually
-and then combine them by multiply them [\cite{bible},\cite{gprthesis}]. For example, multiplying RBF kernels defined on each input dimension yields a multi-dimensional RBF kernel.
+To model functions with multiple input dimensions, a common approach is to multiply together kernels defined on each individual input dimension [\cite{bible},\cite{gprthesis}]. For example, multiplying RBF kernels defined on each input dimension yields a multi-dimensional RBF kernel.
 A specific case of this is the RBF-ARD (Automatic Relevance Determination) kernel, which assigns a separate lengthscale parameter \( \ell_d \) to each input dimension \( d \). Since an RBF ultilises an exponential function
-the product of the kernel can be written as the exponential of the sum of the different dimension. Figure~\ref{fig:2dkernels} shows how different kernels with different length-scales can combine to produce a kernel in higher dimensions.
+the product of the kernel can be written as the exponential of the sum of the different dimensions such that:
 \begin{equation}
     k(\mathbf{x}, \mathbf{x}') 
     = \sigma_f^2 \prod_{d=1}^D \exp\left( -\frac{1}{2} \frac{(x_d - x_d')^2}{\ell_d^2} \right)
-    = \sigma_f^2 \exp\left( -\frac{1}{2} \sum_{d=1}^D \frac{(x_d - x_d')^2}{\ell_d^2} \right)
+    = \sigma_f^2 \exp\left( -\frac{1}{2} \sum_{d=1}^D \frac{(x_d - x_d')^2}{\ell_d^2} \right).
 \end{equation}
-    
+%
+
+Figure~\ref{fig:2dkernels} shows how different kernels with different length-scales can combine to produce a kernel in higher dimensions.
+The first kernel has a short length scale and results in a sharply peaked distribution over inputs. The second kernel, with a longer length scale, varies much smoother over inputs.
+When sampling from this GP prior with mean zero and covariance determined by the product of these kernels we see that along the \(x_1\) axis the function is noisey with multiple divets. 
+In contrast along the \(x_2\) axis the surface produces a smoother alomst quadratic curve.
+This shows how the RBF-ARD kernel can encode and combine relationships over different input parameters.
+
+In higher dimensions our noise modelling strategies remain the same, however the hyperparameter optimisation process becomes more difficult since
+there are more dimensions and parameters to balance.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{LatexPlots/final_gps_plots/2dkernels.png}
     \caption[Visualising the construction of a multi-dimensional kernel.]{
-    Visualisation of constructing a two-dimensional kernel by multiplying two one-dimensional RBF kernels, each operating on a separate input dimension. Both kernels use a length scale of \(\ell = 0.3\). 
-    The resulting product kernel models smooth interactions across both dimensions, and a sample drawn from the corresponding GP prior is shown.}
+    Visualisation of constructing a two-dimensional kernel by multiplying two one-dimensional RBF kernels, each operating on a separate input dimension. Kernel 1 and 2 have length scales \(\ell = 0.1 \text{ and } 3\) respectively and both having signal variance \(\sigma_f^2 = 1\). 
+    We plot the resulting product kernel over a fixed point \((0.5,0)\) to visualise how the correlation of inputs varies of the space with reference to this point.
+    There exists sharper behaviour across dimension 1 and smoother behaviour across dimension 2. The final plot is a sample drawn from the corresponding GP prior with mean zero and covariance decided by the product kernel.}
     \label{fig:2dkernels}
 \end{figure}
 
@@ -1124,17 +1131,17 @@ To ensure reproducibility, I consistently set the random seed to 42 throughout a
 \chapter{Results}
 \section{Cross-Validation Performance}
 The cross validation results for all model types discussed in Section~\ref{subsec:Models} are visualised in Figure~\ref{fig:broad_comparison}. A few notable observations emerge. Firstly, the \texttt{montecarlo} noise modeling method performs poorly.
-This may be due to the fact that the noise associated with our data is relatively large. When sampling different noise levels, this results in a mixture of large- and small-noise systems whose effects, when averaged, tend to cancel out—leading to overly generalised predictions.
+This may be due to the fact that the noise associated with our data is relatively large. When sampling different noise levels, this results in a mixture of large and small noise systems whose effects, when averaged, tend to cancel out—leading to overly generalised predictions.
 We also find that interestingly incorporating the true noise in our GP results in worse performance than learning the noise as a hyperparameter.
 This is evident by the relatively poor results from \texttt{fixedalpha}, and the slightly improved, but still limited, performance of \texttt{hybrid}.
-We conclude that learning the noise via a hyperparameter is the most effective approach for our models.
+We conclude that learning the noise via a hyperparameter is the most effective approach examined so far (Note:We haven't included the combined kernel yet).
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{LatexPlots/CV_plots/metrics_compared.png}
     \caption[Comparing average metrics over all cross validation folds between all model types.]{Comparison of the average performance of each model type and for each kernel across all 10 folds of the training/validation data for each metric. Note: The \texttt{combinedkernel} approach is excluded here for clarity, but is included in all subsequent evaluations.}
     \label{fig:broad_comparison}
 \end{figure}
-The average rank of each model across all metrics is presented in Table~\ref{tab:rankingtable} and all the plots in Figure~\ref{fig:CV_sidebyside} label the models as their final ranking in this table.
+The average rank of each model (including combined kernel now) across all metrics is presented in Table~\ref{tab:rankingtable} and all the plots in Figure~\ref{fig:CV_sidebyside} label the models as their final ranking in this table.
 The heatmap in Figure~\ref{fig:CV_sidebyside} (left) illustrates the rankings by metric, showing that most rankings are fairly consistent. To explore this further, a dendrogram of pairwise distances based on the correlation of metric rankings is plotted in Figure~\ref{fig:CV_sidebyside} (middle).
 The dendrogram highlights three clusters of metrics with different ranking behaviors: the first cluster (including \(R^2\), adjusted \(R^2\), RMSE, and Pearson) ranks models similarly, while the MAE rankings differ slightly, 
 and the FOM rankings vary significantly. This pattern is also evident in the heatmap, where FOM colors stand out from the other metrics.
@@ -1165,13 +1172,16 @@ From Table~\ref{tab:finalmadelsrankingtable} we can see that these top 3 models 
     The Rankings are given in Table~\ref{tab:finalmadelsrankingtable}.}
     \label{fig:comparing_metrics}
 \end{figure}
-\todo{reword interpretation, review at least}
 Plotting the top 8 model predictions for various cross-cuts in Figure~\ref{fig:crosscuts_bestmodels}, we observe that while all models perform well, they differ in how they handle local noise.
 The \texttt{RBFMat} model remains smooth in regions with sparse data and then responds sharply in regions containing outliers or local irregularities.
-This behaviour is reflected in its optimized hyperparameters (Table~\ref{tab:final_gpr_hyperparams}). The RBF component has long characteristic length scales (around 1.0--1.5) and a large scale factor ($2.34$),
-which captures the global smooth structure of the data. Meanwhile, the Matern component has much shorter length scales (mostly $< 0.5$) and a smaller scale ($0.207$), allowing it to respond to local variability—effectively modeling input-dependent noise.
-Examining models that use a single kernel and a constant noise hyperparameter we see that the optimised noise hyperparameter is very small with \(\sigma_n^2 \ll 0.01\). For the models with tighter noise bounds (\texttt{minmaxerr})the optimiser always opts for the same lower noise bound. The loser bound models (\texttt{noerr})
-also results in small noise hyperparameter values. This suggests that the GP is compensating for noise directly through the kernel, not through the explicit noise model. This provides further credibility to the \texttt{RBFMat} combined model, where the noise appears to be effectively captured within the Matern kernel.
+This behaviour is reflected in its optimized hyperparameters (Table~\ref{tab:final_gpr_hyperparams}). The RBF component has long characteristic length scales (around 1.0--1.5) and a signal variance weighting \((\sigma_{f,1}^2 =2.34)\),
+which captures the global smooth structure of the data. Meanwhile, the Matern component has much shorter length scales (mostly $< 0.5$) and a smaller \(\sigma_{f,2}^2 = 0.207\), allowing it to respond to local variability, effectively modeling input-dependent noise.
+%
+
+Examining models that use a single kernel and a constant noise hyperparameter we see that the optimised noise hyperparameter is very small with \(\sigma_n^2 \ll 0.01\). For the models with tighter noise bounds (\texttt{minmaxerr}) the optimiser always opts for the same lower noise bound. The models with looser noise bounds (\texttt{noerr})
+also result in small noise hyperparameter values. This suggests that the GP is compensating for noise directly through the kernel, not through the explicit noise model. This provides further credibility to the \texttt{RBFMat} combined model, where the noise appears to be effectively captured within the Matern kernel hyperparameters.
+%
+
 Finally, examining Laplacian-based kernel models (\texttt{Laplace\_noerr} and \texttt{Laplace\_minmaxerr}), which only have a single hyperparameter ($\gamma$), they still perform reasonably well but tend to produce more linear predictions. This is likely due to their limited flexibility compared to other kernels.
 Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metrics} and our qualitative examination of the crosscuts in Figure~\ref{fig:crosscuts_bestmodels}, we see that the \texttt{RBFMat} model offers the best trade-off between flexibility, interpretability, and robustness.
 %
@@ -1211,7 +1221,12 @@ The Length scales are the corresponding length scales for each dimension and the
 \end{table}
 
 \section{Hyperparameter Uncertainty}
-We construct the posterior distribution over the \texttt{RBFMatern} model's hyperparameters using MCMC sampling. As shown in Figure~\ref{fig:MCMCRBFMatern}, it is evident that the RBF kernel is capturing the long length scale smooth variations in the data. This is evident since the RBF length span larger \(\ell\) values than those of the Matern kernel posterior.
+We construct the posterior distribution over the \texttt{RBFMatern} model's hyperparameters using MCMC sampling. As shown in Figure~\ref{fig:MCMCRBFMatern}, 
+it is evident that the RBF kernel is capturing the long length scale smooth variations in the data. This is evident since the RBF length scales span larger \(\ell\) values than those of the Matern kernel hyperparameter posteriors.
+We can see that while the RBF kernel length scales between dimensions are very similar there is a larger deviation with the Matern kernel length scale paramaters.
+\(\ell_5\) and \(\ell_6\) are comparitevely small indicating a large amount of the noise in the data is associated with the x and y dimensions which are the transformed spin vector components.
+This gives us intuition backed up from the graphs in appendix \todo{reference graphs} that x and y lead to larger changes in the mismatch than the Symmetric and total Mass. 
+
 Furthering examining the distributions, we find that some parameters - such as \((\sigma_{f,2}^2, \ell_5,\ell_1)\)- have sharply peaked distributions with low variance,indicating relatively low uncertainty in their posterior distribution. 
 In contrast parameters such as \(\sigma_{f,1}^2 , \ell_8\) exhibit nearly bi-model distributions with large variance, demonstrating that these regions of the hyperparameter space are highly uncertain.
 
@@ -1324,7 +1339,7 @@ resulting in too slow predictions for practical use.
 \newpage
 \chapter{Appendix}
 \section{Derivation of Predictive Distribution}
-\label{appendix:A}
+\label{appendix:predictive-dist}
 Using Bayes' Theorem applied to continuous probabilities, we have:
 \[
 p(f_* | f) = \frac{p(f_*, f)}{p(f)}.
@@ -1379,7 +1394,7 @@ p(f) = \frac{1}{\sqrt{2\pi} |K|^{1/2}}
 
 
 \section{Kernel Formulas}
-\label{appendix:B}
+\label{appendix:kernel_formula}
 \subsubsection*{Radial Basis Function (RBF) Kernel}
 \[
 k(x, x') = \sigma_f^2 \exp\left( -\frac{(x - x')^2}{2\ell^2} \right)
@@ -1452,6 +1467,7 @@ This integral is intractable so we approximate it using Monte Carlo integration 
 
 
 \section{MCMC details}
+\label{appendix:MCMC}
 \subsection*{Implementing MCMC}
 \begin{figure}[H]
     \centering
@@ -1473,7 +1489,7 @@ To ensure convergence and sample independence, we discard the first 100 samples 
 
 
 \section{Graphs of 4d finalist GPs}
-\label{appendix:C}
+\label{appendix:4d_finalists}
 
 
 \begin{figure}[H]
@@ -1500,7 +1516,7 @@ To ensure convergence and sample independence, we discard the first 100 samples 
 
 
 \section{Model Evaluation Table and graphs}
-\label{appendix:D}
+\label{appendix:model_eval_tables}
 
 \begin{figure}[H]
     \centering
