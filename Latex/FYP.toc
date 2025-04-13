@@ -47,5 +47,5 @@
 \contentsline {section}{\numberline {6.3}Noise modeling using Monte Carlo Sampling}{35}{section.6.3}%
 \contentsline {section}{\numberline {6.4}MCMC details}{36}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Graphs of 4d finalist GPs}{38}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Model Evaluation Table and graphs}{40}{section.6.6}%
-\contentsline {section}{\numberline {6.7}Bin}{41}{section.6.7}%
+\contentsline {section}{\numberline {6.6}Model Evaluation Table and graphs}{41}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Bin}{42}{section.6.7}%
