@@ -1132,9 +1132,9 @@ To ensure reproducibility, the random seed was consitently set to 42. All code i
 \section{Cross-Validation Performance}
 The cross validation results for all model types discussed in Section~\ref{subsec:Models} are visualised in Figure~\ref{fig:broad_comparison}. A few notable observations emerge. Firstly, the \texttt{montecarlo} noise modeling method performs poorly.
 This may be due to the fact that the noise associated with our data is relatively large. When sampling different noise levels, this results in a mixture of large and small noise systems whose effects, when averaged, tend to cancel out—leading to overly generalised predictions.
-We also find that interestingly incorporating the true noise in our GP results in worse performance than learning the noise as a hyperparameter.
-This is evident by the relatively poor results from \texttt{fixedalpha}, and the slightly improved, but still limited, performance of \texttt{hybrid}.
-We conclude that learning the noise via a hyperparameter is the most effective approach examined so far (Note:We haven't included the combined kernel yet).
+Interestingly we find that incorporating the known noise directly into the GPR model (by adding to diagonal of covariance matrix) leads to poorer performance across the metrics, compared to models where the noise is learned as a hyperparameter.
+This is evident by the relatively poor results from the \texttt{fixedalpha} models, and the slightly improved, but still limited, performance of \texttt{hybrid} models.
+We conclude that learning the noise via a hyperparameter is the most effective approach examined so far (Note:We haven't included the combined kernel models yet).
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{LatexPlots/CV_plots/metrics_compared.png}
@@ -1169,7 +1169,7 @@ From Table~\ref{tab:finalmadelsrankingtable} we can see that these top 3 models 
     \includegraphics[width=\textwidth]{LatexPlots/final_gps_plots/metric_of_finalists_comparison.png}
     \caption[Visualising the ranking of each model on the test data.]{Left: Heatmap of top 8 model rankings by metric indexed by ranking.
     Right: Scatter of FOM against \(R^2\) with the colour bar representing the RMSE.
-    The Rankings are given in Table~\ref{tab:finalmadelsrankingtable}.}
+    The Rankings are given in Table~\ref{tab:finalmadelsrankingtable}.We also plotted a box-plot of the metrics calculated at each fold available at \ref{fig:boxplots}. }
     \label{fig:comparing_metrics}
 \end{figure}
 Plotting the top 8 model predictions for various cross-cuts in Figure~\ref{fig:crosscuts_bestmodels}, we observe that while all models perform well, they differ in how they handle local noise.
@@ -1189,9 +1189,9 @@ Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metr
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/gps_crosscuts_bestmodels.png}
     \caption[Comparing Cross-cuts of best 8 models.]{Comparing Cross-cuts of best 8 models. Each models hyperparameters can be found in Table~\ref{tab:final_gpr_hyperparams}. 
-    Recall that $z=1\ (z=-1)$ corresponds to mass ratio of $q=1\ (q=1/4)$, and similarly $w=0.25$ corresponds to $M_\text{tot}=37.5M_\odot$. The blue shaded region indicates the 95\% credible region for each model
-    and the blue line is posterior mean. Blue scatter points represent training inputs and orange are test points.In the appendix we plot 2d visualisations
-    of the relative error of the \texttt{RBFMatern} in Figure~\ref{fig:Visualising_rel_error}.We also plot cross-cuts visualising differnt cuts such as holding y fixed and varying x in \todo{ref}.}
+    Recall that $z=1\ (z=-1)$ corresponds to mass ratio of $q=1\ (q=1/4)$, and similarly $w=0.25$ corresponds to $M_\text{tot}=37.5M_\odot$. The blue shaded region indicates the 90\% credible region for each model
+    and the blue line is posterior mean. Blue scatter points represent training inputs and orange are test points. In the appendix we plot 2d visualisations
+    of the relative error of the \texttt{RBFMatern} in Figure~\ref{fig:Visualising_rel_error}.We also plot multiple cross-cuts varying over \(y\) in \ref{fig:RBF_Matern_xcuts}}
     \label{fig:crosscuts_bestmodels}
 \end{figure}
 
@@ -1222,17 +1222,17 @@ The Length scales are the corresponding length scales for each dimension and the
 
 \section{Hyperparameter Uncertainty}
 We construct the posterior distribution over the \texttt{RBFMatern} model's hyperparameters using MCMC sampling. As shown in Figure~\ref{fig:MCMCRBFMatern}, 
-it is evident that the RBF kernel is capturing the long length scale smooth variations in the data. This is evident since the RBF length scales span larger \(\ell\) values than those of the Matern kernel length scales.
-While the RBF kernel length scales between dimensions are similar there is a larger deviation across the Matern kernel length scalea.
-In particular, \(\ell_5\) and \(\ell_6\) are comparatively small indicating a large amount of the noise in the data is explained by these parameters corresponding with the x and y input dimensions which are the transformed spin vector components.
+it is evident that the RBF kernel is capturing the long range smooth variations in the data. This is evident since the RBF length scales span larger \(\ell\) values than those of the Matern kernel.
+While the RBF kernel has similar scales across dimensions, the Matern Kernel's parameters exhibit greater variability.
+In particular, \(\ell_5\) and \(\ell_6\) are comparatively small indicating a large amount of the noise in the data is explained by these parameters, corresponding to the x and y input dimensions (the transformed spin vector components).
 This supports the intuition from Figure~\ref{fig:visualising_changemasses} that x and y contribute more significantly to mismatch variation than the other parameters such at the symmetric mass ratio and the total mass. 
 %
 
-Furthering examining the distributions, we find that some parameters - such as \((\sigma_{f,2}^2, \ell_5,\ell_1)\)- have sharply peaked distributions with low variance,indicating relatively low uncertainty in their posterior distribution. 
+Further examining the distributions, we find that some parameters - such as \((\sigma_{f,2}^2, \ell_5,\ell_1)\)- have sharply peaked distributions with low variance, indicating relatively low uncertainty in their posterior distribution. 
 In contrast parameters such as \(\sigma_{f,1}^2 , \ell_8\) exhibit nearly bi-model distributions with large variance, demonstrating that these regions of the hyperparameter space are highly uncertain.
 %
 
-This uncertainty in \(\sigma_{f,1}^2\) can be understood by examining the underlying data. While the true data often exhibits global smooth trends, there are regions where it becomes noisy and has abrupt variations. As a result, 
+This uncertainty in \(\sigma_{f,1}^2\) can be understood by examining the underlying data. While the true data often exhibits globally smooth trends, there are regions where it becomes noisy and has abrupt variations. As a result, 
 the optimiser appears to struggle between assigning a higher or lower weight to the RBF kernel relative to the Matern kernel. 
 A higher weight favours the RBF component which would emphasise global smoothness, whereas a lower weight allows the Matern kernel to account for local fluctuations. 
 Ultimately, the optimiser resolves this ambiguity by selecting a compromise between the two competing modes by choosing the 
@@ -1285,10 +1285,10 @@ formed by the marginalised model result in a lower FOM.
 In this work, we provided a basic background in Gravitational Waveforms and motivated the need for a mismatch predictor in the NR-informed model.
 We chose to model the mismatch using a Gaussian Process Regressor (GPR). 
 We introduced the basic GPR concepts such as building our prior and posterior distribution and how the kernel and noise choice effect this posterior.
-In each case we motivated these ideas with 1d visuals.  
+In each case we motivated these ideas with a one dimensional ``toy model''.  
 %
 
-Building on this 1 dimensional work we then constructed multiple model choices using combinations of all our kernels and noise modelling techniques to build a GPR for our reduced 4 dimensional parameter space.
+Building on this one dimensional work we then constructed multiple model choices using combinations of all our kernels and noise modelling techniques to build a GPR for our reduced 4 dimensional parameter space.
 We divided our data into 2 sets, 90\% training and cross validation (CV) and 10\% untouched for final testing. We further divided the validation data into 10 folds training on 9 folds and testing all folds individually once.
 After CV we found that Monte Carlo simulation of the noise resulted in over-generalised predictions with poor performance metric scores.
 We also interestingly found that adding the true noise of the training inputs to the diagonal of the kernel matrix resulted in poor predictions particularly in regions of sparse data.
@@ -1297,7 +1297,7 @@ and the models where noise was treated as a hyperparameter. Since our top 8 mode
 and predicting on the untouched 10\% test data. 
 %
 
-Examining the final 8 models hyperparameters closely we found that when treating noise as a hyperparameter to be optimised the model would nearly always choose the lower optimisation bound 
+Examining the final 8 models' hyperparameters closely we found that when treating noise as a hyperparameter to be optimised the model would nearly always choose the lower optimisation bound 
 thus putting the emphasis on the kernel hyperparameters to explain the noise.
 This reinforced what we already knew, our noise is not homoscedastic but varies considerably with input which can't be accounted for by one single hyperparameter.
 When using a combination of kernels with a smooth kernel (RBF kernel) and a 
@@ -1333,10 +1333,10 @@ This model offers a computationally efficient and accurate \((R^2 \sim 0.99, \te
 for estimating waveform mismatches without costly NR simulations. Our GPR model therefore enables more efficent use of the NR-informed method in GW parameter estimation.
 
 
-\section{Further work:}
+\section{Further work}
 The next clear step is to update our GPR model for the full 8 dimensional paramater space. This will not be a long ordeal, as the model framework is already built.
 With this higher dimensional model, we can compare it with the model on the reduced 4 dimensional parameter space and and quantify how much (if any) information is lost in reducing 
-the parameter space . Similarly to how we found the importance of transformed spin vectors in mismatch variation in our 4 dimensional, the 8 dimensional model may uncover
+the parameter space. Similarly to how we found the importance of transformed spin vectors in mismatch variation in 4 dimensions, the 8 dimensional model may uncover
 further important parameters. 
 
 Kernel uncertainty could also be included intrinsicly into the GPR model. This would involve constructing a posterior distribution marginalised over kernel choice.
@@ -1349,13 +1349,12 @@ This type of model would better account for the uncertainty associated with mode
 
 Although the prospect of including further variables into our model is exciting and interesting it is important to remember
 due that end goal of this model is to accurately but efficiently predicting mismatch. Incorporating too many variables or overly complex models may make the
-model too computational costing, potentially practical use as part of the NR-informed method for GW parameter estimation.
+model computationaly too burdensome, potentially limiting the model's practical utility use as part of the NR-informed method for GW parameter estimation.
 
 \newpage
 \bibliography{references} 
 
 
-\newpage
 \chapter{Appendix}
 \section{Derivation of Predictive Distribution}
 \label{appendix:predictive-dist}
@@ -1382,14 +1381,14 @@ p\bigl(f_* \mid f\bigr)
 \;=\;
 \frac{\displaystyle
   \frac{1}{2\pi^{\frac{n+n_*}{2}}\,\lvert \mathbf{C}^\frac{1}{2}\rvert}
-  \exp\!\Bigl(-\tfrac{1}{2}
+  \exp\!\left(-\tfrac{1}{2}
     \begin{bmatrix} f \\[4pt] f_* \end{bmatrix}^{\!\top}
     \mathbf{C}^{-1}
     \begin{bmatrix} f \\[4pt] f_* \end{bmatrix}
-  \Bigr)
+  \right)
 }{\displaystyle
   \frac{1}{2\pi^{\frac{n}{2}}\,\lvert K^{\frac{1}{2}}\rvert}
-  \exp\!\Bigl(-\tfrac{1}{2}\,f^{\!\top}K^{-1}f\Bigr)
+  \exp \left(-\tfrac{1}{2}\,f^{\!\top}K^{-1}f\right)
 }.
 \end{equation}
 By subtracting our exponential powers we get that our new power exponential becomes:
