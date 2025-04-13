@@ -7,6 +7,7 @@
 \contentsline {table}{\numberline {4.1}{\ignorespaces The optimized hyperparameters for the final 8 GPR models.}}{27}{table.caption.25}%
 \contentsline {table}{\numberline {4.2}{\ignorespaces Comparing metrics between the pointwise \texttt {RBFMatern} model and its equivalent model marginalised over the hyperparameters.}}{29}{table.caption.28}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1}{\ignorespaces Final Model Rankings after training on 90\% and testing on 10\%}}{39}{table.caption.40}%
-\contentsline {table}{\numberline {2}{\ignorespaces All 32 Model Rankings from CV}}{39}{table.caption.41}%
-\contentsline {table}{\numberline {3}{\ignorespaces Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8.}}{40}{table.caption.42}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Final Model Rankings after training on 90\% and testing on 10\%}}{41}{table.caption.42}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces All 32 Model Rankings from CV}}{41}{table.caption.43}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Comparison of different performance metrics used in evaluating models. RMSE, \( R^2 \), FOM, and the Pearson Coefficient are included. MAE is similar to RMSE but without squaring errors. Adjusted \( R^2 \) accounts for the number of predictors and is slightly modified from \( R^2 \). The actual metrics for each graph are: RMSE = 0.2, \( R^2 \) = 0.6, FOM = 1.09, Pearson correlation = 0.8.}}{42}{table.caption.44}%

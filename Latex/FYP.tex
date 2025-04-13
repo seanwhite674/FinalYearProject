@@ -245,7 +245,7 @@ As the frequency \( f(t) \) increases, so too does \( h_c(t) \), giving rise to 
 %
 
 To compare these theoretical waveforms with NR simulations it is necessary to have the
-Fourier transform of the GW amplitudes. The resulting forier transforms of Eqs.~(\ref{eq:hp_time}, \ref{eq:hc_time})
+Fourier transform of the GW amplitudes. The resulting forier transforms of Eqns.~(\ref{eq:hp_time}, \ref{eq:hc_time})
 are stated below and derived in Sec~\cite[Sec.~4.1]{GRbook} :
 \begin{subequations}
     \label{eq:hfreq}
@@ -290,7 +290,7 @@ where \( \langle \cdot, \cdot \rangle \) denotes the inner product of two wavefo
 \langle h_i,\,h_0 \rangle = 4\,\mathrm{Re} \int_{f_{\text{min}}}^{f_{\text{max}}} \frac{\tilde{h}_i^*(f)\,\tilde{h}_0(f)}{S_n(f)}\,df,
 \end{equation}
 %
-where \( \tilde{h}(f) \) represents the Fourier transform of the gravitational waveform (Eq.~\eqref{eq:hfreq}), the asterisk denotes complex conjugation, and \( S_n(f) \) is the detector’s noise averaged over multiple noise realisations.
+where \( \tilde{h}(f) \) represents the Fourier transform of the gravitational waveform (Eqn.~\eqref{eq:hfreq}), the asterisk denotes complex conjugation, and \( S_n(f) \) is the detector’s noise averaged over multiple noise realisations.
 We finally maximise over a set of (intrinsic and/or extrinsic) model parameters \(\mathbf{\lambda_m}\) depending on the type of mismatch we wish to compute
  (see Section~\ref{sec:data_description} for details on these parameters).
 A mismatch \(\mathcal{M}\ll 1\) indicates that a given waveform
@@ -369,7 +369,7 @@ By modeling the mismatch between approximate waveforms and NR waveforms via GPR,
 \label{sec:data_description}
 Our proposed GPR method will take as inputs the intrinsic parameters of the binary black hole and will output the mismatch predictions.
 The inrinsic parameter space of a binary black hole is eight dimensional (two masses and two spin 3-vectors) as highlighted by Figure~\ref{fig:gr_diagram}. 
-To generate this mismatch data we calculated the mismatch between waveform model \textsc{SEOBNRv5PHM} \cite{bestNRfitS} and the NR surrogate \textsc{NRSur7dq4} \cite{NRsurrogate} using eqn~\eqref{eq:mismatch_def} for a set of 250 intrinsic parameters 
+To generate this mismatch data we calculated the mismatch between waveform model \textsc{SEOBNRv5PHM} \cite{bestNRfitS} and the NR surrogate \textsc{NRSur7dq4} \cite{NRsurrogate} using Eqn.~\eqref{eq:mismatch_def} for a set of 250 intrinsic parameters 
 such that it covers 5 different mass ratios and a grid of concentric ellipses in the spin projection space.
 This 250 element set is then repeated for 4 different masses.
 Each mismatch is further an average of 294 mismatches computed over a grid of 3 different extrinsic parameters.
@@ -429,13 +429,15 @@ where \(x\), \(y\), \(z\), and \(w\) are the scaled inputs used in our GPR frame
 \chapter{Gaussian Process Regression Background}
 \section{Introduction and Roadmap}
 
-In the following subsections, I discuss the following foundational concepts of Gaussian Process Regression \textbf{(GPR)}:
+In the following subsections, we discuss the following foundational concepts of Gaussian Process Regression \textbf{(GPR)}:
 \begin{enumerate}
     \item \textbf{Gaussian Processes Regression Background:} Section~\ref{sec: GP_backgroound} introduces Gaussian Processes and explains how their priors and posteriors are constructed from finite sets of points.
-    \item \textbf{Kernel Functions:} In Section~\ref{sec: Kernels}, I explore how kernels encode the basic assumptions about smoothness and structural properties of the underlying function. I look at how kernel hyperparameters effect the shape of samples from our prior distribution.
-    \item \textbf{Noise Modeling:} Section~\ref{sec: Handlingnoise} covers several approaches for incorporating observational noise into the GP framework. I look at how noise effects the samples from our prior distribution.
-    \item \textbf{Hyperparameter Optimization:} In Section~\ref{sec: Hyper_parameters}, I discuss how kernel and noise hyperparameters can be optimised resulting in a posterior distribution that better explains our data.
-    \item \textbf{Hyperparameter Uncertainty:} In Section~\ref{sec: MCMC}, I discuss the uncertainty associated to the point estimates found by parameter optimisation using log-likelihood and how we can build a better predictive distribution marginalised over the hyperparameters.
+    \item \textbf{Kernel Functions:} In Section~\ref{sec: Kernels}, we explore how kernels encode the basic assumptions about smoothness and structural properties of the underlying function.
+     We demonstrate how kernel hyperparameters effect the shape of samples from our prior distribution.
+    \item \textbf{Noise Modeling:} Section~\ref{sec: Handlingnoise} covers several approaches for incorporating observational noise into the GP framework. We visualise the effect noise has on the samples from our prior distribution.
+    \item \textbf{Hyperparameter Optimization:} In Section~\ref{sec: Hyper_parameters}, we discuss how kernel and noise hyperparameters can be optimised resulting in a posterior distribution that better explains our data.
+    \item \textbf{Hyperparameter Uncertainty:} In Section~\ref{sec: MCMC}, we investigate the uncertainty associated with the point estimates found by parameter optimisation using log-likelihood.
+    We introduce a posterior distribution over the hyperparameters and how to marginalise over this to achive a predictive distribution that accounts for hyperparameter uncertainty.
     \item \textbf{Multi Dimensional GPR:} We discuss how the GPR then generalises for multiple dimensional inputs in Section~\ref{sec:multidims}.
 \end{enumerate}
 
@@ -446,7 +448,7 @@ In the following subsections, I discuss the following foundational concepts of G
 %
 A Gaussian Process \textbf{(GP)} defines a probabilistic model over all possible functions rather than assuming a single function to be true
 \begin{equation}
-f(X) \sim \mathcal{GP} (\mu(X), k(X, X')).
+f(X) \sim \mathcal{GP} (\mu(X), K(X, X')).
 \label{eq: Initial_GP_distribution}
 \end{equation}
 where \( \mu(X) \) is the mean function, specifying the expected function value at each \( X \):
@@ -455,9 +457,9 @@ where \( \mu(X) \) is the mean function, specifying the expected function value 
     \label{eq: meandef}
 \end{equation}
 %
-\( k(X, X') \) is the covariance function (kernel), encoding the relationships between function values at different points:
+\( K(X, X') \) is the covariance function (kernel), encoding the relationships between function values at different points:
 \begin{equation}
-    k(X, X') = \text{Cov}(f(X), f(X')).
+    K(X, X') = \text{Cov}(f(X), f(X')).
     \label{eq: kerneldef}
 \end{equation}
 %
@@ -472,7 +474,7 @@ X = \{X_1, X_2, \dots, X_n\},
 \end{equation}
  the corresponding function values
 \begin{equation}
-f = \{f(X_1),f(X_2),...,f(X_n), \}
+f = \{f(X_1),f(X_2),...,f(X_n)\},
 \end{equation}
 follow a multivariate normal distribution
 \begin{equation}
@@ -501,7 +503,7 @@ f(X_*)
 K(X, X) & K(X, X_*) \\
 K(X_*, X) & K(X_*, X_*)
 \end{bmatrix}
-}_{\mathcal{C} = \text{Covariance Matrix}}\right).
+}_{\mathbf{C} = \text{Covariance Matrix}}\right).
 \label{eq: Multivariate prior}
 \end{equation}
 %
@@ -513,8 +515,9 @@ The corresponding joint probability density function (pdf) is given by:
     \begin{bmatrix}\mu(X) \\\mu(X_*)\end{bmatrix}\right)^T
     \mathbf{C}^{-1}\left(
     \begin{bmatrix}f \\f_*\end{bmatrix}-
-    \begin{bmatrix}\mu(X) \\\mu(X_*)\end{bmatrix}\right)\right).
+    \begin{bmatrix}\mu(X) \\\mu(X_*)\end{bmatrix}\right)\right),
 \end{equation}
+where \(|\mathbf{C}|\) is the determinant of \(\mathbf{C}\) a \(n \times n\) matrix capturing the covariance between training and test points.
 %
 
 After accounting for the mean, the resulting distribution is entirely determined by its kernel function.
@@ -525,14 +528,14 @@ In the next section we examine the different kernel choices available and the as
 
 \section{Kernel Functions}
 \label{sec: Kernels}
-The kernel function encodes our assumptions about the relationship between input points in a Gaussian Process (GP).
+The kernel function encodes our assumptions about the relationship between input points in a GP.
 It defines the covariance between any two function values and thereby determines the smoothness, periodicity, or other properties of the functions drawn from the GP prior.
 Fundamentally, kernels reflect the idea of similarity: input points \( x \) and \( x' \) that are close together are assumed to have highly correlated outputs \( f(x) \) and \( f(x') \),
 while distant inputs are assumed to produce less correlated values. This notion of similarity, as emphasized in \cite[Ch.~4]{bible}, is central to how Gaussian processes learn from and generalize beyond training data.
 %
 
 In Figure~\ref{fig: samples_from_GP_prior}, we illustrate the effect of the kernel on the GP prior.
-We draw three functions from the multivariate Gaussian prior defined in Equation~\ref{eq: Multivariate prior}, using a zero mean and an RBF kernel.
+We draw three functions from the multivariate Gaussian prior defined in Eqn.~\ref{eq: Multivariate prior}, using a zero mean and a Radiial Basis Function (RBF) kernel.
 The first subplot shows these samples, while the second subplot visualizes the corresponding covariance matrix as a heatmap.
 The matrix reveals that correlations are strongest when input points are close together (near the diagonal) and decay as the distance between inputs increases.
 This is evident also from the samples as we can see nearby points often move in similar directions, while distant points diverge more significantly.
@@ -541,7 +544,6 @@ This is evident also from the samples as we can see nearby points often move in 
 The final three subplots highlight how this distance-based correlation manifests in the joint distribution of pairs of function values.
 For closely spaced inputs, such as \( (x, x') = (0, 0.1) \), the joint distribution of \( (f(0), f(0.1)) \) forms a narrow elliptical contour,
 indicating strong correlation (approximately 0.9). As the distance increases, such as in the pairs \( (0, 0.5) \) and \( (0, 1) \), the ellipses widen, reflecting weaker correlation. This visualization reinforces the intuition that kernel functions govern how input proximity translates to output similarity.
-
 \begin{figure}[H]
     \centering
        \includegraphics[width=\textwidth]{LatexPlots/1dplots/Kernel_background.png}
@@ -618,7 +620,7 @@ In the following subsections, we explore each of these kernels in detail and dis
         Each column shows the kernel shape $k(x, x')$, samples from the corresponding GP prior, and a summary of the structure it imposes. 
         All kernels were evaluated using a lengthscale parameter $\ell = 1$ (except where noted). 
         For the Matern kernel, $\nu = 0.5$; Laplace kernel, $\gamma = 6$; Rational Quadratic kernel, $\alpha = 0.25$; and Periodic kernel, period $p = 2$.
-        Detailed formula each kernel are provided in the appendix \ref{appendix:B}.Note: In practice, we scale each kernel by a signal variance hyperparameter \(\sigma_f^2\), which governs the overall vertical variation in the function.
+        Detailed formula each kernel are provided in the appendix \ref{appendix:B}.\\Note: In practice, we scale each kernel by a signal variance hyperparameter \(\sigma_f^2\), which governs the overall vertical variation in the function.
         This scaling is applied consistently across all kernel types and accounts for the amplitude of the wave.
         }
     \label{tab:kernel-examples}
@@ -626,15 +628,15 @@ In the following subsections, we explore each of these kernels in detail and dis
 %
 
 From Table~\ref{tab:kernel-examples}, we observe that the RBF, Rational Quadratic, Matern, Laplace, and Periodic kernels are all examples of stationary kernels (i.e depend on $|x-x'|$). 
-Many of these, such as the RBF, Matern,Rational Quadratic and Laplace, exhibit ``bell-shaped'' structures. Their inputs \(x\) and \(x'\) that are close together yield high covariance,
+Many of these, such as the RBF, Matern, Rational Quadratic and Laplace, exhibit ``bell-shaped'' structures. Their inputs \(x\) and \(x'\) that are close together yield high covariance,
 which then decays as the distance \(\|x - x'\|\) increases. The Periodic kernel, while also stationary, has a unique structure. Instead of decaying monotonically with distance, 
 it assigns high covariance to inputs that are separated by integer multiples of a fixed period \(p\). This leads to the kernel encoding a periodic pattern on the sampled functions.
 %
 
 Having examined multiple kernel types and their properties we will now examine the effect of the kernel hyper-parametrs \(\ell,\sigma_f^2\) on the GP prior. 
 In Figure~\ref{fig: GPprior_hyperparams} we see that small \(\ell\) results in samples that are noisy with lots of local variations. This is beacuse the rate of decrease of the covariance
-between points is determined by \(\ell\) and so small \(\ell\) reinforces that only points very close to \(x'\) are correlated with \(x'\). However the larger \(\ell\) gets the 
-more correlation \(x'\) has with further points therefore resulting in smooth curves.
+between points is determined by \(\ell\) and so small \(\ell\) reinforces that only points very close to \(x'\) are correlated with \(x'\).
+Larger \(\ell\) results in correlation between inputs reducing slowly across the input space and so smoother curves are formed.
 Visualising the effect of the signal variance \(\sigma_f^2\) we can see that simply larger \(\sigma_f^2\) results in the vertical variation of each sample becoming bigger.
 %
 
@@ -651,10 +653,10 @@ Visualising the effect of the signal variance \(\sigma_f^2\) we can see that sim
 \label{sec: priortoposterior}
 
 We have discussed how our prior distribution is dependent on the choice of kernel and the hyperparameters of said kernel. In this section
-we will discuss how we can update our prior distribution \ref{eq: Multivariate prior} to achieve our new prediction distribution distribution from which we can make
+we will discuss how we can update our prior distribution (Eqn.~\eqref{eq: Multivariate prior}) to achieve our new prediction distribution distribution from which we can make
 inferences. One of the key strengths of Gaussian Processes is that, given observations at training inputs \(X\) and setting kernel hyperparameters \(\theta\)
 we can make predictive inferences about the function value at any new test location \(x_*\).
-By applying the standard conditional Gaussian formulas (see appendix \todo{clean appendoix} \ref{appendix:A} for the full derivation),
+By applying the standard conditional Gaussian formulas (see appendix \ref{appendix:A} derivation details),
 the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and given by:
 %
 \begin{subequations}
@@ -676,7 +678,7 @@ the posterior distribution of \(f(x_*)\) given \(\{X, f(X)\}\) is Gaussian and g
 % 
 In these expressions:
 \begin{itemize}
-    \item \( \mu(\cdot) \) is the mean function ( We take this to be zero since we centre the data prior to prediction),
+    \item \( \mu(\cdot) \) is the mean function (We take this to be zero since we centre the data prior to prediction),
     \item \( k(X, X) \) is the covariance matrix among the observed training points,
     \item \( k(x_*, X) \) is the vector of cross-covariances between the test point \(x_*\) and the training inputs,
     \item \( k(x_*, x_*) \) is the prior variance at the test point itself.
@@ -685,8 +687,8 @@ In these expressions:
 
 We now have an analytic function that can be evaluated to find the mean function value and variance at any input point.
 This is a very useful property that Gaussian Processes possess. Figure~\ref{fig: priortoposterior} shows how we update our
-distributions based on the training points. We initially plot samples taken from the prior distribution (Equation~\ref{eq: Multivariate prior}). 
-After conditioning this distribution on one training point and obtaining the new predictive posterior distribution (Equation~\ref{eq: predictive_dist}), 
+distributions based on the training points. We initially plot samples taken from the prior distribution (Eqn.~\ref{eq: Multivariate prior}). 
+After conditioning this distribution on one training point and obtaining the new predictive posterior distribution (Eqn.~\ref{eq: predictive_dist}), 
 we see that the predictive mean passes exactly through the training point, has small variance around it, and then fans out farther away. 
 Conditioning on two training points at opposite ends of our input domain creates an ellipse-shaped credible interval whose largest radius 
 appears midway between the two training points. With more training points, the predictions align progressively closer to the true function 
@@ -702,13 +704,10 @@ we examine the different kernel choices available and the assumptions that each 
     \centering
     \includegraphics[width=\textwidth]{LatexPlots/1dplots/priortoposterior.png}
     \caption[Building the posterior distribution]{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. 
-    The RBF kernel was used with hyperparameters: $l = 1$, $\sigma^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterio distribution. 
+    The RBF kernel was used with hyperparameters: $l = 1$, $\sigma^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterior distribution. 
     The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior. }
     \label{fig: priortoposterior}
 \end{figure}
-\todo{add a  link to animation here illustrating the nice distribution formed at each point}
-
-
 
 
 \section{Handling Noise in our Data}
@@ -731,7 +730,7 @@ y &\sim \mathcal{N}(0, K + \Sigma), &&\text{(distribution over noisy observation
 where \( \Sigma = \mathrm{diag}(\sigma_{n,1}^2, \sigma_{n,2}^2, \dots, \sigma_{n,n}^2) \) is the noise covariance matrix.
 %
 
-This now updates our previous posterior distribution (Eqns: \ref{eq: predictive_dist}) to a revised posterior:
+This now updates our previous posterior distribution (Eqns.~\eqref{eq: predictive_dist}) to a revised posterior:
 %
 \begin{subequations}
 \begin{align}
@@ -771,8 +770,9 @@ y \sim \mathcal{N}(0, K+\sigma_n^2 I),
 \label{eq: prior_withnoise}
 \end{equation}
 where $\sigma_n^2$ is a new parameter which effects the shape of the distribution. In figure \ref{fig: GPprior_hyperparams} we 
-explored how the internal kernel hyperparameters effect the shape of the sampes from our prior distribution. We now examin how the noise (i.e $\sigma_n^2$) effects samples from our prior distribution from \ref{eq: prior_withnoise}.
-Our posterior distribution is as in eqn \ref{eq:  predictive_distribution_noise} with \(K_y = K(X, X) + \sigma_n^2 I \) for some constant \(\sigma_n\)
+explored how the internal kernel hyperparameters effect the shape of the sampes from our prior distribution. 
+We now examine how the noise (i.e $\sigma_n^2$) effects samples from our prior distribution from \ref{eq: prior_withnoise}.
+Our posterior distribution is, as in Eqn.~\eqref{eq:  predictive_distribution_noise}, with \(K_y = K(X, X) + \sigma_n^2 I \) for some constant \(\sigma_n\)
 
 \begin{figure}[H]
     \centering
@@ -798,15 +798,15 @@ k(x_n, x_1) & \cdots & k(x_n, x_n) + \sigma_n^2
 \]
 where \( \Sigma = \text{diag}(\sigma_1^2, \sigma_2^2, \dots, \sigma_n^2) \).
 In this case the noise is not found as a hyperparameter but instead just added to the diagonal of the covariance matrix.
-Our posterior distribution is as in eqn \ref{eq:  predictive_distribution_noise} with \(K_y =K(X, X) + \Sigma \) where \(\Sigma\) is the known noise of our data. 
+Our posterior distribution is as in Eqn.~\eqref{eq:  predictive_distribution_noise} with \(K_y =K(X, X) + \Sigma \) where \(\Sigma\) is the known noise of our data. 
 %
 \subsubsection{Learning Noise over the Input Space:}
 %
 If the noise variance is unknown but varies across the input space, we can model it as a function. 
 This is done by building a kernel that captures both smooth, global trends and rough, local fluctuations. 
-In practice, this means building an additive kernel made up of sub-kernels.For example, as seen in Table~\ref{tab:kernel-examples}, some kernels like the Matern, Laplacian, or Rational Quadratic capture local variations well (interpreted as noise),
+In practice, this means building an additive kernel made up of sub-kernels. For example, as seen in Table~\ref{tab:kernel-examples}, some kernels like the Matern, Laplacian, or Rational Quadratic capture local variations well (interpreted as noise),
 while others like the RBF capture broader, smoother structure. By combining these, we can allow one kernel component to model the general structure of the function, and the other to model the heteroscedastic noise behavior. 
-Our posterior distribution is as in eqn \ref{eq:  predictive_distribution_noise} with :
+Our posterior distribution is as in Eqn.~\eqref{eq:  predictive_distribution_noise} with :
 
 \begin{equation}
     K_y = \theta_1 K_1(X, X) + \theta_2 K_2(X, X),
@@ -845,12 +845,12 @@ This highlight all the plausible functions consistent with the observed data and
 
 \section{Hyperparameters}
 \label{sec: Hyper_parameters}
-Until now, the predictive distributions (Eqns~(\ref{eq: predictive_distribution_noise},\ref{eq: predictive_dist})) have been conditioned on fixed kernel hyperparameters. 
+Until now, the predictive distributions (Eqns.~(\eqref{eq: predictive_distribution_noise},\eqref{eq: predictive_dist})) have been conditioned on fixed kernel hyperparameters. 
 As shown in Figures~\ref{fig: GPprior_hyperparams} and~\ref{fig: kernel_noise}, 
 these hyperparameters significantly shape both the prior and posterior behaviour of the Gaussian Process.
  However, they are not known prior to prediction and must be inferred from data. To do this, we maximize the log marginal likelihood \cite[Ch.~5]{bible}.
 
-From Eqn~\ref{eq: prior_withnoise}, our observed data is distributed as: 
+From Eqn.~\eqref{eq: prior_withnoise}, our observed data is distributed as: 
 \[
 y \sim \mathcal{N}(0, K + \Sigma I),
 \]
@@ -1287,7 +1287,8 @@ The \texttt{RBFMatern} a combination of kernel model had consistently the best m
 We concluded that the \texttt{RBFMatern} was our best model.
 %
 
-To visualise the uncertainty associated with the point estimate hyperparmaeters used in the \text{RBFMatern} model we built the posterior distribution over the hyperparameters.
+To visualise the uncertainty associated with the point estimate hyperparmaeters used in the
+\texttt{RBFMatern} model we built the posterior distribution over the hyperparameters.
 We plotted the distribution of each hyperparameter found that some hyperparmaters such as\(\sigma_{f,1}^2\) 
 had large level of uncertainty associated with them. Considering the context of the model and data the uncertainty for parameter \(\sigma_{f,1}^2\) made sense. 
 The model was unsure whether to emphasise local variation with a smaller \(\sigma_{f,1}^2\) or smoother variations with a larger \(\sigma_{f,1}^2\).
@@ -1321,7 +1322,7 @@ resulting in too slow predictions for practical use.
 
 
 \newpage
-\appendix
+\chapter{Appendix}
 \section{Derivation of Predictive Distribution}
 \label{appendix:A}
 Using Bayes' Theorem applied to continuous probabilities, we have:
@@ -1377,7 +1378,7 @@ p(f) = \frac{1}{\sqrt{2\pi} |K|^{1/2}}
 
 
 
-\subsection{Kernel Formulas}
+\section{Kernel Formulas}
 \label{appendix:B}
 \subsubsection*{Radial Basis Function (RBF) Kernel}
 \[
@@ -1419,8 +1420,59 @@ k(x, x') = \sigma_b^2 + x^\top x'
 \]
 This kernel grows with the similarity (inner product) between inputs, and it allows the function to vary globally. Since it depends directly on the values of \( x \) and \( x' \), not just their difference, it is non-stationary. It is particularly useful for modeling linear trends.
 
+\section{Noise modeling using Monte Carlo Sampling}
+\label{appendix:monte_carlo}
 
-\subsection{Graphs of 4d finalist GPs}
+We assume the observation noise is Gaussian:
+\[
+\epsilon_i \sim \mathcal{N}(0, \sigma_i^2),
+\]
+we have the observed data \( y \) which is a noisy version of our true function values
+\[
+y = f + \epsilon, \quad \text{with } y \sim \mathcal{N}(f, \Sigma),
+\]
+where \( \Sigma = \mathrm{diag}(\sigma_1^2, \dots, \sigma_n^2) \).
+Each true function value corresponds to our observed value \(\pm \epsilon\)
+To account for this, we generate \( M \) noisy samples of the observations
+\begin{equation}
+    y^{(s)} = y + \epsilon^{(s)}, \quad \epsilon^{(s)} \sim \mathcal{N}(0, \Sigma).
+\end{equation}
+For each sampled dataset \( y^{(s)} \), we compute a GP posterior
+\begin{equation}
+    p(f_* \mid X, X_*, \theta, y^{(s)}).
+\end{equation}
+To obtain the final predictive distribution, we marginalize over these sampled posteriors:
+\begin{equation}
+    p(f_* \mid X, X_*, \theta, y) = \int p(f_* \mid X, X_*, \theta, y^{(s)}) \, p(y^{(s)} \mid y) \, dy^{(s)}.
+\end{equation}
+This integral is intractable so we approximate it using Monte Carlo integration where we get the average of each of our predictions on sampled datasets \(y^{(s)}\):
+\begin{equation}
+    p(f_* \mid X, X_*, \theta, y) \approx \frac{1}{M} \sum_{s=1}^{M} p(f_* \mid X, X_*, \theta, y^{(s)}).
+\end{equation}
+
+
+\section{MCMC details}
+\subsection*{Implementing MCMC}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{LatexPlots/MCMC_Flow.png}
+    \caption{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference.
+     This pipeline samples from the posterior \( p(\theta \mid \mathbf{y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}
+    \label{fig:MCMC flowchart}
+\end{figure}
+%
+
+Before starting MCMC, we must decide which model we want to build the hyperparameter posterior for. This involves selecting one of the six kernels outlined in Section~\ref{sec: Kernels}, along with one of the three noise-modelling approaches described in Section~\ref{sec: Handlingnoise}. Once this model structure is fixed, we obtain initial point estimates for the hyperparameters by maximising the log marginal likelihood, as discussed in Section~\ref{sec: Hyper_parameters}.
+%
+
+We then construct a multivariate normal distribution centred at this point estimate and sample from it to initialise each walker. From there, the walkers explore the hyperparameter space using a Gaussian proposal distribution with a specified covariance. At each step, we compute the sum of the log likelihood and log prior. The proposed sample is then accepted or rejected using the Metropolis-Hastings criterion \textcolor{red}{Could give more detail here}. This process is repeated for a fixed number of steps to generate a large set of samples.
+%
+
+To ensure convergence and sample independence, we discard the first 100 samples from each walker as burn-in and apply a thinning factor of 15—retaining every 15\textsuperscript{th} sample. The resulting collection of samples forms our posterior distribution over hyperparameters, which we visualise using a kernel density estimate (KDE).
+
+
+
+\section{Graphs of 4d finalist GPs}
 \label{appendix:C}
 
 
@@ -1447,7 +1499,7 @@ This kernel grows with the similarity (inner product) between inputs, and it all
 \end{figure}
 
 
-\subsection{Model Evaluation Table and graphs}
+\section{Model Evaluation Table and graphs}
 \label{appendix:D}
 
 \begin{figure}[H]
@@ -1457,6 +1509,7 @@ This kernel grows with the similarity (inner product) between inputs, and it all
     \label{fig:boxplots}
 \end{figure}
 
+\setlength{\tabcolsep}{3pt}
 \begin{table}[H]
     \centering
     \caption{Final Model Rankings after training on 90\% and testing on 10\%}
@@ -1466,7 +1519,7 @@ This kernel grows with the similarity (inner product) between inputs, and it all
 \end{table}
 
 
-
+\setlength{\tabcolsep}{3pt}
 \begin{table}[H]
     \centering
     \caption{All 32 Model Rankings from CV}
@@ -1477,7 +1530,18 @@ This kernel grows with the similarity (inner product) between inputs, and it all
 \end{table}
     
 
-\subsection{Bin}
+
+
+
+
+
+
+
+
+
+
+
+\section{Bin}
 \label{appendix:bin}
 \Sean{Moving Evaluation Metrics to Methods}
 
@@ -1526,55 +1590,6 @@ The Pearson correlation coefficient measures the linear relationship between pre
 
 
 
-\subsection{MCMC details}
-\subsubsection*{Implementing MCMC}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/MCMC_Flow.png}
-    \caption{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference.
-     This pipeline samples from the posterior \( p(\theta \mid \mathbf{y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}
-    \label{fig:MCMC flowchart}
-\end{figure}
-
-\noindent
-Before starting MCMC, we must decide which model we want to build the hyperparameter posterior for. This involves selecting one of the six kernels outlined in Section~\ref{sec: Kernels}, along with one of the three noise-modelling approaches described in Section~\ref{sec: Handlingnoise}. Once this model structure is fixed, we obtain initial point estimates for the hyperparameters by maximising the log marginal likelihood, as discussed in Section~\ref{sec: Hyper_parameters}.
-
-\noindent
-We then construct a multivariate normal distribution centred at this point estimate and sample from it to initialise each walker. From there, the walkers explore the hyperparameter space using a Gaussian proposal distribution with a specified covariance. At each step, we compute the sum of the log likelihood and log prior. The proposed sample is then accepted or rejected using the Metropolis-Hastings criterion \textcolor{red}{Could give more detail here}. This process is repeated for a fixed number of steps to generate a large set of samples.
-
-\noindent
-To ensure convergence and sample independence, we discard the first 100 samples from each walker as burn-in and apply a thinning factor of 15—retaining every 15\textsuperscript{th} sample. The resulting collection of samples forms our posterior distribution over hyperparameters, which we visualise using a kernel density estimate (KDE).
-
-
-\subsection{Noise modeling using Monte Carlo Sampling}
-\label{appendix:monte_carlo}
-
-We assume the observation noise is Gaussian:
-\[
-\epsilon_i \sim \mathcal{N}(0, \sigma_i^2),
-\]
-we have the observed data \( y \) which is a noisy version of our true function values
-\[
-y = f + \epsilon, \quad \text{with } y \sim \mathcal{N}(f, \Sigma),
-\]
-where \( \Sigma = \mathrm{diag}(\sigma_1^2, \dots, \sigma_n^2) \).
-Each true function value corresponds to our observed value \(\pm \epsilon\)
-To account for this, we generate \( M \) noisy samples of the observations
-\begin{equation}
-    y^{(s)} = y + \epsilon^{(s)}, \quad \epsilon^{(s)} \sim \mathcal{N}(0, \Sigma).
-\end{equation}
-For each sampled dataset \( y^{(s)} \), we compute a GP posterior
-\begin{equation}
-    p(f_* \mid X, X_*, \theta, y^{(s)}).
-\end{equation}
-To obtain the final predictive distribution, we marginalize over these sampled posteriors:
-\begin{equation}
-    p(f_* \mid X, X_*, \theta, y) = \int p(f_* \mid X, X_*, \theta, y^{(s)}) \, p(y^{(s)} \mid y) \, dy^{(s)}.
-\end{equation}
-This integral is intractable so we approximate it using Monte Carlo integration where we get the average of each of our predictions on sampled datasets \(y^{(s)}\):
-\begin{equation}
-    p(f_* \mid X, X_*, \theta, y) \approx \frac{1}{M} \sum_{s=1}^{M} p(f_* \mid X, X_*, \theta, y^{(s)}).
-\end{equation}
 
 % %\printbibliography
 % \bibliographystyle{acm}

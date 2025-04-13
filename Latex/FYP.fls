@@ -540,6 +540,11 @@ INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT ./FYP.bbl
 INPUT ./FYP.bbl
 INPUT FYP.bbl
+INPUT ./LatexPlots/MCMC_Flow.png
+INPUT ./LatexPlots/MCMC_Flow.png
+INPUT ./LatexPlots/MCMC_Flow.png
+INPUT ./LatexPlots/MCMC_Flow.png
+INPUT ./LatexPlots/MCMC_Flow.png
 INPUT ./LatexPlots/final_gps_plots/final_gps_ycuts.png
 INPUT ./LatexPlots/final_gps_plots/final_gps_ycuts.png
 INPUT ./LatexPlots/final_gps_plots/final_gps_ycuts.png
@@ -582,11 +587,6 @@ INPUT ./LatexPlots/1dplots/pearson.png
 INPUT ./LatexPlots/1dplots/pearson.png
 INPUT ./LatexPlots/1dplots/pearson.png
 INPUT ./LatexPlots/1dplots/pearson.png
-INPUT ./LatexPlots/MCMC_Flow.png
-INPUT ./LatexPlots/MCMC_Flow.png
-INPUT ./LatexPlots/MCMC_Flow.png
-INPUT ./LatexPlots/MCMC_Flow.png
-INPUT ./LatexPlots/MCMC_Flow.png
 INPUT FYP.aux
 INPUT ./FYP.out
 INPUT ./FYP.out
