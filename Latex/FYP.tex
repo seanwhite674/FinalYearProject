@@ -79,7 +79,7 @@
     We begin by reviewing Gaussian Process fundamentals and systematically test various kernels (RBF, Matern, Rational Quadratic, Laplacian) under both homoscedastic and heteroscedastic noise. 
     Cross-validation on six performance metrics narrows the field to eight finalist models, which we then retrain on 90\% of the data and evaluate on a 10\% holdout. 
     Models assuming constant (homoscedastic) noise prove too simplistic, while those relying on known noise values struggle in regions with sparse data. 
-    Our best-performing model ( a heteroscedastic GPR with an additive RBF-Matern kernel) achieves an \(R^2 \approx 0.99\) and an RMSE of \(\sim 0.034\), demonstrating robust predictive accuracy.
+    Our best-performing model (a heteroscedastic GPR with an additive RBF-Matern kernel) achieves an \(R^2 \approx 0.99\) and an RMSE of \(\sim 0.034\), demonstrating robust predictive accuracy.
 
     To capture uncertainty in the kernel hyperparameters, we build a posterior distribution over the hyper-parameters using Markov Chain Monte Carlo (MCMC) simulations. 
     We compare the resulting marginal predictive distribution with pointwise predictions and, for computational practicality, adopt the pointwise model as our final choice. 
@@ -391,7 +391,7 @@ Here, \( q = \frac{M_2}{M_1} \) is the mass ratio, and \( \eta \) is the symmetr
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{LatexPlots/GRdiagram.png}
-    \caption[Visualising a binary black hole system and its intrinsic parameters]{Visualising a binary black hole system. The two black holes with masses \(M_1\) and \(M_2\) orbit each other in a quasi-circular orbit, 
+    \caption[Visualising a binary black hole system and its intrinsic parameters.]{Visualising a binary black hole system. The two black holes with masses \(M_1\) and \(M_2\) orbit each other in a quasi-circular orbit, 
     each with spin vectors \(\mathbf{S}_1\) and \(\mathbf{S}_2\). The total spin is \(\mathbf{S}_{\text{total}} = \mathbf{S}_1+\mathbf{S}_2\) and \(\mathbf{L}\) is the orbital angular momentum. 
     The spin projections \( \chi_{\parallel} \) and \( \chi_{\perp} \) are the components of the total spin that are parallel and perpendicular to \( \mathbf{L} \), respectively.}
     \label{fig:gr_diagram}
@@ -436,11 +436,11 @@ In the following subsections, we discuss the following foundational concepts of 
     \item \textbf{Noise Modeling:} Section~\ref{sec: Handlingnoise} covers several approaches for incorporating observational noise into the GP framework. We visualise the effect noise has on the samples from our prior distribution.
     \item \textbf{Hyperparameter Optimization:} In Section~\ref{sec: Hyper_parameters}, we discuss how kernel and noise hyperparameters can be optimised resulting in a posterior distribution that better explains our data.
     \item \textbf{Hyperparameter Uncertainty:} In Section~\ref{sec: MCMC}, we investigate the uncertainty associated with the point estimates found by parameter optimisation using log-likelihood.
-    We introduce a posterior distribution over the hyperparameters and how to marginalise over this to achive a predictive distribution that accounts for hyperparameter uncertainty.
+    We introduce a posterior distribution over the hyperparameters and how to marginalise over this to achieve a predictive distribution that accounts for hyperparameter uncertainty.
     \item \textbf{Multi Dimensional GPR:} We discuss how the GPR then generalises for multiple dimensional inputs in Section~\ref{sec:multidims}.
 \end{enumerate}
 
-\section{Gaussian Proces Regression Background}
+\section{Gaussian Process Regression Background}
 \label{sec: GP_backgroound}
 \subsection{Definition of a Gaussian Process}
 \label{sec: Definition_of_GP}
@@ -534,7 +534,7 @@ while distant inputs are assumed to produce less correlated values. This notion 
 %
 
 In Figure~\ref{fig: samples_from_GP_prior}, we illustrate the effect of the kernel on the GP prior.
-We draw three functions from the multivariate Gaussian prior defined in Eqn.~\ref{eq: Multivariate prior}, using a zero mean and a Radiial Basis Function (RBF) kernel.
+We draw three functions from the multivariate Gaussian prior defined in Eqn.~\ref{eq: Multivariate prior}, using a zero mean and a Radial Basis Function (RBF) kernel.
 The first subplot shows these samples, while the second subplot visualizes the corresponding covariance matrix as a heatmap.
 The matrix reveals that correlations are strongest when input points are close together (near the diagonal) and decay as the distance between inputs increases.
 This is evident also from the samples as we can see nearby points often move in similar directions, while distant points diverge more significantly.
@@ -619,7 +619,7 @@ In the following subsections, we explore each of these kernels in detail and dis
         Each column shows the kernel shape $k(x, x')$, samples from the corresponding GP prior, and a summary of the structure it imposes. 
         All kernels were evaluated using a lengthscale parameter $\ell = 1$ (except where noted). 
         For the Matern kernel, $\nu = 0.5$; Laplace kernel, $\gamma = 6$; Rational Quadratic kernel, $\alpha = 0.25$; and Periodic kernel, period $p = 2$.
-        Detailed formula each kernel are provided in the appendix \ref{appendix:kernel_formula}.\\Note: In practice, we scale each kernel by a signal variance hyperparameter \(\sigma_f^2\), which governs the overall vertical variation in the function.
+        Detailed formulas for each kernel are provided in the appendix \ref{appendix:kernel_formula}.\\Note: In practice, we scale each kernel by a signal variance hyperparameter \(\sigma_f^2\), which governs the overall vertical variation in the function.
         This scaling is applied consistently across all kernel types and accounts for the amplitude of the wave.
         }
     \label{tab:kernel-examples}
@@ -702,7 +702,7 @@ we examine the different kernel choices available and the assumptions that each 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{LatexPlots/1dplots/priortoposterior.png}
-    \caption[Building the posterior distribution]{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. 
+    \caption[Building the posterior distribution.]{1D Gaussian Process Regression: Prior to Posterior. This sequence shows how the GP prior transforms into a posterior as more data points are added. 
     The RBF kernel was used with hyperparameters: $l = 1$, $\sigma^2 = 0.5$.The black line represents the true function. The blue is the mean of each posterior distribution. 
     The light blue shaded region is the credible interval and the grey lines are the samples drawn from each posterior/prior. }
     \label{fig: priortoposterior}
@@ -964,7 +964,7 @@ the product of the kernel can be written as the exponential of the sum of the di
 Figure~\ref{fig:2dkernels} shows how different kernels with different length-scales can combine to produce a kernel in higher dimensions.
 The first kernel has a short length scale and results in a sharply peaked distribution over inputs. The second kernel, with a longer length scale, varies much smoother over inputs.
 When sampling from this GP prior with mean zero and covariance determined by the product of these kernels we see that along the \(x_1\) axis the function is noisey with multiple divets. 
-In contrast along the \(x_2\) axis the surface produces a smoother alomst quadratic curve.
+In contrast along the \(x_2\) axis the surface produces a smoother almost quadratic curve.
 This shows how the RBF-ARD kernel can encode and combine relationships over different input parameters.
 
 In higher dimensions our noise modelling strategies remain the same, however the hyperparameter optimisation process becomes more difficult since
@@ -1215,7 +1215,7 @@ Based on our metrics calculated and visualised in Figure~\ref{fig:comparing_metr
 \texttt{RBF\_minmaxerr} & RBF & $0.821$ & $[0.12, 0.115, 1.19, 2.52]$ & White & --- & $\sigma_n^2 = 0.0439$ \\
 \hline
 \end{tabular}}
-\caption[The optimized hyperparameters for the final 8 GPR models.]{This table contains the optimized hyperparameters for the final 8 GPR models. $\sigma_{f,1}^2$ and $\sigma_{f,2}^2$ represent the constant factor the each kernel is multiplied by and is referred to as the signal variance since it controls the amplitute of the resulting model.
+\caption[The optimized hyperparameters for the final 8 GPR models.]{This table contains the optimized hyperparameters for the final 8 GPR models. $\sigma_{f,1}^2$ and $\sigma_{f,2}^2$ represent the constant factor the each kernel is multiplied by and is referred to as the signal variance since it controls the amplitude of the resulting model.
 The Length scales are the corresponding length scales for each dimension and then $\sigma_n^2$ is the optimised noise hyperparameter introduced by the \textsc{WhiteKernel}. Mat and Lap refer to the Matern and Laplacian kernel.}
 \label{tab:final_gpr_hyperparams}
 \end{table}
@@ -1253,7 +1253,7 @@ uncertainty into account.
     \centering
     \includegraphics[width=1\textwidth]{LatexPlots/final_gps_plots/MCMCpointwisecomparison_all.png}
     \caption[Comparing the pointwise \text{RBFMatern} model with an alternative marginalised over its hyper-parmeters.]{Plotting the marginalised posterior distribution over the hyperparameters (blue) with the point wise \texttt{RBFMatern} model (green). The shaded regions represent the 95\% credible region
-    for each modeltype and and the lines represent the posterior mean. Training points given are blue and test points orange. We again plot cross-cuts of our data, taking \(z = (1,0,-1)\) which corresponds to the mass ratio of \(q = (1,0.404,0.25)\) and \(w = 0.25\) which corresponds to \(M_{\text{tot}} = 37.5M_\odot\). We are marginalising over the distributions in Figure~\ref{fig:MCMCRBFMatern}. 
+    for each modeltype and the lines represent the posterior mean. Training points given are blue and test points orange. We again plot cross-cuts of our data, taking \(z = (1,0,-1)\) which corresponds to the mass ratio of \(q = (1,0.404,0.25)\) and \(w = 0.25\) which corresponds to \(M_{\text{tot}} = 37.5M_\odot\). We are marginalising over the distributions in Figure~\ref{fig:MCMCRBFMatern}. 
     Since marginalising is computationally expensive of our 300 samples for 40 walkers we discard the first 200 samples and thin every 10 sample. By doing this we marginalise over 400 converged MCMC samples.}
     \label{fig:MCMCvsmarginalised}
 \end{figure}
@@ -1319,7 +1319,7 @@ we concluded that the transformed spin vectors of our parameter space have the m
 over the total Mass.
 % 
 
-We also found that some hyperparmaters such as \(\sigma_{f,1}^2\) 
+We also found that some hyperparameters such as \(\sigma_{f,1}^2\) 
 had a large level of uncertainty associated with them. Considering the context of the model and the mismatch data the uncertainty for parameter \(\sigma_{f,1}^2\) made sense. 
 The model was unsure whether to emphasise local variation with a smaller \(\sigma_{f,1}^2\) or smoother variations with a larger \(\sigma_{f,1}^2\).
 The model makes what seems to be a good choice and chooses the parameter value between both extremes. When visualising the marginal posterior over the hyperparameters against the
@@ -1330,16 +1330,16 @@ pointwise posterior a considerably larger credible interval is evident in the ma
 Since our final mismatch model must have low computational cost and efficiency to contribute meaningfully in the NR-informed method for GW parameter estimation we conclude that there isn't
 enough benefit to justify marginalising our posterior over hyperparameters and pick the pointwise \texttt{RBFMatern} model as our mismatch predictor.
 This model offers a computationally efficient and accurate \((R^2 \sim 0.99, \text{MAE}=0.02)\) alternative
-for estimating waveform mismatches without costly NR simulations. Our GPR model therefore enables more efficent use of the NR-informed method in GW parameter estimation.
+for estimating waveform mismatches without costly NR simulations. Our GPR model therefore enables more efficient use of the NR-informed method in GW parameter estimation.
 
 
 \section{Further work}
-The next clear step is to update our GPR model for the full 8 dimensional paramater space. This will not be a long ordeal, as the model framework is already built.
+The next clear step is to update our GPR model for the full 8 dimensional parameter space. This will not be a long ordeal, as the model framework is already built.
 With this higher dimensional model, we can compare it with the model on the reduced 4 dimensional parameter space and and quantify how much (if any) information is lost in reducing 
 the parameter space. Similarly to how we found the importance of transformed spin vectors in mismatch variation in 4 dimensions, the 8 dimensional model may uncover
 further important parameters. 
 
-Kernel uncertainty could also be included intrinsicly into the GPR model. This would involve constructing a posterior distribution marginalised over kernel choice.
+Kernel uncertainty could also be included intrinsically into the GPR model. This would involve constructing a posterior distribution marginalised over kernel choice.
 This was demonstrated in \cite{kernelposterior} and would be a valuable addition to better capture model uncertainty.
 
 Building on this more complete Bayesian approach, we could implement a model averaging strategy. Specifically, 
@@ -1347,9 +1347,8 @@ we could combine the posterior of multiple GPR models using different kernels an
 This type of model would better account for the uncertainty associated with model choice and therefore provide a more generalisable prediction.
 %
 
-Although the prospect of including further variables into our model is exciting and interesting it is important to remember
-due that end goal of this model is to accurately but efficiently predicting mismatch. Incorporating too many variables or overly complex models may make the
-model computationaly too burdensome, potentially limiting the model's practical utility use as part of the NR-informed method for GW parameter estimation.
+Although the prospect of including further variables into our model is exciting and interesting it is important to remember that the end goal of this model is to predict waveform mismatches as accurately and efficiently as possible.
+Incorporating too many variables or overly complex models may make the model computationally too burdensome, potentially limiting the model's practical utility use as part of the NR-informed method for GW parameter estimation.
 
 \newpage
 \bibliography{references} 
@@ -1528,7 +1527,7 @@ This integral is intractable so we approximate it using Monte Carlo integration 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{LatexPlots/MCMC_Flow.png}
-    \caption{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference.
+    \caption[Overview of my MCMC method for building the hyperparameter posterior.]{Overview of the MCMC sampling procedure for Gaussian Process hyperparameter inference.
      This pipeline samples from the posterior \( p(\theta \mid \mathbf{y}, X) \) using a Metropolis-Hastings Gaussian proposal and an ensemble of walkers.}
     \label{fig:MCMC flowchart}
 \end{figure}
@@ -1554,7 +1553,7 @@ Note: This is just a selection of graphs to further illustrate the models. More 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{LatexPlots/final_gps_plots/change_over_masses.png}
-    \caption[Comparing crosscuts over different total mass values]{Here we plot crosscuts taken at different mass values. \(w = (0.25,0.5,0.75,1)\) which correspond to \(M_{\text{tot}} = (37.5 M_\odot,75 M_\odot, 112.5 M_\odot, 150 M_\odot)\). \(z = 0\) corresponds to the mass ratio of \(q = 0.404\).
+    \caption[Comparing crosscuts over different total mass values.]{Here we plot crosscuts taken at different mass values. \(w = (0.25,0.5,0.75,1)\) which correspond to \(M_{\text{tot}} = (37.5 M_\odot,75 M_\odot, 112.5 M_\odot, 150 M_\odot)\). \(z = 0\) corresponds to the mass ratio of \(q = 0.404\).
      We use the \texttt{RBFMatern} model with the optimal hyperparameters found and shown in Table~\ref{tab:final_gpr_hyperparams}. It is evident from this graph
      how little variation there is over different total Mass values.}
     \label{fig:visualising_changemasses}
@@ -1563,7 +1562,7 @@ Note: This is just a selection of graphs to further illustrate the models. More 
 \begin{figure}[H]
     \centering
     \includegraphics[width = \textwidth]{LatexPlots/final_gps_plots/Relative_mismatch.png}
-    \caption[Relative Error 2d contour plot]{Here we plot 2d contours of the relative error between the predicted mismatch and the actual mismatch.
+    \caption[Relative Error 2d contour plot.]{Here we plot 2d contours of the relative error between the predicted mismatch and the actual mismatch.
     The model used here is the \texttt{RBFMatern} model with the optimal hyperparameters found in Table~\ref{tab:final_gpr_hyperparams}. \(w=0.25\) corresponds to \(M_{\text{tot}} = 37.5 M_ \odot\)
     and \(z = (-1,-0.5,0.,0.5,1)\) corresponds to the mass ratio of \(q = (0.25,0.316,0.404,0.538,1)\).}
     \label{fig:Visualising_rel_error}
@@ -1594,7 +1593,7 @@ Note: This is just a selection of graphs to further illustrate the models. More 
 \setlength{\tabcolsep}{3pt}
 \begin{table}[H]
     \centering
-    \caption{Final Model Rankings after training on 90\% data and testing on 10\% untouched data}
+    \caption{Final Model Rankings after training on 90\% data and testing on 10\% untouched data.}
     {\fontsize{7}{9.5}\selectfont
     \csvautotabular{LatexPlots/CV_plots/final_model_rankings.csv}}
     \label{tab:finalmadelsrankingtable}
@@ -1604,7 +1603,7 @@ Note: This is just a selection of graphs to further illustrate the models. More 
 \setlength{\tabcolsep}{3pt}
 \begin{table}[H]
     \centering
-    \caption{All 32 Model Rankings from CV}
+    \caption{All 32 Model Rankings from CV.}
     {\fontsize{7}{9.5}\selectfont
     \csvautotabular{LatexPlots/CV_plots/model_rankings.csv}
     }
