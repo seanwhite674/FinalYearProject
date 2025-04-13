@@ -1282,34 +1282,44 @@ formed by the marginalised model result in a lower FOM.
 \chapter{Conclusion}
 \label{sec:conclusion}
 
-In this work, we provided a basic backgroung in Gravitational Waveforms and motivated the need for a mismatch predictor in the NR-informed model.
+In this work, we provided a basic background in Gravitational Waveforms and motivated the need for a mismatch predictor in the NR-informed model.
 We chose to model the mismatch using a Gaussian Process Regressor (GPR). 
 We introduced the basic GPR concepts such as building our prior and posterior distribution and how the kernel and noise choice effect this posterior.
 In each case we motivated these ideas with 1d visuals.  
 %
 
-Building on this 1 dimensional work we then constructed multiple model choices using all our kernels and noise modelling techniques for our reduced 4 dimensional parameter space.
-We divided our data into 2 sets, 90\% training and cross validation and 10\% untouched for final testing. We further divided the validation data into 10 folds training on 9 folds and testing all folds individually once.
-From these results we gathered our top 8 performing models which were then trained on the full 90\% training and validation data and metrics were calculated based on its predictions on the 10\% training data.
+Building on this 1 dimensional work we then constructed multiple model choices using combinations of all our kernels and noise modelling techniques to build a GPR for our reduced 4 dimensional parameter space.
+We divided our data into 2 sets, 90\% training and cross validation (CV) and 10\% untouched for final testing. We further divided the validation data into 10 folds training on 9 folds and testing all folds individually once.
+After CV we found that monte carlo simulation of the noise resulted in over generalised predictions with poor performance metric scores.
+We also interestingly found that adding the true noise of the training inputs to the diagonal of the kernel matrix resulted in poor predictions particularly in regions of sparse data.
+This is because the model lacked enough complexity to predict noise far away from the training inputs. CV metric results informed us that our top performing models were the combined kernel models 
+and the models where noise was treated as a hyperparameter. Since our top 8 models formed a clear optimal cluster post CV we further analysed these models training them on the full 90\% CV data
+and predicting on the untouched 10\% test data. 
 %
 
-By examining the hyperparameters of these resulting 8 models we found that when treating noise as a hyperparameter to be optimised the model would nearly always choose the lower optimisation bound 
+Examining the final 8 models hyperparameter's closely we found that when treating noise as a hyperparameter to be optimised the model would nearly always choose the lower optimisation bound 
 thus putting the emphasise on the kernel hyperparameters to explain the noise.
 This reinforced what we already knew, our noise is not homoscedastic but varies considerable with input which can't be accounted for by one single hyperparameter.
-However when adding the true noise of the training inputs to the diagonal of the kernel matrix our results where significantly worse especially in regions of sparse data.
-This is because the model lacked enough complexity to predict noise far away from the training inputs.
-%
-
 When using a combination of kernels with a smooth kernel (RBF kernel) and a 
 more locally noisy kernel (Matern with \(\nu = 0.75\)) we found that the first kernel would produce larger length scales thus explaining the overall smooth nature of the data and the 
 second kernel would result in smaller length scales allowing the kernel to be more expressive and change shape quickly accounting for the noise in the data. 
-The \texttt{RBFMatern} combination kernel model had consistently the best metric scores with an \(R^2 \sim 0.99\) and a MAE \(\sim 0.02\) evaluating on the final test set.
+%
+
+Since other noise modelling methods either ignored the noise or failed to capture accurate noise outside of the training data we concluded that the combined kernel approach
+was best. Here we assigned one kernel to learn the smooth variations of the data and another to learn the local fluctuations.
+The \texttt{RBFMatern} combination model had consistently the best metric scores with an \(R^2 \sim 0.99\) and a MAE \(\sim 0.02\) evaluating on the final test set.
 We concluded that the \texttt{RBFMatern} was our best model.
 %
 
 To visualise the uncertainty associated with the point estimate hyperparameters used in the
-\texttt{RBFMatern} model we built a posterior distribution over the hyperparameters.
-After visualising the distribution of each hyperparameter we found that some hyperparmaters such as \(\sigma_{f,1}^2\) 
+\texttt{RBFMatern} model we built a posterior distribution over the hyperparameters. Visualising these distributions as well as
+using appropriate cross cut graphs provided information about which parameters in the reduced 4d parameter space majorly influenced the mismatch.
+Since the length scales over the x and y dimensions (transformed spin vectors) in the Matern Kernel (modelling the noise) were relatively small \(<0.1\)
+we concluded that the transformed spin vectors of our parameter space have the most effect on the model mismatch. This was supported graphically with relevant cross-cuts
+over the total Mass.
+% 
+
+We also found that some hyperparmaters such as \(\sigma_{f,1}^2\) 
 had a large level of uncertainty associated with them. Considering the context of the model and the mismatch data the uncertainty for parameter \(\sigma_{f,1}^2\) made sense. 
 The model was unsure whether to emphasise local variation with a smaller \(\sigma_{f,1}^2\) or smoother variations with a larger \(\sigma_{f,1}^2\).
 The model makes what seems to be a good choice and chooses the parameter value between both extremes. When visualising the marginal posterior over the hyperparameters against the
@@ -1324,19 +1334,22 @@ for estimating waveform mismatches without costly NR simulations. Our GPR model 
 
 
 \section{Further work:}
-The next clear step is to update my model for the full 8 dimensional paramater space. This will not be a long ordeal since the model framework is already built.
-By building the 8 dimensional model we will be able to compare the higher dimensional model with our 4 dimensional model and quantify how much (if any) information is lost in reducing 
-the parameter space . This will also provide us with potential valuable information about what parameters are more pivotal in the resulting mismatch. 
+The next clear step is to update our GPR model for the full 8 dimensional paramater space. This will not be a long ordeal, as the model framework is already built.
+With this higher dimensional model, we can compare it with the model on the reduced 4 dimensional parameter space and and quantify how much (if any) information is lost in reducing 
+the parameter space . Similarly to how we found the importance of transformed spin vectors in mismatch variation in our 4 dimensional, the 8 dimensional model may uncover
+further important parameters. 
 
-One addition I would like to my model is to account for kernel uncertainty. This would involve making a posterior distribution marginalised over kernel choice. This was done in \cite{kernelposterior} and is a 
-further model addition to try and get an accurate uncertainty prediction. From the cross validation metrics calculated it is clear that my GPR depends massively on kernel choice. 
-My method is rigourous in finding the best kernel but neglects the uncertainty associated with this process. 
+Kernel uncertainty could also be included intrinsicly into the GPR model. This would involve constructing a posterior distribution marginalised over kernel choice.
+This was demonstrated in \cite{kernelposterior} and would be a valuable addition to better capture model uncertainty.
 
-Building on this more complete Bayesian approach I would also like to implement a GPR which combines the posterior of multiple models using different kernels and noise approaches with a model weighting approach.
-This type of model would better account for the uncertainty associated with model choice. Although the prospect of this complete bayesian approach is exciting the goal of this model
-must not be lost sight of. We are trying to build a GPR to predict the mismatch effieciently and by incorporating these extra bayesian processes we may over-complicate our model
-resulting in predictions requiring too much computational cost for practical use. 
+Building on this more complete Bayesian approach, we could implement a model averaging strategy. Specifically, 
+we could combine the posterior of multiple GPR models using different kernels and noise approaches with a model weighting approach based on model performance. 
+This type of model would better account for the uncertainty associated with model choice and therefore provide a more generalisable prediction.
+%
 
+Although the prospect of including further variables into our model is exciting and interesting it is important to remember
+due that end goal of this model is to accurately but efficiently predicting mismatch. Incorporating too many variables or overly complex models may make the
+model too computational costing, potentially practical use as part of the NR informed method for GW parameter estimation.
 
 \newpage
 \bibliography{references} 
@@ -1522,7 +1535,7 @@ To ensure convergence and sample independence, we discard the first 100 samples 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{LatexPlots/final_gps_plots/Relative_mismatch.png}
+    \includegraphics[width = \textwidth]{LatexPlots/final_gps_plots/Relative_mismatch.png}
     \caption{Examining my chosen model RBF Matern kernel}
     \label{fig:Visualising_rel_error}
 \end{figure}
