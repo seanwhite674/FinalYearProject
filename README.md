@@ -76,6 +76,31 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 
 ## Key Results  
 
+
+
+### Optimized Hyperparameters for the Final 8 GPR Models
+
+<img width="1719" height="1428" alt="image" src="https://github.com/user-attachments/assets/762f2326-68d6-4605-9d07-9fa2dba4f9df" />
+
+
+| **Model** | **Kernel 1** | **σ²_f₁** | **Length Scales 1** | **Kernel 2** | **σ²_f₂** | **Length Scales 2 / Noise** |
+|------------|--------------|------------|----------------------|--------------|------------|------------------------------|
+| **RBFMat** | RBF | 2.34 | [1.00, 1.51, 1.38, 1.36] | Matern (ν = 0.75) | 0.207 | [0.0996, 0.0582, 0.414, 2.31] |
+| **RBFLap** | RBF | 0.354 | [0.10, 0.10, 1.18, 2.91] | Laplace (γ = 0.964) | 0.292 | — |
+| **Mat_noerr** | Matern (ν = 1.75) | 0.926 | [0.227, 0.20, 1.15, 2.85] | White | — | σ²ₙ = 0.00637 |
+| **Laplace_noerr** | Laplace (γ = 0.358) | 7.24 | — | White | — | σ²ₙ = 1×10⁻⁶ |
+| **RBF_noerr** | RBF | 0.728 | [0.112, 0.112, 0.958, 1.6] | White | — | σ²ₙ = 0.00728 |
+| **Mat_minmaxerr** | Matern (ν = 1.75) | 1.14 | [0.27, 0.22, 1.34, 4.73] | White | — | σ²ₙ = 0.0439 |
+| **Laplace_minmaxerr** | Laplace (γ = 0.284) | 6.60 | — | White | — | σ²ₙ = 0.0439 |
+| **RBF_minmaxerr** | RBF | 0.821 | [0.12, 0.115, 1.19, 2.52] | White | — | σ²ₙ = 0.0439 |
+
+**Notes:**  
+- σ²_f₁ and σ²_f₂ are the **signal variances** for each kernel — they scale the amplitude of the model.  
+- “Length Scales” correspond to each input dimension in the reduced 4D parameter space.  
+- σ²ₙ is the **optimised noise hyperparameter** from the WhiteKernel.  
+- “Mat” and “Lap” refer to the **Matern** and **Laplacian** kernels, respectively.
+
+
 <img width="1269" height="425" alt="Image" src="https://github.com/user-attachments/assets/badf2824-bcfb-40f3-91b4-938f7c3ac7c1" />
 
 
