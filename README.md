@@ -127,12 +127,6 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 
 ---
 
-## Outcome  
-This project demonstrates that **Gaussian Processes can act as an accurate surrogate model** for waveform mismatch prediction in gravitational wave physics.  
-The RBF–Matern hybrid model offers a strong balance between **smooth extrapolation**, **local adaptability**, and **computational efficiency**, improving the **NR-informed Bayesian parameter estimation pipeline**.
-
----
-
 ## Further Work  
 - Extend to full 8D parameter space to assess information loss from dimensionality reduction.  
 - Explore **model averaging across kernel types** to capture kernel-level uncertainty.  
