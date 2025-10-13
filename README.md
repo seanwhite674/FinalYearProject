@@ -17,10 +17,10 @@ This thesis proposes a **machine learning alternative** — a Gaussian Process m
 - Mismatch values between analytical model **SEOBNRv5PHM** and NR surrogate **NRSur7dq4**.  
 - 250 intrinsic configurations (covering 5 mass ratios and a grid of spin projections), repeated for 4 total masses.  
 - Each mismatch averaged over 294 extrinsic configurations.  
-- The 8D physical parameter space (two masses + two spin vectors) was reduced to 4D via:
-  - **Total mass**: \( M_{\text{tot}} = M_1 + M_2 \)
-  - **Symmetric mass ratio**: \( \eta = \frac{q}{(1+q)^2} \)
-  - **Spin projections**: \( \chi_{\parallel}, \chi_{\perp} \) (parallel and perpendicular to orbital angular momentum)
+- The 8D physical parameter space (two masses + two spin vectors) was reduced to 4D via:  
+  - **Total mass:** `M_tot = M₁ + M₂`  
+  - **Symmetric mass ratio:** `η = q / (1 + q)²`  
+  - **Spin projections:** `χ∥`, `χ⊥` — components of total spin parallel and perpendicular to the orbital angular momentum
 
 ---
 
@@ -44,14 +44,14 @@ This thesis proposes a **machine learning alternative** — a Gaussian Process m
 
 ### 3. Final Model  
 The best-performing model was a **heteroscedastic additive GPR** with:
-\[
-k(x, x') = \sigma^2_{f1} k_{\text{RBF}}(x, x') + \sigma^2_{f2} k_{\text{Matern}}(x, x')
-\]
+
+`k(x, x') = σ²_f₁ · k_RBF(x, x') + σ²_f₂ · k_Matern(x, x')`
+
 - The RBF kernel captured global smooth structure.  
 - The Matern kernel captured local, noise-like variations.  
 
 **Performance (on test data):**
-- \( R^2 \approx 0.99 \)
+- R² ≈ 0.99
 - RMSE ≈ 0.034
 - MAE ≈ 0.02
 
