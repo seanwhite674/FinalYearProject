@@ -21,13 +21,15 @@ This thesis proposes a **machine learning alternative** — a Gaussian Process m
   - **Total mass:** `M_tot = M₁ + M₂`  
   - **Symmetric mass ratio:** `η = q / (1 + q)²`  
   - **Spin projections:** `χ∥`, `χ⊥` — components of total spin parallel and perpendicular to the orbital angular momentum
- 
+
+- Throughout the work we take cross-sections at different points to allow for easier interpretation of how well our model works. This is illustrated in the below graph:
   <img width="1399" height="351" alt="image" src="https://github.com/user-attachments/assets/49a7cabe-8d73-4f81-9d87-995928046e54" />
 
 
 ---
 
 ## Methodology  
+- Below shows a flow-chart of the process followed building and testing the models:
 
 <img width="3413" height="1974" alt="image" src="https://github.com/user-attachments/assets/032da9bf-e92b-46be-8b92-9ceb63274527" />
 
@@ -68,8 +70,14 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 - Compared **pointwise predictions** (MAP estimates) with **marginalised posteriors** (integrated over hyperparameter uncertainty).  
   - Marginalisation widened credible intervals but didn’t significantly improve accuracy.  
   - The **pointwise RBF–Matern model** was chosen for efficiency.
+
+- The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters.
  
 <img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/431d3830-4cd0-48fc-a7f6-1b5eea9e459d" />
+
+  **Notes:**  
+- σ²_f₁ and σ²_f₂ are the **signal variances** for each kernel — they scale the amplitude of the model.  
+- “Length Scales” correspond to each input dimension in the reduced 4D parameter space. 
 
 
 ---
@@ -80,8 +88,11 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 
 ### Optimized Hyperparameters for the Final 8 GPR Models
 
+- The below graph is a cross-section taken from the best models:
+- 
 <img width="1719" height="1428" alt="image" src="https://github.com/user-attachments/assets/762f2326-68d6-4605-9d07-9fa2dba4f9df" />
 
+- The table below represents the metrics for the best models:
 
 | **Model** | **Kernel 1** | **σ²_f₁** | **Length Scales 1** | **Kernel 2** | **σ²_f₂** | **Length Scales 2 / Noise** |
 |------------|--------------|------------|----------------------|--------------|------------|------------------------------|
@@ -95,11 +106,12 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 | **RBF_minmaxerr** | RBF | 0.821 | [0.12, 0.115, 1.19, 2.52] | White | — | σ²ₙ = 0.0439 |
 
 **Notes:**  
-- σ²_f₁ and σ²_f₂ are the **signal variances** for each kernel — they scale the amplitude of the model.  
-- “Length Scales” correspond to each input dimension in the reduced 4D parameter space.  
 - σ²ₙ is the **optimised noise hyperparameter** from the WhiteKernel.  
 - “Mat” and “Lap” refer to the **Matern** and **Laplacian** kernels, respectively.
 
+  
+- The below visualisation represents how we chose the best model from the metrics. We visualised the metrics with the most different ranking results in the scatter plot.
+- The models are labelled 1-8 from the ranking produced in the table above.
 
 <img width="1269" height="425" alt="Image" src="https://github.com/user-attachments/assets/badf2824-bcfb-40f3-91b4-938f7c3ac7c1" />
 
