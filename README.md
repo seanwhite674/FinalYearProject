@@ -21,10 +21,17 @@ This thesis proposes a **machine learning alternative** — a Gaussian Process m
   - **Total mass:** `M_tot = M₁ + M₂`  
   - **Symmetric mass ratio:** `η = q / (1 + q)²`  
   - **Spin projections:** `χ∥`, `χ⊥` — components of total spin parallel and perpendicular to the orbital angular momentum
+ 
+  <img width="1399" height="351" alt="image" src="https://github.com/user-attachments/assets/49a7cabe-8d73-4f81-9d87-995928046e54" />
+
 
 ---
 
 ## Methodology  
+
+<img width="3413" height="1974" alt="image" src="https://github.com/user-attachments/assets/032da9bf-e92b-46be-8b92-9ceb63274527" />
+
+
 
 ### 1. Gaussian Process Framework  
 - Built GP priors and posteriors for both **homoscedastic** (constant noise) and **heteroscedastic** (input-dependent noise) assumptions.  
@@ -61,18 +68,18 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 - Compared **pointwise predictions** (MAP estimates) with **marginalised posteriors** (integrated over hyperparameter uncertainty).  
   - Marginalisation widened credible intervals but didn’t significantly improve accuracy.  
   - The **pointwise RBF–Matern model** was chosen for efficiency.
+ 
+<img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/431d3830-4cd0-48fc-a7f6-1b5eea9e459d" />
+
 
 ---
 
 ## Key Results  
 
-| Model | R² | RMSE | MAE | FOM | Pearson |
-|-------|----|------|-----|------|----------|
-| **RBF–Matern (Pointwise)** | **0.991** | **0.034** | **0.020** | 0.442 | 0.996 |
-| RBF–Matern (MCMC marginalised) | 0.920 | 0.104 | 0.072 | **0.200** | 0.962 |
+<img width="1269" height="425" alt="Image" src="https://github.com/user-attachments/assets/badf2824-bcfb-40f3-91b4-938f7c3ac7c1" />
 
-- The RBF–Matern hybrid achieved **R² ≈ 0.99**, demonstrating strong predictive power.
-- Reduced reliance on NR data while maintaining interpretability and uncertainty quantification.
+
+
 
 ---
 
