@@ -22,9 +22,18 @@ This thesis proposes a **machine learning alternative** — a Gaussian Process m
   - **Symmetric mass ratio:** `η = q / (1 + q)²`  
   - **Spin projections:** `χ∥`, `χ⊥` — components of total spin parallel and perpendicular to the orbital angular momentum
 
+- Throughout the work we take cross-sections at different points to allow for easier interpretation of how well our model works. This is illustrated in the below graph:
+  <img width="1399" height="351" alt="image" src="https://github.com/user-attachments/assets/49a7cabe-8d73-4f81-9d87-995928046e54" />
+
+
 ---
 
 ## Methodology  
+- Below shows a flow-chart of the process followed building and testing the models:
+
+<img width="3413" height="1974" alt="image" src="https://github.com/user-attachments/assets/032da9bf-e92b-46be-8b92-9ceb63274527" />
+
+
 
 ### 1. Gaussian Process Framework  
 - Built GP priors and posteriors for both **homoscedastic** (constant noise) and **heteroscedastic** (input-dependent noise) assumptions.  
@@ -62,17 +71,52 @@ The best-performing model was a **heteroscedastic additive GPR** with:
   - Marginalisation widened credible intervals but didn’t significantly improve accuracy.  
   - The **pointwise RBF–Matern model** was chosen for efficiency.
 
+- The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters.
+ 
+<img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/431d3830-4cd0-48fc-a7f6-1b5eea9e459d" />
+
+  **Notes:**  
+- σ²_f₁ and σ²_f₂ are the **signal variances** for each kernel — they scale the amplitude of the model.  
+- “Length Scales” correspond to each input dimension in the reduced 4D parameter space. 
+
+
 ---
 
 ## Key Results  
 
-| Model | R² | RMSE | MAE | FOM | Pearson |
-|-------|----|------|-----|------|----------|
-| **RBF–Matern (Pointwise)** | **0.991** | **0.034** | **0.020** | 0.442 | 0.996 |
-| RBF–Matern (MCMC marginalised) | 0.920 | 0.104 | 0.072 | **0.200** | 0.962 |
 
-- The RBF–Matern hybrid achieved **R² ≈ 0.99**, demonstrating strong predictive power.
-- Reduced reliance on NR data while maintaining interpretability and uncertainty quantification.
+
+### Optimized Hyperparameters for the Final 8 GPR Models
+
+- The below graph is a cross-section taken from the best models:
+- 
+<img width="1719" height="1428" alt="image" src="https://github.com/user-attachments/assets/762f2326-68d6-4605-9d07-9fa2dba4f9df" />
+
+- The table below represents the metrics for the best models:
+
+| **Model** | **Kernel 1** | **σ²_f₁** | **Length Scales 1** | **Kernel 2** | **σ²_f₂** | **Length Scales 2 / Noise** |
+|------------|--------------|------------|----------------------|--------------|------------|------------------------------|
+| **RBFMat** | RBF | 2.34 | [1.00, 1.51, 1.38, 1.36] | Matern (ν = 0.75) | 0.207 | [0.0996, 0.0582, 0.414, 2.31] |
+| **RBFLap** | RBF | 0.354 | [0.10, 0.10, 1.18, 2.91] | Laplace (γ = 0.964) | 0.292 | — |
+| **Mat_noerr** | Matern (ν = 1.75) | 0.926 | [0.227, 0.20, 1.15, 2.85] | White | — | σ²ₙ = 0.00637 |
+| **Laplace_noerr** | Laplace (γ = 0.358) | 7.24 | — | White | — | σ²ₙ = 1×10⁻⁶ |
+| **RBF_noerr** | RBF | 0.728 | [0.112, 0.112, 0.958, 1.6] | White | — | σ²ₙ = 0.00728 |
+| **Mat_minmaxerr** | Matern (ν = 1.75) | 1.14 | [0.27, 0.22, 1.34, 4.73] | White | — | σ²ₙ = 0.0439 |
+| **Laplace_minmaxerr** | Laplace (γ = 0.284) | 6.60 | — | White | — | σ²ₙ = 0.0439 |
+| **RBF_minmaxerr** | RBF | 0.821 | [0.12, 0.115, 1.19, 2.52] | White | — | σ²ₙ = 0.0439 |
+
+**Notes:**  
+- σ²ₙ is the **optimised noise hyperparameter** from the WhiteKernel.  
+- “Mat” and “Lap” refer to the **Matern** and **Laplacian** kernels, respectively.
+
+  
+- The below visualisation represents how we chose the best model from the metrics. We visualised the metrics with the most different ranking results in the scatter plot.
+- The models are labelled 1-8 from the ranking produced in the table above.
+
+<img width="1269" height="425" alt="Image" src="https://github.com/user-attachments/assets/badf2824-bcfb-40f3-91b4-938f7c3ac7c1" />
+
+
+
 
 ---
 
