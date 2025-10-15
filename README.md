@@ -18,9 +18,7 @@ This project explores how **Gaussian Process Regression (GPR)** can be used to e
 ---
 
 ## Previous work and Motivation
-Recent Bayesian methods (“NR-informed” approaches) use waveform mismatches to determine which analytical GW model is most accurate in each region of parameter space.  
-However, mismatch computation still depends on expensive NR data.  
-This thesis proposes a **machine learning alternative** — a Gaussian Process model that predicts mismatches as a smooth function of binary parameters, with quantified uncertainty, allowing faster and more scalable inference.
+Recent Bayesian methods (“NR-informed” approaches) use waveform mismatches to determine which analytical GW model is most accurate in each region of parameter space.  However, mismatch computation still depends on expensive NR data.  This thesis proposes a **machine learning alternative** — a Gaussian Process model that predicts mismatches as a smooth function of binary parameters, with quantified uncertainty, allowing faster and more scalable inference.
 
 ---
 
