@@ -11,13 +11,16 @@ Recent Bayesian methods (“NR-informed” approaches) use waveform mismatches t
 However, mismatch computation still depends on expensive NR data.  
 This thesis proposes a **machine learning alternative** — a Gaussian Process model that predicts mismatches as a smooth function of binary parameters, with quantified uncertainty, allowing faster and more scalable inference.
 
+--
+
+## Visualising the previous Bayesian Method
+
 The plots below illustrate how the numerical-relativity (NR)-informed Bayesian method operates.
 Each contour represents the ratio of waveform mismatches between two different analytical (interpolant-fit) models and the NR simulations:
 
 Contour Ratio = Mismatch(Fit 1) / Mismatch(Fit 2)
 
 If Ratio > 1, then Fit 2 is more faithful to the NR simulations.
-
 If Ratio < 1, then Fit 1 is more accurate in that region of parameter space.
 
 This approach allows the Bayesian inference process to adapt locally, selecting whichever model best matches NR results in each part of the parameter space.
