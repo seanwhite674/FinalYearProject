@@ -3,8 +3,7 @@ This is a brief summary of my Undergraduate Thesis. The paper is available to re
 
 ## Explaining This Repository:
 
-- `1D_ToyProblem/`  
-  - Introductory GPR examples (learning fundamentals)
+- `1D_ToyProblem/` → Introductory GPR examples (learning fundamentals)
 
 - `Final_Model_Code/`  
   - `Training_CrossValidated_32GPRs/` → 32 GPR models trained using 10-fold cross-validation (on 90% of data)  
