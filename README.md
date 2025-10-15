@@ -39,17 +39,15 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
   <img width="1399" height="351" alt="image" src="https://github.com/user-attachments/assets/49a7cabe-8d73-4f81-9d87-995928046e54" />
 
 
-
-
 ---
 
 ## 2. Methodology  
 - Below shows a flow-chart of the process followed building and testing the models:
-  
 <img width="787" height="456" alt="image" src="https://github.com/user-attachments/assets/a3ef6e31-3ed9-43cd-9ebb-5a94e647c33a" />
 
 
 
+---
 
 ## 3. Gaussian Process Framework  
 - Built GP priors and posteriors for both **homoscedastic** (constant noise) and **heteroscedastic** (input-dependent noise) assumptions.  
@@ -67,7 +65,7 @@ for the amplitude of the wave.
 
 <img width="667" height="448" alt="image" src="https://github.com/user-attachments/assets/9dcedf2c-b67c-47d1-b3b2-5812d0d7a966" />
  
-
+---
 
 ## 4. Model Training & Evaluation  
 - Tested **32 GPR configurations** (different kernel + noise setups).  
@@ -88,9 +86,7 @@ cluster and we differentiate this from testing on the final test data.
 <img width="759" height="721" alt="image" src="https://github.com/user-attachments/assets/8e97b1a3-86d0-436c-8db2-79c3b8b002e2" />
 
 
-
-
-
+---
 
 ## 5. Final Model  
 The best-performing model was a **heteroscedastic additive GPR** with:
@@ -102,7 +98,7 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 
 <img width="1123" height="245" alt="image" src="https://github.com/user-attachments/assets/6ca38e55-0928-405b-8f84-8289b7923a76" />
 
-
+---
 
 ## 6. Uncertainty Quantification  
 - Used **MCMC** to build a posterior distribution over kernel hyperparameters.  
