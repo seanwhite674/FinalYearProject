@@ -68,10 +68,16 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 - Cross-validated across six metrics:
   - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
 
-- The below shows all models ranked indexed by there position in the table below it.
+- The below shows all models ranked indexed by there position in the table below it. Left: Heatmap showing each model’s rank across the evaluation metrics. The x-axis lists
+models according to their ranking in the Table beneath the graph, and the y-axis shows the metrics.
+The color bar represents rank (blue indicates better rank, red indicates worse). Middle: Dendrogram showing hierarchical
+clustering of metrics based on how similarly they rank models. The vertical axis denotes correlation
+distance—smaller values indicate higher agreement between metric rankings. Right: Scatter plot of all
+models with R2 on the x-axis, FOM on the y-axis, and MAE represented by the color of each point.
   
 <img width="1627" height="491" alt="image" src="https://github.com/user-attachments/assets/3075ca6d-66d0-431b-869d-f74a225ba2d4" />
-<img width="739" height="704" alt="image" src="https://github.com/user-attachments/assets/8d14f2fc-e121-4396-916c-29ccd76f32f4" />
+<img width="759" height="721" alt="image" src="https://github.com/user-attachments/assets/8e97b1a3-86d0-436c-8db2-79c3b8b002e2" />
+
 
 
 
