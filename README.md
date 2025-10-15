@@ -44,16 +44,12 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 
 ### 1. Gaussian Process Framework  
 - Built GP priors and posteriors for both **homoscedastic** (constant noise) and **heteroscedastic** (input-dependent noise) assumptions.  
-- Explored multiple kernel types:
-  - Radial Basis Function (RBF)
-  - Matern
-  - Rational Quadratic
-  - Laplacian
-  - Periodic
-- Examined kernel combinations and noise models via cross-validation across six metrics:
-  - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
+- Explored multiple kernel types, their shapes and properties are illustrated below
 
 <img width="1194" height="806" alt="image" src="https://github.com/user-attachments/assets/433a6654-dd43-4765-9094-3152aa4cce16" />
+
+- Examined kernel combinations and noise models via cross-validation across six metrics:
+  - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
 
 
 ### 2. Model Training & Evaluation  
