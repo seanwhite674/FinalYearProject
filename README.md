@@ -2,13 +2,15 @@
 This is a brief summary of my Undergraduate Thesis. The paper is available to read in the repository above.
 
 ## Explaining This Repository:
-├── 1D_ToyProblem/
-│   └── Introductory GPR examples (learning fundamentals)
-│
-├── Final_Model_Code/
-│   ├── Training_CrossValidated_32GPRs/   → 32 GPR models trained using 10-fold cross-validation (on 90% of data)
-│   ├── Ranking_All32_Models/              → Ranks models based on cross-validation metrics and selects the top 8
-│   └── Testing_Best8Models/               → Evaluates the 8 best models on the unseen 10% test set
+
+- `1D_ToyProblem/`  
+  - Introductory GPR examples (learning fundamentals)
+
+- `Final_Model_Code/`  
+  - `Training_CrossValidated_32GPRs/` → 32 GPR models trained using 10-fold cross-validation (on 90% of data)  
+  - `Ranking_All32_Models/` → Ranks models based on cross-validation metrics and selects the top 8  
+  - `Testing_Best8Models/` → Evaluates the 8 best models on the unseen 10% test set
+
 
 
 ## Overview  
