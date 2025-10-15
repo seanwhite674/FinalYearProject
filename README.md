@@ -1,12 +1,12 @@
 # Gaussian Process Regression for Gravitational Waves
+This is a brief summary of my Undergraduate Thesis. The paper is available to read in the repository above.
 
 ## Overview  
-This project explores how **Gaussian Process Regression (GPR)** can be used to efficiently predict **waveform mismatches** between analytical gravitational wave (GW) models and high-fidelity **Numerical Relativity (NR)** simulations.  
-NR simulations are the gold standard for generating GW waveforms but are computationally costly. By training GPR models on a limited set of NR-informed mismatches, this project builds a **surrogate model** that generalizes across the binary black hole parameter space — reducing the need for new NR runs while maintaining high predictive accuracy.
+This project explores how **Gaussian Process Regression (GPR)** can be used to efficiently predict **waveform mismatches** between analytical gravitational wave (GW) models and **Numerical Relativity (NR)** simulations. NR simulations are the gold standard for generating GW waveforms but are computationally costly. By training GPR models on a limited set of NR-informed mismatches, this project builds a **surrogate model** that generalizes across the binary black hole parameter space, reducing the need for new NR runs while maintaining high predictive accuracy.
 
 ---
 
-## Motivation  
+## Previous work and Motivation
 Recent Bayesian methods (“NR-informed” approaches) use waveform mismatches to determine which analytical GW model is most accurate in each region of parameter space.  
 However, mismatch computation still depends on expensive NR data.  
 This thesis proposes a **machine learning alternative** — a Gaussian Process model that predicts mismatches as a smooth function of binary parameters, with quantified uncertainty, allowing faster and more scalable inference.
@@ -15,15 +15,22 @@ This thesis proposes a **machine learning alternative** — a Gaussian Process m
 
 ## Data  
 - Mismatch values between analytical model **SEOBNRv5PHM** and NR surrogate **NRSur7dq4**.  
-- 250 intrinsic configurations (covering 5 mass ratios and a grid of spin projections), repeated for 4 total masses.  
-- Each mismatch averaged over 294 extrinsic configurations.  
-- The 8D physical parameter space (two masses + two spin vectors) was reduced to 4D via:  
+- 250 intrinsic parameters (covering 5 mass ratios and a grid of spin projections), repeated for 4 total masses. (1000 total points) 
+- Each mismatch is averaged over 294 extrinsic configurations (such as position in sky).  Again read https://arxiv.org/abs/2409.19404 for further details
+- The 8D physical parameter space (two masses + two 3D spin vectors) was reduced to 4D via:  
   - **Total mass:** `M_tot = M₁ + M₂`  
-  - **Symmetric mass ratio:** `η = q / (1 + q)²`  
+  - **Symmetric mass ratio:** `η = q / (1 + q)²` 'q' is the mass ratio such that 'q = M₂/M₁' 
   - **Spin projections:** `χ∥`, `χ⊥` — components of total spin parallel and perpendicular to the orbital angular momentum
 
-- Throughout the work we take cross-sections at different points to allow for easier interpretation of how well our model works. This is illustrated in the below graph:
+- Below we have a visualisation of the input data across reduced dimensions. Left: A 3D scatter plot of all
+data points for fixed total mass w = 0.25 (Mtot = 37.5M⊙). Centre: A 2D slice of the data at rescaled
+symmetric mass ratio z = 0 (q = 0.404), interpolated over spin components. Right: A 1D cut through
+the data at x = 0.8 showing variation across y. When using raw data, interpolation is needed between
+samples, but GPR provides an analytic model that can be directly evaluated without interpolation.
+
   <img width="1399" height="351" alt="image" src="https://github.com/user-attachments/assets/49a7cabe-8d73-4f81-9d87-995928046e54" />
+
+
 
 
 ---
@@ -37,14 +44,13 @@ This thesis proposes a **machine learning alternative** — a Gaussian Process m
 
 ### 1. Gaussian Process Framework  
 - Built GP priors and posteriors for both **homoscedastic** (constant noise) and **heteroscedastic** (input-dependent noise) assumptions.  
-- Explored multiple kernel types:
-  - Radial Basis Function (RBF)
-  - Matern
-  - Rational Quadratic
-  - Laplacian
-  - Periodic
+- Explored multiple kernel types, their shapes and properties are illustrated below
+
+<img width="1194" height="806" alt="image" src="https://github.com/user-attachments/assets/433a6654-dd43-4765-9094-3152aa4cce16" />
+
 - Examined kernel combinations and noise models via cross-validation across six metrics:
   - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
+
 
 ### 2. Model Training & Evaluation  
 - Tested **32 GPR configurations** (different kernel + noise setups).  
@@ -124,12 +130,6 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 - **Python**, `scikit-learn`, `NumPy`, `SciPy`, `matplotlib`, `emcee`  
 - Data visualisation using Matplotlib (contour and cross-cut plots).  
 - MCMC analysis for Bayesian hyperparameter posteriors.  
-
----
-
-## Outcome  
-This project demonstrates that **Gaussian Processes can act as an accurate surrogate model** for waveform mismatch prediction in gravitational wave physics.  
-The RBF–Matern hybrid model offers a strong balance between **smooth extrapolation**, **local adaptability**, and **computational efficiency**, improving the **NR-informed Bayesian parameter estimation pipeline**.
 
 ---
 
