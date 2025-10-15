@@ -51,7 +51,7 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 
 
 
-### 3. Gaussian Process Framework  
+## 3. Gaussian Process Framework  
 - Built GP priors and posteriors for both **homoscedastic** (constant noise) and **heteroscedastic** (input-dependent noise) assumptions.  
 - Explored multiple kernel types, their shapes and properties are illustrated below
   
@@ -69,7 +69,7 @@ for the amplitude of the wave.
  
 
 
-### 4. Model Training & Evaluation  
+## 4. Model Training & Evaluation  
 - Tested **32 GPR configurations** (different kernel + noise setups).  
 - Used **10-fold cross-validation** on 90% of data and a 10% hold-out test set.
 - Cross-validated across six metrics:
@@ -92,7 +92,7 @@ cluster and we differentiate this from testing on the final test data.
 
 
 
-### 5. Final Model  
+## 5. Final Model  
 The best-performing model was a **heteroscedastic additive GPR** with:
 
 `k(x, x') = σ²_f₁ · k_RBF(x, x') + σ²_f₂ · k_Matern(x, x')`
@@ -104,7 +104,7 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 
 
 
-### 6. Uncertainty Quantification  
+## 6. Uncertainty Quantification  
 - Used **MCMC** to build a posterior distribution over kernel hyperparameters.  
 - The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters.
 
