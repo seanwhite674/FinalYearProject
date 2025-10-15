@@ -33,6 +33,7 @@ This thesis proposes a **machine learning alternative** — a Gaussian Process m
   - **Symmetric mass ratio:** `η = q / (1 + q)²` 'q' is the mass ratio such that 'q = M₂/M₁' 
   - **Spin projections:** `χ∥`, `χ⊥` — components of total spin parallel and perpendicular to the orbital angular momentum
 
+#### Explaining the below Graph:
 - Below we have a visualisation of the input data across reduced dimensions. Left: A 3D scatter plot of all
 data points for fixed total mass w = 0.25 (Mtot = 37.5M⊙). Centre: A 2D slice of the data at rescaled
 symmetric mass ratio z = 0 (q = 0.404), interpolated over spin components. Right: A 1D cut through
@@ -57,6 +58,16 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 ### 1. Gaussian Process Framework  
 - Built GP priors and posteriors for both **homoscedastic** (constant noise) and **heteroscedastic** (input-dependent noise) assumptions.  
 - Explored multiple kernel types, their shapes and properties are illustrated below
+  
+#### Explaining the below Graph:
+-Visual comparison of common kernel functions and their effect on Gaussian process priors.
+Each column shows the kernel shape k(x, x′), samples from the corresponding GP prior, and a summary
+of the structure it imposes. All kernels were evaluated using a lengthscale parameter ℓ = 1 (except where
+noted). For the Matern kernel, ν = 0.5; Laplace kernel, γ = 6; Rational Quadratic kernel, α = 0.25; and
+Periodic kernel, period p = 2. Detailed formulas for each kernel are provided in the appendix 6.2.
+Note: In practice, we scale each kernel by a signal variance hyperparameter σ2f, which governs the overall
+vertical variation in the function. This scaling is applied consistently across all kernel types and accounts
+for the amplitude of the wave.
 
 <img width="667" height="448" alt="image" src="https://github.com/user-attachments/assets/9dcedf2c-b67c-47d1-b3b2-5812d0d7a966" />
  
@@ -68,12 +79,14 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 - Cross-validated across six metrics:
   - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
 
-- The below shows all models ranked indexed by there position in the table below it. Left: Heatmap showing each model’s rank across the evaluation metrics. The x-axis lists
+#### Explaining the below Graph:
+- Left: Heatmap showing each model’s rank across the evaluation metrics. The x-axis lists
 models according to their ranking in the Table beneath the graph, and the y-axis shows the metrics.
 The color bar represents rank (blue indicates better rank, red indicates worse). Middle: Dendrogram showing hierarchical
 clustering of metrics based on how similarly they rank models. The vertical axis denotes correlation
 distance—smaller values indicate higher agreement between metric rankings. Right: Scatter plot of all
-models with R2 on the x-axis, FOM on the y-axis, and MAE represented by the color of each point.
+models with R2 on the x-axis, FOM on the y-axis, and MAE represented by the color of each point. The best 8 models form an "optimal"
+cluster and we differentiate this from testing on the final test data.
   
 <img width="1627" height="491" alt="image" src="https://github.com/user-attachments/assets/3075ca6d-66d0-431b-869d-f74a225ba2d4" />
 <img width="759" height="721" alt="image" src="https://github.com/user-attachments/assets/8e97b1a3-86d0-436c-8db2-79c3b8b002e2" />
@@ -97,7 +110,10 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 
 ### 4. Uncertainty Quantification  
 - Used **MCMC** to build a posterior distribution over kernel hyperparameters.  
-- The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters. 
+- The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters.
+
+#### Explaining the below Graph:
+- The MCMC results showed clear differences across the model parameters. ℓ₅ had a sharply peaked posterior, indicating it was well constrained, while ℓ₆ was also small, showing it captured much of the local variation in the spin-related dimensions. Parameters like σ²_f₂, ℓ₁, and ℓ₅ were tightly constrained with narrow peaks, meaning their values were stable and confident. In contrast, σ²_f₁ and ℓ₈ showed broad or bimodal posteriors, suggesting uncertainty about how strongly the smooth RBF kernel should dominate over the locally varying Matern kernel when fitting regions of different noise levels.
  
 <img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/431d3830-4cd0-48fc-a7f6-1b5eea9e459d" />
 
