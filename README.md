@@ -2,11 +2,14 @@
 This is a brief summary of my Undergraduate Thesis. The paper is available to read in the repository above.
 
 ## Explaining This Repository:
-- In 1D_Toyproblem I learned the basics of Gaussian Process Regression
-- In Final_Model_Code folder there exists:
-    - Training_CrossValidated_32GPRS where each of the 32 different GPR models is trained on 90% of the data but using 10 fold cross validation (Trained on each Fold)
-    - Ranking_All32_Models from the cross validation and choosing top 8
-    - Testing_Best8Models testing the best 8 models on the remaining unseen 10% of the data
+├── 1D_ToyProblem/
+│   └── Introductory GPR examples (learning fundamentals)
+│
+├── Final_Model_Code/
+│   ├── Training_CrossValidated_32GPRs/     → 32 GPR models trained using 10-fold cross-validation (on 90% of data)
+│   ├── Ranking_All32_Models/                → Ranks models based on cross-validation metrics and selects the top 8
+│   └── Testing_Best8Models/                 → Evaluates the 8 best models on the unseen 10% test set
+
 
 ## Overview  
 This project explores how **Gaussian Process Regression (GPR)** can be used to efficiently predict **waveform mismatches** between analytical gravitational wave (GW) models and **Numerical Relativity (NR)** simulations. NR simulations are the gold standard for generating GW waveforms but are computationally costly. By training GPR models on a limited set of NR-informed mismatches, this project builds a **surrogate model** that generalizes across the binary black hole parameter space, reducing the need for new NR runs while maintaining high predictive accuracy.
@@ -92,11 +95,6 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 - The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters. 
  
 <img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/431d3830-4cd0-48fc-a7f6-1b5eea9e459d" />
-
-
-
-
-<img width="782" height="745" alt="image" src="https://github.com/user-attachments/assets/61020a7c-f916-45d2-aa0a-3a1012f0408f" />
 
 
 
