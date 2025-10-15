@@ -49,7 +49,7 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 ## Methodology  
 - Below shows a flow-chart of the process followed building and testing the models:
 
-<img width="3413" height="1974" alt="image" src="https://github.com/user-attachments/assets/032da9bf-e92b-46be-8b92-9ceb63274527" />
+<img width="1000" height="200" alt="image" src="https://github.com/user-attachments/assets/032da9bf-e92b-46be-8b92-9ceb63274527" />
 
 
 
