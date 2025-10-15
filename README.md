@@ -59,16 +59,15 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 - Explored multiple kernel types, their shapes and properties are illustrated below
 
 <img width="667" height="448" alt="image" src="https://github.com/user-attachments/assets/9dcedf2c-b67c-47d1-b3b2-5812d0d7a966" />
-
-
-- Examined kernel combinations and noise models via cross-validation across six metrics:
-  - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
  
 
 
 ### 2. Model Training & Evaluation  
 - Tested **32 GPR configurations** (different kernel + noise setups).  
 - Used **10-fold cross-validation** on 90% of data and a 10% hold-out test set.
+- Cross-validated across six metrics:
+  - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
+
 - The below shows all models ranked indexed by there position in the table below it.
   
 <img width="1627" height="491" alt="image" src="https://github.com/user-attachments/assets/3075ca6d-66d0-431b-869d-f74a225ba2d4" />
@@ -92,11 +91,6 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 
 ### 4. Uncertainty Quantification  
 - Used **MCMC** to build a posterior distribution over kernel hyperparameters.  
-- Found the **signal variance** and **Matern length scales** carried most uncertainty — indicating spin parameters dominated mismatch variation.  
-- Compared **pointwise predictions** (MAP estimates) with **marginalised posteriors** (integrated over hyperparameter uncertainty).  
-  - Marginalisation widened credible intervals but didn’t significantly improve accuracy.  
-  - The **pointwise RBF–Matern model** was chosen for efficiency.
-
 - The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters. 
  
 <img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/431d3830-4cd0-48fc-a7f6-1b5eea9e459d" />
