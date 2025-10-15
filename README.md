@@ -1,6 +1,13 @@
 # Gaussian Process Regression for Gravitational Waves
 This is a brief summary of my Undergraduate Thesis. The paper is available to read in the repository above.
 
+## Explaining This Repository:
+- In 1D_Toyproblem I learned the basics of Gaussian Process Regression
+- In Final_Model_Code folder there exists:
+    - Training_CrossValidated_32GPRS where each of the 32 different GPR models is trained on 90% of the data but using 10 fold cross validation (Trained on each Fold)
+    - Ranking_All32_Models from the cross validation and choosing top 8
+    - Testing_Best8Models testing the best 8 models on the remaining unseen 10% of the data
+
 ## Overview  
 This project explores how **Gaussian Process Regression (GPR)** can be used to efficiently predict **waveform mismatches** between analytical gravitational wave (GW) models and **Numerical Relativity (NR)** simulations. NR simulations are the gold standard for generating GW waveforms but are computationally costly. By training GPR models on a limited set of NR-informed mismatches, this project builds a **surrogate model** that generalizes across the binary black hole parameter space, reducing the need for new NR runs while maintaining high predictive accuracy.
 
@@ -50,12 +57,19 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 
 - Examined kernel combinations and noise models via cross-validation across six metrics:
   - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
+ 
 
 
 ### 2. Model Training & Evaluation  
 - Tested **32 GPR configurations** (different kernel + noise setups).  
-- Used **10-fold cross-validation** on 90% of data and a 10% hold-out test set.  
-- Implemented using `scikit-learn` with `fmin_l_bfgs_b` optimization and `emcee` for MCMC sampling of hyperparameters.
+- Used **10-fold cross-validation** on 90% of data and a 10% hold-out test set.
+- The below shows all models ranked indexed by there position in the table below it.
+  
+<img width="1627" height="491" alt="image" src="https://github.com/user-attachments/assets/3075ca6d-66d0-431b-869d-f74a225ba2d4" />
+<img width="782" height="745" alt="image" src="https://github.com/user-attachments/assets/61020a7c-f916-45d2-aa0a-3a1012f0408f" />
+
+
+
 
 ### 3. Final Model  
 The best-performing model was a **heteroscedastic additive GPR** with:
@@ -65,10 +79,8 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 - The RBF kernel captured global smooth structure.  
 - The Matern kernel captured local, noise-like variations.  
 
-**Performance (on test data):**
-- R² ≈ 0.99
-- RMSE ≈ 0.034
-- MAE ≈ 0.02
+<img width="2390" height="1990" alt="image" src="https://github.com/user-attachments/assets/416c2171-48c8-4a0d-a547-1955975a9cd3" />
+
 
 ### 4. Uncertainty Quantification  
 - Used **MCMC** to build a posterior distribution over kernel hyperparameters.  
@@ -77,65 +89,14 @@ The best-performing model was a **heteroscedastic additive GPR** with:
   - Marginalisation widened credible intervals but didn’t significantly improve accuracy.  
   - The **pointwise RBF–Matern model** was chosen for efficiency.
 
-- The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters.
+- The below Graph shows the uncertainty associated with each hyper-parameter. A single tall peak indicates less uncertainty. A wider peak or two peaks indicates much more uncertainty around the optimal hyperparameters. 
  
 <img width="1431" height="713" alt="image" src="https://github.com/user-attachments/assets/431d3830-4cd0-48fc-a7f6-1b5eea9e459d" />
 
-  **Notes:**  
-- σ²_f₁ and σ²_f₂ are the **signal variances** for each kernel — they scale the amplitude of the model.  
-- “Length Scales” correspond to each input dimension in the reduced 4D parameter space. 
-
-
----
-
-## Key Results  
 
 
 
-### Optimized Hyperparameters for the Final 8 GPR Models
+<img width="782" height="745" alt="image" src="https://github.com/user-attachments/assets/61020a7c-f916-45d2-aa0a-3a1012f0408f" />
 
-- The below graph is a cross-section taken from the best models:
-- 
-<img width="1719" height="1428" alt="image" src="https://github.com/user-attachments/assets/762f2326-68d6-4605-9d07-9fa2dba4f9df" />
-
-- The table below represents the metrics for the best models:
-
-| **Model** | **Kernel 1** | **σ²_f₁** | **Length Scales 1** | **Kernel 2** | **σ²_f₂** | **Length Scales 2 / Noise** |
-|------------|--------------|------------|----------------------|--------------|------------|------------------------------|
-| **RBFMat** | RBF | 2.34 | [1.00, 1.51, 1.38, 1.36] | Matern (ν = 0.75) | 0.207 | [0.0996, 0.0582, 0.414, 2.31] |
-| **RBFLap** | RBF | 0.354 | [0.10, 0.10, 1.18, 2.91] | Laplace (γ = 0.964) | 0.292 | — |
-| **Mat_noerr** | Matern (ν = 1.75) | 0.926 | [0.227, 0.20, 1.15, 2.85] | White | — | σ²ₙ = 0.00637 |
-| **Laplace_noerr** | Laplace (γ = 0.358) | 7.24 | — | White | — | σ²ₙ = 1×10⁻⁶ |
-| **RBF_noerr** | RBF | 0.728 | [0.112, 0.112, 0.958, 1.6] | White | — | σ²ₙ = 0.00728 |
-| **Mat_minmaxerr** | Matern (ν = 1.75) | 1.14 | [0.27, 0.22, 1.34, 4.73] | White | — | σ²ₙ = 0.0439 |
-| **Laplace_minmaxerr** | Laplace (γ = 0.284) | 6.60 | — | White | — | σ²ₙ = 0.0439 |
-| **RBF_minmaxerr** | RBF | 0.821 | [0.12, 0.115, 1.19, 2.52] | White | — | σ²ₙ = 0.0439 |
-
-**Notes:**  
-- σ²ₙ is the **optimised noise hyperparameter** from the WhiteKernel.  
-- “Mat” and “Lap” refer to the **Matern** and **Laplacian** kernels, respectively.
-
-  
-- The below visualisation represents how we chose the best model from the metrics. We visualised the metrics with the most different ranking results in the scatter plot.
-- The models are labelled 1-8 from the ranking produced in the table above.
-
-<img width="1269" height="425" alt="Image" src="https://github.com/user-attachments/assets/badf2824-bcfb-40f3-91b4-938f7c3ac7c1" />
-
-
-
-
----
-
-## Tools & Libraries  
-- **Python**, `scikit-learn`, `NumPy`, `SciPy`, `matplotlib`, `emcee`  
-- Data visualisation using Matplotlib (contour and cross-cut plots).  
-- MCMC analysis for Bayesian hyperparameter posteriors.  
-
----
-
-## Further Work  
-- Extend to full 8D parameter space to assess information loss from dimensionality reduction.  
-- Explore **model averaging across kernel types** to capture kernel-level uncertainty.  
-- Integrate the GPR model into the **NR-informed inference workflow** for live GW parameter estimation.
 
 
