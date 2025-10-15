@@ -58,7 +58,8 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 - Built GP priors and posteriors for both **homoscedastic** (constant noise) and **heteroscedastic** (input-dependent noise) assumptions.  
 - Explored multiple kernel types, their shapes and properties are illustrated below
 
-<img width="1194" height="806" alt="image" src="https://github.com/user-attachments/assets/433a6654-dd43-4765-9094-3152aa4cce16" />
+<img width="667" height="448" alt="image" src="https://github.com/user-attachments/assets/9dcedf2c-b67c-47d1-b3b2-5812d0d7a966" />
+
 
 - Examined kernel combinations and noise models via cross-validation across six metrics:
   - RMSE, MAE, FOM, R², Adjusted R², Pearson correlation.
@@ -71,7 +72,8 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 - The below shows all models ranked indexed by there position in the table below it.
   
 <img width="1627" height="491" alt="image" src="https://github.com/user-attachments/assets/3075ca6d-66d0-431b-869d-f74a225ba2d4" />
-<img width="782" height="745" alt="image" src="https://github.com/user-attachments/assets/61020a7c-f916-45d2-aa0a-3a1012f0408f" />
+<img width="739" height="704" alt="image" src="https://github.com/user-attachments/assets/8d14f2fc-e121-4396-916c-29ccd76f32f4" />
+
 
 
 
@@ -84,7 +86,8 @@ The best-performing model was a **heteroscedastic additive GPR** with:
 - The RBF kernel captured global smooth structure.  
 - The Matern kernel captured local, noise-like variations.  
 
-<img width="2390" height="1990" alt="image" src="https://github.com/user-attachments/assets/416c2171-48c8-4a0d-a547-1955975a9cd3" />
+<img width="1123" height="245" alt="image" src="https://github.com/user-attachments/assets/6ca38e55-0928-405b-8f84-8289b7923a76" />
+
 
 
 ### 4. Uncertainty Quantification  
