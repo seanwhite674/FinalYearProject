@@ -24,7 +24,7 @@ If Ratio > 1, then Fit 2 is more faithful to the NR simulations.
 If Ratio < 1, then Fit 1 is more accurate in that region of parameter space.
 
 This approach allows the Bayesian inference process to adapt locally, selecting whichever model best matches NR results in each part of the parameter space.
-The result is a more accurate and efficient approach to gravitational-wave parameter estimation.
+The result is a more accurate and efficient approach to gravitational-wave parameter estimation. From https://arxiv.org/abs/2409.19404
 
 <img width="1222" height="592" alt="image" src="https://github.com/user-attachments/assets/a521e1f0-28e4-46bc-a34f-5e6dd8227920" />
 
