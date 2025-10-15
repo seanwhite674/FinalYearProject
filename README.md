@@ -53,7 +53,7 @@ samples, but GPR provides an analytic model that can be directly evaluated witho
 - Explored multiple kernel types, their shapes and properties are illustrated below
   
 #### Explaining the below Graph:
--Visual comparison of common kernel functions and their effect on Gaussian process priors.
+- Visual comparison of common kernel functions and their effect on Gaussian process priors.
 Each column shows the kernel shape k(x, x′), samples from the corresponding GP prior, and a summary
 of the structure it imposes. All kernels were evaluated using a lengthscale parameter ℓ = 1 (except where
 noted). For the Matern kernel, ν = 0.5; Laplace kernel, γ = 6; Rational Quadratic kernel, α = 0.25; and
